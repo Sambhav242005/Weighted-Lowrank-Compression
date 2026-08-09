@@ -86,22 +86,22 @@ largely an artifact of the approximation method, not a fundamental limit.
 ## 2. Related Work
 
 **Quantization with activation awareness.** OBQ/OBS and the GPTQ/SparseGPT
-line established that weight-space rounding error should be compensated under
+line [1,2] established that weight-space rounding error should be compensated under
 the second-order (activation Gram / Hessian) statistic of calibration inputs.
-AWQ protects salient channels by activation magnitude. Our objective is the
+AWQ [3] protects salient channels by activation magnitude. Our objective is the
 low-rank analogue of this principle.
 
-**Activation-aware low-rank compression.** ASVD (Yuan et al.,
-arXiv 2312.05821) reparameterizes weights by activation statistics before SVD
+**Activation-aware low-rank compression.** ASVD [4] reparameterizes weights by
+activation statistics before SVD
 and handles outlier channels, demonstrating that activation awareness is the
 lever for LLM low-rank compression. Our closed-form anchored fit is an
 independent derivation in the same family; to our knowledge the
 beats-the-teacher denoising effect (Section 6) has not been reported for
-training-free rank truncation. EoRA (Liu et al., arXiv 2410.21271)
+training-free rank truncation. EoRA [5]
 compensates low-rank error with an added eigenspace term; QEP
-(arXiv 2504.09629) patches cross-layer error propagation for quantization.
+[6] patches cross-layer error propagation for quantization.
 
-**Hybrid low-rank + quantization.** SVDQuant (arXiv 2411.05006) migrates
+**Hybrid low-rank + quantization.** SVDQuant [7] migrates
 outliers into an fp16 low-rank branch and quantizes the residual to 4 bits.
 Our factor-quantization result (Section 7) shows the low-rank branch itself
 survives int8 losslessly, reinforcing the hybrid design space.
@@ -154,7 +154,7 @@ takes seconds on a single GPU.
 
 ### 3.4 Calibration and hyperparameters
 
-Calibration: 16 chunks of 512 tokens from the WikiText-2 **train** split
+Calibration: 16 chunks of 512 tokens from the WikiText-2 [8] **train** split
 (never the test split), teacher-forced through the untouched model
 (α = 0: teacher inputs; student-input refitting was tested and is inferior,
 Section 5.3). One hyperparameter β: optimal in [0.1, 0.3], all reported
@@ -373,6 +373,31 @@ teacher on held-out perplexity, with a measurable calibration signature.
 Pure storage compression remains quantization's territory; the compelling
 direction is combining data-aware low-rank structure with quantized
 representations.
+
+---
+
+## References
+
+1. E. Frantar, S. Ashkboos, T. Hoefler, D. Alistarh. *GPTQ: Accurate
+   post-training quantization for generative pre-trained transformers.*
+   arXiv:2210.17323, 2022.
+2. E. Frantar, D. Alistarh. *SparseGPT: Massive language models can be
+   accurately pruned in one-shot.* arXiv:2301.00774, 2023.
+3. J. Lin, J. Tang, H. Tang, S. Yang, X. Dang, S. Han. *AWQ:
+   Activation-aware weight quantization for LLM compression and
+   acceleration.* arXiv:2306.00978, 2023.
+4. Z. Yuan et al. *ASVD: Activation-aware singular value decomposition
+   for large language model compression.* arXiv:2312.05821, 2023.
+5. S.-Y. Liu, M. Khadkevich, N. C. Fung, et al. *EoRA: Training-free
+   compensation for compressed LLM with eigenspace low-rank
+   approximation.* arXiv:2410.21271, 2024.
+6. Y. Arai, Y. Ichikawa. *Quantization error propagation: Revisiting
+   layer-wise post-training quantization.* arXiv:2504.09629, 2025.
+7. M. Li, Y. Lin, Z. Zhang, T. Cai, X. Li, et al. *SVDQuant: Absorbing
+   outliers by low-rank components for 4-bit diffusion models.*
+   arXiv:2411.05007, 2024.
+8. S. Merity, C. Xiong, J. Bradbury, R. Socher. *Pointer sentinel
+   mixture models.* arXiv:1609.07843, 2016.
 
 ---
 

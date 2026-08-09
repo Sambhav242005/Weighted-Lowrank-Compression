@@ -91,7 +91,7 @@ report["equivalence_note"] = (
 )
 report["combined_paths"] = [
     "Quantize the low-rank factors (int4 U,V): 3x-rank o_proj -> ~6x per-matrix",
-    "SVDQuant-style: fp16 low-rank branch for outliers + int4 residual -> ~3.5x whole model with quality above plain int4 (arXiv 2411.05006)",
+    "SVDQuant-style: fp16 low-rank branch for outliers + int4 residual -> ~3.5x whole model with quality above plain int4 (arXiv 2411.05007)",
 ]
 
 print(json.dumps(report, indent=2))

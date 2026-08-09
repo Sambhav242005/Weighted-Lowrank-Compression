@@ -482,7 +482,7 @@ with quantization -- even pushing o_proj to 8x-rank (4x/matrix) saves only
 The candidate's value is quality-at-rank and the redundancy/denoising
 insight; the practical path is combination: quantize the low-rank factors,
 or SVDQuant-style low-rank outlier branch + int4 residual (~3.5x with
-quality above plain int4, arXiv 2411.05006).
+quality above plain int4, arXiv 2411.05007).
 
 ### Factor quantization hybrid (`src/weighted_qwen7b_factor_quant.py`,
 results/weighted_qwen7b_factor_quant.json)

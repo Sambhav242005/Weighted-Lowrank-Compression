@@ -105,23 +105,25 @@ method, not a fundamental limit.
 \section{Related Work}
 
 \paragraph{Quantization with activation awareness.} OBQ/OBS and the
-GPTQ/SparseGPT line established that weight-space rounding error should be
+GPTQ/SparseGPT line~\cite{frantar2022gptq,frantar2023sparsegpt} established
+that weight-space rounding error should be
 compensated under the second-order (activation Gram / Hessian) statistic of
-calibration inputs. AWQ protects salient channels by activation magnitude.
+calibration inputs. AWQ~\cite{lin2023awq} protects salient channels by
+activation magnitude.
 Our objective is the low-rank analogue of this principle.
 
-\paragraph{Activation-aware low-rank compression.} ASVD (Yuan et al.,
-arXiv:2312.05821) reparameterizes weights by activation statistics before
+\paragraph{Activation-aware low-rank compression.} ASVD~\cite{yuan2023asvd}
+reparameterizes weights by activation statistics before
 SVD and handles outlier channels, demonstrating that activation awareness
 is the lever for LLM low-rank compression. Our closed-form anchored fit is
 an independent derivation in the same family; to our knowledge the
 beats-the-teacher denoising effect (Section~\ref{sec:denoise}) has not been
-reported for training-free rank truncation. EoRA (Liu et al.,
-arXiv:2410.21271) compensates low-rank error with an added eigenspace term;
-QEP (arXiv:2504.09629) patches cross-layer error propagation for
+reported for training-free rank truncation. EoRA~\cite{liu2024eora}
+compensates low-rank error with an added eigenspace term;
+QEP~\cite{arai2025qep} patches cross-layer error propagation for
 quantization.
 
-\paragraph{Hybrid low-rank + quantization.} SVDQuant (arXiv:2411.05006)
+\paragraph{Hybrid low-rank + quantization.} SVDQuant~\cite{li2024svdquant}
 migrates outliers into an fp16 low-rank branch and quantizes the residual
 to 4 bits. Our factor-quantization result (Section~\ref{sec:storage}) shows
 the low-rank branch itself survives int8 losslessly, reinforcing the hybrid
@@ -177,7 +179,7 @@ rank-$r$ minimizer of \eqref{eq:obj} given the full-rank optimum $M^{*}$;
 the per-matrix solve is closed-form and takes seconds on a single GPU.
 
 \subsection{Calibration and hyperparameters}
-Calibration: 16 chunks of 512 tokens from the WikiText-2 \emph{train}
+Calibration: 16 chunks of 512 tokens from the WikiText-2~\cite{merity2016} \emph{train}
 split (never the test split), teacher-forced through the untouched model
 ($\alpha = 0$: teacher inputs; student-input refitting was tested and is
 inferior, Section~\ref{sec:ablations}). One hyperparameter $\beta$:
@@ -545,5 +547,55 @@ summarized in \texttt{THREAD.md}. Hardware: RTX 4070 Ti 12\,GB, Python
     matched budget (the sharpest novelty test)
   \item Base (non-Instruct) 7B confirmation run
 \end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{frantar2022gptq}
+E.~Frantar, S.~Ashkboos, T.~Hoefler, and D.~Alistarh.
+GPTQ: Accurate post-training quantization for generative pre-trained
+transformers.
+\emph{arXiv:2210.17323}, 2022.
+
+\bibitem{frantar2023sparsegpt}
+E.~Frantar and D.~Alistarh.
+SparseGPT: Massive language models can be accurately pruned in one-shot.
+\emph{arXiv:2301.00774}, 2023.
+
+\bibitem{lin2023awq}
+J.~Lin, J.~Tang, H.~Tang, S.~Yang, X.~Dang, and S.~Han.
+AWQ: Activation-aware weight quantization for LLM compression and
+acceleration.
+\emph{arXiv:2306.00978}, 2023.
+
+\bibitem{yuan2023asvd}
+Z.~Yuan et al.
+ASVD: Activation-aware singular value decomposition for large language
+model compression.
+\emph{arXiv:2312.05821}, 2023.
+
+\bibitem{liu2024eora}
+S.-Y.~Liu, M.~Khadkevich, N.~C.~Fung, et al.
+EoRA: Training-free compensation for compressed LLM with eigenspace
+low-rank approximation.
+\emph{arXiv:2410.21271}, 2024.
+
+\bibitem{arai2025qep}
+Y.~Arai and Y.~Ichikawa.
+Quantization error propagation: Revisiting layer-wise post-training
+quantization.
+\emph{arXiv:2504.09629}, 2025.
+
+\bibitem{li2024svdquant}
+M.~Li, Y.~Lin, Z.~Zhang, T.~Cai, X.~Li, et al.
+SVDQuant: Absorbing outliers by low-rank components for 4-bit diffusion
+models.
+\emph{arXiv:2411.05007}, 2024.
+
+\bibitem{merity2016}
+S.~Merity, C.~Xiong, J.~Bradbury, and R.~Socher.
+Pointer sentinel mixture models.
+\emph{arXiv:1609.07843}, 2016.
+
+\end{thebibliography}
 
 \end{document}

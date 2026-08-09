@@ -216,7 +216,7 @@ The "broken" behavior in Small models is because they lack redundancy:
   model at ~0.3-1% PPL. Our value = quality-at-rank + denoising insight.
 - Path forward = combination: quantized factors (proven lossless at int8),
   SVDQuant-style low-rank outlier branch + int4 residual (~3.5x whole model
-  above plain int4 quality, arXiv 2411.05006).
+  above plain int4 quality, arXiv 2411.05007).
   results/storage_vs_quantization.json
 
 ### Hybrid residual split measured (2026-08-09)
