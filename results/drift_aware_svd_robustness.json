@@ -1,0 +1,6 @@
+{
+  "baseline_ppl": 56.46634942773991,
+  "weighted_ppl": 59.2552438842367,
+  "ppl_delta_pct": 4.939038001855858,
+  "calibration": "wikitext-2 train chunks 64-127 (offset robustness)"
+}

@@ -1,0 +1,160 @@
+{
+  "baseline_ppl": 48.35394035976615,
+  "progressive": [
+    {
+      "n_replaced": 1,
+      "perplexity": 78.12653265867868,
+      "delta": 29.772592298912535,
+      "delta_pct": 61.57221537148069,
+      "compression": 3.0
+    },
+    {
+      "n_replaced": 2,
+      "perplexity": 98.4545108131618,
+      "delta": 50.100570453395655,
+      "delta_pct": 103.61217737506834,
+      "compression": 3.0
+    },
+    {
+      "n_replaced": 4,
+      "perplexity": 89.49252291782362,
+      "delta": 41.13858255805747,
+      "delta_pct": 85.07803552714732,
+      "compression": 3.0
+    },
+    {
+      "n_replaced": 8,
+      "perplexity": 130.93575891121753,
+      "delta": 82.58181855145139,
+      "delta_pct": 170.7861198839655,
+      "compression": 3.0
+    },
+    {
+      "n_replaced": 12,
+      "perplexity": 168.5474918406002,
+      "delta": 120.19355148083406,
+      "delta_pct": 248.57033488183617,
+      "compression": 3.0
+    }
+  ],
+  "all_layers": [
+    {
+      "repr": "SVD 99%",
+      "compression": 0.7526972788254759,
+      "perplexity": 49.49658381067329,
+      "delta_pct": 2.363082392883752
+    },
+    {
+      "repr": "SVD 95%",
+      "compression": 1.0129788719433044,
+      "perplexity": 72.96728672233752,
+      "delta_pct": 50.902462507587884
+    },
+    {
+      "repr": "Fourier 99%",
+      "compression": 1.1587639829892458,
+      "perplexity": 49.27971538121159,
+      "delta_pct": 1.914580310430602
+    },
+    {
+      "repr": "LowRank r128",
+      "compression": 3.0,
+      "perplexity": 168.5474918406002,
+      "delta_pct": 248.57033488183617
+    },
+    {
+      "repr": "LowRank r256",
+      "compression": 1.5,
+      "perplexity": 57.665005548816055,
+      "delta_pct": 19.25606293876592
+    },
+    {
+      "repr": "LowRank r64",
+      "compression": 6.0,
+      "perplexity": 353.7749991938056,
+      "delta_pct": 631.6363393792227
+    }
+  ],
+  "adaptive": [
+    {
+      "config": "Uniform 3x",
+      "ranks": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "compression": 3.0,
+      "perplexity": 168.5474918406002,
+      "delta_pct": 248.57033488183617
+    },
+    {
+      "config": "Adaptive A",
+      "ranks": [
+        256,
+        256,
+        128,
+        128,
+        128,
+        128,
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "compression": 3.272727272727273,
+      "perplexity": 118.513184279245,
+      "delta_pct": 145.09519471934544
+    },
+    {
+      "config": "Adaptive B",
+      "ranks": [
+        256,
+        256,
+        256,
+        128,
+        128,
+        128,
+        128,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "compression": 2.88,
+      "perplexity": 108.78579001301881,
+      "delta_pct": 124.97812836683767
+    },
+    {
+      "config": "Aggressive",
+      "ranks": [
+        128,
+        64,
+        64,
+        64,
+        64,
+        64,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "compression": 7.2,
+      "perplexity": 414.58121630353304,
+      "delta_pct": 757.3886910124361
+    }
+  ]
+}

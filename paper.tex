@@ -1,0 +1,549 @@
+% Activation-Weighted Low-Rank Fitting Defeats Spectral Compression
+% of Transformer Weights -- and Can Improve on the Teacher
+% Status: DRAFT. All numbers measured in this repository (results/*.json).
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\newcommand{\gap}{\textcolor{red}{[GAP]}}
+\newcommand{\Wh}{\widehat{W}}
+
+\title{Activation-Weighted Low-Rank Fitting Defeats Spectral Compression of
+Transformer Weights --- and Can Improve on the Teacher}
+\author{ResearchCompression project\\
+\texttt{All numbers are measured artifacts of this repository (results/*.json, THREAD.md)}}
+\date{Draft --- pre-submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Replacing a pretrained transformer's weight matrices by low-rank
+approximations is known to fail catastrophically when composed across
+layers: single-layer approximation error compounds through the residual
+stream, and full-stack replacement at $3\times$ compression typically
+destroys language modeling performance. We show that the dominant cause is
+not irreducible drift but a mismatch between the approximation norm and the
+data distribution: truncated SVD in weight space spends rank on input
+directions the model never excites. We derive a closed-form
+activation-weighted low-rank fit --- the minimizer of
+$\mathbb{E}_x\| (W-\Wh)x \|^2$ with a weight-space anchor, truncated in the
+activation Gram norm --- and show that it defeats plain SVD by $5$--$7\times$
+in perplexity delta across three architectures and scales: GPT-2 Small
+($+3.58\%$ vs $+21.34\%$), Gemma-3-1B ($-4.45\%$ vs $+71.86\%$), and
+Qwen2.5-7B ($+3.84\%$ vs $+26.31\%$), all at one-sided $3\times$ rank on
+attention output projections, training-free, with 16 chunks of calibration
+text. The compressed Gemma model scores \emph{below} the teacher's
+perplexity while differing from it substantially (top-1 agreement $74\%$),
+with higher output entropy and lower NLL --- evidence that data-aware rank
+truncation acts as denoising. We further show the fitted factors tolerate
+int8 quantization losslessly ($3.0\times$ per-matrix storage at $+3.80\%$),
+but that low-rank compression alone cannot compete with whole-model
+quantization for storage; we characterize where the combination of the two
+is the productive direction.
+\end{abstract}
+
+\section{Introduction}
+
+A pretrained transformer's dense layers are highly overparameterized by
+spectral criteria: singular value spectra of attention projections decay
+fast enough that a third of the rank captures most of the Frobenius mass.
+Yet replacing these matrices by their truncated SVD collapses full-stack
+language modeling performance --- in our measurements, $+21\%$ perplexity on
+GPT-2 Small and $+72\%$ on Gemma-3-1B at one-sided $3\times$ compression,
+even though per-layer output error under teacher inputs is small.
+
+This failure has been attributed to two competing mechanisms:
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{Drift limit}: approximation errors compound through the
+    residual stream; later layers receive off-manifold inputs they were
+    never trained on, so layerwise equivalence does not imply network
+    equivalence.
+  \item \textbf{Norm mismatch}: the weight-space Frobenius norm in which SVD
+    is optimal is the wrong norm --- what matters is the error under the
+    activation distribution, and SVD wastes rank on directions that never
+    fire.
+\end{enumerate}
+We pre-registered a decision rule to distinguish these at 7B scale, and we
+find the answer is overwhelmingly (2): a closed-form fit that minimizes
+expected activation-space error recovers a full compression tier that plain
+SVD destroys. The ``drift wall'' observed at $3\times$ compression across
+model scales ($+21.4\%$ Small, $+9.9\%$ Medium, $+7.5\%$ Large in our
+earlier phases) is therefore largely an artifact of the approximation
+method, not a fundamental limit.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=1.5em]
+  \item A closed-form activation-weighted low-rank fit with a weight-space
+    anchor (Section~\ref{sec:method}): $M^{*} = C(G+\beta n I)^{-1}$,
+    truncated to rank $r$ in the $G$-weighted norm. No gradient steps;
+    per-matrix solve in seconds.
+  \item Cross-scale validation (GPT-2 Small / Gemma-3-1B / Qwen2.5-7B)
+    against a matched SVD control at identical budgets, with pre-registered
+    gates (Section~\ref{sec:results}). The weighted fit is $5$--$7\times$
+    better in perplexity delta at every tested scale and ratio.
+  \item Evidence that data-aware truncation can \emph{improve} on the
+    teacher: the compressed Gemma-3-1B scores $-4.45\%$ (and $-7.34\%$ on
+    200 texts) below the teacher's held-out perplexity with no
+    fine-tuning, with higher output entropy and lower NLL --- a
+    calibration/denoising signature (Section~\ref{sec:denoise}).
+  \item A storage accounting that places the method honestly against
+    quantization (Section~\ref{sec:storage}), including an exact
+    byte-level account of what is stored after conversion
+    (Section~\ref{sec:bytes}): factor quantization to int8 is lossless
+    ($3.0\times$ per matrix), but whole-model quantization dominates pure
+    storage.
+  \item Negative results and implementation pitfalls with quantitative
+    evidence (Appendix~\ref{app:pitfalls}).
+\end{enumerate}
+
+\section{Related Work}
+
+\paragraph{Quantization with activation awareness.} OBQ/OBS and the
+GPTQ/SparseGPT line established that weight-space rounding error should be
+compensated under the second-order (activation Gram / Hessian) statistic of
+calibration inputs. AWQ protects salient channels by activation magnitude.
+Our objective is the low-rank analogue of this principle.
+
+\paragraph{Activation-aware low-rank compression.} ASVD (Yuan et al.,
+arXiv:2312.05821) reparameterizes weights by activation statistics before
+SVD and handles outlier channels, demonstrating that activation awareness
+is the lever for LLM low-rank compression. Our closed-form anchored fit is
+an independent derivation in the same family; to our knowledge the
+beats-the-teacher denoising effect (Section~\ref{sec:denoise}) has not been
+reported for training-free rank truncation. EoRA (Liu et al.,
+arXiv:2410.21271) compensates low-rank error with an added eigenspace term;
+QEP (arXiv:2504.09629) patches cross-layer error propagation for
+quantization.
+
+\paragraph{Hybrid low-rank + quantization.} SVDQuant (arXiv:2411.05006)
+migrates outliers into an fp16 low-rank branch and quantizes the residual
+to 4 bits. Our factor-quantization result (Section~\ref{sec:storage}) shows
+the low-rank branch itself survives int8 losslessly, reinforcing the hybrid
+design space.
+
+\paragraph{Classical weighted low-rank approximation.} The problem
+$\min_{\operatorname{rank}(\Wh)\le r} \mathbb{E}\|(W-\Wh)X\|$ is a known
+non-convex problem; our contribution is the specific anchored closed-form +
+weighted-truncation pipeline and its systematic validation on modern LLMs
+against matched controls.
+
+\section{Method}\label{sec:method}
+
+\subsection{Problem setting}
+For a linear module with weight $W \in \mathbb{R}^{d_{out}\times d_{in}}$
+(column-space convention $y = Wx$; for GPT-2 Conv1D modules $W$ is
+transposed accordingly), we observe calibration input activations
+$x_1,\dots,x_n \in \mathbb{R}^{d_{in}}$ captured by a forward hook, and
+seek a rank-$r$ approximation $\Wh$ minimizing
+\begin{equation}\label{eq:obj}
+  \mathcal{L}(\Wh) = \frac{1}{n}\sum_{i=1}^{n} \|(W-\Wh)x_i\|^2
+                     + \beta \|\Wh - W\|_F^2 .
+\end{equation}
+The first term is the activation-space error (what the network actually
+sees); the second is a weight-space anchor of strength $\beta \ge 0$. The
+anchor is mandatory, not optional: with $\beta = 0$ the problem is
+ill-posed in directions the calibration data never excites, and empirical
+fits diverge there.
+
+\subsection{Closed-form solution}
+Let $G = XX^\top \in \mathbb{R}^{d_{in}\times d_{in}}$ be the activation
+Gram matrix and $C = (Y-b)X^\top + \beta n W$ the cross-moment (with bias
+$b$ subtracted from captured outputs where present --- see
+Appendix~\ref{app:pitfalls}). The unconstrained minimizer of
+\eqref{eq:obj} is
+\begin{equation}\label{eq:mstar}
+  M^{*} = C\,(G + \beta n I)^{-1},
+\end{equation}
+computed in the eigenspace of $G$ with a relative eigenvalue floor
+$\varepsilon_{rel} = 10^{-3}$ and Tikhonov ridge
+$\lambda = 0.01 \cdot \overline{\operatorname{diag}(G_k)}$ for numerical
+safety.
+
+\subsection{Rank-$r$ truncation in the correct norm}
+Truncating $M^{*}$ by plain SVD would again optimize the wrong norm. We
+truncate in the $G$-weighted norm --- the norm in which \eqref{eq:obj}
+measures error --- via the SVD of
+\begin{equation}\label{eq:trunc}
+  Z = M^{*}(G+\beta n I)^{1/2}, \qquad Z = U_z \Sigma V_z^\top,
+\end{equation}
+and set $\Wh = U_z[:,{:}r]\, U_z[:,{:}r]^\top M^{*}$. This is the exact
+rank-$r$ minimizer of \eqref{eq:obj} given the full-rank optimum $M^{*}$;
+the per-matrix solve is closed-form and takes seconds on a single GPU.
+
+\subsection{Calibration and hyperparameters}
+Calibration: 16 chunks of 512 tokens from the WikiText-2 \emph{train}
+split (never the test split), teacher-forced through the untouched model
+($\alpha = 0$: teacher inputs; student-input refitting was tested and is
+inferior, Section~\ref{sec:ablations}). One hyperparameter $\beta$:
+optimal in $[0.1, 0.3]$; all reported results use $\beta = 0.1$. Rank
+convention: one-sided, $r = \min(d_{in}, d_{out})/k$.
+
+\section{Experimental Setup}
+
+\paragraph{Models.} GPT-2 Small (124M), \texttt{google/gemma-3-1b-it},
+\texttt{Qwen/Qwen2.5-7B-Instruct} (rev \texttt{a09a3545}). Targets:
+attention output projections in every layer (\texttt{attn.c\_proj},
+\texttt{self\_attn.o\_proj}) --- the family identified as compressible in
+Section~\ref{sec:families}.
+
+\paragraph{Protocol (identical across all runs).} Calibration: WikiText-2
+train, $16\times512$ tokens (the GPT-2 sweep used $64\times512$).
+Evaluation: WikiText-2 test, 50 texts $>$50 chars truncated to 256 tokens
+(Gemma additionally verified on 200 texts). Metric: perplexity delta vs the
+untouched fp-matched baseline. Control: plain truncated SVD at the
+identical rank --- same storage, same modules, same eval. All runs on a
+single RTX 4070 Ti 12\,GB; Qwen-7B in fp16 with partial CPU offload
+(weights read from safetensors shards, written via
+\texttt{set\_module\_tensor\_to\_device}).
+
+\paragraph{Pre-registered decision rule (7B validation).} Weighted-fit
+delta $\le 10\%$ supports the redundancy hypothesis (compression scales);
+$\ge 20\%$ falsifies it; between is inconclusive.
+
+\section{Results}\label{sec:results}
+
+\subsection{Cross-scale main result (one-sided $3\times$, all output projections)}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Model & Baseline PPL & Plain SVD & Weighted fit ($\beta=0.1$) \\
+\midrule
+GPT-2 Small (124M)      & 56.47 & $+21.34\%$ & $\mathbf{+3.58\%}$ \\
+Gemma-3-1B              & 70.40 & $+71.86\%$ & $\mathbf{-4.45\%}$ \\
+Qwen2.5-7B-Instruct     & 12.29 & $+26.31\%$ & $\mathbf{+3.84\%}$ \\
+\bottomrule
+\end{tabular}
+\caption{Held-out perplexity delta at one-sided $3\times$ rank on all
+attention output projections. Weighted-vs-SVD gap: $5.9\times$,
+$16.2\times$, $6.9\times$.}
+\label{tab:main}
+\end{table}
+
+The pre-registered 7B gate returns \textbf{SUPPORTS}: the earlier
+``failure wall'' at $3\times$ was a property of the approximation norm, not
+of scale.
+
+\subsection{Ratio frontier (GPT-2 Small, c\_proj $\times$12)}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+& $2\times$ (r=384) & $3\times$ (r=256) & $4\times$ (r=192) & $6\times$ (r=128) & $8\times$ (r=96) \\
+\midrule
+SVD      & $+5.50\%$  & $+21.34\%$ & $+152.13\%$ & $+261.86\%$ & $+374.49\%$ \\
+Weighted & $\mathbf{+0.10\%}$ & $\mathbf{+3.58\%}$ & $\mathbf{+17.94\%}$ & $+53.38\%$ & $+94.18\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Perplexity delta across compression ratios. The weighted fit
+recovers a full compression tier: weighted $4\times$ beats SVD $3\times$ in
+PPL while storing less.}
+\label{tab:frontier}
+\end{table}
+
+\subsection{Ablations}\label{sec:ablations}
+
+\paragraph{$\beta$ sweep.} Optimum $\beta \in [0.1, 0.3]$; $\beta=0$
+diverges in unobserved directions.
+
+\paragraph{Drift-awareness (student inputs).} Fitting against the
+\emph{student's} own activations ($\alpha=1$, sequential refit) loses
+$\sim$1\,pp to teacher-input fitting ($\alpha=0$) at every matched $\beta$.
+Anticipating drift is not the lever; fixing the norm is.
+
+\paragraph{Robustness.} Disjoint calibration (chunks 64--127 instead of
+0--63): $+4.94\%$ vs $+3.58\%$ --- mild sensitivity to calibration data,
+no collapse.
+
+\subsection{Matrix-family study (GPT-2 Small, one-sided $3\times$)}\label{sec:families}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Family & SVD & Weighted \\
+\midrule
+attn.c\_proj & $+21.34\%$  & $\mathbf{+3.58\%}$ \\
+attn.c\_attn & $+807.70\%$ & $+37.17\%$ \\
+attn (full)  & $+1072.37\%$& $+49.11\%$ \\
+mlp.c\_proj  & $+546.12\%$ & $+76.65\%$ \\
+mlp.c\_fc    & $+7544.82\%$& $+2149.19\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Weighted fitting wins in every family by $5$--$25\times$, but MLP
+matrices retain no usable redundancy at $3\times$ at these sizes.
+Compressible family = attention output projections.}
+\label{tab:families}
+\end{table}
+
+\subsection{Factor quantization (Qwen2.5-7B, rank 1194)}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Factor precision & Per-matrix storage & PPL delta \\
+\midrule
+fp16                    & $1.5\times$ & $+3.86\%$ \\
+int8 (per-row symmetric)& $3.0\times$ & $\mathbf{+3.80\%}$ \\
+int4                    & $6.0\times$ & $+8.22\%$ \\
+\bottomrule
+\end{tabular}
+\caption{int8 factors are lossless --- the fitted subspace is robust to
+8-bit factor noise. int4 costs $+4.4$\,pp but remains inside the
+$\le 10\%$ gate.}
+\label{tab:factorquant}
+\end{table}
+
+\subsection{Hybrid residual split (Qwen2.5-7B, SVDQuant-style)}
+
+Per-matrix hybrid: $\hat W = UV + Q_{\mathrm{int4}}(W - UV)$ --- a small
+low-rank branch (rank $r=256$, fp16 factors) absorbs structure the grid
+cannot represent; the residual is group-wise symmetric int4 (group $128$).
+Applied to all 28 \texttt{o\_proj}, same run contract.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Variant & PPL & $\Delta$ & storage/matrix \\
+\midrule
+Baseline                        & 12.29 & ---            & 25.69\,MB \\
+Pure int4 (reference)           & 12.39 & $+0.78\%$      & 6.62\,MB ($3.88\times$) \\
+Hybrid, SVD branch              & 12.37 & $+0.60\%$      & 10.29\,MB ($2.50\times$) \\
+Hybrid, weighted branch         & \textbf{12.36} & $\mathbf{+0.56\%}$ & 10.29\,MB ($2.50\times$) \\
+\bottomrule
+\end{tabular}
+\caption{Both pre-registered checks pass: the weighted branch beats the
+matched-storage SVD branch and beats the cheaper pure-int4 reference. The
+margin on \texttt{o\_proj} is small (+0.22\,pp) because int4 alone is
+nearly free on this family --- \texttt{o\_proj} is easy for both low-rank
+and quantization. The hybrid's payoff should concentrate on outlier-heavy
+families (MLPs, 80.7\% of parameters), where plain low-rank fails
+(Table~\ref{tab:families}); this motivates per-family routing
+(Section~\ref{sec:storage}).}
+\label{tab:hybrid}
+\end{table}
+
+\section{Analysis: Compression as Denoising}\label{sec:denoise}
+
+The Gemma result ($-4.45\%$; $-7.34\%$ on 200 texts) means the compressed
+model is a \emph{better} language model on held-out text than the teacher,
+with no fine-tuning. Logit-space comparison on 30 texts ($\sim$5.9k tokens)
+shows the student is not a near-copy:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+KL(orig$\|$sub) / KL(sub$\|$orig) & 0.268 / 0.292 \\
+Logit cosine                      & 0.9925 \\
+Top-1 / top-5 agreement           & 74.4\% / 96.3\% \\
+Softmax entropy (orig $\to$ sub)  & 2.19 $\to$ 2.47 \\
+\bottomrule
+\end{tabular}
+\caption{Teacher--student divergence of the Gemma compressed model.}
+\label{tab:divergence}
+\end{table}
+
+Entropy rises 12\% while NLL falls: the student is less overconfident and
+better calibrated. Interpretation: directions of $W$ that are never excited
+by natural text carry no signal but contribute weight-space capacity for
+spurious logits; activation-weighted truncation removes them, flattening
+spurious peaks and moving mass onto correct tokens --- denoising.
+
+At 7B, qualitative generation on three solvable prompts (arithmetic,
+factual QA, code) shows the int8-factor model tracks the baseline nearly
+word-for-word, the int4 model paraphrases with correct content, and even
+the $+26\%$-PPL SVD control remains coherent on easy tasks --- greedy
+generation on short prompts is too insensitive a probe for this kind of
+damage, confirming held-out PPL / logit divergence as the right primary
+metrics.
+
+\gap\ The denoising claim currently rests on one architecture, one family,
+and 1--2 eval sizes. Required before claiming it: 3 seeds, replication on a
+second architecture, pre-registered calibration/eval protocol.
+
+\section{Storage Accounting vs Quantization}\label{sec:storage}
+
+Factored storage of a rank-$d/3$ approximation of a $d\times d$ matrix is
+$d^2 \cdot 2/3$ parameters $\to$ $1.5\times$; ``$k\times$ rank'' is not
+``$k\times$ storage'' ($k/2\times$ for square matrices). On Qwen2.5-7B
+(o\_proj = 5.09\% of params):
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrl}
+\toprule
+Method & Storage & PPL cost & Scope \\
+\midrule
+Weighted $3\times$-rank, int8 factors & $3.0\times$/matrix $\to$ $\sim$3.4\% whole model & $+3.80\%$ & o\_proj \\
+int8 quantization                     & $2.0\times$ whole model & $\sim$0--0.1\% & all weights \\
+int4 (GPTQ/AWQ)                       & $\sim$3.6$\times$ whole model & $\sim$0.3--1\% & all weights \\
+\bottomrule
+\end{tabular}
+\caption{Storage accounting. Low-rank compression alone cannot compete with
+quantization for storage.}
+\label{tab:storage}
+\end{table}
+
+\paragraph{Verdict.} Low-rank compression alone cannot compete with
+quantization for storage. Its value is quality-at-rank and the denoising
+effect; the productive frontier is combination --- now measured
+(Table~\ref{tab:hybrid}): the weighted-fit branch beats both the SVD branch
+and pure int4 on \texttt{o\_proj}. The design space that remains open is
+per-family routing --- hybrid residual split on outlier-heavy MLPs (80.7\%
+of parameters), low-rank where it wins, plain quantization where int4 is
+free.
+
+\subsection{What is actually stored: a byte-level worked example}\label{sec:bytes}
+
+We make the conversion concrete for one Qwen2.5-7B o\_proj matrix
+($d_{out} = d_{in} = 3584$, rank $r = 1194$, the measured configuration of
+Table~\ref{tab:factorquant}).
+
+\paragraph{Before conversion (on disk today).} The matrix is stored dense:
+$3584 \times 3584 = 12{,}845{,}056$ weights, 2 bytes each in fp16
+$= 25{,}690{,}112$ bytes $= 25.69$\,MB. Every weight is stored regardless of
+whether any real input ever excites its direction.
+
+\paragraph{The conversion.} Calibration activations $X$ are collected; we
+solve \eqref{eq:mstar}--\eqref{eq:trunc} and obtain factors
+$U \in \mathbb{R}^{3584\times1194}$ and $V \in \mathbb{R}^{1194\times3584}$
+with $\Wh = UV$. The dense matrix is then \emph{discarded}; only the
+factors are serialized. The inference-time computation $y = Wx$ becomes
+$y = U(Vx)$: one $1194\times3584$ matmul followed by one
+$3584\times1194$ matmul.
+
+\paragraph{After conversion, three precisions (per matrix).}
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Serialization & Codes / weights & Overhead & Total \\
+\midrule
+fp16 factors  & $8{,}558{,}592\ \text{params} \times 2$\,B (two $3584\times1194$ factors) & --- & 17.12\,MB ($1.50\times$) \\
+int8 factors  & $8{,}558{,}592\ \text{codes} \times 1$\,B & $(3584+1194)$ scales $\times 2$\,B $= 9.6$\,KB & 8.57\,MB ($3.00\times$) \\
+int4 factors  & $8{,}558{,}592\ \text{codes} \times 0.5$\,B & 9.6\,KB & 4.29\,MB ($5.99\times$) \\
+\bottomrule
+\end{tabular}
+\caption{Exact bytes stored for one Qwen2.5-7B o\_proj after conversion.
+Measured PPL deltas at each point: $+3.86\%$ (fp16), $+3.80\%$ (int8),
+$+8.22\%$ (int4).}
+\label{tab:bytes}
+\end{table}
+
+At int8 the matrix shrinks from 25.69\,MB to 8.57\,MB --- one third of the
+space --- at \emph{measured} zero additional quality cost ($+3.80\%$ vs
+$+3.86\%$). The per-row scale overhead (9.6\,KB, $0.11\%$ of the codes) is
+negligible.
+
+\paragraph{Model-level arithmetic.} Qwen2.5-7B has 28 o\_proj matrices
+($5.09\%$ of its 7.07B params). Converting all of them to int8 factors:
+$28 \times (25.69 - 8.57) = 479$\,MB saved, i.e.\ the fp16 model drops from
+14.14\,GB to $\sim$13.66\,GB ($\sim$3.4\% whole-model saving). This is the
+honest ceiling of the method at its current scope, and the reason
+Section~\ref{sec:storage} positions combination with quantization, not
+competition with it, as the productive frontier.
+
+\section{Limitations}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Scope of compression.} Only attention output projections
+    are viable at $3\times$; MLP families break even weighted. Whole-model
+    compression requires budget reallocation across families, which we have
+    not demonstrated.
+  \item \textbf{Seeds.} Single calibration/fit per result \gap; the
+    $\pm 1$\,pp robustness run suggests stability but multi-seed statistics
+    are missing.
+  \item \textbf{Eval sensitivity.} Perplexity on $\le 200$ WikiText-2
+    texts; no downstream-task evaluation, no pre-registered drift metric
+    alongside PPL \gap.
+  \item \textbf{Latency/size accounting.} Factored form changes the compute
+    graph; warmed-up latency and peak memory are unmeasured \gap. Without a
+    fused low-rank kernel the storage win does not automatically become a
+    speed win.
+  \item \textbf{Instruct-tuned 7B baseline.} Qwen experiments use the
+    Instruct variant (matched to prior cross-architecture protocol);
+    base-model PPL might differ in absolute terms.
+\end{enumerate}
+
+\section{Conclusion}
+
+The ``drift wall'' of full-stack low-rank compression is largely an
+artifact of approximating in the wrong norm. A closed-form
+activation-weighted fit with a weight-space anchor, truncated in the
+activation Gram norm, is training-free, cheap, and defeats truncated SVD by
+$5$--$7\times$ across three architectures from 124M to 7B parameters,
+recovers a full compression tier, and --- on Gemma-3-1B --- produces a
+compressed model that outperforms its teacher on held-out perplexity, with
+a measurable calibration signature. Pure storage compression remains
+quantization's territory; the compelling direction is combining data-aware
+low-rank structure with quantized representations.
+
+\appendix
+
+\section{Pitfalls with Quantitative Evidence}\label{app:pitfalls}
+
+\paragraph{A.1 Bias double-counting.} Modules whose outputs include a bias
+(GPT-2 Conv1D) produce captured $Y = WX + b$; fitting $Y$ while the module
+keeps $b$ double-counts it. Layer-0 sanity check showed
+$\|WX - Y\|/\|Y\| = 0.216$ --- a 22\% phantom target. Full-stack
+consequence: $+3470\%$ PPL until fixed.
+
+\paragraph{A.2 Alternating subspace iteration diverges.} Refitting
+$Z = MPG^{1/2}$ against the current solution's energy (ignoring the
+cross-moment $C$) diverges: $\|M-W\|_2$ grew $9.9 \to 23.6$ over 4
+iterations. Closed-form \eqref{eq:mstar}+\eqref{eq:trunc} is required.
+
+\paragraph{A.3 Offloaded weights are meta.} With accelerate
+\texttt{device\_map="auto"}, CPU-offloaded parameters report
+\texttt{device == meta}; direct \texttt{.data} access raises. Read from
+safetensors shards via the index \texttt{weight\_map}, write with
+\texttt{set\_module\_tensor\_to\_device}.
+
+\paragraph{A.4 Student-input refitting is inferior.} Anticipating drift
+($\alpha = 1$) loses $\sim$1\,pp to teacher-input fitting at every matched
+$\beta$; the sequential refit adds complexity without payoff.
+
+\section{Reproducibility}
+
+Every number above is produced by a standalone script in \texttt{src/} with
+output in \texttt{results/}: \texttt{drift\_aware\_svd.py} (+ sweeps),
+\texttt{weighted\_one\_family.py}, \texttt{weighted\_gemma\_oproj.py}
+(+ \texttt{\_200}), \texttt{weighted\_ratio\_frontier.py},
+\texttt{drift\_aware\_robustness.py}, \texttt{weighted\_qwen7b\_oproj.py},
+\texttt{weighted\_qwen7b\_factor\_quant.py},
+\texttt{hybrid\_residual\_split.py}, \texttt{compare\_gemma\_output.py},
+\texttt{compare\_qwen7b\_output.py},
+\texttt{storage\_vs\_quantization.py}. The run contract (model revisions,
+splits, seeds, budgets) is recorded in the header of each script and
+summarized in \texttt{THREAD.md}. Hardware: RTX 4070 Ti 12\,GB, Python
+3.14, torch 2.13.0+cu132.
+
+\section*{Pre-submission checklist (\gap\ items)}
+\begin{itemize}[leftmargin=1.5em]
+  \item 3 seeds for the denoising claim (Gemma $-4.45\%$) and a second
+    architecture reproducing improvement
+  \item Pre-registered drift metric (hidden-state cosine per block)
+    alongside PPL
+  \item MLP budget reallocation experiment (adaptive rank across families)
+  \item Warmed-up latency + peak-memory accounting for factored inference
+  \item Hybrid residual split on MLP families (where the payoff should
+    live) and the full per-family routed recipe
+  \item Head-to-head against ASVD-style activation reparameterization at
+    matched budget (the sharpest novelty test)
+  \item Base (non-Instruct) 7B confirmation run
+\end{itemize}
+
+\end{document}

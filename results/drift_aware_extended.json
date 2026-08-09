@@ -1,0 +1,28 @@
+{
+  "gpt2_mlp": {
+    "baseline_ppl": 56.46634942773991,
+    "variants": {
+      "plain_svd": {
+        "ppl": 7897.308734835935,
+        "ppl_delta_pct": 13885.867361484266
+      },
+      "weighted_a0.0_b0.1": {
+        "ppl": 5636.809688939429,
+        "ppl_delta_pct": 9882.599806904225
+      }
+    }
+  },
+  "gemma3_1b": {
+    "baseline_ppl": 70.40207921600907,
+    "variants": {
+      "plain_svd": {
+        "ppl": 438132665.6104464,
+        "ppl_delta_pct": 622329056.3110784
+      },
+      "weighted_a0.0_b0.1": {
+        "ppl": 1998.811760413308,
+        "ppl_delta_pct": 2739.1373985994273
+      }
+    }
+  }
+}

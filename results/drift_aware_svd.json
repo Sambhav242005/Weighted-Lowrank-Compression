@@ -1,0 +1,36 @@
+{
+  "baseline_ppl": 56.46634942773991,
+  "rank": 256,
+  "variants": {
+    "plain_svd": {
+      "ppl": 68.51898278726524,
+      "ppl_delta_pct": 21.344807096037112,
+      "runtime_s": 1.3
+    },
+    "drift_aware_a0.0_b0.01": {
+      "ppl": 58.90676120592926,
+      "ppl_delta_pct": 4.321886934292343,
+      "runtime_s": 16.3
+    },
+    "drift_aware_a0.0_b0.1": {
+      "ppl": 58.4850623205802,
+      "ppl_delta_pct": 3.575072433934554,
+      "runtime_s": 16.2
+    },
+    "drift_aware_a1.0_b0.01": {
+      "ppl": 59.62540553291625,
+      "ppl_delta_pct": 5.59458179462972,
+      "runtime_s": 16.6
+    },
+    "drift_aware_a1.0_b0.1": {
+      "ppl": 59.20454868803868,
+      "ppl_delta_pct": 4.849258519541536,
+      "runtime_s": 16.3
+    },
+    "drift_aware_a1.0_b1.0": {
+      "ppl": 60.033216573842516,
+      "ppl_delta_pct": 6.316801391007464,
+      "runtime_s": 16.3
+    }
+  }
+}

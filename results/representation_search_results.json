@@ -1,0 +1,922 @@
+{
+  "baseline_ppl": 34.265744991716524,
+  "compressed_ppl": 34.941334841474436,
+  "ppl_delta_pct": 1.9716187402936403,
+  "overall_compression": 0.7531873161163779,
+  "best_per_layer": [
+    {
+      "layer": "layer0.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 1.3379790940766552,
+      "act_err": 0.06915929913520813,
+      "weight_err": 0.09975051134824753
+    },
+    {
+      "layer": "layer1.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7983367983367984,
+      "act_err": 0.10193359106779099,
+      "weight_err": 0.09985800087451935
+    },
+    {
+      "layer": "layer2.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7413127413127413,
+      "act_err": 0.11599822342395782,
+      "weight_err": 0.09963317215442657
+    },
+    {
+      "layer": "layer3.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7300380228136882,
+      "act_err": 0.12589168548583984,
+      "weight_err": 0.09976448118686676
+    },
+    {
+      "layer": "layer4.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7485380116959064,
+      "act_err": 0.09263478964567184,
+      "weight_err": 0.09999833256006241
+    },
+    {
+      "layer": "layer5.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7137546468401487,
+      "act_err": 0.08825117349624634,
+      "weight_err": 0.0997418686747551
+    },
+    {
+      "layer": "layer6.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7427466150870407,
+      "act_err": 0.10778473317623138,
+      "weight_err": 0.09950486570596695
+    },
+    {
+      "layer": "layer7.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.7204502814258912,
+      "act_err": 0.09464172273874283,
+      "weight_err": 0.0995301753282547
+    },
+    {
+      "layer": "layer8.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.732824427480916,
+      "act_err": 0.11334135383367538,
+      "weight_err": 0.09953667968511581
+    },
+    {
+      "layer": "layer9.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.6943942133815552,
+      "act_err": 0.10783485323190689,
+      "weight_err": 0.09978032112121582
+    },
+    {
+      "layer": "layer10.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.6643598615916955,
+      "act_err": 0.11470484733581543,
+      "weight_err": 0.09929487854242325
+    },
+    {
+      "layer": "layer11.attn.W_O",
+      "best_repr": "SVD 99%",
+      "compression": 0.6981818181818182,
+      "act_err": 0.12040528655052185,
+      "weight_err": 0.09947080910205841
+    }
+  ],
+  "all_results": [
+    {
+      "layer": "layer0.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09975051134824753,
+          "activation_error": 0.06915929913520813,
+          "compression": 1.3379790940766552,
+          "n_params": 440832,
+          "rank": 287
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22157005965709686,
+          "activation_error": 0.14737223088741302,
+          "compression": 1.900990099009901,
+          "n_params": 310272,
+          "rank": 202
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.4203330874443054,
+          "activation_error": 0.2536192834377289,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.12367481738328934,
+          "activation_error": 0.10142391920089722,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991625547409058,
+          "activation_error": 0.9992320537567139,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984462857246399,
+          "activation_error": 0.9979566931724548,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.8006084561347961,
+          "activation_error": 0.6935548782348633,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.6250950694084167,
+          "activation_error": 0.43376660346984863,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer1.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09985800087451935,
+          "activation_error": 0.10193359106779099,
+          "compression": 0.7983367983367984,
+          "n_params": 738816,
+          "rank": 481
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22356802225112915,
+          "activation_error": 0.22575758397579193,
+          "compression": 1.1743119266055047,
+          "n_params": 502272,
+          "rank": 327
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.5033853650093079,
+          "activation_error": 0.4982174038887024,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.3037387430667877,
+          "activation_error": 0.3149963319301605,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991387128829956,
+          "activation_error": 0.9988291263580322,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984197020530701,
+          "activation_error": 0.9969013333320618,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.7612695097923279,
+          "activation_error": 0.821395218372345,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.6375634670257568,
+          "activation_error": 0.6905587911605835,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer2.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09963317215442657,
+          "activation_error": 0.11599822342395782,
+          "compression": 0.7413127413127413,
+          "n_params": 795648,
+          "rank": 518
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22285835444927216,
+          "activation_error": 0.23110747337341309,
+          "compression": 1.0105263157894737,
+          "n_params": 583680,
+          "rank": 380
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6137682795524597,
+          "activation_error": 0.6878712773323059,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.3850032091140747,
+          "activation_error": 0.4267156422138214,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991663694381714,
+          "activation_error": 1.0004138946533203,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984601736068726,
+          "activation_error": 1.0007914304733276,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.8843252062797546,
+          "activation_error": 0.9341163039207458,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7607643604278564,
+          "activation_error": 0.7962686419487,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer3.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09976448118686676,
+          "activation_error": 0.12589168548583984,
+          "compression": 0.7300380228136882,
+          "n_params": 807936,
+          "rank": 526
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.2235235720872879,
+          "activation_error": 0.2814173400402069,
+          "compression": 0.9846153846153847,
+          "n_params": 599040,
+          "rank": 390
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6219710111618042,
+          "activation_error": 0.7234166860580444,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.39842793345451355,
+          "activation_error": 0.4646618664264679,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991796612739563,
+          "activation_error": 0.9993488192558289,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984727501869202,
+          "activation_error": 0.9985441565513611,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9016321897506714,
+          "activation_error": 0.9639221429824829,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7704644799232483,
+          "activation_error": 0.8683248162269592,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer4.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09999833256006241,
+          "activation_error": 0.09263478964567184,
+          "compression": 0.7485380116959064,
+          "n_params": 787968,
+          "rank": 513
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.2236044555902481,
+          "activation_error": 0.21456824243068695,
+          "compression": 1.0131926121372032,
+          "n_params": 582144,
+          "rank": 379
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.613516092300415,
+          "activation_error": 0.6012367010116577,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.38486289978027344,
+          "activation_error": 0.3711698353290558,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991200566291809,
+          "activation_error": 0.9975505471229553,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9983959794044495,
+          "activation_error": 0.9974827766418457,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.8985073566436768,
+          "activation_error": 0.8865424990653992,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7634610533714294,
+          "activation_error": 0.7676628828048706,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer5.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.0997418686747551,
+          "activation_error": 0.08825117349624634,
+          "compression": 0.7137546468401487,
+          "n_params": 826368,
+          "rank": 538
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.2227451652288437,
+          "activation_error": 0.2113475352525711,
+          "compression": 0.9458128078817734,
+          "n_params": 623616,
+          "rank": 406
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6392391920089722,
+          "activation_error": 0.6056321859359741,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.4196680188179016,
+          "activation_error": 0.4076746106147766,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991994500160217,
+          "activation_error": 1.001383662223816,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984966516494751,
+          "activation_error": 1.0027662515640259,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9039875268936157,
+          "activation_error": 0.9288870692253113,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7808631658554077,
+          "activation_error": 0.7839727997779846,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer6.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09950486570596695,
+          "activation_error": 0.10778473317623138,
+          "compression": 0.7427466150870407,
+          "n_params": 794112,
+          "rank": 517
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22321265935897827,
+          "activation_error": 0.23275117576122284,
+          "compression": 1.0158730158730158,
+          "n_params": 580608,
+          "rank": 378
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6020250916481018,
+          "activation_error": 0.6713130474090576,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.37951549887657166,
+          "activation_error": 0.42713066935539246,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991618394851685,
+          "activation_error": 0.9996123909950256,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984509348869324,
+          "activation_error": 0.9972038865089417,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.8985432386398315,
+          "activation_error": 0.9259814620018005,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7566136717796326,
+          "activation_error": 0.8057687282562256,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer7.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.0995301753282547,
+          "activation_error": 0.09464172273874283,
+          "compression": 0.7204502814258912,
+          "n_params": 818688,
+          "rank": 533
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.2225341796875,
+          "activation_error": 0.22999998927116394,
+          "compression": 0.9672544080604534,
+          "n_params": 609792,
+          "rank": 397
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6295265555381775,
+          "activation_error": 0.6496877074241638,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.40602773427963257,
+          "activation_error": 0.40861812233924866,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991931915283203,
+          "activation_error": 0.9991714954376221,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984914660453796,
+          "activation_error": 0.9978543519973755,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9026028513908386,
+          "activation_error": 0.9347517490386963,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7719406485557556,
+          "activation_error": 0.8011291027069092,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer8.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09953667968511581,
+          "activation_error": 0.11334135383367538,
+          "compression": 0.732824427480916,
+          "n_params": 804864,
+          "rank": 524
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.2235344499349594,
+          "activation_error": 0.2436765432357788,
+          "compression": 0.9948186528497409,
+          "n_params": 592896,
+          "rank": 386
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6228311657905579,
+          "activation_error": 0.6809028387069702,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.39440950751304626,
+          "activation_error": 0.43830516934394836,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9992040395736694,
+          "activation_error": 0.9977766275405884,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9985107183456421,
+          "activation_error": 0.9976689219474792,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9068257808685303,
+          "activation_error": 0.9225311279296875,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7742989659309387,
+          "activation_error": 0.8056577444076538,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer9.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09978032112121582,
+          "activation_error": 0.10783485323190689,
+          "compression": 0.6943942133815552,
+          "n_params": 849408,
+          "rank": 553
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22264079749584198,
+          "activation_error": 0.24159787595272064,
+          "compression": 0.9035294117647059,
+          "n_params": 652800,
+          "rank": 425
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.6871336102485657,
+          "activation_error": 0.6982671618461609,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.4588790535926819,
+          "activation_error": 0.47750893235206604,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.999182939529419,
+          "activation_error": 0.9976099729537964,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984725713729858,
+          "activation_error": 0.9979829788208008,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9248102903366089,
+          "activation_error": 0.9273810386657715,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.8200836777687073,
+          "activation_error": 0.8358456492424011,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer10.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09929487854242325,
+          "activation_error": 0.11470484733581543,
+          "compression": 0.6643598615916955,
+          "n_params": 887808,
+          "rank": 578
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22354288399219513,
+          "activation_error": 0.26810500025749207,
+          "compression": 0.8366013071895425,
+          "n_params": 705024,
+          "rank": 459
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.7098178267478943,
+          "activation_error": 0.7352557182312012,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.5040270090103149,
+          "activation_error": 0.5197517275810242,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991548657417297,
+          "activation_error": 0.9975176453590393,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9984269142150879,
+          "activation_error": 0.9969385266304016,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.9124265313148499,
+          "activation_error": 0.9516792297363281,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.8250340819358826,
+          "activation_error": 0.8717669248580933,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    },
+    {
+      "layer": "layer11.attn.W_O",
+      "results": [
+        {
+          "repr": "SVD 99%",
+          "weight_error": 0.09947080910205841,
+          "activation_error": 0.12040528655052185,
+          "compression": 0.6981818181818182,
+          "n_params": 844800,
+          "rank": 550
+        },
+        {
+          "repr": "SVD 95%",
+          "weight_error": 0.22308507561683655,
+          "activation_error": 0.2684660851955414,
+          "compression": 0.9230769230769231,
+          "n_params": 638976,
+          "rank": 416
+        },
+        {
+          "repr": "LowRank 128",
+          "weight_error": 0.5994004011154175,
+          "activation_error": 0.7668956518173218,
+          "compression": 3.0,
+          "n_params": 196608,
+          "rank": 128
+        },
+        {
+          "repr": "LowRank 256",
+          "weight_error": 0.4174268841743469,
+          "activation_error": 0.504762589931488,
+          "compression": 1.5,
+          "n_params": 393216,
+          "rank": 256
+        },
+        {
+          "repr": "Fourier 100",
+          "weight_error": 0.9991284012794495,
+          "activation_error": 0.9982241988182068,
+          "compression": 2949.12,
+          "n_params": 200,
+          "rank": 100
+        },
+        {
+          "repr": "Fourier 200",
+          "weight_error": 0.9983841180801392,
+          "activation_error": 0.9969635605812073,
+          "compression": 1474.56,
+          "n_params": 400,
+          "rank": 200
+        },
+        {
+          "repr": "Spline 20",
+          "weight_error": 0.77810138463974,
+          "activation_error": 0.958605170249939,
+          "compression": 19.2,
+          "n_params": 30720,
+          "rank": 20
+        },
+        {
+          "repr": "Hypernetwork 64",
+          "weight_error": 0.7009438276290894,
+          "activation_error": 0.868477463722229,
+          "compression": 6.0,
+          "n_params": 98304,
+          "rank": 64
+        }
+      ]
+    }
+  ]
+}

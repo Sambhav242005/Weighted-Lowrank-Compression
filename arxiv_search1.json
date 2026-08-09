@@ -1,0 +1,16 @@
+﻿uv :    Building science-skills-common @ file:///C:/Users/NPC/.config/opencode/skills/science_skills_common
+At line:1 char:1
++ uv run "C:\Users\NPC\.config\opencode\skills\literature_search_arxiv\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (   Building sci...e_skills_common:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      Built science-skills-common @ file:///C:/Users/NPC/.config/opencode/skills/science_skills_common
+Installed 1 package in 9ms
+Traceback (most recent call last):
+  File "C:\Users\NPC\.config\opencode\skills\literature_search_arxiv\scripts\search_arxiv.py", line 37, in <module>
+    from science_skills.science_skills_common import http_client
+  File "C:\Users\NPC\AppData\Local\uv\cache\environments-v2\search-arxiv-52f36fae14590071\Lib\site-packages\science_ski
+lls\science_skills_common\http_client.py", line 62, in <module>
+    import fcntl
+ModuleNotFoundError: No module named 'fcntl'

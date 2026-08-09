@@ -1,0 +1,2894 @@
+[
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      0
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 93.46199829643464,
+    "ppl_delta_pct": 65.51804613478357,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.01837265118956566,
+        "cosine": 0.8950809240341187,
+        "cka": 0.9829688668251038,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.010513869114220142,
+        "cosine": 0.9398152232170105,
+        "cka": 0.9761922955513,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.014680387452244759,
+        "cosine": 0.8923470973968506,
+        "cka": 0.9255163073539734,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.022579094395041466,
+        "cosine": 0.8086563348770142,
+        "cka": 0.9183979034423828,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.029818246141076088,
+        "cosine": 0.802653431892395,
+        "cka": 0.729912519454956,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.03325808793306351,
+        "cosine": 0.687969446182251,
+        "cka": 0.8379884958267212,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.019761355593800545,
+        "cosine": 0.7863582372665405,
+        "cka": 0.8277990818023682,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.022847000509500504,
+        "cosine": 0.8224696516990662,
+        "cka": 0.9153555631637573,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.02034449204802513,
+        "cosine": 0.8467869758605957,
+        "cka": 0.8448352813720703,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.025472771376371384,
+        "cosine": 0.8712489604949951,
+        "cka": 0.7848522067070007,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.031252726912498474,
+        "cosine": 0.9421613812446594,
+        "cka": 0.9808756709098816,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      1
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 56.38637504614761,
+    "ppl_delta_pct": -0.14163193194317814,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.000863097608089447,
+        "cosine": 0.9951962232589722,
+        "cka": 0.9985127449035645,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0005898945964872837,
+        "cosine": 0.9954661726951599,
+        "cka": 0.9969445466995239,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0004065759130753577,
+        "cosine": 0.9962873458862305,
+        "cka": 0.9984684586524963,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0003189076960552484,
+        "cosine": 0.9977632761001587,
+        "cka": 0.9983705282211304,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0002564105379860848,
+        "cosine": 0.9970576167106628,
+        "cka": 0.9989346265792847,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.00021002090943511575,
+        "cosine": 0.9977527856826782,
+        "cka": 0.9986293315887451,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0002665736246854067,
+        "cosine": 0.9980031251907349,
+        "cka": 0.9989632368087769,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00024076148110907525,
+        "cosine": 0.9982683658599854,
+        "cka": 0.9985798001289368,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.00027918838895857334,
+        "cosine": 0.9984732270240784,
+        "cka": 0.9981805682182312,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0004518700297921896,
+        "cosine": 0.9991632103919983,
+        "cka": 0.9997736215591431,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      2
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 56.432362680303704,
+    "ppl_delta_pct": -0.06018938320015754,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.003456347156316042,
+        "cosine": 0.9765486121177673,
+        "cka": 0.986522376537323,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.001540989032946527,
+        "cosine": 0.9859415292739868,
+        "cka": 0.9944344162940979,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0009555341093800962,
+        "cosine": 0.9935367107391357,
+        "cka": 0.9951321482658386,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0006400321144610643,
+        "cosine": 0.9928221106529236,
+        "cka": 0.9975038170814514,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0005234280833974481,
+        "cosine": 0.9944175481796265,
+        "cka": 0.9971672296524048,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0006087725050747395,
+        "cosine": 0.9954088926315308,
+        "cka": 0.9977363348007202,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0004548316355794668,
+        "cosine": 0.9967027902603149,
+        "cka": 0.9974163770675659,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0004863450303673744,
+        "cosine": 0.9973364472389221,
+        "cka": 0.9972445964813232,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0006096814759075642,
+        "cosine": 0.9988626837730408,
+        "cka": 0.9995874762535095,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      3
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 56.78890332700726,
+    "ppl_delta_pct": 0.5712320745652731,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.002267585601657629,
+        "cosine": 0.9792975187301636,
+        "cka": 0.9928575754165649,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.001330090221017599,
+        "cosine": 0.9910310506820679,
+        "cka": 0.992657482624054,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0008465776918455958,
+        "cosine": 0.9905071258544922,
+        "cka": 0.9956105947494507,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0006553888088092208,
+        "cosine": 0.9929651021957397,
+        "cka": 0.995839536190033,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0007920725620351732,
+        "cosine": 0.9940310120582581,
+        "cka": 0.9963444471359253,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0005591153749264777,
+        "cosine": 0.9959430694580078,
+        "cka": 0.9961280822753906,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0005270318360999227,
+        "cosine": 0.997098445892334,
+        "cka": 0.9962080717086792,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0007084719836711884,
+        "cosine": 0.9986689686775208,
+        "cka": 0.9994559288024902,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      4
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 57.14051112054486,
+    "ppl_delta_pct": 1.1939176157787161,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0022603203542530537,
+        "cosine": 0.9850711822509766,
+        "cka": 0.9880300164222717,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0009752718033269048,
+        "cosine": 0.9893602132797241,
+        "cka": 0.9956345558166504,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0007594880880787969,
+        "cosine": 0.9919384717941284,
+        "cka": 0.9960213303565979,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0007144595729187131,
+        "cosine": 0.9946589469909668,
+        "cka": 0.9971757531166077,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0005424135597422719,
+        "cosine": 0.9961056709289551,
+        "cka": 0.9959595203399658,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0005248780944384634,
+        "cosine": 0.9971118569374084,
+        "cka": 0.9971058368682861,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.000657647498883307,
+        "cosine": 0.9987649917602539,
+        "cka": 0.9995869994163513,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      5
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 57.55752322061993,
+    "ppl_delta_pct": 1.9324319775203422,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0017646196065470576,
+        "cosine": 0.9809210300445557,
+        "cka": 0.989871621131897,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0012663196539506316,
+        "cosine": 0.9872980117797852,
+        "cka": 0.991269588470459,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0011029817396774888,
+        "cosine": 0.9917576313018799,
+        "cka": 0.9953036308288574,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0007283025188371539,
+        "cosine": 0.9947278499603271,
+        "cka": 0.9952002763748169,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0006510602543130517,
+        "cosine": 0.9964209198951721,
+        "cka": 0.9962746500968933,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0007910191197879612,
+        "cosine": 0.9985174536705017,
+        "cka": 0.9993651509284973,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      6
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 56.83819213991422,
+    "ppl_delta_pct": 0.6585208995140746,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0017792051658034325,
+        "cosine": 0.9842029809951782,
+        "cka": 0.9884341359138489,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.001394851366057992,
+        "cosine": 0.9906794428825378,
+        "cka": 0.9959853887557983,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0007881053606979549,
+        "cosine": 0.9944318532943726,
+        "cka": 0.9948378801345825,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0006874981336295605,
+        "cosine": 0.9962136149406433,
+        "cka": 0.9966792464256287,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0009036218398250639,
+        "cosine": 0.9983044862747192,
+        "cka": 0.9995312690734863,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      7
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 57.35729066866873,
+    "ppl_delta_pct": 1.5778268826621495,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.002540259389206767,
+        "cosine": 0.9830805063247681,
+        "cka": 0.9881448745727539,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0015132194384932518,
+        "cosine": 0.9906200766563416,
+        "cka": 0.9909346103668213,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0011357608018442988,
+        "cosine": 0.9939406514167786,
+        "cka": 0.992834746837616,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.001473173382692039,
+        "cosine": 0.9972330331802368,
+        "cka": 0.9992216229438782,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      8
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 57.766293681262255,
+    "ppl_delta_pct": 2.3021574206526116,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00283989985473454,
+        "cosine": 0.98497074842453,
+        "cka": 0.9881160259246826,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.001487009460106492,
+        "cosine": 0.9922330975532532,
+        "cka": 0.9923794269561768,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.001580212265253067,
+        "cosine": 0.9970257878303528,
+        "cka": 0.9991852045059204,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      9
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 58.18886339722751,
+    "ppl_delta_pct": 3.0505141326550693,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0,
+        "cosine": 1.0000016689300537,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.005383642856031656,
+        "cosine": 0.9781973361968994,
+        "cka": 0.9793695211410522,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.004730577114969492,
+        "cosine": 0.9911201000213623,
+        "cka": 0.9990522265434265,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      10
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 58.66927756263957,
+    "ppl_delta_pct": 3.901311413302459,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0,
+        "cosine": 1.0000016689300537,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0,
+        "cosine": 1.0,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.005290670320391655,
+        "cosine": 0.9900376200675964,
+        "cka": 0.9974445104598999,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 1,
+    "replaced_layers": [
+      11
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 59.56169598399165,
+    "ppl_delta_pct": 5.481754332662963,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0,
+        "cosine": 1.0000016689300537,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0,
+        "cosine": 1.0,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      0,
+      1
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 118.91365825134196,
+    "ppl_delta_pct": 110.5920773283139,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.01837265118956566,
+        "cosine": 0.8950809240341187,
+        "cka": 0.9829688668251038,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.017907170578837395,
+        "cosine": 0.90178382396698,
+        "cka": 0.9652233123779297,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.022508053109049797,
+        "cosine": 0.8383331298828125,
+        "cka": 0.8959184885025024,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.03627337887883186,
+        "cosine": 0.7083812952041626,
+        "cka": 0.8732537031173706,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.046158093959093094,
+        "cosine": 0.7080926895141602,
+        "cka": 0.663962721824646,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.052397698163986206,
+        "cosine": 0.5417126417160034,
+        "cka": 0.772757887840271,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.032772548496723175,
+        "cosine": 0.6542595624923706,
+        "cka": 0.768145740032196,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.03826010227203369,
+        "cosine": 0.696158230304718,
+        "cka": 0.8620936870574951,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0320998951792717,
+        "cosine": 0.7508766055107117,
+        "cka": 0.779617190361023,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.04500947147607803,
+        "cosine": 0.7887361645698547,
+        "cka": 0.6608675718307495,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.05325721576809883,
+        "cosine": 0.9046356678009033,
+        "cka": 0.9660031795501709,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      2,
+      3
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 57.1937513493318,
+    "ppl_delta_pct": 1.2882042649538532,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.003456347156316042,
+        "cosine": 0.9765486121177673,
+        "cka": 0.986522376537323,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.005975047592073679,
+        "cosine": 0.9457180500030518,
+        "cka": 0.9802559018135071,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0034818595740944147,
+        "cosine": 0.9769676923751831,
+        "cka": 0.9810916185379028,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0020248822402209044,
+        "cosine": 0.9775055646896362,
+        "cka": 0.9903241991996765,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0015860202256590128,
+        "cosine": 0.9829926490783691,
+        "cka": 0.9906085133552551,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0019459091126918793,
+        "cosine": 0.985247790813446,
+        "cka": 0.9917056560516357,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.001329321414232254,
+        "cosine": 0.9903233051300049,
+        "cka": 0.9922224283218384,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0013890305999666452,
+        "cosine": 0.9923478960990906,
+        "cka": 0.9909162521362305,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0018536288989707828,
+        "cosine": 0.9965184926986694,
+        "cka": 0.998561441898346,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      4,
+      5
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 58.66490478800221,
+    "ppl_delta_pct": 3.8935673769309274,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0022603203542530537,
+        "cosine": 0.9850711822509766,
+        "cka": 0.9880300164222717,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0035617102403193712,
+        "cosine": 0.9629005789756775,
+        "cka": 0.9822790026664734,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0026385721284896135,
+        "cosine": 0.9733461141586304,
+        "cka": 0.9834964871406555,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.002287783194333315,
+        "cosine": 0.9828863143920898,
+        "cka": 0.9891254901885986,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0015832334756851196,
+        "cosine": 0.9884666204452515,
+        "cka": 0.9894760847091675,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0015136291040107608,
+        "cosine": 0.9916591644287109,
+        "cka": 0.9900338053703308,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0018508018692955375,
+        "cosine": 0.9965240955352783,
+        "cka": 0.998565137386322,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      6,
+      7
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 58.120580431050996,
+    "ppl_delta_pct": 2.9295873030148902,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0017792051658034325,
+        "cosine": 0.9842029809951782,
+        "cka": 0.9884341359138489,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.005070249084383249,
+        "cosine": 0.9689311981201172,
+        "cka": 0.9803658723831177,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00307848840020597,
+        "cosine": 0.9811508655548096,
+        "cka": 0.9793364405632019,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0021616965532302856,
+        "cosine": 0.988254189491272,
+        "cka": 0.9871694445610046,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0027774174232035875,
+        "cosine": 0.9947670102119446,
+        "cka": 0.9985055923461914,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      8,
+      9
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 60.30665196575981,
+    "ppl_delta_pct": 6.801046246020115,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00283989985473454,
+        "cosine": 0.98497074842453,
+        "cka": 0.9881160259246826,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.009597161784768105,
+        "cosine": 0.9608805179595947,
+        "cka": 0.9572329521179199,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.008105443790555,
+        "cosine": 0.9847268462181091,
+        "cka": 0.9975055456161499,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 2,
+    "replaced_layers": [
+      10,
+      11
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 63.851498772428016,
+    "ppl_delta_pct": 13.078850358723649,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.0,
+        "cosine": 1.0000016689300537,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.0,
+        "cosine": 1.0,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.005290670320391655,
+        "cosine": 0.9900376200675964,
+        "cka": 0.9974445104598999,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 4,
+    "replaced_layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 108.78085737237573,
+    "ppl_delta_pct": 92.64722879169443,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.01837265118956566,
+        "cosine": 0.8950809240341187,
+        "cka": 0.9829688668251038,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.017907170578837395,
+        "cosine": 0.90178382396698,
+        "cka": 0.9652233123779297,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.027796268463134766,
+        "cosine": 0.8138885498046875,
+        "cka": 0.8998957872390747,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.030072757974267006,
+        "cosine": 0.7341607213020325,
+        "cka": 0.9000953435897827,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.03988146036863327,
+        "cosine": 0.7547974586486816,
+        "cka": 0.7394351363182068,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.03417570888996124,
+        "cosine": 0.6555590629577637,
+        "cka": 0.8631319999694824,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.023185189813375473,
+        "cosine": 0.7398563623428345,
+        "cka": 0.8320795297622681,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.02949143573641777,
+        "cosine": 0.7615724205970764,
+        "cka": 0.9034842252731323,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.02573365904390812,
+        "cosine": 0.7987605333328247,
+        "cka": 0.8124682307243347,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.03228328749537468,
+        "cosine": 0.8343868255615234,
+        "cka": 0.7090921401977539,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0394757017493248,
+        "cosine": 0.9269395470619202,
+        "cka": 0.9771959781646729,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 4,
+    "replaced_layers": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 61.88880562886799,
+    "ppl_delta_pct": 9.602987010993534,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0022603203542530537,
+        "cosine": 0.9850711822509766,
+        "cka": 0.9880300164222717,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0035617102403193712,
+        "cosine": 0.9629005789756775,
+        "cka": 0.9822790026664734,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.006249495316296816,
+        "cosine": 0.9445634484291077,
+        "cka": 0.9595012068748474,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.009330682456493378,
+        "cosine": 0.941384494304657,
+        "cka": 0.964449942111969,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.006406910251826048,
+        "cosine": 0.9589267373085022,
+        "cka": 0.9504428505897522,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.004972509574145079,
+        "cosine": 0.9724752902984619,
+        "cka": 0.9616517424583435,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.005948919802904129,
+        "cosine": 0.9887599349021912,
+        "cka": 0.996166467666626,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 4,
+    "replaced_layers": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 72.8833557853783,
+    "ppl_delta_pct": 29.073964447882833,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00283989985473454,
+        "cosine": 0.98497074842453,
+        "cka": 0.9881160259246826,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.009597161784768105,
+        "cosine": 0.9608805179595947,
+        "cka": 0.9572329521179199,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.01811954192817211,
+        "cosine": 0.9655640125274658,
+        "cka": 0.9941880702972412,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 8,
+    "replaced_layers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 158.05170102853577,
+    "ppl_delta_pct": 179.90423080350683,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.01837265118956566,
+        "cosine": 0.8950809240341187,
+        "cka": 0.9829688668251038,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.017907170578837395,
+        "cosine": 0.90178382396698,
+        "cka": 0.9652233123779297,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.027796268463134766,
+        "cosine": 0.8138885498046875,
+        "cka": 0.8998957872390747,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.030072757974267006,
+        "cosine": 0.7341607213020325,
+        "cka": 0.9000953435897827,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.05181494727730751,
+        "cosine": 0.7082728743553162,
+        "cka": 0.7341674566268921,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.039471227675676346,
+        "cosine": 0.6131942868232727,
+        "cka": 0.8550340533256531,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.037006523460149765,
+        "cosine": 0.6357395648956299,
+        "cka": 0.7627005577087402,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.05074844881892204,
+        "cosine": 0.642185628414154,
+        "cka": 0.822839617729187,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.04029731824994087,
+        "cosine": 0.7017207145690918,
+        "cka": 0.693255603313446,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.05008915439248085,
+        "cosine": 0.7516343593597412,
+        "cka": 0.5854283571243286,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.06609918922185898,
+        "cosine": 0.8861054182052612,
+        "cka": 0.9418482184410095,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 8,
+    "replaced_layers": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 72.8833557853783,
+    "ppl_delta_pct": 29.073964447882833,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.0,
+        "cosine": 1.0000011920928955,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.0,
+        "cosine": 1.0000004768371582,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.0,
+        "cosine": 1.000000238418579,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.0,
+        "cosine": 1.0000019073486328,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.0,
+        "cosine": 0.9999997615814209,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.0,
+        "cosine": 1.000002145767212,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.0,
+        "cosine": 0.9999995231628418,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.00283989985473454,
+        "cosine": 0.98497074842453,
+        "cka": 0.9881160259246826,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.009597161784768105,
+        "cosine": 0.9608805179595947,
+        "cka": 0.9572329521179199,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.01811954192817211,
+        "cosine": 0.9655640125274658,
+        "cka": 0.9941880702972412,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  },
+  {
+    "group_size": 12,
+    "replaced_layers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "ppl_orig": 56.46634942773991,
+    "ppl_sub": 204.30103722653624,
+    "ppl_delta_pct": 261.81024503448845,
+    "layer_drift": [
+      {
+        "layer_idx": 0,
+        "mse": 0.0,
+        "cosine": 1.0000009536743164,
+        "cka": 1.0,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 1,
+        "mse": 0.01837265118956566,
+        "cosine": 0.8950809240341187,
+        "cka": 0.9829688668251038,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 2,
+        "mse": 0.017907170578837395,
+        "cosine": 0.90178382396698,
+        "cka": 0.9652233123779297,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 3,
+        "mse": 0.027796268463134766,
+        "cosine": 0.8138885498046875,
+        "cka": 0.8998957872390747,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 4,
+        "mse": 0.030072757974267006,
+        "cosine": 0.7341607213020325,
+        "cka": 0.9000953435897827,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 5,
+        "mse": 0.05181494727730751,
+        "cosine": 0.7082728743553162,
+        "cka": 0.7341674566268921,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 6,
+        "mse": 0.039471227675676346,
+        "cosine": 0.6131942868232727,
+        "cka": 0.8550340533256531,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 7,
+        "mse": 0.037006523460149765,
+        "cosine": 0.6357395648956299,
+        "cka": 0.7627005577087402,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 8,
+        "mse": 0.05074844881892204,
+        "cosine": 0.642185628414154,
+        "cka": 0.822839617729187,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 9,
+        "mse": 0.04788552597165108,
+        "cosine": 0.6731205582618713,
+        "cka": 0.6778684854507446,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 10,
+        "mse": 0.06428557634353638,
+        "cosine": 0.7202364206314087,
+        "cka": 0.573212742805481,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      },
+      {
+        "layer_idx": 11,
+        "mse": 0.0817355290055275,
+        "cosine": 0.8522939085960388,
+        "cka": 0.9574946761131287,
+        "attn_entropy_orig": 0.0,
+        "attn_entropy_sub": 0.0,
+        "attn_entropy_delta": 0.0
+      }
+    ]
+  }
+]

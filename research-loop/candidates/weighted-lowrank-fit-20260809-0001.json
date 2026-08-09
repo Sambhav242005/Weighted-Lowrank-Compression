@@ -1,0 +1,79 @@
+{
+  "candidate_id": "weighted-lowrank-fit-20260809-0001",
+  "hypothesis": "Activation-weighted closed-form low-rank fit with weight-space anchor dramatically outperforms unweighted weight-space SVD for full-stack replacement",
+  "experiment_type": "drift_aware_svd",
+  "config": {
+    "model": "gpt2",
+    "targets": "attn.c_proj x12",
+    "rank": 256,
+    "alpha": 0.0,
+    "beta": 0.1,
+    "calibration": "wikitext-2 train 64x512 tokens",
+    "solver": "M* = C(G + beta*n*I)^-1, G-weighted rank-r truncation"
+  },
+  "rationale": "Plain SVD wastes rank on input-rare directions and (before fix) double-counted the Conv1D bias",
+  "expected_outcome": "PPL delta well below the +21.34% matched SVD control",
+  "decision_rule": "Beat matched control (+21.34%) and clear the <=10% pre-registered gate",
+  "status": "promising",
+  "evidence": {
+    "baseline_ppl": 56.47,
+    "control_plain_svd": "+21.34%",
+    "candidate": "+3.58%",
+    "one_family_gpt2": {
+      "mlp_cproj": {"svd": "+546.12%", "weighted": "+76.65%"},
+      "mlp_cfc": {"svd": "+7544.82%", "weighted": "+2149.19%"},
+      "attn_c_attn": {"svd": "+807.70%", "weighted": "+37.17%"},
+      "attn_full": {"svd": "+1072.37%", "weighted": "+49.11%"}
+    },
+    "artifacts": [
+      "results/drift_aware_svd.json",
+      "results/drift_aware_svd_sweep2.json",
+      "results/weighted_one_family.json",
+      "results/weighted_gemma_oproj.json",
+      "results/weighted_gemma_oproj_200.json",
+      "results/drift_aware_svd_robustness.json",
+      "results/weighted_ratio_frontier.json",
+      "results/weighted_qwen7b_oproj.json",
+      "results/weighted_qwen7b_factor_quant.json",
+      "results/storage_vs_quantization.json",
+      "results/hybrid_residual_split.json"
+    ],
+    "gemma3_1b_oproj": {
+      "svd": "+71.86% (phase D ref +71.95%)",
+      "weighted": "-4.45% (PPL 70.40 -> 67.27); -7.34% on 200 eval texts (59.75 -> 55.37)"
+    },
+    "ratio_frontier_gpt2_cproj_weighted_vs_svd": {
+      "2x": "+0.10% vs +5.50%",
+      "3x": "+3.58% vs +21.34%",
+      "4x": "+17.94% vs +152.13%",
+      "6x": "+53.38% vs +261.86%",
+      "8x": "+94.18% vs +374.49%"
+    },
+    "robustness_disjoint_calibration": "+4.94% (chunks 64-127)",
+    "qwen25_7b_oproj_3x": {
+      "baseline_ppl": 12.29,
+      "svd": "+26.31%",
+      "weighted": "+3.84%",
+      "decision_rule_verdict": "SUPPORTS (pre-registered gate <=10% supports / >=20% falsifies)",
+      "note": "fp16, rev a09a35458c702b33eeacc393d103063234e8bc28, results/weighted_qwen7b_oproj.json"
+    },
+    "factor_quantization_qwen25_7b": {
+      "fp16_factors": "+3.86% (1.5x per matrix)",
+      "int8_factors": "+3.80% (3.0x per matrix, lossless vs fp16)",
+      "int4_factors": "+8.22% (6.0x per matrix, still <=10% gate)",
+      "note": "results/weighted_qwen7b_factor_quant.json"
+    },
+    "hybrid_residual_split_qwen25_7b": {
+      "pure_int4": "+0.78% (3.88x per matrix)",
+      "hybrid_svd_branch": "+0.60% (2.50x per matrix)",
+      "hybrid_weighted_branch": "+0.56% (2.50x per matrix, beats both)",
+      "note": "branch rank 256 + int4 group=128 residual; margins small on o_proj -- hybrid payoff expected on outlier-heavy families (MLP/q/k/v); results/hybrid_residual_split.json"
+    }
+  },
+  "open_questions": [
+    "MLP families still break at 3x even weighted -- budget reallocation needed",
+    "Whole-model storage savings still small (~3-4%): extend fit to more families or combine with whole-model quantization (SVDQuant-style)",
+    "Pre-registered drift metric alongside PPL pending",
+    "Warmed-up latency accounting pending"
+  ]
+}

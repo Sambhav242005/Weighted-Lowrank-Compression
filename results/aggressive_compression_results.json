@@ -1,0 +1,347 @@
+{
+  "baseline_size_mb": 497.775333,
+  "compressed_size_mb": 327.905501,
+  "storage_reduction": 1.5180450815309743,
+  "baseline_ppl": 30.91936523879414,
+  "compressed_ppl": 78.70219640783829,
+  "ppl_delta_pct": 154.54014272289015,
+  "overall_compression": 0.9052971079149646,
+  "compression_log": [
+    {
+      "layer": 0,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 662,
+      "compression": 0.8700906344410876
+    },
+    {
+      "layer": 0,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 0,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 704,
+      "compression": 0.8727272727272727
+    },
+    {
+      "layer": 0,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 713,
+      "compression": 0.8617110799438991
+    },
+    {
+      "layer": 1,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 664,
+      "compression": 0.8674698795180723
+    },
+    {
+      "layer": 1,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 1,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 722,
+      "compression": 0.8509695290858725
+    },
+    {
+      "layer": 1,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 717,
+      "compression": 0.8569037656903765
+    },
+    {
+      "layer": 2,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 683,
+      "compression": 0.8433382137628112
+    },
+    {
+      "layer": 2,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 2,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 720,
+      "compression": 0.8533333333333334
+    },
+    {
+      "layer": 2,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 715,
+      "compression": 0.8593006993006993
+    },
+    {
+      "layer": 3,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 703,
+      "compression": 0.8193456614509246
+    },
+    {
+      "layer": 3,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 3,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 714,
+      "compression": 0.8605042016806723
+    },
+    {
+      "layer": 3,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 711,
+      "compression": 0.8641350210970464
+    },
+    {
+      "layer": 4,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 694,
+      "compression": 0.829971181556196
+    },
+    {
+      "layer": 4,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 4,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 715,
+      "compression": 0.8593006993006993
+    },
+    {
+      "layer": 4,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 720,
+      "compression": 0.8533333333333334
+    },
+    {
+      "layer": 5,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 677,
+      "compression": 0.8508124076809453
+    },
+    {
+      "layer": 5,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 5,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 715,
+      "compression": 0.8593006993006993
+    },
+    {
+      "layer": 5,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 718,
+      "compression": 0.8557103064066852
+    },
+    {
+      "layer": 6,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 685,
+      "compression": 0.8408759124087591
+    },
+    {
+      "layer": 6,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 6,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 717,
+      "compression": 0.8569037656903765
+    },
+    {
+      "layer": 6,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 718,
+      "compression": 0.8557103064066852
+    },
+    {
+      "layer": 7,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 697,
+      "compression": 0.8263988522238164
+    },
+    {
+      "layer": 7,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 7,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 712,
+      "compression": 0.8629213483146068
+    },
+    {
+      "layer": 7,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 718,
+      "compression": 0.8557103064066852
+    },
+    {
+      "layer": 8,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 711,
+      "compression": 0.810126582278481
+    },
+    {
+      "layer": 8,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 8,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 714,
+      "compression": 0.8605042016806723
+    },
+    {
+      "layer": 8,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 716,
+      "compression": 0.8581005586592179
+    },
+    {
+      "layer": 9,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 716,
+      "compression": 0.8044692737430168
+    },
+    {
+      "layer": 9,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 9,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 711,
+      "compression": 0.8641350210970464
+    },
+    {
+      "layer": 9,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 715,
+      "compression": 0.8593006993006993
+    },
+    {
+      "layer": 10,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 709,
+      "compression": 0.8124118476727785
+    },
+    {
+      "layer": 10,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 10,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 714,
+      "compression": 0.8605042016806723
+    },
+    {
+      "layer": 10,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 718,
+      "compression": 0.8557103064066852
+    },
+    {
+      "layer": 11,
+      "matrix": "c_attn",
+      "method": "SVD",
+      "rank": 700,
+      "compression": 0.8228571428571428
+    },
+    {
+      "layer": 11,
+      "matrix": "W_O",
+      "method": "FP",
+      "rank": 128,
+      "compression": 3.0
+    },
+    {
+      "layer": 11,
+      "matrix": "W_up",
+      "method": "SVD",
+      "rank": 715,
+      "compression": 0.8593006993006993
+    },
+    {
+      "layer": 11,
+      "matrix": "W_down",
+      "method": "SVD",
+      "rank": 725,
+      "compression": 0.847448275862069
+    }
+  ]
+}

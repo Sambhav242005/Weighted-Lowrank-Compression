@@ -1,0 +1,61 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+pytest-cache-files-*/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Virtual environments ----
+.venv*/
+venv/
+
+# ---- Large model artifacts (re-downloadable / regenerable, too big for git) ----
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+compressed_model/
+compressed_model_aggressive/
+calibration/
+
+# ---- Hugging Face cache (if it ever lands in the repo) ----
+.cache/
+models--*/
+
+# ---- Tooling output ----
+graphify-out/
+.remember/tmp/
+
+# ---- LaTeX build products ----
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ---- IDE / editor / OS ----
+.idea/
+.vscode/
+.qoder/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---- Local settings / secrets ----
+.claude/settings.local.json
+.env
+*.key
+*.pem
+
+# NOTE: results/*.json are research evidence and are intentionally TRACKED.

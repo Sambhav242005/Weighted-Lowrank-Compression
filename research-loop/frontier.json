@@ -1,0 +1,21 @@
+{
+  "frontier": [
+    {
+      "candidate_id": "weighted-lowrank-fit-20260809-0001",
+      "method": "activation-weighted closed-form low-rank fit + weight anchor",
+      "perplexity": "gpt2 c_proj 3x: +3.58% (control +21.34%); gemma3-1b o_proj 3x: -4.45% (control +71.86%)",
+      "compression_ratio": "one-sided 3x on attention output projections",
+      "drift": "full-stack stable (no blowup)",
+      "status": "promising",
+      "record": "research-loop/candidates/weighted-lowrank-fit-20260809-0001.json"
+    }
+  ],
+  "dimensions": {
+    "perplexity": "lower is better",
+    "compression_ratio": "higher is better",
+    "drift": "lower is better",
+    "latency": "lower is better",
+    "memory": "lower is better"
+  },
+  "note": "Populated 2026-08-09 after drift-aware sweeps + generality tests."
+}

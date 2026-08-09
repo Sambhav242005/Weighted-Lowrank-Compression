@@ -1,0 +1,35 @@
+{
+  "baseline_ppl": 12.292771097923575,
+  "rank": 1194,
+  "variants": {
+    "plain_svd": {
+      "ppl": 15.526754969747525,
+      "ppl_delta_pct": 26.30801343376691
+    },
+    "weighted_fp16f": {
+      "ppl": 12.767397063946245,
+      "ppl_delta_pct": 3.8610168711499115
+    },
+    "weighted_int8f": {
+      "ppl": 12.759479463905414,
+      "ppl_delta_pct": 3.796608285178863
+    },
+    "weighted_int4f": {
+      "ppl": 13.30364552831057,
+      "ppl_delta_pct": 8.223324280053875
+    }
+  },
+  "storage": {
+    "per_matrix_bytes_orig_fp16": 25690112,
+    "fp16_factors": {
+      "per_matrix_ratio": 1.5
+    },
+    "int8_factors": {
+      "per_matrix_ratio": 3.0
+    },
+    "int4_factors": {
+      "per_matrix_ratio": 5.99
+    },
+    "o_proj_share_of_model_pct": 5.09
+  }
+}

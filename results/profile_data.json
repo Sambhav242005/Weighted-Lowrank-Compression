@@ -1,0 +1,1814 @@
+{
+  "config": {
+    "n_embd": 768,
+    "n_head": 12,
+    "n_layer": 12,
+    "n_ctx": 1024,
+    "vocab_size": 50257,
+    "n_embd_per_head": 64
+  },
+  "spectral": [
+    {
+      "name": "layer0.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 526,
+      "rank_95": 390,
+      "rank_90": 314,
+      "decay_type": "exponential",
+      "decay_rate": 0.005252724235836901,
+      "eff_rank": 548.9552001953125,
+      "spectral_norm": 22.499765396118164,
+      "frobenius_norm": 183.31410217285156
+    },
+    {
+      "name": "layer0.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 504,
+      "rank_95": 357,
+      "rank_90": 276,
+      "decay_type": "exponential",
+      "decay_rate": 0.0055491667232674975,
+      "eff_rank": 516.863037109375,
+      "spectral_norm": 42.20005416870117,
+      "frobenius_norm": 186.85150146484375
+    },
+    {
+      "name": "layer0.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 543,
+      "rank_95": 409,
+      "rank_90": 330,
+      "decay_type": "exponential",
+      "decay_rate": 0.00499410354012387,
+      "eff_rank": 560.1804809570312,
+      "spectral_norm": 7.98983097076416,
+      "frobenius_norm": 44.63454055786133
+    },
+    {
+      "name": "layer0.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 287,
+      "rank_95": 202,
+      "rank_90": 166,
+      "decay_type": "exponential",
+      "decay_rate": 0.007858475079922104,
+      "eff_rank": 353.72027587890625,
+      "spectral_norm": 26.685710906982422,
+      "frobenius_norm": 113.25008392333984
+    },
+    {
+      "name": "layer0.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 704,
+      "rank_95": 589,
+      "rank_90": 501,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019924697882446763,
+      "eff_rank": 699.5557861328125,
+      "spectral_norm": 42.105228424072266,
+      "frobenius_norm": 216.8375244140625
+    },
+    {
+      "name": "layer0.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 713,
+      "rank_95": 600,
+      "rank_90": 513,
+      "decay_type": "exponential",
+      "decay_rate": 0.0017918341327280984,
+      "eff_rank": 701.732421875,
+      "spectral_norm": 25.033082962036133,
+      "frobenius_norm": 135.11412048339844
+    },
+    {
+      "name": "layer1.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 422,
+      "rank_95": 302,
+      "rank_90": 242,
+      "decay_type": "exponential",
+      "decay_rate": 0.006716018257729369,
+      "eff_rank": 465.2854309082031,
+      "spectral_norm": 16.098648071289062,
+      "frobenius_norm": 115.99710083007812
+    },
+    {
+      "name": "layer1.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 456,
+      "rank_95": 319,
+      "rank_90": 249,
+      "decay_type": "exponential",
+      "decay_rate": 0.006327253109531764,
+      "eff_rank": 481.6799621582031,
+      "spectral_norm": 20.311115264892578,
+      "frobenius_norm": 122.12926483154297
+    },
+    {
+      "name": "layer1.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 540,
+      "rank_95": 403,
+      "rank_90": 324,
+      "decay_type": "exponential",
+      "decay_rate": 0.00501140988124497,
+      "eff_rank": 560.3110961914062,
+      "spectral_norm": 8.604726791381836,
+      "frobenius_norm": 79.62129974365234
+    },
+    {
+      "name": "layer1.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 481,
+      "rank_95": 327,
+      "rank_90": 247,
+      "decay_type": "exponential",
+      "decay_rate": 0.0056632346878432195,
+      "eff_rank": 490.81787109375,
+      "spectral_norm": 26.942665100097656,
+      "frobenius_norm": 78.27279663085938
+    },
+    {
+      "name": "layer1.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 722,
+      "rank_95": 621,
+      "rank_90": 529,
+      "decay_type": "exponential",
+      "decay_rate": 0.0017291877252444202,
+      "eff_rank": 706.7655639648438,
+      "spectral_norm": 38.63970184326172,
+      "frobenius_norm": 200.7880401611328
+    },
+    {
+      "name": "layer1.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 717,
+      "rank_95": 626,
+      "rank_90": 543,
+      "decay_type": "exponential",
+      "decay_rate": 0.001660873545343067,
+      "eff_rank": 709.9090576171875,
+      "spectral_norm": 28.706480026245117,
+      "frobenius_norm": 133.9245147705078
+    },
+    {
+      "name": "layer2.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 487,
+      "rank_95": 353,
+      "rank_90": 280,
+      "decay_type": "exponential",
+      "decay_rate": 0.006155803866616958,
+      "eff_rank": 510.7902526855469,
+      "spectral_norm": 22.187999725341797,
+      "frobenius_norm": 145.39988708496094
+    },
+    {
+      "name": "layer2.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 508,
+      "rank_95": 369,
+      "rank_90": 292,
+      "decay_type": "exponential",
+      "decay_rate": 0.005874972683584406,
+      "eff_rank": 525.1156616210938,
+      "spectral_norm": 20.858028411865234,
+      "frobenius_norm": 116.5970687866211
+    },
+    {
+      "name": "layer2.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 552,
+      "rank_95": 416,
+      "rank_90": 337,
+      "decay_type": "exponential",
+      "decay_rate": 0.004834984718595923,
+      "eff_rank": 571.3404541015625,
+      "spectral_norm": 8.348393440246582,
+      "frobenius_norm": 80.66172790527344
+    },
+    {
+      "name": "layer2.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 518,
+      "rank_95": 380,
+      "rank_90": 304,
+      "decay_type": "exponential",
+      "decay_rate": 0.005349326486878119,
+      "eff_rank": 540.16357421875,
+      "spectral_norm": 13.932549476623535,
+      "frobenius_norm": 62.23515319824219
+    },
+    {
+      "name": "layer2.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 720,
+      "rank_95": 610,
+      "rank_90": 517,
+      "decay_type": "exponential",
+      "decay_rate": 0.0017741271818131367,
+      "eff_rank": 702.0051879882812,
+      "spectral_norm": 38.75122833251953,
+      "frobenius_norm": 205.24342346191406
+    },
+    {
+      "name": "layer2.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 715,
+      "rank_95": 607,
+      "rank_90": 516,
+      "decay_type": "exponential",
+      "decay_rate": 0.0017814164494162992,
+      "eff_rank": 702.1264038085938,
+      "spectral_norm": 38.25449752807617,
+      "frobenius_norm": 142.9818115234375
+    },
+    {
+      "name": "layer3.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 543,
+      "rank_95": 408,
+      "rank_90": 328,
+      "decay_type": "exponential",
+      "decay_rate": 0.005462427612993631,
+      "eff_rank": 557.7499389648438,
+      "spectral_norm": 18.333600997924805,
+      "frobenius_norm": 126.52555084228516
+    },
+    {
+      "name": "layer3.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 550,
+      "rank_95": 416,
+      "rank_90": 338,
+      "decay_type": "exponential",
+      "decay_rate": 0.005309552894571321,
+      "eff_rank": 565.6289672851562,
+      "spectral_norm": 18.13216209411621,
+      "frobenius_norm": 118.10047149658203
+    },
+    {
+      "name": "layer3.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 540,
+      "rank_95": 399,
+      "rank_90": 318,
+      "decay_type": "exponential",
+      "decay_rate": 0.005008198785698704,
+      "eff_rank": 556.2631225585938,
+      "spectral_norm": 8.231630325317383,
+      "frobenius_norm": 75.00947570800781
+    },
+    {
+      "name": "layer3.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 526,
+      "rank_95": 390,
+      "rank_90": 314,
+      "decay_type": "exponential",
+      "decay_rate": 0.00525179243762522,
+      "eff_rank": 548.6121215820312,
+      "spectral_norm": 12.972314834594727,
+      "frobenius_norm": 64.60798645019531
+    },
+    {
+      "name": "layer3.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 714,
+      "rank_95": 603,
+      "rank_90": 511,
+      "decay_type": "exponential",
+      "decay_rate": 0.0018963797382516377,
+      "eff_rank": 702.4752807617188,
+      "spectral_norm": 32.49003601074219,
+      "frobenius_norm": 199.16712951660156
+    },
+    {
+      "name": "layer3.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 711,
+      "rank_95": 596,
+      "rank_90": 502,
+      "decay_type": "exponential",
+      "decay_rate": 0.001898958278106654,
+      "eff_rank": 694.5322875976562,
+      "spectral_norm": 40.800926208496094,
+      "frobenius_norm": 141.01344299316406
+    },
+    {
+      "name": "layer4.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 523,
+      "rank_95": 378,
+      "rank_90": 297,
+      "decay_type": "exponential",
+      "decay_rate": 0.005699686330041927,
+      "eff_rank": 533.3890991210938,
+      "spectral_norm": 17.80915641784668,
+      "frobenius_norm": 130.894287109375
+    },
+    {
+      "name": "layer4.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 545,
+      "rank_95": 408,
+      "rank_90": 327,
+      "decay_type": "exponential",
+      "decay_rate": 0.005361170549062814,
+      "eff_rank": 557.5289916992188,
+      "spectral_norm": 17.52865219116211,
+      "frobenius_norm": 120.97867584228516
+    },
+    {
+      "name": "layer4.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 540,
+      "rank_95": 402,
+      "rank_90": 324,
+      "decay_type": "exponential",
+      "decay_rate": 0.0050734213753729305,
+      "eff_rank": 560.0250244140625,
+      "spectral_norm": 8.180521965026855,
+      "frobenius_norm": 78.58372497558594
+    },
+    {
+      "name": "layer4.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 513,
+      "rank_95": 379,
+      "rank_90": 304,
+      "decay_type": "exponential",
+      "decay_rate": 0.005658378469053674,
+      "eff_rank": 535.7969970703125,
+      "spectral_norm": 14.514586448669434,
+      "frobenius_norm": 71.40788269042969
+    },
+    {
+      "name": "layer4.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 715,
+      "rank_95": 599,
+      "rank_90": 504,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019273135746139067,
+      "eff_rank": 698.4605102539062,
+      "spectral_norm": 31.798595428466797,
+      "frobenius_norm": 199.3013916015625
+    },
+    {
+      "name": "layer4.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 720,
+      "rank_95": 606,
+      "rank_90": 510,
+      "decay_type": "exponential",
+      "decay_rate": 0.0018274114183372103,
+      "eff_rank": 700.064697265625,
+      "spectral_norm": 31.635202407836914,
+      "frobenius_norm": 139.77415466308594
+    },
+    {
+      "name": "layer5.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 521,
+      "rank_95": 378,
+      "rank_90": 298,
+      "decay_type": "exponential",
+      "decay_rate": 0.005639167611616964,
+      "eff_rank": 535.522705078125,
+      "spectral_norm": 12.41150188446045,
+      "frobenius_norm": 108.48451232910156
+    },
+    {
+      "name": "layer5.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 508,
+      "rank_95": 371,
+      "rank_90": 294,
+      "decay_type": "exponential",
+      "decay_rate": 0.005870990027380562,
+      "eff_rank": 526.5983276367188,
+      "spectral_norm": 11.950874328613281,
+      "frobenius_norm": 104.56087493896484
+    },
+    {
+      "name": "layer5.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 534,
+      "rank_95": 392,
+      "rank_90": 312,
+      "decay_type": "exponential",
+      "decay_rate": 0.005053135412660027,
+      "eff_rank": 550.4721069335938,
+      "spectral_norm": 9.472264289855957,
+      "frobenius_norm": 79.34030151367188
+    },
+    {
+      "name": "layer5.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 538,
+      "rank_95": 406,
+      "rank_90": 330,
+      "decay_type": "exponential",
+      "decay_rate": 0.0050732790618752835,
+      "eff_rank": 561.0083618164062,
+      "spectral_norm": 12.84715747833252,
+      "frobenius_norm": 72.01898956298828
+    },
+    {
+      "name": "layer5.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 715,
+      "rank_95": 599,
+      "rank_90": 504,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019361914858353948,
+      "eff_rank": 698.8529663085938,
+      "spectral_norm": 32.34236145019531,
+      "frobenius_norm": 194.72750854492188
+    },
+    {
+      "name": "layer5.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 718,
+      "rank_95": 607,
+      "rank_90": 513,
+      "decay_type": "exponential",
+      "decay_rate": 0.0018749062090834482,
+      "eff_rank": 701.5658569335938,
+      "spectral_norm": 27.617652893066406,
+      "frobenius_norm": 149.5394287109375
+    },
+    {
+      "name": "layer6.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 518,
+      "rank_95": 377,
+      "rank_90": 300,
+      "decay_type": "exponential",
+      "decay_rate": 0.0057555123658934604,
+      "eff_rank": 536.4877319335938,
+      "spectral_norm": 12.660633087158203,
+      "frobenius_norm": 102.89459991455078
+    },
+    {
+      "name": "layer6.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 535,
+      "rank_95": 399,
+      "rank_90": 322,
+      "decay_type": "exponential",
+      "decay_rate": 0.005571225611596709,
+      "eff_rank": 555.5974731445312,
+      "spectral_norm": 12.105940818786621,
+      "frobenius_norm": 97.98302459716797
+    },
+    {
+      "name": "layer6.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 530,
+      "rank_95": 386,
+      "rank_90": 306,
+      "decay_type": "exponential",
+      "decay_rate": 0.00512174924523984,
+      "eff_rank": 545.3484497070312,
+      "spectral_norm": 10.268353462219238,
+      "frobenius_norm": 91.0439224243164
+    },
+    {
+      "name": "layer6.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 517,
+      "rank_95": 378,
+      "rank_90": 302,
+      "decay_type": "exponential",
+      "decay_rate": 0.005353917535731549,
+      "eff_rank": 537.68505859375,
+      "spectral_norm": 14.976204872131348,
+      "frobenius_norm": 87.3137435913086
+    },
+    {
+      "name": "layer6.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 717,
+      "rank_95": 602,
+      "rank_90": 507,
+      "decay_type": "exponential",
+      "decay_rate": 0.001910289046450302,
+      "eff_rank": 700.180908203125,
+      "spectral_norm": 31.339052200317383,
+      "frobenius_norm": 194.13070678710938
+    },
+    {
+      "name": "layer6.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 718,
+      "rank_95": 608,
+      "rank_90": 515,
+      "decay_type": "exponential",
+      "decay_rate": 0.0018875352601678988,
+      "eff_rank": 703.4647827148438,
+      "spectral_norm": 29.638233184814453,
+      "frobenius_norm": 164.8606719970703
+    },
+    {
+      "name": "layer7.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 514,
+      "rank_95": 371,
+      "rank_90": 291,
+      "decay_type": "exponential",
+      "decay_rate": 0.005705326107495146,
+      "eff_rank": 529.8485107421875,
+      "spectral_norm": 13.125204086303711,
+      "frobenius_norm": 104.80198669433594
+    },
+    {
+      "name": "layer7.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 504,
+      "rank_95": 362,
+      "rank_90": 284,
+      "decay_type": "exponential",
+      "decay_rate": 0.005880049411770228,
+      "eff_rank": 522.1359252929688,
+      "spectral_norm": 12.323646545410156,
+      "frobenius_norm": 100.1893310546875
+    },
+    {
+      "name": "layer7.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 559,
+      "rank_95": 425,
+      "rank_90": 347,
+      "decay_type": "exponential",
+      "decay_rate": 0.004749469175739825,
+      "eff_rank": 578.8089599609375,
+      "spectral_norm": 9.135046005249023,
+      "frobenius_norm": 91.7494888305664
+    },
+    {
+      "name": "layer7.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 533,
+      "rank_95": 397,
+      "rank_90": 320,
+      "decay_type": "exponential",
+      "decay_rate": 0.005124717315271288,
+      "eff_rank": 554.6654052734375,
+      "spectral_norm": 17.208749771118164,
+      "frobenius_norm": 87.48847961425781
+    },
+    {
+      "name": "layer7.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 712,
+      "rank_95": 601,
+      "rank_90": 508,
+      "decay_type": "exponential",
+      "decay_rate": 0.001996237056639957,
+      "eff_rank": 698.9923095703125,
+      "spectral_norm": 31.707386016845703,
+      "frobenius_norm": 194.26068115234375
+    },
+    {
+      "name": "layer7.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 718,
+      "rank_95": 611,
+      "rank_90": 520,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019307224534107546,
+      "eff_rank": 705.0357666015625,
+      "spectral_norm": 30.227020263671875,
+      "frobenius_norm": 182.37596130371094
+    },
+    {
+      "name": "layer8.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 521,
+      "rank_95": 381,
+      "rank_90": 302,
+      "decay_type": "exponential",
+      "decay_rate": 0.005708818835105919,
+      "eff_rank": 538.1049194335938,
+      "spectral_norm": 12.302367210388184,
+      "frobenius_norm": 99.9107894897461
+    },
+    {
+      "name": "layer8.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 537,
+      "rank_95": 401,
+      "rank_90": 323,
+      "decay_type": "exponential",
+      "decay_rate": 0.005431690582918795,
+      "eff_rank": 555.5272216796875,
+      "spectral_norm": 12.360546112060547,
+      "frobenius_norm": 95.5009994506836
+    },
+    {
+      "name": "layer8.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 563,
+      "rank_95": 432,
+      "rank_90": 355,
+      "decay_type": "exponential",
+      "decay_rate": 0.004690660985014102,
+      "eff_rank": 586.3546142578125,
+      "spectral_norm": 8.14073657989502,
+      "frobenius_norm": 96.98495483398438
+    },
+    {
+      "name": "layer8.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 524,
+      "rank_95": 386,
+      "rank_90": 311,
+      "decay_type": "exponential",
+      "decay_rate": 0.0052999571986726045,
+      "eff_rank": 546.7271118164062,
+      "spectral_norm": 20.103662490844727,
+      "frobenius_norm": 93.97512817382812
+    },
+    {
+      "name": "layer8.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 714,
+      "rank_95": 605,
+      "rank_90": 514,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019191408425443708,
+      "eff_rank": 703.3866577148438,
+      "spectral_norm": 31.357362747192383,
+      "frobenius_norm": 195.52777099609375
+    },
+    {
+      "name": "layer8.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 716,
+      "rank_95": 605,
+      "rank_90": 513,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019526402118531297,
+      "eff_rank": 703.327392578125,
+      "spectral_norm": 31.075822830200195,
+      "frobenius_norm": 207.979248046875
+    },
+    {
+      "name": "layer9.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 527,
+      "rank_95": 387,
+      "rank_90": 308,
+      "decay_type": "exponential",
+      "decay_rate": 0.005529178281014402,
+      "eff_rank": 542.7425537109375,
+      "spectral_norm": 12.35560417175293,
+      "frobenius_norm": 94.43805694580078
+    },
+    {
+      "name": "layer9.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 534,
+      "rank_95": 397,
+      "rank_90": 317,
+      "decay_type": "exponential",
+      "decay_rate": 0.005375319908656564,
+      "eff_rank": 551.4717407226562,
+      "spectral_norm": 12.217033386230469,
+      "frobenius_norm": 91.33259582519531
+    },
+    {
+      "name": "layer9.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 561,
+      "rank_95": 430,
+      "rank_90": 353,
+      "decay_type": "exponential",
+      "decay_rate": 0.0047705339410027015,
+      "eff_rank": 585.9490356445312,
+      "spectral_norm": 8.342470169067383,
+      "frobenius_norm": 104.54081726074219
+    },
+    {
+      "name": "layer9.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 553,
+      "rank_95": 425,
+      "rank_90": 351,
+      "decay_type": "exponential",
+      "decay_rate": 0.004867171913700379,
+      "eff_rank": 581.3414306640625,
+      "spectral_norm": 22.452241897583008,
+      "frobenius_norm": 105.07736206054688
+    },
+    {
+      "name": "layer9.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 711,
+      "rank_95": 601,
+      "rank_90": 510,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019739689898922554,
+      "eff_rank": 701.2871704101562,
+      "spectral_norm": 31.651958465576172,
+      "frobenius_norm": 196.0674591064453
+    },
+    {
+      "name": "layer9.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 715,
+      "rank_95": 605,
+      "rank_90": 514,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019728996206721796,
+      "eff_rank": 704.6616821289062,
+      "spectral_norm": 32.781742095947266,
+      "frobenius_norm": 239.42103576660156
+    },
+    {
+      "name": "layer10.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 518,
+      "rank_95": 375,
+      "rank_90": 295,
+      "decay_type": "exponential",
+      "decay_rate": 0.005504835179311161,
+      "eff_rank": 531.1021118164062,
+      "spectral_norm": 12.764158248901367,
+      "frobenius_norm": 91.13093566894531
+    },
+    {
+      "name": "layer10.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 517,
+      "rank_95": 373,
+      "rank_90": 291,
+      "decay_type": "exponential",
+      "decay_rate": 0.0054396098353024615,
+      "eff_rank": 528.6260986328125,
+      "spectral_norm": 12.9319486618042,
+      "frobenius_norm": 88.07073211669922
+    },
+    {
+      "name": "layer10.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 541,
+      "rank_95": 405,
+      "rank_90": 328,
+      "decay_type": "exponential",
+      "decay_rate": 0.005088688033786664,
+      "eff_rank": 563.1567993164062,
+      "spectral_norm": 9.841302871704102,
+      "frobenius_norm": 111.04943084716797
+    },
+    {
+      "name": "layer10.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 578,
+      "rank_95": 459,
+      "rank_90": 387,
+      "decay_type": "exponential",
+      "decay_rate": 0.004358406021701284,
+      "eff_rank": 606.968994140625,
+      "spectral_norm": 32.69155502319336,
+      "frobenius_norm": 112.60972595214844
+    },
+    {
+      "name": "layer10.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 714,
+      "rank_95": 603,
+      "rank_90": 510,
+      "decay_type": "exponential",
+      "decay_rate": 0.001919106113636596,
+      "eff_rank": 701.3734741210938,
+      "spectral_norm": 32.39398193359375,
+      "frobenius_norm": 196.1283416748047
+    },
+    {
+      "name": "layer10.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 718,
+      "rank_95": 613,
+      "rank_90": 524,
+      "decay_type": "exponential",
+      "decay_rate": 0.0018183405587683381,
+      "eff_rank": 710.3632202148438,
+      "spectral_norm": 41.585018157958984,
+      "frobenius_norm": 273.6294860839844
+    },
+    {
+      "name": "layer11.attn.W_Q",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 519,
+      "rank_95": 380,
+      "rank_90": 302,
+      "decay_type": "exponential",
+      "decay_rate": 0.005457887344998773,
+      "eff_rank": 534.5995483398438,
+      "spectral_norm": 13.222286224365234,
+      "frobenius_norm": 84.34199523925781
+    },
+    {
+      "name": "layer11.attn.W_K",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 518,
+      "rank_95": 375,
+      "rank_90": 295,
+      "decay_type": "exponential",
+      "decay_rate": 0.005425481347073785,
+      "eff_rank": 531.7293090820312,
+      "spectral_norm": 12.37690544128418,
+      "frobenius_norm": 81.01800537109375
+    },
+    {
+      "name": "layer11.attn.W_V",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 565,
+      "rank_95": 429,
+      "rank_90": 347,
+      "decay_type": "exponential",
+      "decay_rate": 0.004642661112125796,
+      "eff_rank": 581.3628540039062,
+      "spectral_norm": 10.893895149230957,
+      "frobenius_norm": 124.61517333984375
+    },
+    {
+      "name": "layer11.attn.W_O",
+      "shape": [
+        768,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 550,
+      "rank_95": 416,
+      "rank_90": 336,
+      "decay_type": "exponential",
+      "decay_rate": 0.004551536132605576,
+      "eff_rank": 564.2545166015625,
+      "spectral_norm": 54.74721908569336,
+      "frobenius_norm": 139.71937561035156
+    },
+    {
+      "name": "layer11.mlp.W_up",
+      "shape": [
+        768,
+        3072
+      ],
+      "rank": 768,
+      "rank_99": 715,
+      "rank_95": 601,
+      "rank_90": 506,
+      "decay_type": "exponential",
+      "decay_rate": 0.0019301558656507462,
+      "eff_rank": 697.9141845703125,
+      "spectral_norm": 37.45326232910156,
+      "frobenius_norm": 199.7060089111328
+    },
+    {
+      "name": "layer11.mlp.W_down",
+      "shape": [
+        3072,
+        768
+      ],
+      "rank": 768,
+      "rank_99": 725,
+      "rank_95": 620,
+      "rank_90": 530,
+      "decay_type": "exponential",
+      "decay_rate": 0.001683989163181024,
+      "eff_rank": 713.1071166992188,
+      "spectral_norm": 60.9930534362793,
+      "frobenius_norm": 304.4634704589844
+    }
+  ],
+  "statistical": [
+    {
+      "name": "layer0.attn.W_Q",
+      "mean": 0.00015374357462860644,
+      "std": 0.2386903464794159,
+      "skewness": -0.002967233071103692,
+      "kurtosis": 1.1683764457702637,
+      "entropy_bits": 4.897559846613964,
+      "sparsity_1e3": 0.004092746310763889
+    },
+    {
+      "name": "layer0.attn.W_K",
+      "mean": 1.2351174518698826e-05,
+      "std": 0.24329635500907898,
+      "skewness": -0.006097628269344568,
+      "kurtosis": 3.389235496520996,
+      "entropy_bits": 4.1000714586409766,
+      "sparsity_1e3": 0.004292805989583333
+    },
+    {
+      "name": "layer0.attn.W_V",
+      "mean": -5.968306140857749e-06,
+      "std": 0.05811792612075806,
+      "skewness": -0.016213776543736458,
+      "kurtosis": 1.0715274810791016,
+      "entropy_bits": 4.436994972105953,
+      "sparsity_1e3": 0.015819973415798612
+    },
+    {
+      "name": "layer0.attn.W_O",
+      "mean": -0.0001613790518604219,
+      "std": 0.14746128022670746,
+      "skewness": -0.08989207446575165,
+      "kurtosis": 25.79357147216797,
+      "entropy_bits": 2.5652236550999334,
+      "sparsity_1e3": 0.026299370659722224
+    },
+    {
+      "name": "layer0.mlp.W_up",
+      "mean": -0.0007485304959118366,
+      "std": 0.14116926491260529,
+      "skewness": 0.03970043733716011,
+      "kurtosis": 3.038299560546875,
+      "entropy_bits": 3.0568381800370252,
+      "sparsity_1e3": 0.007559034559461806
+    },
+    {
+      "name": "layer0.mlp.W_down",
+      "mean": 8.00904308562167e-06,
+      "std": 0.0879654660820961,
+      "skewness": -0.022356679663062096,
+      "kurtosis": 130.62355041503906,
+      "entropy_bits": 1.5971621260522328,
+      "sparsity_1e3": 0.010998619927300347
+    },
+    {
+      "name": "layer1.attn.W_Q",
+      "mean": -0.00015265394176822156,
+      "std": 0.15103799104690552,
+      "skewness": 0.0211635772138834,
+      "kurtosis": 2.3969926834106445,
+      "entropy_bits": 4.64978506474355,
+      "sparsity_1e3": 0.008889092339409722
+    },
+    {
+      "name": "layer1.attn.W_K",
+      "mean": 0.00023460265947505832,
+      "std": 0.15902245044708252,
+      "skewness": -0.0019356284756213427,
+      "kurtosis": 1.8158388137817383,
+      "entropy_bits": 4.848315728622313,
+      "sparsity_1e3": 0.007363213433159722
+    },
+    {
+      "name": "layer1.attn.W_V",
+      "mean": 2.3152160792960785e-06,
+      "std": 0.10367362946271896,
+      "skewness": 0.0012302580289542675,
+      "kurtosis": 0.5735490322113037,
+      "entropy_bits": 4.62924751414938,
+      "sparsity_1e3": 0.009090847439236112
+    },
+    {
+      "name": "layer1.attn.W_O",
+      "mean": -8.275870641227812e-05,
+      "std": 0.10191776603460312,
+      "skewness": -0.6447027921676636,
+      "kurtosis": 150.32073974609375,
+      "entropy_bits": 2.0916681579014207,
+      "sparsity_1e3": 0.012881808810763888
+    },
+    {
+      "name": "layer1.mlp.W_up",
+      "mean": 0.0006420306162908673,
+      "std": 0.13072054088115692,
+      "skewness": 0.0010082450462505221,
+      "kurtosis": 1.9726295471191406,
+      "entropy_bits": 3.6838933600530157,
+      "sparsity_1e3": 0.007246653238932292
+    },
+    {
+      "name": "layer1.mlp.W_down",
+      "mean": 9.794026118470356e-05,
+      "std": 0.08719104528427124,
+      "skewness": 4.526217460632324,
+      "kurtosis": 705.4833984375,
+      "entropy_bits": 1.0761396887887285,
+      "sparsity_1e3": 0.015435112847222222
+    },
+    {
+      "name": "layer2.attn.W_Q",
+      "mean": 0.00011794323654612526,
+      "std": 0.1893228441476822,
+      "skewness": -0.004460131283849478,
+      "kurtosis": 1.3608908653259277,
+      "entropy_bits": 4.811406835349432,
+      "sparsity_1e3": 0.006103515625
+    },
+    {
+      "name": "layer2.attn.W_K",
+      "mean": -4.986231215298176e-05,
+      "std": 0.15181919932365417,
+      "skewness": 0.0003549792163539678,
+      "kurtosis": 2.5121774673461914,
+      "entropy_bits": 4.221162931624037,
+      "sparsity_1e3": 0.006868150499131944
+    },
+    {
+      "name": "layer2.attn.W_V",
+      "mean": 0.0001783871412044391,
+      "std": 0.10502822697162628,
+      "skewness": 0.001627765828743577,
+      "kurtosis": 0.5629210472106934,
+      "entropy_bits": 4.960340993918515,
+      "sparsity_1e3": 0.009877522786458334
+    },
+    {
+      "name": "layer2.attn.W_O",
+      "mean": -3.299469608464278e-05,
+      "std": 0.08103540539741516,
+      "skewness": 0.0347793847322464,
+      "kurtosis": 13.80257797241211,
+      "entropy_bits": 2.855282878144323,
+      "sparsity_1e3": 0.011791653103298612
+    },
+    {
+      "name": "layer2.mlp.W_up",
+      "mean": -0.005061259493231773,
+      "std": 0.13352687656879425,
+      "skewness": 0.14894796907901764,
+      "kurtosis": 28.738813400268555,
+      "entropy_bits": 1.8123630785931195,
+      "sparsity_1e3": 0.006487528483072917
+    },
+    {
+      "name": "layer2.mlp.W_down",
+      "mean": 0.0001971486781258136,
+      "std": 0.09308748692274094,
+      "skewness": 5.399106025695801,
+      "kurtosis": 756.550537109375,
+      "entropy_bits": 1.2833016157656483,
+      "sparsity_1e3": 0.010996076795789931
+    },
+    {
+      "name": "layer3.attn.W_Q",
+      "mean": -0.0002189683000324294,
+      "std": 0.16474677622318268,
+      "skewness": 0.0007193197961896658,
+      "kurtosis": 0.2008957862854004,
+      "entropy_bits": 5.02221221480283,
+      "sparsity_1e3": 0.005132039388020833
+    },
+    {
+      "name": "layer3.attn.W_K",
+      "mean": -5.696073640137911e-05,
+      "std": 0.15377673506736755,
+      "skewness": 0.01209966093301773,
+      "kurtosis": 1.3494620323181152,
+      "entropy_bits": 4.129204606378601,
+      "sparsity_1e3": 0.005408393012152778
+    },
+    {
+      "name": "layer3.attn.W_V",
+      "mean": 0.00020247687643859535,
+      "std": 0.09766846895217896,
+      "skewness": 0.012518458999693394,
+      "kurtosis": 0.6970610618591309,
+      "entropy_bits": 4.9282438522950835,
+      "sparsity_1e3": 0.009935167100694444
+    },
+    {
+      "name": "layer3.attn.W_O",
+      "mean": 3.374144944245927e-05,
+      "std": 0.08412502706050873,
+      "skewness": -0.08318726718425751,
+      "kurtosis": 5.683818817138672,
+      "entropy_bits": 3.364212224080854,
+      "sparsity_1e3": 0.011728922526041666
+    },
+    {
+      "name": "layer3.mlp.W_up",
+      "mean": -0.00595002481713891,
+      "std": 0.12953026592731476,
+      "skewness": -0.01786773093044758,
+      "kurtosis": 0.5393919944763184,
+      "entropy_bits": 3.44662496574547,
+      "sparsity_1e3": 0.006433275010850694
+    },
+    {
+      "name": "layer3.mlp.W_down",
+      "mean": 0.0001764564512996003,
+      "std": 0.09180602431297302,
+      "skewness": 5.252198696136475,
+      "kurtosis": 790.5364379882812,
+      "entropy_bits": 0.9791975648210253,
+      "sparsity_1e3": 0.010813395182291666
+    },
+    {
+      "name": "layer4.attn.W_Q",
+      "mean": 0.00029351329430937767,
+      "std": 0.17043520510196686,
+      "skewness": 0.0011380350915715098,
+      "kurtosis": 1.5098094940185547,
+      "entropy_bits": 4.767941629604618,
+      "sparsity_1e3": 0.00531005859375
+    },
+    {
+      "name": "layer4.attn.W_K",
+      "mean": 5.515468728845008e-05,
+      "std": 0.15752443671226501,
+      "skewness": -0.016621720045804977,
+      "kurtosis": 4.840242862701416,
+      "entropy_bits": 3.321047083365565,
+      "sparsity_1e3": 0.005610148111979167
+    },
+    {
+      "name": "layer4.attn.W_V",
+      "mean": 0.00010751152876764536,
+      "std": 0.10232258588075638,
+      "skewness": -0.0007168881129473448,
+      "kurtosis": 0.5407857894897461,
+      "entropy_bits": 5.115196531301146,
+      "sparsity_1e3": 0.009377373589409722
+    },
+    {
+      "name": "layer4.attn.W_O",
+      "mean": -1.1396022273402195e-05,
+      "std": 0.0929790660738945,
+      "skewness": 0.036113813519477844,
+      "kurtosis": 5.424228668212891,
+      "entropy_bits": 3.3643536972286334,
+      "sparsity_1e3": 0.010609944661458334
+    },
+    {
+      "name": "layer4.mlp.W_up",
+      "mean": -0.0032636644318699837,
+      "std": 0.12971316277980804,
+      "skewness": 0.0004950838047079742,
+      "kurtosis": 0.5934381484985352,
+      "entropy_bits": 3.682253169544139,
+      "sparsity_1e3": 0.006476932101779514
+    },
+    {
+      "name": "layer4.mlp.W_down",
+      "mean": 0.0001799796591512859,
+      "std": 0.09099911153316498,
+      "skewness": 0.5124286413192749,
+      "kurtosis": 23.53644561767578,
+      "entropy_bits": 2.1563521852400873,
+      "sparsity_1e3": 0.010768042670355903
+    },
+    {
+      "name": "layer5.attn.W_Q",
+      "mean": -0.00026773722493089736,
+      "std": 0.1412557065486908,
+      "skewness": -0.0059674507938325405,
+      "kurtosis": 0.448622465133667,
+      "entropy_bits": 4.9098968197816975,
+      "sparsity_1e3": 0.005950927734375
+    },
+    {
+      "name": "layer5.attn.W_K",
+      "mean": 4.65521625301335e-05,
+      "std": 0.13614708185195923,
+      "skewness": 0.016984401270747185,
+      "kurtosis": 0.6939764022827148,
+      "entropy_bits": 4.364933412817892,
+      "sparsity_1e3": 0.0062255859375
+    },
+    {
+      "name": "layer5.attn.W_V",
+      "mean": -0.00010422921332065016,
+      "std": 0.10330768674612045,
+      "skewness": -0.002563093788921833,
+      "kurtosis": 0.3657824993133545,
+      "entropy_bits": 5.2029515323057955,
+      "sparsity_1e3": 0.008694118923611112
+    },
+    {
+      "name": "layer5.attn.W_O",
+      "mean": 1.0988834219460841e-05,
+      "std": 0.09377478063106537,
+      "skewness": 0.022089596837759018,
+      "kurtosis": 3.2421631813049316,
+      "entropy_bits": 3.3900094323151677,
+      "sparsity_1e3": 0.010282728407118056
+    },
+    {
+      "name": "layer5.mlp.W_up",
+      "mean": -0.004193877335637808,
+      "std": 0.1267070174217224,
+      "skewness": -0.00887041725218296,
+      "kurtosis": 0.4508237838745117,
+      "entropy_bits": 3.8147081260474263,
+      "sparsity_1e3": 0.006646898057725694
+    },
+    {
+      "name": "layer5.mlp.W_down",
+      "mean": 0.00011598863056860864,
+      "std": 0.09735692292451859,
+      "skewness": 0.18976517021656036,
+      "kurtosis": 5.924752235412598,
+      "entropy_bits": 2.8479504497216674,
+      "sparsity_1e3": 0.010064442952473959
+    },
+    {
+      "name": "layer6.attn.W_Q",
+      "mean": 0.00019029114628210664,
+      "std": 0.13397729396820068,
+      "skewness": -0.00403260625898838,
+      "kurtosis": 0.46781110763549805,
+      "entropy_bits": 4.664722736421044,
+      "sparsity_1e3": 0.006574842664930556
+    },
+    {
+      "name": "layer6.attn.W_K",
+      "mean": -7.406625081785023e-05,
+      "std": 0.1275821179151535,
+      "skewness": 0.011820487678050995,
+      "kurtosis": 0.9163558483123779,
+      "entropy_bits": 4.124930953724218,
+      "sparsity_1e3": 0.006693522135416667
+    },
+    {
+      "name": "layer6.attn.W_V",
+      "mean": 0.00021866592578589916,
+      "std": 0.11854661256074905,
+      "skewness": -0.00011773531878134236,
+      "kurtosis": 0.30256080627441406,
+      "entropy_bits": 5.281777554510407,
+      "sparsity_1e3": 0.007648044162326389
+    },
+    {
+      "name": "layer6.attn.W_O",
+      "mean": 3.697428837767802e-05,
+      "std": 0.11368982493877411,
+      "skewness": 0.022591957822442055,
+      "kurtosis": 2.657379150390625,
+      "entropy_bits": 3.7001162065445268,
+      "sparsity_1e3": 0.008227878146701388
+    },
+    {
+      "name": "layer6.mlp.W_up",
+      "mean": -0.0028191539458930492,
+      "std": 0.12635648250579834,
+      "skewness": -0.002520480891689658,
+      "kurtosis": 0.4103708267211914,
+      "entropy_bits": 3.958680275596522,
+      "sparsity_1e3": 0.006534576416015625
+    },
+    {
+      "name": "layer6.mlp.W_down",
+      "mean": 9.547969239065424e-05,
+      "std": 0.1073317900300026,
+      "skewness": 0.11221468448638916,
+      "kurtosis": 4.719377040863037,
+      "entropy_bits": 3.135761036267271,
+      "sparsity_1e3": 0.009039984809027778
+    },
+    {
+      "name": "layer7.attn.W_Q",
+      "mean": -0.0004581619577948004,
+      "std": 0.13646019995212555,
+      "skewness": 0.0038920065853744745,
+      "kurtosis": 0.3498415946960449,
+      "entropy_bits": 4.471542015163275,
+      "sparsity_1e3": 0.006232367621527778
+    },
+    {
+      "name": "layer7.attn.W_K",
+      "mean": 0.00013387270155362785,
+      "std": 0.1304549127817154,
+      "skewness": 0.010408708825707436,
+      "kurtosis": 0.7402644157409668,
+      "entropy_bits": 3.9494443355537743,
+      "sparsity_1e3": 0.006540934244791667
+    },
+    {
+      "name": "layer7.attn.W_V",
+      "mean": 5.121146023157053e-05,
+      "std": 0.11946555227041245,
+      "skewness": -0.002001692308112979,
+      "kurtosis": 0.28812694549560547,
+      "entropy_bits": 5.236775677755989,
+      "sparsity_1e3": 0.007671780056423611
+    },
+    {
+      "name": "layer7.attn.W_O",
+      "mean": 2.3895643607829697e-05,
+      "std": 0.1139172911643982,
+      "skewness": -0.04017261415719986,
+      "kurtosis": 3.3565893173217773,
+      "entropy_bits": 3.488631739907154,
+      "sparsity_1e3": 0.008385552300347222
+    },
+    {
+      "name": "layer7.mlp.W_up",
+      "mean": -0.0035229879431426525,
+      "std": 0.12642335891723633,
+      "skewness": -0.008222569711506367,
+      "kurtosis": 0.20656251907348633,
+      "entropy_bits": 4.649563730167322,
+      "sparsity_1e3": 0.006440056694878472
+    },
+    {
+      "name": "layer7.mlp.W_down",
+      "mean": 8.64894172991626e-05,
+      "std": 0.11873491108417511,
+      "skewness": 0.05746842548251152,
+      "kurtosis": 4.597583293914795,
+      "entropy_bits": 2.4940503793731246,
+      "sparsity_1e3": 0.008037990993923612
+    },
+    {
+      "name": "layer8.attn.W_Q",
+      "mean": -0.00030042845173738897,
+      "std": 0.13009189069271088,
+      "skewness": 0.00048330408753827214,
+      "kurtosis": 0.25661563873291016,
+      "entropy_bits": 4.4639866657640646,
+      "sparsity_1e3": 0.006339179144965278
+    },
+    {
+      "name": "layer8.attn.W_K",
+      "mean": 0.0001738919090712443,
+      "std": 0.1243501678109169,
+      "skewness": 0.0086442856118083,
+      "kurtosis": 0.7567436695098877,
+      "entropy_bits": 3.80773855949418,
+      "sparsity_1e3": 0.006735907660590278
+    },
+    {
+      "name": "layer8.attn.W_V",
+      "mean": -0.0003842815349344164,
+      "std": 0.1262819916009903,
+      "skewness": 0.004676791373640299,
+      "kurtosis": 0.20415449142456055,
+      "entropy_bits": 5.372719198080185,
+      "sparsity_1e3": 0.007208930121527778
+    },
+    {
+      "name": "layer8.attn.W_O",
+      "mean": 8.123647603497375e-06,
+      "std": 0.12236353754997253,
+      "skewness": 0.0662195086479187,
+      "kurtosis": 4.826610088348389,
+      "entropy_bits": 3.2930803760967864,
+      "sparsity_1e3": 0.007637871636284722
+    },
+    {
+      "name": "layer8.mlp.W_up",
+      "mean": -0.0020665342453867197,
+      "std": 0.12728071212768555,
+      "skewness": -0.0017605823231860995,
+      "kurtosis": 0.20068788528442383,
+      "entropy_bits": 4.298371280893156,
+      "sparsity_1e3": 0.006361643473307292
+    },
+    {
+      "name": "layer8.mlp.W_down",
+      "mean": 4.692146831075661e-05,
+      "std": 0.13540394604206085,
+      "skewness": 0.06186673417687416,
+      "kurtosis": 4.660161018371582,
+      "entropy_bits": 2.645031234677112,
+      "sparsity_1e3": 0.007027520073784722
+    },
+    {
+      "name": "layer9.attn.W_Q",
+      "mean": 0.00044967501889914274,
+      "std": 0.1229654848575592,
+      "skewness": -0.003988735377788544,
+      "kurtosis": 0.2931513786315918,
+      "entropy_bits": 4.188382780656907,
+      "sparsity_1e3": 0.006724039713541667
+    },
+    {
+      "name": "layer9.attn.W_K",
+      "mean": -0.0003476667625363916,
+      "std": 0.11892221122980118,
+      "skewness": 0.0015440661227330565,
+      "kurtosis": 0.8922679424285889,
+      "entropy_bits": 3.7042864525820587,
+      "sparsity_1e3": 0.006696912977430556
+    },
+    {
+      "name": "layer9.attn.W_V",
+      "mean": -0.00031157408375293016,
+      "std": 0.13612057268619537,
+      "skewness": 0.0001720031286822632,
+      "kurtosis": 0.2559478282928467,
+      "entropy_bits": 5.131285767418819,
+      "sparsity_1e3": 0.006661309136284722
+    },
+    {
+      "name": "layer9.attn.W_O",
+      "mean": -2.7884156224899925e-05,
+      "std": 0.13681954145431519,
+      "skewness": -0.003412999212741852,
+      "kurtosis": 2.6427054405212402,
+      "entropy_bits": 3.937258611579452,
+      "sparsity_1e3": 0.006856282552083333
+    },
+    {
+      "name": "layer9.mlp.W_up",
+      "mean": -0.0027408814057707787,
+      "std": 0.12761934101581573,
+      "skewness": -0.005462645553052425,
+      "kurtosis": 0.3466002941131592,
+      "entropy_bits": 3.4371815668730723,
+      "sparsity_1e3": 0.006361219618055556
+    },
+    {
+      "name": "layer9.mlp.W_down",
+      "mean": 3.47925815731287e-05,
+      "std": 0.15587382018566132,
+      "skewness": 0.017841627821326256,
+      "kurtosis": 3.2468690872192383,
+      "entropy_bits": 2.6519391000271306,
+      "sparsity_1e3": 0.006114959716796875
+    },
+    {
+      "name": "layer10.attn.W_Q",
+      "mean": 0.0003177100152242929,
+      "std": 0.11865972727537155,
+      "skewness": 0.006140339188277721,
+      "kurtosis": 0.3380405902862549,
+      "entropy_bits": 4.201057746902558,
+      "sparsity_1e3": 0.0069427490234375
+    },
+    {
+      "name": "layer10.attn.W_K",
+      "mean": -0.00012976815924048424,
+      "std": 0.11467541009187698,
+      "skewness": 0.02043977752327919,
+      "kurtosis": 1.1990876197814941,
+      "entropy_bits": 3.683842859762198,
+      "sparsity_1e3": 0.007214016384548611
+    },
+    {
+      "name": "layer10.attn.W_V",
+      "mean": 8.956636156653985e-05,
+      "std": 0.14459571242332458,
+      "skewness": -0.0018717063358053565,
+      "kurtosis": 0.24366021156311035,
+      "entropy_bits": 5.299235092038123,
+      "sparsity_1e3": 0.006259494357638889
+    },
+    {
+      "name": "layer10.attn.W_O",
+      "mean": -8.798281783128914e-07,
+      "std": 0.14662733674049377,
+      "skewness": 0.01236848346889019,
+      "kurtosis": 12.501955032348633,
+      "entropy_bits": 2.843367211333214,
+      "sparsity_1e3": 0.0059814453125
+    },
+    {
+      "name": "layer10.mlp.W_up",
+      "mean": -0.0032080465462058783,
+      "std": 0.12764811515808105,
+      "skewness": -0.010452209040522575,
+      "kurtosis": 0.40143251419067383,
+      "entropy_bits": 3.4992967886331026,
+      "sparsity_1e3": 0.006371815999348958
+    },
+    {
+      "name": "layer10.mlp.W_down",
+      "mean": 6.1052123783156276e-06,
+      "std": 0.17814524471759796,
+      "skewness": 0.01632348634302616,
+      "kurtosis": 13.939268112182617,
+      "entropy_bits": 1.9140041756754946,
+      "sparsity_1e3": 0.004826863606770833
+    },
+    {
+      "name": "layer11.attn.W_Q",
+      "mean": -1.1366316357452888e-05,
+      "std": 0.10982037335634232,
+      "skewness": -0.008291414938867092,
+      "kurtosis": 0.28162360191345215,
+      "entropy_bits": 4.472844645623071,
+      "sparsity_1e3": 0.007273356119791667
+    },
+    {
+      "name": "layer11.attn.W_K",
+      "mean": -4.2440744437044486e-05,
+      "std": 0.10549227893352509,
+      "skewness": 0.0044286856427788734,
+      "kurtosis": 0.6839814186096191,
+      "entropy_bits": 4.194104255322847,
+      "sparsity_1e3": 0.007814195421006944
+    },
+    {
+      "name": "layer11.attn.W_V",
+      "mean": 0.00021584621572401375,
+      "std": 0.1622593104839325,
+      "skewness": -0.009010642766952515,
+      "kurtosis": 0.9504821300506592,
+      "entropy_bits": 3.8742030190741636,
+      "sparsity_1e3": 0.005481296115451389
+    },
+    {
+      "name": "layer11.attn.W_O",
+      "mean": -5.37781415914651e-05,
+      "std": 0.18192650377750397,
+      "skewness": -0.44706863164901733,
+      "kurtosis": 190.1013946533203,
+      "entropy_bits": 1.9270892159847461,
+      "sparsity_1e3": 0.005956013997395833
+    },
+    {
+      "name": "layer11.mlp.W_up",
+      "mean": -0.001846416387706995,
+      "std": 0.13000448048114777,
+      "skewness": -0.008112854324281216,
+      "kurtosis": 1.0107150077819824,
+      "entropy_bits": 3.875279038571397,
+      "sparsity_1e3": 0.006392584906684028
+    },
+    {
+      "name": "layer11.mlp.W_down",
+      "mean": -0.00043532054405659437,
+      "std": 0.19821903109550476,
+      "skewness": 0.00928551983088255,
+      "kurtosis": 26.869842529296875,
+      "entropy_bits": 2.171346584714442,
+      "sparsity_1e3": 0.00452423095703125
+    }
+  ]
+}

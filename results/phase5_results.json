@@ -1,0 +1,132 @@
+[
+  {
+    "layer": 0,
+    "repr": "SVD 99%",
+    "weight_error": 0.09974993020296097,
+    "activation_error": 0.08147161453962326,
+    "compression": 1.3371085806777763
+  },
+  {
+    "layer": 0,
+    "repr": "SVD 95%",
+    "weight_error": 0.22156761586666107,
+    "activation_error": 0.19310499727725983,
+    "compression": 1.8997532804679296
+  },
+  {
+    "layer": 3,
+    "repr": "SVD 99%",
+    "weight_error": 0.09976475685834885,
+    "activation_error": 0.11314935982227325,
+    "compression": 0.7295630468717145
+  },
+  {
+    "layer": 3,
+    "repr": "SVD 95%",
+    "weight_error": 0.22352372109889984,
+    "activation_error": 0.24831639230251312,
+    "compression": 0.9839747760372354
+  },
+  {
+    "layer": 6,
+    "repr": "SVD 99%",
+    "weight_error": 0.09950508922338486,
+    "activation_error": 0.1025385931134224,
+    "compression": 0.7422633707050712
+  },
+  {
+    "layer": 6,
+    "repr": "SVD 95%",
+    "weight_error": 0.22321291267871857,
+    "activation_error": 0.23019275069236755,
+    "compression": 1.015212070514608
+  },
+  {
+    "layer": 9,
+    "repr": "SVD 99%",
+    "weight_error": 0.09978041797876358,
+    "activation_error": 0.09932248294353485,
+    "compression": 0.693942427946694
+  },
+  {
+    "layer": 9,
+    "repr": "SVD 95%",
+    "weight_error": 0.22264039516448975,
+    "activation_error": 0.22382645308971405,
+    "compression": 0.90294155918711
+  },
+  {
+    "layer": 11,
+    "repr": "SVD 99%",
+    "weight_error": 0.09947081655263901,
+    "activation_error": 0.11907567083835602,
+    "compression": 0.697727568462767
+  },
+  {
+    "layer": 11,
+    "repr": "SVD 95%",
+    "weight_error": 0.22308427095413208,
+    "activation_error": 0.2677064538002014,
+    "compression": 0.9224763525349081
+  },
+  {
+    "layer": 0,
+    "repr": "ActivationPreserving r128",
+    "weight_error": 0.553743839263916,
+    "activation_error": 0.09492160379886627,
+    "compression": 6.0
+  },
+  {
+    "layer": 0,
+    "repr": "ActivationPreserving r256",
+    "weight_error": 0.21907708048820496,
+    "activation_error": 0.027755971997976303,
+    "compression": 3.0
+  },
+  {
+    "layer": 6,
+    "repr": "ActivationPreserving r128",
+    "weight_error": 0.7055572867393494,
+    "activation_error": 0.3003894090652466,
+    "compression": 6.0
+  },
+  {
+    "layer": 6,
+    "repr": "ActivationPreserving r256",
+    "weight_error": 0.4878946840763092,
+    "activation_error": 0.14342530071735382,
+    "compression": 3.0
+  },
+  {
+    "layer": 11,
+    "repr": "ActivationPreserving r128",
+    "weight_error": 0.6921524405479431,
+    "activation_error": 0.14294598996639252,
+    "compression": 6.0
+  },
+  {
+    "layer": 11,
+    "repr": "ActivationPreserving r256",
+    "weight_error": 0.5202284455299377,
+    "activation_error": 0.07422153651714325,
+    "compression": 3.0
+  },
+  {
+    "layer": 0,
+    "repr": "ActivationPreserving r256 (functional)",
+    "ppl": 49.57089234899471,
+    "delta_pct": 2.516758676075034
+  },
+  {
+    "layer": 6,
+    "repr": "ActivationPreserving r256 (functional)",
+    "ppl": 48.681406173830915,
+    "delta_pct": 0.6772267402166884
+  },
+  {
+    "layer": 11,
+    "repr": "ActivationPreserving r256 (functional)",
+    "ppl": 50.27091207855164,
+    "delta_pct": 3.9644581279678794
+  }
+]

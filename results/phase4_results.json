@@ -1,0 +1,60 @@
+{
+  "baseline_ppl": 48.35394035976615,
+  "lora_healing": [
+    {
+      "lora_rank": 4,
+      "lora_params": 73728,
+      "ppl_before_healing": 168.5474918406002,
+      "ppl_after_healing": 153.67323566378826,
+      "recovery_pct": 12.375253076021947
+    },
+    {
+      "lora_rank": 8,
+      "lora_params": 147456,
+      "ppl_before_healing": 168.5474918406002,
+      "ppl_after_healing": 136.7093184070572,
+      "recovery_pct": 26.489086179153205
+    },
+    {
+      "lora_rank": 16,
+      "lora_params": 294912,
+      "ppl_before_healing": 168.5474918406002,
+      "ppl_after_healing": 132.04443727489985,
+      "recovery_pct": 30.37022711781762
+    }
+  ],
+  "mixed_precision": [
+    {
+      "config": "Preserve L0-L3",
+      "n_compressed": 8,
+      "compression": 3.0,
+      "perplexity": 70.37767850516155,
+      "delta_pct": 45.54693574408404
+    },
+    {
+      "config": "Preserve L0-L5",
+      "n_compressed": 6,
+      "compression": 3.0,
+      "perplexity": 66.01055018306536,
+      "delta_pct": 36.51534847404234
+    },
+    {
+      "config": "Preserve L0-L7",
+      "n_compressed": 4,
+      "compression": 3.0,
+      "perplexity": 61.70892708462729,
+      "delta_pct": 27.619231494882314
+    },
+    {
+      "config": "Preserve L0-L1, L10-L11",
+      "n_compressed": 8,
+      "compression": 3.0,
+      "perplexity": 60.786305865831324,
+      "delta_pct": 25.711173512572245
+    }
+  ],
+  "mixed_plus_lora": {
+    "ppl_before": 70.37767850516155,
+    "ppl_after": 92.57536765335101
+  }
+}

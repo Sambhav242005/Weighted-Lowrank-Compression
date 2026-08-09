@@ -1,0 +1,19 @@
+{
+  "baseline_ppl": 12.292771097923575,
+  "rank": 1194,
+  "variants": {
+    "plain_svd": {
+      "ppl": 15.526754969747525,
+      "ppl_delta_pct": 26.30801343376691
+    },
+    "weighted_b0.1": {
+      "ppl": 12.765387190458489,
+      "ppl_delta_pct": 3.8446668271139046
+    }
+  },
+  "decision_rule": {
+    "weighted_delta_pct": 3.8446668271139046,
+    "gate": "<=10% supports redundancy / >=20% falsifies / else inconclusive",
+    "verdict": "supports"
+  }
+}

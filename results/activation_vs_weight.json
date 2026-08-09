@@ -1,0 +1,72 @@
+[
+  {
+    "test": "weight_svd",
+    "rank": 128,
+    "ppl": 204.30103722653624,
+    "delta": 261.81024503448845,
+    "compression": 6.0
+  },
+  {
+    "test": "weight_svd",
+    "rank": 256,
+    "ppl": 68.52594840528974,
+    "delta": 21.357142970580245,
+    "compression": 3.0
+  },
+  {
+    "test": "weight_svd",
+    "rank": 384,
+    "ppl": 59.57151642596622,
+    "delta": 5.499146004117026,
+    "compression": 2.0
+  },
+  {
+    "test": "activation_proj",
+    "rank": 128,
+    "ppl": 154.3223487468068,
+    "delta": 173.29967371858064,
+    "compression": 6.0
+  },
+  {
+    "test": "activation_proj",
+    "rank": 256,
+    "ppl": 154.3223487468068,
+    "delta": 173.29967371858064,
+    "compression": 3.0
+  },
+  {
+    "test": "activation_proj",
+    "rank": 384,
+    "ppl": 154.3223487468068,
+    "delta": 173.29967371858064,
+    "compression": 2.0
+  },
+  {
+    "test": "dual_space",
+    "rank": 128,
+    "ppl": 397.8764033103552,
+    "delta": 604.6256882951473,
+    "compression": 6.0
+  },
+  {
+    "test": "dual_space",
+    "rank": 256,
+    "ppl": 196.01495991161852,
+    "delta": 247.1358816324034,
+    "compression": 3.0
+  },
+  {
+    "test": "activation_guided",
+    "rank": 128,
+    "ppl": 5888.763019272464,
+    "delta": 10328.800655527279,
+    "compression": 6.0
+  },
+  {
+    "test": "activation_guided",
+    "rank": 256,
+    "ppl": 5888.763019272464,
+    "delta": 10328.800655527279,
+    "compression": 3.0
+  }
+]

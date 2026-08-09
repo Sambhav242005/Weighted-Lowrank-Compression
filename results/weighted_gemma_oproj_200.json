@@ -1,0 +1,6 @@
+{
+  "n_eval_texts": 200,
+  "baseline_ppl": 59.75450491136079,
+  "weighted_ppl": 55.36943630197565,
+  "ppl_delta_pct": -7.338473669708935
+}

@@ -1,0 +1,19 @@
+{
+  "candidate_id": "failure-asymmetry-20260808-0023",
+  "hypothesis": "Drift is asymmetric across layers \u2014 some layers are more sensitive",
+  "experiment_type": "joint_group_compress",
+  "config": {
+    "group_sizes": [
+      2
+    ],
+    "target_layers": [
+      0,
+      1
+    ],
+    "rank": 128
+  },
+  "rationale": "Layer 0 has +65.52% delta vs 1 at -0.14%",
+  "expected_outcome": "Sensitive layers show worse compression, suggesting layer-specific representations",
+  "decision_rule": "If group including worst layer has >2x PPL delta vs group with best layer, layer sensitivity is real",
+  "status": "pending"
+}

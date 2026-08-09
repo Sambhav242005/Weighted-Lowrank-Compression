@@ -1,0 +1,118 @@
+{
+  "baseline_size_mb": 497.775333,
+  "compressed_size_mb": 483.619565,
+  "storage_reduction": 1.029270461793662,
+  "baseline_ppl": 30.91936523879414,
+  "compressed_ppl": 35.61598902683939,
+  "ppl_delta_pct": 15.189910115465283,
+  "compression_log": [
+    {
+      "layer": 0,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.004719684366136789
+    },
+    {
+      "layer": 1,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.0074988193809986115
+    },
+    {
+      "layer": 2,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.009869973175227642
+    },
+    {
+      "layer": 3,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.007107378914952278
+    },
+    {
+      "layer": 4,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.007870867848396301
+    },
+    {
+      "layer": 5,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.009248425252735615
+    },
+    {
+      "layer": 6,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.008348786272108555
+    },
+    {
+      "layer": 7,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.013523383066058159
+    },
+    {
+      "layer": 8,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.007876971736550331
+    },
+    {
+      "layer": 9,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.01179384533315897
+    },
+    {
+      "layer": 10,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.006121999118477106
+    },
+    {
+      "layer": 11,
+      "matrix": "W_O",
+      "rank": 256,
+      "orig_params": 589824,
+      "comp_params": 393216,
+      "compression": 1.5,
+      "activation_error": 0.006015944294631481
+    }
+  ]
+}

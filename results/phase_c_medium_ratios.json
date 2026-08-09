@@ -1,0 +1,30 @@
+[
+  {
+    "ratio": 2,
+    "strategy": "uniform",
+    "rank": 512,
+    "ppl": 42.75926896046636,
+    "delta_pct": 2.6317584657061013
+  },
+  {
+    "ratio": 3,
+    "strategy": "uniform",
+    "rank": 341,
+    "ppl": 45.79295538066377,
+    "delta_pct": 9.913280800109398
+  },
+  {
+    "ratio": 4,
+    "strategy": "uniform",
+    "rank": 256,
+    "ppl": 50.291538051333546,
+    "delta_pct": 20.710880041599236
+  },
+  {
+    "ratio": 6,
+    "strategy": "uniform",
+    "rank": 170,
+    "ppl": 61.911887332432535,
+    "delta_pct": 48.602303578506344
+  }
+]

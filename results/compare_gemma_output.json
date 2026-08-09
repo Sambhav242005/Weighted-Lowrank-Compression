@@ -1,0 +1,41 @@
+{
+  "model": "google/gemma-3-1b-it",
+  "method": "weighted o_proj r384",
+  "logit_divergence": {
+    "kl_o2s": 0.26822231858968737,
+    "kl_s2o": 0.29240731298923495,
+    "cos": 0.9924813906351725,
+    "top1": 0.7439969182014465,
+    "top5": 0.9630131224791209,
+    "ent_o": 2.1931408723195394,
+    "ent_s": 2.4659448146820067,
+    "n_tokens": 3769
+  },
+  "generations": [
+    {
+      "prompt": "The history of artificial intelligence begins",
+      "baseline": "The history of artificial intelligence begins with a single, ambitious goal: to create a machine that could think like a human.\n\n**Early Days (1950s-1960s):**\n\n* **The Dartmouth Workshop (1956):** Often considered the birth of AI, this workshop brought together researchers from various fields",
+      "weighted": "The history of artificial intelligence begins in the 1950s with the Dartmouth Workshop, where researchers began exploring the possibility of creating machines that could think. Since then, AI has progressed rapidly, with advancements in machine learning and deep learning leading to increasingly sophisticated systems.\n\nThe field of AI has seen a significant surge in recent years, driven by"
+    },
+    {
+      "prompt": "In a letter to the editor, the scientist explained that",
+      "baseline": "In a letter to the editor, the scientist explained that the research team had been working on the project for over a year, and that the results were a \"significant breakthrough.\"\n\nThe editor, a retired history professor, asked for a more detailed explanation of the breakthrough.\n\nThe scientist responded, \"It's a complex process, but we've identified a previously unknown",
+      "weighted": "In a letter to the editor, the scientist explained that the observed phenomenon was a result of a \"quantum entanglement\" between the two particles. This entanglement, he stated, was a consequence of the interaction of the particles, which caused them to share a single quantum state.\n\nThe scientist further elaborated on the process, explaining that the particles were linked in a way that they could"
+    },
+    {
+      "prompt": "The football match ended in controversy when",
+      "baseline": "The football match ended in controversy when a player from one team was shown a yellow card for a foul.\n\nThe incident occurred in the 75th minute of the match, when the referee awarded a yellow card to a player from the opposing team.\n\nThe reason for the card is unclear, but it is believed that the foul was deemed to be",
+      "weighted": "The football match ended in controversy when a player from one team was accused of deliberately kicking a ball. The incident sparked a heated debate among the spectators.\n\nThe investigation into the incident is ongoing, and the details are still being examined.\n\nThe player involved in the incident is currently under investigation.\n\nThe incident is a significant event in the history of the"
+    },
+    {
+      "prompt": "According to the latest economic report,",
+      "baseline": "According to the latest economic report, the average household income in the United States has increased by 1.5% over the past year. This is a significant improvement from the previous year's 2.5% increase.\n\nHowever, the report also highlights a concerning trend: the gap between the wealthiest and the rest of the population has widened.",
+      "weighted": "According to the latest economic report, the average wage in the United States has increased by 1.5% in the last quarter. This represents a significant increase compared to the previous year.\n\nThe report also highlights that the unemployment rate has decreased by 0.3% in the last quarter.\n\nThe increase in wages and the decrease in unemployment are"
+    },
+    {
+      "prompt": "The old lighthouse keeper remembered the night",
+      "baseline": "The old lighthouse keeper remembered the night the storm had raged. The waves, mountains of black water, crashed against the stone tower, shaking it to its very core. He\u2019d seen countless storms in his seventy years, but this one\u2026 this one felt different.\n\nHe squinted, trying to pierce the swirling grey. The beam of the lighthouse,",
+      "weighted": "The old lighthouse keeper remembered the night the storm raged. The waves crashed against the rocks, and the wind howled like a tormented spirit. He had been alone for days, battling the elements and the darkness. He had to keep the light burning, a beacon of hope in the storm.\n\nHe remembered the stories of the sailors, the legends of the"
+    }
+  ]
+}

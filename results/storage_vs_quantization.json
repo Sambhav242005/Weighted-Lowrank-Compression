@@ -1,0 +1,66 @@
+{
+  "model_params_B": 7.07,
+  "model_fp16_GB": 14.141,
+  "o_proj_share_of_params_pct": 5.09,
+  "attention_share_of_params_pct": 11.63,
+  "lowrank_o_proj_only": {
+    "rank_3x": {
+      "per_matrix_storage_ratio": 1.5,
+      "whole_model_savings_pct": 1.7,
+      "measured_ppl_delta": {
+        "gpt2": "+3.58%",
+        "qwen7b": "+3.84%"
+      }
+    },
+    "rank_4x": {
+      "per_matrix_storage_ratio": 2.0,
+      "whole_model_savings_pct": 2.54,
+      "measured_ppl_delta": {
+        "gpt2": "+17.94%"
+      }
+    },
+    "rank_6x": {
+      "per_matrix_storage_ratio": 3.0,
+      "whole_model_savings_pct": 3.39
+    },
+    "rank_8x": {
+      "per_matrix_storage_ratio": 4.0,
+      "whole_model_savings_pct": 3.82
+    }
+  },
+  "quantization": {
+    "int8": {
+      "bits_per_weight": 8,
+      "whole_model_storage_ratio": 2.0,
+      "model_size_GB": 7.07,
+      "typical_ppl_cost": "~0-0.1% (7B, well established)",
+      "scope": "ALL weights"
+    },
+    "int4_gptq_awq": {
+      "bits_per_weight": 4.4,
+      "whole_model_storage_ratio": 3.64,
+      "model_size_GB": 3.89,
+      "typical_ppl_cost": "~0.3-1% at 7B (literature)",
+      "scope": "ALL weights"
+    },
+    "int3": {
+      "bits_per_weight": 3.25,
+      "whole_model_storage_ratio": 4.92,
+      "model_size_GB": 2.87,
+      "typical_ppl_cost": "~1-3% at 7B (literature)",
+      "scope": "ALL weights"
+    },
+    "int2": {
+      "bits_per_weight": 2.5,
+      "whole_model_storage_ratio": 6.4,
+      "model_size_GB": 2.21,
+      "typical_ppl_cost": "severe degradation",
+      "scope": "ALL weights"
+    }
+  },
+  "equivalence_note": "Factored low-rank at one-sided kx rank gives k/2 x storage per square matrix. Matching int4 (4x) on o_proj alone needs k=8 (rank 448), which measured +94% PPL on GPT-2 -- unreachable. Matching int8 (2x) needs k=4, which measured +17.94%. Quantization reaches better PPL at 4x the whole-model ratio; low-rank reaches +3.84% at 1.6% whole-model savings.",
+  "combined_paths": [
+    "Quantize the low-rank factors (int4 U,V): 3x-rank o_proj -> ~6x per-matrix",
+    "SVDQuant-style: fp16 low-rank branch for outliers + int4 residual -> ~3.5x whole model with quality above plain int4 (arXiv 2411.05006)"
+  ]
+}

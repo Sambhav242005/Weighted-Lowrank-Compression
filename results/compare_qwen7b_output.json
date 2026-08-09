@@ -1,0 +1,31 @@
+{
+  "prompts": [
+    "A farmer has 3 fields. Field A yields 240 kg of wheat per hectare, Field B yields 310 kg per hectare, and Field C yields 185 kg per hectare. If the farmer plants 4 hectares of A, 3 hectares of B and 5 hectares of C, how many kg of wheat does he harvest in total? Show your reasoning briefly.",
+    "Why is the sky blue? Answer in two or three sentences.",
+    "Write a Python function `is_palindrome(s)` that returns True if the string s reads the same forwards and backwards (ignore case and non-alphanumeric characters). Then show one example call."
+  ],
+  "max_new_tokens": 100,
+  "decoding": "greedy, chat template",
+  "variants": {
+    "baseline": [
+      "To find the total kilograms of wheat harvested, we need to calculate the yield for each field separately and then sum them up.\n\n1. **Field A:**\n   - Yield per hectare: 240 kg\n   - Area planted: 4 hectares\n   - Total yield from Field A = 240 kg/hectare * 4 hectares = 960 kg\n\n2. **Field B:**\n   - Yield per hectare: 310 kg",
+      "The sky appears blue because the Earth's atmosphere scatters sunlight in all directions and blue light is scattered more than other colors because it travels as shorter, smaller waves. This scattering of blue light makes the sky appear blue to us when we look up.",
+      "Certainly! Below is a Python function `is_palindrome(s)` that checks if a given string `s` is a palindrome, ignoring case and non-alphanumeric characters.\n\n```python\nimport re\n\ndef is_palindrome(s):\n    # Remove non-alphanumeric characters and convert to lowercase\n    cleaned_s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()\n    \n    # Check if the cleaned string is equal to its reverse\n    return cleaned_s == cleaned_s"
+    ],
+    "weighted_int8f": [
+      "To find the total kilograms of wheat harvested, we need to calculate the yield for each field separately and then sum them up.\n\n1. **Field A:**\n   - Yield per hectare: 240 kg/ha\n   - Hectares planted: 4 ha\n   - Total yield from Field A = 240 kg/ha * 4 ha = 960 kg\n\n2. **Field B:**\n   - Yield per hectare: 3",
+      "The sky appears blue during the day because the Earth's atmosphere scatters sunlight in all directions, and blue light is scattered more than other colors because it travels as shorter, smaller waves. This scattering of blue light makes the sky look blue to us.",
+      "Certainly! Below is a Python function `is_palindrome(s)` that checks if a given string `s` is a palindrome, ignoring case and non-alphanumeric characters:\n\n```python\nimport re\n\ndef is_palindrome(s):\n    # Remove non-alphanumeric characters and convert to lowercase\n    cleaned_s = re.sub(r'[^A-Za-z0-9]', '', s).lower()\n    \n    # Check if the cleaned string is equal to its reverse\n    return cleaned_s == cleaned_s"
+    ],
+    "weighted_int4f": [
+      "To determine the total kilograms of wheat harvested, we need to calculate the yield for each field separately and then sum these amounts.\n\n1. **Field A:**\n   - Yield per hectare: 240 kg/ha\n   - Area planted: 4 hectares\n   - Total yield from Field A = 240 kg/ha * 4 ha = 960 kg\n\n2. **Field B:**\n   - Yield per hectare: 310",
+      "The sky appears blue during the day due to a phenomenon called Rayleigh scattering, where sunlight interacts with the Earth's atmosphere and gets scattered in all directions, with shorter wavelength colors like blue and violet scattering more than others. Additionally, the human eye is more sensitive to blue light and less sensitive to violet, even though violet light is scattered even more, making the sky appear predominantly blue.",
+      "Certainly! Below is a Python function `is_palindrome(s)` that checks if a given string `s` is a palindrome, ignoring case and non-alphanumeric characters:\n\n```python\nimport re\n\ndef is_palindrome(s):\n    # Remove non-alphanumeric characters and convert to lowercase\n    cleaned_s = re.sub(r'[^A-Za-z0-9]', '', s).lower()\n    \n    # Check if the cleaned string is equal to its reverse\n    return cleaned_s == cleaned_s"
+    ],
+    "plain_svd": [
+      "To find the total kilograms of wheat harvested, we need to calculate the yield for each field separately and then sum them up.\n\n1. **Field A:**\n   - Yield per hectare: 240 kg/ha\n   - Area planted: 4 ha\n   - Total yield from Field A = 240 kg/ha * 4 ha = 960 kg\n\n2. **Field B:**\n   - Yield per hectare: 310",
+      "The sky appears blue during the day because the Earth's atmosphere scatters shorter wavelength blue light from the sun more than other colors, a phenomenon known as Rayleigh scattering. When sunlight enters the atmosphere, these smaller blue wavelengths are scattered in all directions and are more likely to reach our eyes from different parts of the sky, making it appear blue.",
+      "Certainly! Below is a Python function `is_palindrome(s)` that checks if a given string `s` is a palindrome, ignoring case and non-alphanumeric characters:\n\n```python\nimport re\n\ndef is_palindrome(s):\n    # Remove non-alphanumeric characters and convert to lowercase\n    cleaned = re.sub(r'[^A-Za-z0-9]', '', s).lower()\n    \n    # Check if the cleaned string is equal to its reverse\n    return cleaned == cleaned[::-1]"
+    ]
+  }
+}

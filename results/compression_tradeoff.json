@@ -1,0 +1,37 @@
+{
+  "baseline_ppl": 34.265744991716524,
+  "results": [
+    {
+      "config": "Conservative",
+      "attn_rank": 256,
+      "mlp_threshold": 0.99,
+      "compression": 0.8830899203883961,
+      "ppl": 39.55736357073131,
+      "delta_pct": 15.442882039465347
+    },
+    {
+      "config": "Moderate",
+      "attn_rank": 192,
+      "mlp_threshold": 0.95,
+      "compression": 1.0653719438182765,
+      "ppl": 185.52713338733884,
+      "delta_pct": 441.4361585664884
+    },
+    {
+      "config": "Aggressive",
+      "attn_rank": 128,
+      "mlp_threshold": 0.9,
+      "compression": 1.2780621973627948,
+      "ppl": 433.5870105810498,
+      "delta_pct": 1165.3657776472278
+    },
+    {
+      "config": "Very Aggressive",
+      "attn_rank": 64,
+      "mlp_threshold": 0.85,
+      "compression": 1.5100357737786394,
+      "ppl": 1061.241157046322,
+      "delta_pct": 2997.090570489184
+    }
+  ]
+}
