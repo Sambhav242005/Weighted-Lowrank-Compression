@@ -383,17 +383,22 @@ representations.
    arXiv:2210.17323, 2022.
 2. E. Frantar, D. Alistarh. *SparseGPT: Massive language models can be
    accurately pruned in one-shot.* arXiv:2301.00774, 2023.
-3. J. Lin, J. Tang, H. Tang, S. Yang, X. Dang, S. Han. *AWQ:
+3. J. Lin, J. Tang, H. Tang, S. Yang, W.-M. Chen, W.-C. Wang, G. Xiao,
+   X. Dang, C. Gan, S. Han. *AWQ:
    Activation-aware weight quantization for LLM compression and
    acceleration.* arXiv:2306.00978, 2023.
-4. Z. Yuan et al. *ASVD: Activation-aware singular value decomposition
+4. Z. Yuan, Y. Shang, Y. Song, D. Yang, Q. Wu, Y. Yan, G. Sun.
+   *ASVD: Activation-aware singular value decomposition
    for large language model compression.* arXiv:2312.05821, 2023.
-5. S.-Y. Liu, M. Khadkevich, N. C. Fung, et al. *EoRA: Training-free
+5. S.-Y. Liu, M. Khadkevich, N. C. Fung, C. Sakr, C.-H. H. Yang,
+   C.-Y. Wang, S. Muralidharan, H. Yin, K.-T. Cheng, J. Kautz,
+   Y.-C. F. Wang, P. Molchanov, M.-H. Chen. *EoRA: Fine-tuning-free
    compensation for compressed LLM with eigenspace low-rank
    approximation.* arXiv:2410.21271, 2024.
 6. Y. Arai, Y. Ichikawa. *Quantization error propagation: Revisiting
    layer-wise post-training quantization.* arXiv:2504.09629, 2025.
-7. M. Li, Y. Lin, Z. Zhang, T. Cai, X. Li, et al. *SVDQuant: Absorbing
+7. M. Li, Y. Lin, Z. Zhang, T. Cai, X. Li, J. Guo, E. Xie, C. Meng,
+   J.-Y. Zhu, S. Han. *SVDQuant: Absorbing
    outliers by low-rank components for 4-bit diffusion models.*
    arXiv:2411.05007, 2024.
 8. S. Merity, C. Xiong, J. Bradbury, R. Socher. *Pointer sentinel
