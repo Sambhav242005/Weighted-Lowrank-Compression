@@ -19,46 +19,52 @@ from pathlib import Path
 import torch
 
 
-def one_reference_fit(weight: torch.Tensor, *, ridge: float = 1e-8) -> dict:
-    """Fit W ~= a_i * r + b_i and choose the reference with lowest error."""
+def reference_fit(weight: torch.Tensor, k: int, *, ridge: float = 1e-8) -> dict:
+    """Fit W ~= A @ R + b and choose k rows greedily."""
     w = weight.detach().float().cpu()
     if w.ndim != 2:
         raise ValueError("weight must be a matrix")
     n, d = w.shape
     centered = w - w.mean(dim=1, keepdim=True)
     norms = centered.square().sum(dim=1)
-    # Pairwise normalized correlation, evaluated without constructing n*n data.
-    gram = centered @ centered.T
-    denom = torch.sqrt(norms[:, None] * norms[None, :]).clamp_min(1e-12)
-    corr = gram / denom
-    corr.fill_diagonal_(0)
-    random_reference = 0
-    best_reference = int(corr.abs().sum(dim=1).argmax().item()) if n > 1 else 0
-
-    def fit_for(ref_index: int) -> tuple[torch.Tensor, torch.Tensor, float]:
-        ref = w[ref_index]
-        x = torch.stack((ref, torch.ones(d)), dim=1)
-        xtx = x.T @ x + ridge * torch.eye(2)
-        coef = w @ x @ torch.linalg.inv(xtx)  # [n, 2], slope and intercept
-        pred = coef[:, :1] * ref[None, :] + coef[:, 1:2]
-        residual = w - pred
-        return coef, residual, float(residual.square().sum().item() / w.square().sum().clamp_min(1e-12).item())
-
-    coefficients, residual, residual_ratio = fit_for(best_reference)
-    _, random_residual, random_ratio = fit_for(random_reference)
+    k = min(k, n)
+    selected: list[int] = []
+    residual_for_selection = centered.clone()
+    for _ in range(k):
+        index = int(residual_for_selection.square().sum(dim=1).argmax().item())
+        selected.append(index)
+        basis = centered[selected].T
+        coefficients = torch.linalg.lstsq(basis, centered.T).solution
+        residual_for_selection = (centered.T - basis @ coefficients).T
+        residual_for_selection[selected] = 0
+    references = w[selected]
+    # Include an affine intercept so the representation is not penalized by
+    # row-wise offsets unrelated to the reference directions.
+    design = torch.cat((references.T, torch.ones(d, 1)), dim=1)
+    gram = design.T @ design + ridge * torch.eye(k + 1)
+    coefficients = w @ design @ torch.linalg.inv(gram)
+    prediction = coefficients @ design.T
+    residual = w - prediction
+    residual_ratio = float(residual.square().sum().item() / w.square().sum().clamp_min(1e-12).item())
+    singular_values = torch.linalg.svdvals(w)
+    rank_k_energy = float(singular_values[k:].square().sum().item() / w.square().sum().clamp_min(1e-12).item())
+    corr = (centered @ centered[selected].T) / torch.sqrt(
+        norms[:, None] * norms[selected][None, :]
+    ).clamp_min(1e-12)
     baseline_bytes = n * d * 2
     # Reference fp16 + two fp16 coefficients per row + signed int4 residual
     # plus one fp16 scale per 64-value group.
     group = 64
     groups = n * math.ceil(d / group)
-    packed_bytes = d * 2 + n * 2 * 2 + math.ceil(n * d / 2) + groups * 2
+    packed_bytes = k * d * 2 + n * (k + 1) * 2 + math.ceil(n * d / 2) + groups * 2
     return {
+        "reference_count": k,
         "rows": n,
         "columns": d,
-        "best_reference_row": best_reference,
-        "best_reference_mean_abs_corr": float(corr[best_reference].abs().mean().item()),
+        "reference_rows": selected,
+        "mean_abs_corr_to_references": float(corr.abs().mean().item()),
         "best_residual_energy_ratio": residual_ratio,
-        "random_reference_residual_energy_ratio": random_ratio,
+        "matched_rank_k_svd_residual_energy_ratio": rank_k_energy,
         "fp16_baseline_bytes": baseline_bytes,
         "reference_plus_fp16_coeff_plus_int4_residual_bytes": packed_bytes,
         "estimated_storage_ratio": baseline_bytes / packed_bytes,
@@ -77,7 +83,7 @@ def random_probe(seed: int, rows: int, columns: int) -> dict:
     base = torch.randn(columns, generator=generator)
     cases["shared_reference"] = torch.randn(rows, 1, generator=generator) * 0.2 * base + base + torch.randn(rows, columns, generator=generator) * 0.02
     cases["global_rank8"] = torch.randn(rows, 8, generator=generator) @ torch.randn(8, columns, generator=generator) + torch.randn(rows, columns, generator=generator) * 0.05
-    return {name: one_reference_fit(matrix) for name, matrix in cases.items()}
+    return {name: {str(k): reference_fit(matrix, k) for k in (1, 4, 8, 16)} for name, matrix in cases.items()}
 
 
 def model_probe(snapshot: Path, device: str) -> dict:
@@ -87,8 +93,8 @@ def model_probe(snapshot: Path, device: str) -> dict:
     rows = {}
     with torch.no_grad():
         for name, parameter in model.named_parameters():
-            if parameter.ndim == 2:
-                rows[name] = one_reference_fit(parameter)
+            if parameter.ndim == 2 and ".h." in name:
+                rows[name] = {str(k): reference_fit(parameter, k) for k in (1, 4, 8, 16)}
     return rows
 
 
