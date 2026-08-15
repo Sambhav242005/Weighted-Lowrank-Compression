@@ -16,7 +16,7 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 MODEL_REVISION = "607a30d783dfa663caf39e06633721c8d4cfcd7e"
 DATASET_REVISION = "b08601e04326c79dfdd32d625aee71d232d685c3"
-SPARSITY = 0.90
+DEFAULT_SPARSITY = 0.90
 CHUNK = 512
 
 
@@ -72,7 +72,7 @@ def collect_input_rms(model, tokens: torch.Tensor, device: str) -> dict[str, tor
     return {name: (sums[name] / counts[name]).sqrt() for name in sums}
 
 
-def apply_pruning(model, method: str, input_rms: dict[str, torch.Tensor] | None) -> dict:
+def apply_pruning(model, method: str, input_rms: dict[str, torch.Tensor] | None, sparsity: float) -> dict:
     total = kept = 0
     for name, module in block_modules(model).items():
         weight = module.weight.data
@@ -80,7 +80,7 @@ def apply_pruning(model, method: str, input_rms: dict[str, torch.Tensor] | None)
         if method == "activation_aware":
             # GPT-2 Conv1D stores [in_features, out_features].
             score = score * input_rms[name].to(weight.device)[:, None]
-        keep_count = max(1, int(round((1.0 - SPARSITY) * score.numel())))
+        keep_count = max(1, int(round((1.0 - sparsity) * score.numel())))
         threshold = torch.topk(score.reshape(-1), keep_count, sorted=False).values.min()
         mask = score >= threshold
         module.weight.data.mul_(mask)
@@ -108,6 +108,7 @@ def main() -> None:
     parser.add_argument("--test-arrow", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--sparsity", type=float, default=DEFAULT_SPARSITY)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     tokenizer = GPT2Tokenizer.from_pretrained(str(args.snapshot), local_files_only=True)
@@ -120,7 +121,7 @@ def main() -> None:
         "model_revision": MODEL_REVISION,
         "dataset_revision": DATASET_REVISION,
         "device": args.device,
-        "sparsity_target": SPARSITY,
+        "sparsity_target": args.sparsity,
         "calibration_tokens": min(train.numel(), 16 * CHUNK),
         "test_tokens": int(test.numel()),
     }
@@ -132,7 +133,7 @@ def main() -> None:
     for method in ("magnitude", "activation_aware"):
         model = GPT2LMHeadModel.from_pretrained(str(args.snapshot), local_files_only=True).to(args.device)
         input_rms = collect_input_rms(model, train, args.device) if method == "activation_aware" else None
-        pruning = apply_pruning(model, method, input_rms)
+        pruning = apply_pruning(model, method, input_rms, args.sparsity)
         result[method] = {"pruning": pruning, "ppl": perplexity(model, test, args.device), "bytes": sparse_bytes(model)}
         del model
         torch.cuda.empty_cache()
