@@ -1,0 +1,13 @@
+{
+  "model_snapshot": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--google--gemma-3-1b-it\\snapshots\\dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "dataset_snapshot": "C:\\Users\\NPC\\.cache\\huggingface\\datasets\\wikitext\\wikitext-2-raw-v1\\0.0.0\\b08601e04326c79dfdd32d625aee71d232d685c3",
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "rank": 384,
+  "beta": 0.1,
+  "chunk": 512,
+  "protocol": "full contiguous WikiText-2 test stream"
+}

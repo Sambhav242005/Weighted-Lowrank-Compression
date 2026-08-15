@@ -1,0 +1,50 @@
+{
+  "run_id": "track-a-gemma-20260815-073809",
+  "baseline_ppl": 58.11569266316002,
+  "rank": 384,
+  "beta": 0.1,
+  "seeds": {
+    "11": {
+      "svd": {
+        "ppl": 251.5151029243408,
+        "delta_pct": 332.7834555498263,
+        "elapsed_sec": 72.92382335662842,
+        "calibration_chunks": 16
+      },
+      "weighted": {
+        "ppl": 61.38894578732346,
+        "delta_pct": 5.632305104122727,
+        "elapsed_sec": 94.51846551895142,
+        "calibration_chunks": 16
+      }
+    },
+    "23": {
+      "svd": {
+        "ppl": 251.5151029243408,
+        "delta_pct": 332.7834555498263,
+        "elapsed_sec": 54.52336812019348,
+        "calibration_chunks": 16
+      },
+      "weighted": {
+        "ppl": 62.16031583229645,
+        "delta_pct": 6.95960588920305,
+        "elapsed_sec": 91.93881583213806,
+        "calibration_chunks": 16
+      }
+    },
+    "37": {
+      "svd": {
+        "ppl": 251.5151029243408,
+        "delta_pct": 332.7834555498263,
+        "elapsed_sec": 48.95857906341553,
+        "calibration_chunks": 16
+      },
+      "weighted": {
+        "ppl": 62.52355724314669,
+        "delta_pct": 7.5846374326720385,
+        "elapsed_sec": 71.81894063949585,
+        "calibration_chunks": 16
+      }
+    }
+  }
+}
