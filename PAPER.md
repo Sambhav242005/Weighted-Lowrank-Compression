@@ -4,6 +4,30 @@
 this repository (see `results/*.json`, run log in `THREAD.md`). Sections marked
 `[GAP]` require additional experiments before the paper is submission-ready.
 
+## Current evidence update (2026-08-15)
+
+This revision narrows the public claim to attention output projections and
+separates the new locked-protocol evidence from earlier exploratory tables.
+The pinned Gemma-3-1B run in
+`results/track-a-gemma-20260815-073809/` evaluated every attention output
+projection at rank 384. Full-test PPL was 61.39, 62.16, and 62.52 for
+calibration seeds 11, 23, and 37, against the untouched baseline PPL of
+58.12. The mean increase was about 6.7%; plain truncated SVD at the same
+rank produced PPL 251.52. This supports an empirical advantage over plain
+SVD, not yet an algorithmic-novelty claim.
+
+ASVD and EoRA head-to-head comparisons, GPT-2 replication, logit KL,
+hidden-state drift, downstream tasks, and packed-latency evaluation remain
+open. Direct 50% activation-aware pruning on GPT-2 raised PPL from 36.10 to
+79.46, while 90% pruning raised it above 15,000; these are negative pruning
+results, not evidence against the low-rank method.
+
+**Revised claim.** Calibration-activation-weighted low-rank fitting is an
+effective empirical strategy for attention output projections at the tested
+Gemma rank and protocol. If ASVD or EoRA matches it within uncertainty, the
+paper must be framed as an empirical or systems contribution rather than a
+new algorithm.
+
 ---
 
 ## Abstract
@@ -361,7 +385,17 @@ plain quantization where int4 is free.
 
 ---
 
-## 9. Conclusion
+## 9. Revised conclusion
+
+The current evidence supports activation-weighted low-rank fitting as a
+promising empirical method for Gemma attention output projections, with a
+clear advantage over plain SVD at the tested rank. It does not yet establish
+algorithmic novelty, cross-architecture generality, or deployment success.
+Those claims require matched ASVD/EoRA controls, full drift and downstream
+evaluation, and a genuinely packed artifact. Direct high-sparsity pruning is
+reported as a negative result.
+
+## 9a. Previous conclusion (superseded)
 
 The "drift wall" of full-stack low-rank compression is largely an artifact
 of approximating in the wrong norm. A closed-form activation-weighted fit
