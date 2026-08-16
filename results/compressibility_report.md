@@ -172,7 +172,7 @@
 ### MLP Blocks
 - W_up 99% rank: 714/768 (93.0%)
 - W_down 99% rank: 717/768 (93.4%)
-- **Least compressible block type** — near full rank
+- **Least compressible block type** - near full rank
 
 ### Compression Potential by Layer
 
