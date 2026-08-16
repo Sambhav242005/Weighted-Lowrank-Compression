@@ -1,0 +1,51 @@
+{
+  "run_id": "reference-neuron-random-20260815-132346",
+  "created_at_utc": "2026-08-15T07:53:48.722342+00:00",
+  "command": "src\\reference_neuron_probe.py --mode random --out results\\reference-neuron-random-20260815-132346",
+  "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "torch": "2.13.0+cu132",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "mode": "random",
+  "seed": 11,
+  "matrices": {
+    "iid_gaussian": {
+      "rows": 256,
+      "columns": 512,
+      "best_reference_row": 221,
+      "best_reference_mean_abs_corr": 0.04112991318106651,
+      "best_residual_energy_ratio": 0.9917424474966107,
+      "random_reference_residual_energy_ratio": 0.9920888221485861,
+      "fp16_baseline_bytes": 262144,
+      "reference_plus_fp16_coeff_plus_int4_residual_bytes": 71680,
+      "estimated_storage_ratio": 3.657142857142857,
+      "residual_mean_abs": 0.7916409373283386,
+      "residual_std": 0.992587685585022
+    },
+    "shared_reference": {
+      "rows": 256,
+      "columns": 512,
+      "best_reference_row": 217,
+      "best_reference_mean_abs_corr": 0.9958272576332092,
+      "best_residual_energy_ratio": 0.00045778804206186326,
+      "random_reference_residual_energy_ratio": 0.000703821065859192,
+      "fp16_baseline_bytes": 262144,
+      "reference_plus_fp16_coeff_plus_int4_residual_bytes": 71680,
+      "estimated_storage_ratio": 3.657142857142857,
+      "residual_mean_abs": 0.01842571049928665,
+      "residual_std": 0.023177865892648697
+    },
+    "global_rank8": {
+      "rows": 256,
+      "columns": 512,
+      "best_reference_row": 150,
+      "best_reference_mean_abs_corr": 0.3308738172054291,
+      "best_residual_energy_ratio": 0.8195623958384203,
+      "random_reference_residual_energy_ratio": 0.868792520106667,
+      "fp16_baseline_bytes": 262144,
+      "reference_plus_fp16_coeff_plus_int4_residual_bytes": 71680,
+      "estimated_storage_ratio": 3.657142857142857,
+      "residual_mean_abs": 2.0117225646972656,
+      "residual_std": 2.6111466884613037
+    }
+  }
+}

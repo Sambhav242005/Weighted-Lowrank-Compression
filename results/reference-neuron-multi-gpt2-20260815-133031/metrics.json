@@ -1,0 +1,4190 @@
+{
+  "run_id": "reference-neuron-multi-gpt2-20260815-133031",
+  "created_at_utc": "2026-08-15T08:00:33.970514+00:00",
+  "command": "src\\reference_neuron_probe.py --mode gpt2 --snapshot C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--gpt2\\snapshots\\607a30d783dfa663caf39e06633721c8d4cfcd7e --device cuda --out results\\reference-neuron-multi-gpt2-20260815-133031",
+  "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "torch": "2.13.0+cu132",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "mode": "gpt2",
+  "seed": 11,
+  "model_snapshot": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--gpt2\\snapshots\\607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "device": "cuda",
+  "matrices": {
+    "transformer.h.0.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          430
+        ],
+        "mean_abs_corr_to_references": 0.03437143191695213,
+        "best_residual_energy_ratio": 0.9811779487915313,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.13393595814704895,
+        "residual_std": 0.1977320909500122
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          430,
+          314,
+          679,
+          107
+        ],
+        "mean_abs_corr_to_references": 0.03836457058787346,
+        "best_residual_energy_ratio": 0.9327985383254674,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.1315213292837143,
+        "residual_std": 0.19279564917087555
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          430,
+          314,
+          679,
+          107,
+          6,
+          289,
+          296,
+          634
+        ],
+        "mean_abs_corr_to_references": 0.03902990743517876,
+        "best_residual_energy_ratio": 0.9149977313685526,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.1301003247499466,
+        "residual_std": 0.19094718992710114
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          430,
+          314,
+          679,
+          107,
+          6,
+          289,
+          296,
+          634,
+          135,
+          760,
+          722,
+          663,
+          533,
+          45,
+          88,
+          278
+        ],
+        "mean_abs_corr_to_references": 0.037469569593667984,
+        "best_residual_energy_ratio": 0.8885798921139711,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.12784796953201294,
+        "residual_std": 0.18817049264907837
+      }
+    },
+    "transformer.h.0.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          745
+        ],
+        "mean_abs_corr_to_references": 0.10564633458852768,
+        "best_residual_energy_ratio": 0.9711519169936623,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.07286386936903,
+        "residual_std": 0.14531895518302917
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          745,
+          709,
+          589,
+          555
+        ],
+        "mean_abs_corr_to_references": 0.09953150153160095,
+        "best_residual_energy_ratio": 0.9049247894023317,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.07212617993354797,
+        "residual_std": 0.1402764916419983
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          745,
+          709,
+          589,
+          555,
+          721,
+          550,
+          613,
+          66
+        ],
+        "mean_abs_corr_to_references": 0.09457838535308838,
+        "best_residual_energy_ratio": 0.8465751776665014,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.07099485397338867,
+        "residual_std": 0.13567861914634705
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          745,
+          709,
+          589,
+          555,
+          721,
+          550,
+          613,
+          66,
+          525,
+          260,
+          294,
+          124,
+          102,
+          607,
+          297,
+          302
+        ],
+        "mean_abs_corr_to_references": 0.07780683785676956,
+        "best_residual_energy_ratio": 0.7944260668651166,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.06948952376842499,
+        "residual_std": 0.13143329322338104
+      }
+    },
+    "transformer.h.0.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          138
+        ],
+        "mean_abs_corr_to_references": 0.06792158633470535,
+        "best_residual_energy_ratio": 0.9603253593032364,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.10261229425668716,
+        "residual_std": 0.1383424699306488
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          138,
+          492,
+          147,
+          214
+        ],
+        "mean_abs_corr_to_references": 0.03148128464818001,
+        "best_residual_energy_ratio": 0.9537025621530048,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.10205505043268204,
+        "residual_std": 0.1378646194934845
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          138,
+          492,
+          147,
+          214,
+          532,
+          172,
+          736,
+          533
+        ],
+        "mean_abs_corr_to_references": 0.025629818439483643,
+        "best_residual_energy_ratio": 0.9449079447977836,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.10131648182868958,
+        "residual_std": 0.13722749054431915
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          138,
+          492,
+          147,
+          214,
+          532,
+          172,
+          736,
+          533,
+          207,
+          37,
+          634,
+          419,
+          367,
+          222,
+          474,
+          236
+        ],
+        "mean_abs_corr_to_references": 0.022383516654372215,
+        "best_residual_energy_ratio": 0.9276598275902749,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09985096752643585,
+        "residual_std": 0.13596926629543304
+      }
+    },
+    "transformer.h.0.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1612
+        ],
+        "mean_abs_corr_to_references": 0.02825882099568844,
+        "best_residual_energy_ratio": 0.9910898548405077,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.06411842256784439,
+        "residual_std": 0.08757271617650986
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1612,
+          1817,
+          2049,
+          2454
+        ],
+        "mean_abs_corr_to_references": 0.03254472091794014,
+        "best_residual_energy_ratio": 0.939891397308555,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.064058817923069,
+        "residual_std": 0.08528077602386475
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1612,
+          1817,
+          2049,
+          2454,
+          37,
+          2710,
+          2903,
+          1529
+        ],
+        "mean_abs_corr_to_references": 0.038057662546634674,
+        "best_residual_energy_ratio": 0.9082390063739569,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.06355889141559601,
+        "residual_std": 0.08383249491453171
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1612,
+          1817,
+          2049,
+          2454,
+          37,
+          2710,
+          2903,
+          1529,
+          1436,
+          2637,
+          2452,
+          1311,
+          11,
+          416,
+          2260,
+          2702
+        ],
+        "mean_abs_corr_to_references": 0.04032342880964279,
+        "best_residual_energy_ratio": 0.8532092527541704,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.06222742050886154,
+        "residual_std": 0.08125312626361847
+      }
+    },
+    "transformer.h.1.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          674
+        ],
+        "mean_abs_corr_to_references": 0.047151241451501846,
+        "best_residual_energy_ratio": 0.9916557579838954,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.10042405128479004,
+        "residual_std": 0.13947269320487976
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          674,
+          64,
+          138,
+          720
+        ],
+        "mean_abs_corr_to_references": 0.03992753475904465,
+        "best_residual_energy_ratio": 0.9803639208596823,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.09977218508720398,
+        "residual_std": 0.13867633044719696
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          674,
+          64,
+          138,
+          720,
+          222,
+          142,
+          387,
+          341
+        ],
+        "mean_abs_corr_to_references": 0.039839934557676315,
+        "best_residual_energy_ratio": 0.9652482678152144,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.0988345518708229,
+        "residual_std": 0.13760310411453247
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          674,
+          64,
+          138,
+          720,
+          222,
+          142,
+          387,
+          341,
+          447,
+          520,
+          80,
+          93,
+          601,
+          438,
+          452,
+          432
+        ],
+        "mean_abs_corr_to_references": 0.04054393246769905,
+        "best_residual_energy_ratio": 0.934854119250659,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09686959534883499,
+        "residual_std": 0.1354193240404129
+      }
+    },
+    "transformer.h.1.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          702
+        ],
+        "mean_abs_corr_to_references": 0.11265990138053894,
+        "best_residual_energy_ratio": 0.9624847866440144,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.06740424036979675,
+        "residual_std": 0.09998787194490433
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          702,
+          723,
+          555,
+          606
+        ],
+        "mean_abs_corr_to_references": 0.13924461603164673,
+        "best_residual_energy_ratio": 0.821247301126141,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.06709384173154831,
+        "residual_std": 0.0923607349395752
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          702,
+          723,
+          555,
+          606,
+          567,
+          630,
+          608,
+          489
+        ],
+        "mean_abs_corr_to_references": 0.10981317609548569,
+        "best_residual_energy_ratio": 0.7284666905707597,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.06653928011655807,
+        "residual_std": 0.08698717504739761
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          702,
+          723,
+          555,
+          606,
+          567,
+          630,
+          608,
+          489,
+          450,
+          454,
+          453,
+          487,
+          460,
+          492,
+          488,
+          373
+        ],
+        "mean_abs_corr_to_references": 0.08798856288194656,
+        "best_residual_energy_ratio": 0.6936348298841757,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.06466636061668396,
+        "residual_std": 0.08488205075263977
+      }
+    },
+    "transformer.h.1.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          432
+        ],
+        "mean_abs_corr_to_references": 0.041250575333833694,
+        "best_residual_energy_ratio": 0.9764876796487773,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09897270053625107,
+        "residual_std": 0.12917621433734894
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          432,
+          736,
+          510,
+          210
+        ],
+        "mean_abs_corr_to_references": 0.03436008468270302,
+        "best_residual_energy_ratio": 0.9680295615567991,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.0984334871172905,
+        "residual_std": 0.12861555814743042
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          432,
+          736,
+          510,
+          210,
+          252,
+          94,
+          214,
+          672
+        ],
+        "mean_abs_corr_to_references": 0.034835293889045715,
+        "best_residual_energy_ratio": 0.955569882371544,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09764930605888367,
+        "residual_std": 0.12778516113758087
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          432,
+          736,
+          510,
+          210,
+          252,
+          94,
+          214,
+          672,
+          296,
+          204,
+          108,
+          222,
+          509,
+          9,
+          341,
+          395
+        ],
+        "mean_abs_corr_to_references": 0.03167152777314186,
+        "best_residual_energy_ratio": 0.9366619733102657,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09626822173595428,
+        "residual_std": 0.12651459872722626
+      }
+    },
+    "transformer.h.1.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1120
+        ],
+        "mean_abs_corr_to_references": 0.023936333134770393,
+        "best_residual_energy_ratio": 0.9671803805556133,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.06402409076690674,
+        "residual_std": 0.08574838936328888
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1120,
+          293,
+          2814,
+          242
+        ],
+        "mean_abs_corr_to_references": 0.05102723836898804,
+        "best_residual_energy_ratio": 0.9175888249670024,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.06324838846921921,
+        "residual_std": 0.08352112770080566
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1120,
+          293,
+          2814,
+          242,
+          1959,
+          2995,
+          1886,
+          2355
+        ],
+        "mean_abs_corr_to_references": 0.049535077065229416,
+        "best_residual_energy_ratio": 0.8871310581855654,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.06270413845777512,
+        "residual_std": 0.08212325721979141
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1120,
+          293,
+          2814,
+          242,
+          1959,
+          2995,
+          1886,
+          2355,
+          1386,
+          369,
+          1966,
+          8,
+          2633,
+          260,
+          1320,
+          2559
+        ],
+        "mean_abs_corr_to_references": 0.04759380221366882,
+        "best_residual_energy_ratio": 0.8686447520743458,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.06203607842326164,
+        "residual_std": 0.08126310259103775
+      }
+    },
+    "transformer.h.2.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          745
+        ],
+        "mean_abs_corr_to_references": 0.034090206027030945,
+        "best_residual_energy_ratio": 0.9903210309938032,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.11083242297172546,
+        "residual_std": 0.15192808210849762
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          745,
+          420,
+          497,
+          138
+        ],
+        "mean_abs_corr_to_references": 0.037031009793281555,
+        "best_residual_energy_ratio": 0.962236572941622,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.109434574842453,
+        "residual_std": 0.14975833892822266
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          745,
+          420,
+          497,
+          138,
+          674,
+          27,
+          165,
+          3
+        ],
+        "mean_abs_corr_to_references": 0.0364161916077137,
+        "best_residual_energy_ratio": 0.9494695325252419,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.10850538313388824,
+        "residual_std": 0.14876151084899902
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          745,
+          420,
+          497,
+          138,
+          674,
+          27,
+          165,
+          3,
+          95,
+          677,
+          278,
+          295,
+          716,
+          264,
+          696,
+          501
+        ],
+        "mean_abs_corr_to_references": 0.03589987754821777,
+        "best_residual_energy_ratio": 0.9250840543790015,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.1067388728260994,
+        "residual_std": 0.14683875441551208
+      }
+    },
+    "transformer.h.2.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          78
+        ],
+        "mean_abs_corr_to_references": 0.10323581844568253,
+        "best_residual_energy_ratio": 0.9753275020676395,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.06102033331990242,
+        "residual_std": 0.08002956956624985
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          78,
+          88,
+          74,
+          90
+        ],
+        "mean_abs_corr_to_references": 0.06811556220054626,
+        "best_residual_energy_ratio": 0.9569918994417105,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.060490574687719345,
+        "residual_std": 0.07927374541759491
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          78,
+          88,
+          74,
+          90,
+          82,
+          112,
+          71,
+          106
+        ],
+        "mean_abs_corr_to_references": 0.055481523275375366,
+        "best_residual_energy_ratio": 0.9376008724773962,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.05981549993157387,
+        "residual_std": 0.0784664899110794
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          78,
+          88,
+          74,
+          90,
+          82,
+          112,
+          71,
+          106,
+          67,
+          124,
+          117,
+          122,
+          81,
+          113,
+          77,
+          66
+        ],
+        "mean_abs_corr_to_references": 0.048010919243097305,
+        "best_residual_energy_ratio": 0.900455407029527,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.05847940966486931,
+        "residual_std": 0.07689645886421204
+      }
+    },
+    "transformer.h.2.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          447
+        ],
+        "mean_abs_corr_to_references": 0.11468241363763809,
+        "best_residual_energy_ratio": 0.9537773358919193,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.10165907442569733,
+        "residual_std": 0.1304980367422104
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          447,
+          377,
+          122,
+          672
+        ],
+        "mean_abs_corr_to_references": 0.055780258029699326,
+        "best_residual_energy_ratio": 0.9468290393192484,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.1011163517832756,
+        "residual_std": 0.1300218254327774
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          447,
+          377,
+          122,
+          672,
+          74,
+          581,
+          256,
+          368
+        ],
+        "mean_abs_corr_to_references": 0.047819335013628006,
+        "best_residual_energy_ratio": 0.9368443229567431,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.1003439724445343,
+        "residual_std": 0.1293344497680664
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          447,
+          377,
+          122,
+          672,
+          74,
+          581,
+          256,
+          368,
+          524,
+          601,
+          361,
+          335,
+          467,
+          557,
+          593,
+          185
+        ],
+        "mean_abs_corr_to_references": 0.042993541806936264,
+        "best_residual_energy_ratio": 0.9175217695859509,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09880919754505157,
+        "residual_std": 0.12799373269081116
+      }
+    },
+    "transformer.h.2.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          3034
+        ],
+        "mean_abs_corr_to_references": 0.10447770357131958,
+        "best_residual_energy_ratio": 0.9469952106338984,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.06929831951856613,
+        "residual_std": 0.0905870869755745
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          3034,
+          666,
+          2747,
+          2027
+        ],
+        "mean_abs_corr_to_references": 0.08626482635736465,
+        "best_residual_energy_ratio": 0.9099853869496748,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.06855231523513794,
+        "residual_std": 0.08879931271076202
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          3034,
+          666,
+          2747,
+          2027,
+          1597,
+          2643,
+          1153,
+          2051
+        ],
+        "mean_abs_corr_to_references": 0.06180383637547493,
+        "best_residual_energy_ratio": 0.8955952200345532,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.06815775483846664,
+        "residual_std": 0.08809439092874527
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          3034,
+          666,
+          2747,
+          2027,
+          1597,
+          2643,
+          1153,
+          2051,
+          2720,
+          2944,
+          1314,
+          455,
+          357,
+          62,
+          928,
+          480
+        ],
+        "mean_abs_corr_to_references": 0.04685940220952034,
+        "best_residual_energy_ratio": 0.8750058754092246,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.06742078065872192,
+        "residual_std": 0.08707588165998459
+      }
+    },
+    "transformer.h.3.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87
+        ],
+        "mean_abs_corr_to_references": 0.01431161817163229,
+        "best_residual_energy_ratio": 0.9947796876243589,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.1084389016032219,
+        "residual_std": 0.14143681526184082
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          266,
+          64
+        ],
+        "mean_abs_corr_to_references": 0.019389208406209946,
+        "best_residual_energy_ratio": 0.9769875044254588,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.10764600336551666,
+        "residual_std": 0.1401662677526474
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          266,
+          64,
+          378,
+          138,
+          674,
+          668
+        ],
+        "mean_abs_corr_to_references": 0.027363302186131477,
+        "best_residual_energy_ratio": 0.9633697707543726,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.10667508095502853,
+        "residual_std": 0.13918599486351013
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          266,
+          64,
+          378,
+          138,
+          674,
+          668,
+          364,
+          118,
+          218,
+          478,
+          219,
+          295,
+          680,
+          324
+        ],
+        "mean_abs_corr_to_references": 0.031196339055895805,
+        "best_residual_energy_ratio": 0.9389097316182222,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.10485553741455078,
+        "residual_std": 0.13740764558315277
+      }
+    },
+    "transformer.h.3.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          674
+        ],
+        "mean_abs_corr_to_references": 0.09320036321878433,
+        "best_residual_energy_ratio": 0.9829664125439523,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.06406029313802719,
+        "residual_std": 0.08340556174516678
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          674,
+          676,
+          675,
+          316
+        ],
+        "mean_abs_corr_to_references": 0.0731065571308136,
+        "best_residual_energy_ratio": 0.9610990229339774,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.06348618865013123,
+        "residual_std": 0.08247260749340057
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          674,
+          676,
+          675,
+          316,
+          260,
+          284,
+          663,
+          294
+        ],
+        "mean_abs_corr_to_references": 0.06432315707206726,
+        "best_residual_energy_ratio": 0.9378740675398775,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.06266531348228455,
+        "residual_std": 0.08147003501653671
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          674,
+          676,
+          675,
+          316,
+          260,
+          284,
+          663,
+          294,
+          307,
+          644,
+          657,
+          282,
+          306,
+          269,
+          696,
+          286
+        ],
+        "mean_abs_corr_to_references": 0.05407434329390526,
+        "best_residual_energy_ratio": 0.8985974218240149,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.06117528676986694,
+        "residual_std": 0.07974588125944138
+      }
+    },
+    "transformer.h.3.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          361
+        ],
+        "mean_abs_corr_to_references": 0.027324208989739418,
+        "best_residual_energy_ratio": 0.9764977090125958,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.10072074085474014,
+        "residual_std": 0.128134086728096
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          361,
+          122,
+          317,
+          337
+        ],
+        "mean_abs_corr_to_references": 0.025972457602620125,
+        "best_residual_energy_ratio": 0.969603771931293,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.1001756563782692,
+        "residual_std": 0.12768098711967468
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          361,
+          122,
+          317,
+          337,
+          752,
+          177,
+          438,
+          299
+        ],
+        "mean_abs_corr_to_references": 0.026103070005774498,
+        "best_residual_energy_ratio": 0.9602928997608077,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.099435955286026,
+        "residual_std": 0.1270664483308792
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          361,
+          122,
+          317,
+          337,
+          752,
+          177,
+          438,
+          299,
+          256,
+          413,
+          766,
+          74,
+          390,
+          672,
+          190,
+          767
+        ],
+        "mean_abs_corr_to_references": 0.026153044775128365,
+        "best_residual_energy_ratio": 0.9418519528784315,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09797277301549911,
+        "residual_std": 0.12584048509597778
+      }
+    },
+    "transformer.h.3.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1027
+        ],
+        "mean_abs_corr_to_references": 0.1565999835729599,
+        "best_residual_energy_ratio": 0.9207576873275181,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.06830933690071106,
+        "residual_std": 0.08809368312358856
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1027,
+          1751,
+          2108,
+          2662
+        ],
+        "mean_abs_corr_to_references": 0.08966651558876038,
+        "best_residual_energy_ratio": 0.9084026846112208,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.0679839476943016,
+        "residual_std": 0.08750064671039581
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1027,
+          1751,
+          2108,
+          2662,
+          2265,
+          489,
+          2290,
+          1605
+        ],
+        "mean_abs_corr_to_references": 0.06936261057853699,
+        "best_residual_energy_ratio": 0.8961452151866309,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.06754035502672195,
+        "residual_std": 0.08690830320119858
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1027,
+          1751,
+          2108,
+          2662,
+          2265,
+          489,
+          2290,
+          1605,
+          1988,
+          3043,
+          1722,
+          641,
+          2547,
+          2571,
+          254,
+          2565
+        ],
+        "mean_abs_corr_to_references": 0.05736524984240532,
+        "best_residual_energy_ratio": 0.8749835357321023,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.066743403673172,
+        "residual_std": 0.08587604016065598
+      }
+    },
+    "transformer.h.4.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87
+        ],
+        "mean_abs_corr_to_references": 0.013187293894588947,
+        "best_residual_energy_ratio": 0.9946383628115971,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.11022254079580307,
+        "residual_std": 0.1460447609424591
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          64,
+          266
+        ],
+        "mean_abs_corr_to_references": 0.01788163371384144,
+        "best_residual_energy_ratio": 0.9781067682511028,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.10961797833442688,
+        "residual_std": 0.1448259949684143
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          64,
+          266,
+          138,
+          447,
+          125,
+          184
+        ],
+        "mean_abs_corr_to_references": 0.027684668079018593,
+        "best_residual_energy_ratio": 0.9631087612870071,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.10870831459760666,
+        "residual_std": 0.14371134340763092
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          64,
+          266,
+          138,
+          447,
+          125,
+          184,
+          684,
+          560,
+          305,
+          95,
+          518,
+          334,
+          764,
+          694
+        ],
+        "mean_abs_corr_to_references": 0.031425125896930695,
+        "best_residual_energy_ratio": 0.9386019347272506,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.10702915489673615,
+        "residual_std": 0.14187116920948029
+      }
+    },
+    "transformer.h.4.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          530
+        ],
+        "mean_abs_corr_to_references": 0.06217886134982109,
+        "best_residual_energy_ratio": 0.9906375973277255,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.07055655121803284,
+        "residual_std": 0.092542864382267
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          530,
+          553,
+          525,
+          531
+        ],
+        "mean_abs_corr_to_references": 0.05841359496116638,
+        "best_residual_energy_ratio": 0.9666770053909154,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.06997337937355042,
+        "residual_std": 0.0914168506860733
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          530,
+          553,
+          525,
+          531,
+          554,
+          556,
+          555,
+          564
+        ],
+        "mean_abs_corr_to_references": 0.05284479260444641,
+        "best_residual_energy_ratio": 0.9439815745356743,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.06909993290901184,
+        "residual_std": 0.0903373435139656
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          530,
+          553,
+          525,
+          531,
+          554,
+          556,
+          555,
+          564,
+          532,
+          522,
+          514,
+          574,
+          544,
+          536,
+          548,
+          566
+        ],
+        "mean_abs_corr_to_references": 0.0514133982360363,
+        "best_residual_energy_ratio": 0.8980099376238816,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.06731553375720978,
+        "residual_std": 0.08811018615961075
+      }
+    },
+    "transformer.h.4.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          122
+        ],
+        "mean_abs_corr_to_references": 0.02821253053843975,
+        "best_residual_energy_ratio": 0.9787145828586331,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.10054383426904678,
+        "residual_std": 0.1283658891916275
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          122,
+          633,
+          489,
+          524
+        ],
+        "mean_abs_corr_to_references": 0.026147646829485893,
+        "best_residual_energy_ratio": 0.9718355317627162,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09999866783618927,
+        "residual_std": 0.1279139667749405
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          122,
+          633,
+          489,
+          524,
+          44,
+          268,
+          661,
+          261
+        ],
+        "mean_abs_corr_to_references": 0.026816939935088158,
+        "best_residual_energy_ratio": 0.9620911190310579,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09924213588237762,
+        "residual_std": 0.12727107107639313
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          122,
+          633,
+          489,
+          524,
+          44,
+          268,
+          661,
+          261,
+          185,
+          303,
+          214,
+          754,
+          390,
+          382,
+          733,
+          117
+        ],
+        "mean_abs_corr_to_references": 0.027141699567437172,
+        "best_residual_energy_ratio": 0.9428681092832033,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09774530678987503,
+        "residual_std": 0.12599319219589233
+      }
+    },
+    "transformer.h.4.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          923
+        ],
+        "mean_abs_corr_to_references": 0.08367011696100235,
+        "best_residual_energy_ratio": 0.9827229105630555,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.06947651505470276,
+        "residual_std": 0.09020978957414627
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          923,
+          2709,
+          2082,
+          2253
+        ],
+        "mean_abs_corr_to_references": 0.06355615705251694,
+        "best_residual_energy_ratio": 0.9613664278106536,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.06914237141609192,
+        "residual_std": 0.0892241820693016
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          923,
+          2709,
+          2082,
+          2253,
+          1725,
+          149,
+          590,
+          224
+        ],
+        "mean_abs_corr_to_references": 0.04920123517513275,
+        "best_residual_energy_ratio": 0.9464736330993292,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.06875788420438766,
+        "residual_std": 0.08853039145469666
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          923,
+          2709,
+          2082,
+          2253,
+          1725,
+          149,
+          590,
+          224,
+          2645,
+          1727,
+          1328,
+          2210,
+          2588,
+          1304,
+          673,
+          2865
+        ],
+        "mean_abs_corr_to_references": 0.04646564647555351,
+        "best_residual_energy_ratio": 0.9177497296299755,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.06791090965270996,
+        "residual_std": 0.08717666566371918
+      }
+    },
+    "transformer.h.5.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87
+        ],
+        "mean_abs_corr_to_references": 0.011736354790627956,
+        "best_residual_energy_ratio": 0.9977032747968593,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.09935910254716873,
+        "residual_std": 0.12786565721035004
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          764,
+          268
+        ],
+        "mean_abs_corr_to_references": 0.02265717275440693,
+        "best_residual_energy_ratio": 0.9899584787000931,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.09886663407087326,
+        "residual_std": 0.12736840546131134
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          764,
+          268,
+          410,
+          337,
+          478,
+          740
+        ],
+        "mean_abs_corr_to_references": 0.02838955819606781,
+        "best_residual_energy_ratio": 0.9776529001460021,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09804005920886993,
+        "residual_std": 0.12657430768013
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          764,
+          268,
+          410,
+          337,
+          478,
+          740,
+          754,
+          626,
+          3,
+          261,
+          445,
+          685,
+          58,
+          21
+        ],
+        "mean_abs_corr_to_references": 0.03083469159901142,
+        "best_residual_energy_ratio": 0.9542294418913301,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09641116857528687,
+        "residual_std": 0.12504883110523224
+      }
+    },
+    "transformer.h.5.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          595
+        ],
+        "mean_abs_corr_to_references": 0.06495452672243118,
+        "best_residual_energy_ratio": 0.9897895446858045,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.07241784036159515,
+        "residual_std": 0.0932948887348175
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          595,
+          616,
+          624,
+          633
+        ],
+        "mean_abs_corr_to_references": 0.049486007541418076,
+        "best_residual_energy_ratio": 0.9720979492009608,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.07171636819839478,
+        "residual_std": 0.0924573466181755
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          595,
+          616,
+          624,
+          633,
+          623,
+          580,
+          602,
+          582
+        ],
+        "mean_abs_corr_to_references": 0.0466277115046978,
+        "best_residual_energy_ratio": 0.94993017144358,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.07080236077308655,
+        "residual_std": 0.09139706939458847
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          595,
+          616,
+          624,
+          633,
+          623,
+          580,
+          602,
+          582,
+          597,
+          579,
+          632,
+          626,
+          627,
+          592,
+          636,
+          587
+        ],
+        "mean_abs_corr_to_references": 0.04592324420809746,
+        "best_residual_energy_ratio": 0.9055113959168534,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.0689786896109581,
+        "residual_std": 0.0892346203327179
+      }
+    },
+    "transformer.h.5.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          478
+        ],
+        "mean_abs_corr_to_references": 0.024519702419638634,
+        "best_residual_energy_ratio": 0.9770338212882281,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09844063967466354,
+        "residual_std": 0.1253121942281723
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          478,
+          122,
+          329,
+          523
+        ],
+        "mean_abs_corr_to_references": 0.025660261511802673,
+        "best_residual_energy_ratio": 0.9699564802554115,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09789624065160751,
+        "residual_std": 0.12485749274492264
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          478,
+          122,
+          329,
+          523,
+          186,
+          489,
+          451,
+          187
+        ],
+        "mean_abs_corr_to_references": 0.025921644642949104,
+        "best_residual_energy_ratio": 0.9605967374304623,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.0971636101603508,
+        "residual_std": 0.12425362318754196
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          478,
+          122,
+          329,
+          523,
+          186,
+          489,
+          451,
+          187,
+          361,
+          434,
+          740,
+          280,
+          584,
+          403,
+          53,
+          529
+        ],
+        "mean_abs_corr_to_references": 0.026915738359093666,
+        "best_residual_energy_ratio": 0.9410245960830788,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09566818922758102,
+        "residual_std": 0.12298127263784409
+      }
+    },
+    "transformer.h.5.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2562
+        ],
+        "mean_abs_corr_to_references": 0.03470692038536072,
+        "best_residual_energy_ratio": 0.9958185961592747,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.07498196512460709,
+        "residual_std": 0.09715325385332108
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2562,
+          671,
+          303,
+          419
+        ],
+        "mean_abs_corr_to_references": 0.036041516810655594,
+        "best_residual_energy_ratio": 0.9836639211619996,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.07466956973075867,
+        "residual_std": 0.09655851125717163
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2562,
+          671,
+          303,
+          419,
+          1707,
+          767,
+          1015,
+          155
+        ],
+        "mean_abs_corr_to_references": 0.036471232771873474,
+        "best_residual_energy_ratio": 0.9679674333490779,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.07418249547481537,
+        "residual_std": 0.09578502178192139
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2562,
+          671,
+          303,
+          419,
+          1707,
+          767,
+          1015,
+          155,
+          548,
+          11,
+          1866,
+          2895,
+          1979,
+          2926,
+          2663,
+          1104
+        ],
+        "mean_abs_corr_to_references": 0.0340542308986187,
+        "best_residual_energy_ratio": 0.9455886473335439,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.07341712713241577,
+        "residual_std": 0.09467130899429321
+      }
+    },
+    "transformer.h.6.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          480
+        ],
+        "mean_abs_corr_to_references": 0.013375761918723583,
+        "best_residual_energy_ratio": 0.99745065645082,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.09926243126392365,
+        "residual_std": 0.12669838964939117
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          480,
+          87,
+          64,
+          266
+        ],
+        "mean_abs_corr_to_references": 0.01622770167887211,
+        "best_residual_energy_ratio": 0.9909768190118341,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.09893105924129486,
+        "residual_std": 0.1262865662574768
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          480,
+          87,
+          64,
+          266,
+          510,
+          751,
+          478,
+          763
+        ],
+        "mean_abs_corr_to_references": 0.023670995607972145,
+        "best_residual_energy_ratio": 0.9797147149453945,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09811005741357803,
+        "residual_std": 0.12556691467761993
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          480,
+          87,
+          64,
+          266,
+          510,
+          751,
+          478,
+          763,
+          695,
+          434,
+          432,
+          504,
+          562,
+          552,
+          400,
+          484
+        ],
+        "mean_abs_corr_to_references": 0.02681996114552021,
+        "best_residual_energy_ratio": 0.9585186757075885,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09652327746152878,
+        "residual_std": 0.12420117110013962
+      }
+    },
+    "transformer.h.6.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696
+        ],
+        "mean_abs_corr_to_references": 0.06748030334711075,
+        "best_residual_energy_ratio": 0.9896475666247837,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.0875440314412117,
+        "residual_std": 0.11309991776943207
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          671,
+          178,
+          141
+        ],
+        "mean_abs_corr_to_references": 0.0560581237077713,
+        "best_residual_energy_ratio": 0.9698209235772449,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.0867374911904335,
+        "residual_std": 0.1119612529873848
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          671,
+          178,
+          141,
+          416,
+          162,
+          132,
+          137
+        ],
+        "mean_abs_corr_to_references": 0.054675113409757614,
+        "best_residual_energy_ratio": 0.9446523080848716,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.08557620644569397,
+        "residual_std": 0.11049890518188477
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          671,
+          178,
+          141,
+          416,
+          162,
+          132,
+          137,
+          181,
+          651,
+          698,
+          138,
+          648,
+          186,
+          650,
+          674
+        ],
+        "mean_abs_corr_to_references": 0.05263594910502434,
+        "best_residual_energy_ratio": 0.9021759221957335,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.08341926336288452,
+        "residual_std": 0.10798604041337967
+      }
+    },
+    "transformer.h.6.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          280
+        ],
+        "mean_abs_corr_to_references": 0.027498966082930565,
+        "best_residual_energy_ratio": 0.9769990742042116,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09830483794212341,
+        "residual_std": 0.12492597848176956
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          280,
+          403,
+          279,
+          162
+        ],
+        "mean_abs_corr_to_references": 0.027502870187163353,
+        "best_residual_energy_ratio": 0.9696207968643177,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09774332493543625,
+        "residual_std": 0.1244533583521843
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          280,
+          403,
+          279,
+          162,
+          361,
+          128,
+          661,
+          187
+        ],
+        "mean_abs_corr_to_references": 0.027136975899338722,
+        "best_residual_energy_ratio": 0.9600875463675265,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09700778126716614,
+        "residual_std": 0.12384003400802612
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          280,
+          403,
+          279,
+          162,
+          361,
+          128,
+          661,
+          187,
+          710,
+          619,
+          293,
+          85,
+          201,
+          484,
+          303,
+          185
+        ],
+        "mean_abs_corr_to_references": 0.027020147070288658,
+        "best_residual_energy_ratio": 0.9413382123144521,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09554126858711243,
+        "residual_std": 0.12262485176324844
+      }
+    },
+    "transformer.h.6.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2538
+        ],
+        "mean_abs_corr_to_references": 0.052885811775922775,
+        "best_residual_energy_ratio": 0.9932908120112315,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.08277496695518494,
+        "residual_std": 0.10697119683027267
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2538,
+          2758,
+          1327,
+          442
+        ],
+        "mean_abs_corr_to_references": 0.04015595093369484,
+        "best_residual_energy_ratio": 0.9797576747422111,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.08242644369602203,
+        "residual_std": 0.10623998194932938
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2538,
+          2758,
+          1327,
+          442,
+          1984,
+          1849,
+          495,
+          1182
+        ],
+        "mean_abs_corr_to_references": 0.03707153722643852,
+        "best_residual_energy_ratio": 0.9675565445482925,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.08195427060127258,
+        "residual_std": 0.10557639598846436
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2538,
+          2758,
+          1327,
+          442,
+          1984,
+          1849,
+          495,
+          1182,
+          616,
+          162,
+          828,
+          640,
+          34,
+          1653,
+          2690,
+          468
+        ],
+        "mean_abs_corr_to_references": 0.0364019013941288,
+        "best_residual_energy_ratio": 0.9419948861161258,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.08104454725980759,
+        "residual_std": 0.10417246073484421
+      }
+    },
+    "transformer.h.7.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447
+        ],
+        "mean_abs_corr_to_references": 0.03379771485924721,
+        "best_residual_energy_ratio": 0.9959838662016749,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.10107706487178802,
+        "residual_std": 0.12872670590877533
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          510,
+          569
+        ],
+        "mean_abs_corr_to_references": 0.026465604081749916,
+        "best_residual_energy_ratio": 0.9887416892534802,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.10059177130460739,
+        "residual_std": 0.1282578408718109
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          510,
+          569,
+          162,
+          305,
+          186,
+          20
+        ],
+        "mean_abs_corr_to_references": 0.028369488194584846,
+        "best_residual_energy_ratio": 0.9779238362964552,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09979521483182907,
+        "residual_std": 0.1275542676448822
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          510,
+          569,
+          162,
+          305,
+          186,
+          20,
+          237,
+          486,
+          64,
+          687,
+          584,
+          605,
+          480,
+          63
+        ],
+        "mean_abs_corr_to_references": 0.027529655024409294,
+        "best_residual_energy_ratio": 0.9583778999126515,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09842097014188766,
+        "residual_std": 0.12627311050891876
+      }
+    },
+    "transformer.h.7.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          417
+        ],
+        "mean_abs_corr_to_references": 0.08681655675172806,
+        "best_residual_energy_ratio": 0.9846849358884191,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.08752377331256866,
+        "residual_std": 0.1130416989326477
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          417,
+          400,
+          412,
+          411
+        ],
+        "mean_abs_corr_to_references": 0.06148571893572807,
+        "best_residual_energy_ratio": 0.9658891086958921,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.08668467402458191,
+        "residual_std": 0.1119576171040535
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          417,
+          400,
+          412,
+          411,
+          389,
+          440,
+          386,
+          404
+        ],
+        "mean_abs_corr_to_references": 0.05873498320579529,
+        "best_residual_energy_ratio": 0.9400099758399421,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.0854937732219696,
+        "residual_std": 0.11044759303331375
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          417,
+          400,
+          412,
+          411,
+          389,
+          440,
+          386,
+          404,
+          410,
+          445,
+          385,
+          421,
+          418,
+          447,
+          436,
+          393
+        ],
+        "mean_abs_corr_to_references": 0.05908675864338875,
+        "best_residual_energy_ratio": 0.8925378510019825,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.08305723965167999,
+        "residual_std": 0.10762257128953934
+      }
+    },
+    "transformer.h.7.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          619
+        ],
+        "mean_abs_corr_to_references": 0.02778046764433384,
+        "best_residual_energy_ratio": 0.9752875142650861,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09880953282117844,
+        "residual_std": 0.1248999685049057
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          619,
+          187,
+          571,
+          403
+        ],
+        "mean_abs_corr_to_references": 0.025404443964362144,
+        "best_residual_energy_ratio": 0.968581254706508,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09827946126461029,
+        "residual_std": 0.1244698092341423
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          619,
+          187,
+          571,
+          403,
+          253,
+          740,
+          162,
+          26
+        ],
+        "mean_abs_corr_to_references": 0.025960376486182213,
+        "best_residual_energy_ratio": 0.9591627009080488,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09754865616559982,
+        "residual_std": 0.12386316061019897
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          619,
+          187,
+          571,
+          403,
+          253,
+          740,
+          162,
+          26,
+          328,
+          474,
+          90,
+          424,
+          434,
+          710,
+          754,
+          425
+        ],
+        "mean_abs_corr_to_references": 0.025859378278255463,
+        "best_residual_energy_ratio": 0.9409661183180525,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09610477089881897,
+        "residual_std": 0.1226826086640358
+      }
+    },
+    "transformer.h.7.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1024
+        ],
+        "mean_abs_corr_to_references": 0.04346369579434395,
+        "best_residual_energy_ratio": 0.9945627064469826,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.09216423332691193,
+        "residual_std": 0.11841171979904175
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1024,
+          1385,
+          1944,
+          2758
+        ],
+        "mean_abs_corr_to_references": 0.03982311859726906,
+        "best_residual_energy_ratio": 0.9810836841498277,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.09173519909381866,
+        "residual_std": 0.11760658770799637
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1024,
+          1385,
+          1944,
+          2758,
+          1810,
+          2750,
+          1003,
+          1322
+        ],
+        "mean_abs_corr_to_references": 0.04454229399561882,
+        "best_residual_energy_ratio": 0.96089530373705,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09110426157712936,
+        "residual_std": 0.11639026552438736
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1024,
+          1385,
+          1944,
+          2758,
+          1810,
+          2750,
+          1003,
+          1322,
+          1527,
+          2620,
+          2348,
+          23,
+          2008,
+          634,
+          1975,
+          1959
+        ],
+        "mean_abs_corr_to_references": 0.038981419056653976,
+        "best_residual_energy_ratio": 0.9395379721518684,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.09010141342878342,
+        "residual_std": 0.1150895208120346
+      }
+    },
+    "transformer.h.8.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87
+        ],
+        "mean_abs_corr_to_references": 0.014744139276444912,
+        "best_residual_energy_ratio": 0.9973169525601477,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.1000843420624733,
+        "residual_std": 0.12676042318344116
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          447,
+          64
+        ],
+        "mean_abs_corr_to_references": 0.020809931680560112,
+        "best_residual_energy_ratio": 0.9892586299337469,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.099629245698452,
+        "residual_std": 0.12624727189540863
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          447,
+          64,
+          424,
+          510,
+          229,
+          436
+        ],
+        "mean_abs_corr_to_references": 0.023569053038954735,
+        "best_residual_energy_ratio": 0.9797223464151792,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09889107942581177,
+        "residual_std": 0.12563730776309967
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          480,
+          447,
+          64,
+          424,
+          510,
+          229,
+          436,
+          117,
+          695,
+          736,
+          264,
+          52,
+          263,
+          75,
+          758
+        ],
+        "mean_abs_corr_to_references": 0.02498188056051731,
+        "best_residual_energy_ratio": 0.9609504001723157,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09743601828813553,
+        "residual_std": 0.12442784756422043
+      }
+    },
+    "transformer.h.8.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          37
+        ],
+        "mean_abs_corr_to_references": 0.10691353678703308,
+        "best_residual_energy_ratio": 0.9766128230558594,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.09458816051483154,
+        "residual_std": 0.12092430144548416
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          37,
+          15,
+          4,
+          632
+        ],
+        "mean_abs_corr_to_references": 0.08886457234621048,
+        "best_residual_energy_ratio": 0.9534414967828629,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.09354585409164429,
+        "residual_std": 0.1194811537861824
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          37,
+          15,
+          4,
+          632,
+          38,
+          631,
+          607,
+          581
+        ],
+        "mean_abs_corr_to_references": 0.07130850106477737,
+        "best_residual_energy_ratio": 0.9354595435355433,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.09244409948587418,
+        "residual_std": 0.11834907531738281
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          37,
+          15,
+          4,
+          632,
+          38,
+          631,
+          607,
+          581,
+          593,
+          614,
+          585,
+          624,
+          157,
+          639,
+          582,
+          618
+        ],
+        "mean_abs_corr_to_references": 0.058825310319662094,
+        "best_residual_energy_ratio": 0.901816031755703,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.0902843326330185,
+        "residual_std": 0.11620139330625534
+      }
+    },
+    "transformer.h.8.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          187
+        ],
+        "mean_abs_corr_to_references": 0.024163275957107544,
+        "best_residual_energy_ratio": 0.9752638118047098,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09953778982162476,
+        "residual_std": 0.12571322917938232
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          187,
+          253,
+          339,
+          424
+        ],
+        "mean_abs_corr_to_references": 0.02433445118367672,
+        "best_residual_energy_ratio": 0.9686648384433673,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.0990016832947731,
+        "residual_std": 0.12528719007968903
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          187,
+          253,
+          339,
+          424,
+          293,
+          0,
+          754,
+          619
+        ],
+        "mean_abs_corr_to_references": 0.024546973407268524,
+        "best_residual_energy_ratio": 0.9598306168823207,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09828480333089828,
+        "residual_std": 0.12471457570791245
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          187,
+          253,
+          339,
+          424,
+          293,
+          0,
+          754,
+          619,
+          708,
+          290,
+          269,
+          162,
+          584,
+          349,
+          361,
+          403
+        ],
+        "mean_abs_corr_to_references": 0.02454368956387043,
+        "best_residual_energy_ratio": 0.9425297937731423,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09688012301921844,
+        "residual_std": 0.12358547002077103
+      }
+    },
+    "transformer.h.8.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          428
+        ],
+        "mean_abs_corr_to_references": 0.02317161113023758,
+        "best_residual_energy_ratio": 0.9957394688690172,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.10506031662225723,
+        "residual_std": 0.13511520624160767
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          428,
+          2791,
+          2875,
+          2543
+        ],
+        "mean_abs_corr_to_references": 0.04460911825299263,
+        "best_residual_energy_ratio": 0.9709176916209524,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.10440219938755035,
+        "residual_std": 0.13342051208019257
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          428,
+          2791,
+          2875,
+          2543,
+          2402,
+          2387,
+          2388,
+          42
+        ],
+        "mean_abs_corr_to_references": 0.03985083848237991,
+        "best_residual_energy_ratio": 0.9571366853954603,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.10365501791238785,
+        "residual_std": 0.1324702501296997
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          428,
+          2791,
+          2875,
+          2543,
+          2402,
+          2387,
+          2388,
+          42,
+          2532,
+          1604,
+          1749,
+          496,
+          1141,
+          936,
+          1807,
+          2174
+        ],
+        "mean_abs_corr_to_references": 0.03574095666408539,
+        "best_residual_energy_ratio": 0.9363545516133921,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.10250114649534225,
+        "residual_std": 0.13102421164512634
+      }
+    },
+    "transformer.h.9.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447
+        ],
+        "mean_abs_corr_to_references": 0.031059110537171364,
+        "best_residual_energy_ratio": 0.9957104561355858,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.0993349626660347,
+        "residual_std": 0.12594608962535858
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          480,
+          64
+        ],
+        "mean_abs_corr_to_references": 0.02012752927839756,
+        "best_residual_energy_ratio": 0.989752279015047,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.0990244522690773,
+        "residual_std": 0.125568687915802
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          480,
+          64,
+          445,
+          562,
+          584,
+          90
+        ],
+        "mean_abs_corr_to_references": 0.022334063425660133,
+        "best_residual_energy_ratio": 0.9807874025568204,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09832105040550232,
+        "residual_std": 0.12499872595071793
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          447,
+          87,
+          480,
+          64,
+          445,
+          562,
+          584,
+          90,
+          416,
+          229,
+          478,
+          20,
+          230,
+          424,
+          605,
+          259
+        ],
+        "mean_abs_corr_to_references": 0.023320898413658142,
+        "best_residual_energy_ratio": 0.9632245230818478,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09691775590181351,
+        "residual_std": 0.12387450039386749
+      }
+    },
+    "transformer.h.9.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          320
+        ],
+        "mean_abs_corr_to_references": 0.09113077074289322,
+        "best_residual_energy_ratio": 0.9850764010785535,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.10546500235795975,
+        "residual_std": 0.13579490780830383
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          320,
+          382,
+          333,
+          331
+        ],
+        "mean_abs_corr_to_references": 0.08629271388053894,
+        "best_residual_energy_ratio": 0.9602872003406256,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.10443871468305588,
+        "residual_std": 0.13407540321350098
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          320,
+          382,
+          333,
+          331,
+          343,
+          600,
+          357,
+          441
+        ],
+        "mean_abs_corr_to_references": 0.06542866677045822,
+        "best_residual_energy_ratio": 0.9448291184684158,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.10339504480361938,
+        "residual_std": 0.13299190998077393
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          320,
+          382,
+          333,
+          331,
+          343,
+          600,
+          357,
+          441,
+          337,
+          354,
+          349,
+          339,
+          351,
+          329,
+          628,
+          321
+        ],
+        "mean_abs_corr_to_references": 0.0572611428797245,
+        "best_residual_energy_ratio": 0.9123384279178586,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.10110758990049362,
+        "residual_std": 0.1306852400302887
+      }
+    },
+    "transformer.h.9.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          0
+        ],
+        "mean_abs_corr_to_references": 0.024927718564867973,
+        "best_residual_energy_ratio": 0.9743847733441259,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09982984513044357,
+        "residual_std": 0.12600331008434296
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          0,
+          253,
+          328,
+          207
+        ],
+        "mean_abs_corr_to_references": 0.023773333057761192,
+        "best_residual_energy_ratio": 0.9680796571779161,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09931167960166931,
+        "residual_std": 0.12559497356414795
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          0,
+          253,
+          328,
+          207,
+          187,
+          754,
+          275,
+          584
+        ],
+        "mean_abs_corr_to_references": 0.024889610707759857,
+        "best_residual_energy_ratio": 0.9589386562220535,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09857804328203201,
+        "residual_std": 0.12500061094760895
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          0,
+          253,
+          328,
+          207,
+          187,
+          754,
+          275,
+          584,
+          414,
+          211,
+          411,
+          484,
+          424,
+          366,
+          673,
+          361
+        ],
+        "mean_abs_corr_to_references": 0.02500382624566555,
+        "best_residual_energy_ratio": 0.9412490513264765,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09714028239250183,
+        "residual_std": 0.12384229898452759
+      }
+    },
+    "transformer.h.9.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1911
+        ],
+        "mean_abs_corr_to_references": 0.04187924042344093,
+        "best_residual_energy_ratio": 0.9946238706060042,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.12109760195016861,
+        "residual_std": 0.15545429289340973
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1911,
+          1047,
+          1750,
+          1460
+        ],
+        "mean_abs_corr_to_references": 0.03380744531750679,
+        "best_residual_energy_ratio": 0.9858700875603181,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.12061785161495209,
+        "residual_std": 0.1547686904668808
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1911,
+          1047,
+          1750,
+          1460,
+          934,
+          1252,
+          1616,
+          1803
+        ],
+        "mean_abs_corr_to_references": 0.032891448587179184,
+        "best_residual_energy_ratio": 0.973874326697597,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.11988262087106705,
+        "residual_std": 0.15382422506809235
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1911,
+          1047,
+          1750,
+          1460,
+          934,
+          1252,
+          1616,
+          1803,
+          2151,
+          272,
+          1360,
+          5,
+          1305,
+          699,
+          2696,
+          637
+        ],
+        "mean_abs_corr_to_references": 0.03615806624293327,
+        "best_residual_energy_ratio": 0.9409307212339292,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.11812570691108704,
+        "residual_std": 0.1512001007795334
+      }
+    },
+    "transformer.h.10.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87
+        ],
+        "mean_abs_corr_to_references": 0.009596484713256359,
+        "best_residual_energy_ratio": 0.9976099543115716,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.09941765666007996,
+        "residual_std": 0.12652219831943512
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          64,
+          480,
+          266
+        ],
+        "mean_abs_corr_to_references": 0.017255960032343864,
+        "best_residual_energy_ratio": 0.9902476230412649,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.09903593361377716,
+        "residual_std": 0.12605446577072144
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          64,
+          480,
+          266,
+          138,
+          562,
+          520,
+          303
+        ],
+        "mean_abs_corr_to_references": 0.023117758333683014,
+        "best_residual_energy_ratio": 0.9789731697852825,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09822872281074524,
+        "residual_std": 0.12533482909202576
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          87,
+          64,
+          480,
+          266,
+          138,
+          562,
+          520,
+          303,
+          697,
+          664,
+          68,
+          663,
+          754,
+          713,
+          229,
+          767
+        ],
+        "mean_abs_corr_to_references": 0.024810118600726128,
+        "best_residual_energy_ratio": 0.9600498136562307,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.0967627689242363,
+        "residual_std": 0.12411756813526154
+      }
+    },
+    "transformer.h.10.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696
+        ],
+        "mean_abs_corr_to_references": 0.1714315563440323,
+        "best_residual_energy_ratio": 0.9373581377726061,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.1109655573964119,
+        "residual_std": 0.14196069538593292
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          657,
+          667,
+          652
+        ],
+        "mean_abs_corr_to_references": 0.1460602730512619,
+        "best_residual_energy_ratio": 0.9187866134886268,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.1097695603966713,
+        "residual_std": 0.14054735004901886
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          657,
+          667,
+          652,
+          675,
+          676,
+          658,
+          680
+        ],
+        "mean_abs_corr_to_references": 0.10351365804672241,
+        "best_residual_energy_ratio": 0.9064117067671084,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.1087733656167984,
+        "residual_std": 0.13959763944149017
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          696,
+          657,
+          667,
+          652,
+          675,
+          676,
+          658,
+          680,
+          653,
+          668,
+          662,
+          687,
+          703,
+          534,
+          677,
+          368
+        ],
+        "mean_abs_corr_to_references": 0.08975169062614441,
+        "best_residual_energy_ratio": 0.8841849751757948,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.10688959062099457,
+        "residual_std": 0.13787543773651123
+      }
+    },
+    "transformer.h.10.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          253
+        ],
+        "mean_abs_corr_to_references": 0.022164402529597282,
+        "best_residual_energy_ratio": 0.9738223542536644,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.09980472922325134,
+        "residual_std": 0.12600606679916382
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          253,
+          219,
+          433,
+          716
+        ],
+        "mean_abs_corr_to_references": 0.024335475638508797,
+        "best_residual_energy_ratio": 0.9671500929272709,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.09926378726959229,
+        "residual_std": 0.12557365000247955
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          253,
+          219,
+          433,
+          716,
+          625,
+          338,
+          584,
+          445
+        ],
+        "mean_abs_corr_to_references": 0.025397008284926414,
+        "best_residual_energy_ratio": 0.9579703895999446,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09852814674377441,
+        "residual_std": 0.12497628480195999
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          253,
+          219,
+          433,
+          716,
+          625,
+          338,
+          584,
+          445,
+          472,
+          263,
+          269,
+          410,
+          638,
+          187,
+          417,
+          639
+        ],
+        "mean_abs_corr_to_references": 0.025812173262238503,
+        "best_residual_energy_ratio": 0.9398671904687146,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09707927703857422,
+        "residual_std": 0.12378978729248047
+      }
+    },
+    "transformer.h.10.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2178
+        ],
+        "mean_abs_corr_to_references": 0.09095790982246399,
+        "best_residual_energy_ratio": 0.9785677371007471,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.13738320767879486,
+        "residual_std": 0.1762259155511856
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2178,
+          2798,
+          2895,
+          1276
+        ],
+        "mean_abs_corr_to_references": 0.04441988095641136,
+        "best_residual_energy_ratio": 0.9669874452582772,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.1366734802722931,
+        "residual_std": 0.1751800924539566
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2178,
+          2798,
+          2895,
+          1276,
+          2976,
+          1480,
+          2931,
+          2193
+        ],
+        "mean_abs_corr_to_references": 0.04201142489910126,
+        "best_residual_energy_ratio": 0.949896331012037,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.13566721975803375,
+        "residual_std": 0.17362506687641144
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          2178,
+          2798,
+          2895,
+          1276,
+          2976,
+          1480,
+          2931,
+          2193,
+          823,
+          532,
+          1985,
+          270,
+          370,
+          3032,
+          1786,
+          1502
+        ],
+        "mean_abs_corr_to_references": 0.03880070149898529,
+        "best_residual_energy_ratio": 0.9236996039908308,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.13379111886024475,
+        "residual_std": 0.17121416330337524
+      }
+    },
+    "transformer.h.11.attn.c_attn.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          138
+        ],
+        "mean_abs_corr_to_references": 0.02344890497624874,
+        "best_residual_energy_ratio": 0.9929128643225356,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 947712,
+        "estimated_storage_ratio": 3.73419773095624,
+        "residual_mean_abs": 0.09905639290809631,
+        "residual_std": 0.12801869213581085
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          138,
+          64,
+          266,
+          87
+        ],
+        "mean_abs_corr_to_references": 0.025620989501476288,
+        "best_residual_energy_ratio": 0.9836239344954705,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 966144,
+        "estimated_storage_ratio": 3.662957074721781,
+        "residual_mean_abs": 0.09849211573600769,
+        "residual_std": 0.12741845846176147
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          138,
+          64,
+          266,
+          87,
+          480,
+          393,
+          68,
+          653
+        ],
+        "mean_abs_corr_to_references": 0.025916168466210365,
+        "best_residual_energy_ratio": 0.973346353955947,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 990720,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.09778161346912384,
+        "residual_std": 0.12675105035305023
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 2304,
+        "reference_rows": [
+          138,
+          64,
+          266,
+          87,
+          480,
+          393,
+          68,
+          653,
+          319,
+          484,
+          163,
+          754,
+          767,
+          88,
+          48,
+          229
+        ],
+        "mean_abs_corr_to_references": 0.027133986353874207,
+        "best_residual_energy_ratio": 0.9534527676535742,
+        "fp16_baseline_bytes": 3538944,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1039872,
+        "estimated_storage_ratio": 3.4032496307237814,
+        "residual_mean_abs": 0.09630502760410309,
+        "residual_std": 0.1254490613937378
+      }
+    },
+    "transformer.h.11.attn.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          544
+        ],
+        "mean_abs_corr_to_references": 0.12155649811029434,
+        "best_residual_energy_ratio": 0.8919212497083552,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 317952,
+        "estimated_storage_ratio": 3.710144927536232,
+        "residual_mean_abs": 0.12022100389003754,
+        "residual_std": 0.171814426779747
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          544,
+          14,
+          25,
+          286
+        ],
+        "mean_abs_corr_to_references": 0.12696929275989532,
+        "best_residual_energy_ratio": 0.7653362128960817,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 327168,
+        "estimated_storage_ratio": 3.6056338028169015,
+        "residual_mean_abs": 0.12042062729597092,
+        "residual_std": 0.15915580093860626
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          544,
+          14,
+          25,
+          286,
+          27,
+          29,
+          152,
+          170
+        ],
+        "mean_abs_corr_to_references": 0.10333030670881271,
+        "best_residual_energy_ratio": 0.7283846701502625,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 339456,
+        "estimated_storage_ratio": 3.475113122171946,
+        "residual_mean_abs": 0.11897625029087067,
+        "residual_std": 0.15526613593101501
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 768,
+        "reference_rows": [
+          544,
+          14,
+          25,
+          286,
+          27,
+          29,
+          152,
+          170,
+          130,
+          144,
+          128,
+          167,
+          166,
+          142,
+          182,
+          184
+        ],
+        "mean_abs_corr_to_references": 0.07129093259572983,
+        "best_residual_energy_ratio": 0.7085228607480754,
+        "fp16_baseline_bytes": 1179648,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 364032,
+        "estimated_storage_ratio": 3.240506329113924,
+        "residual_mean_abs": 0.11695023626089096,
+        "residual_std": 0.15313458442687988
+      }
+    },
+    "transformer.h.11.mlp.c_fc.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          438
+        ],
+        "mean_abs_corr_to_references": 0.028177982196211815,
+        "best_residual_energy_ratio": 0.9713803722832696,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1262592,
+        "estimated_storage_ratio": 3.7372262773722627,
+        "residual_mean_abs": 0.10099334269762039,
+        "residual_std": 0.12814359366893768
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          438,
+          617,
+          754,
+          12
+        ],
+        "mean_abs_corr_to_references": 0.028148382902145386,
+        "best_residual_energy_ratio": 0.9640008575888336,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1285632,
+        "estimated_storage_ratio": 3.6702508960573477,
+        "residual_mean_abs": 0.10043308138847351,
+        "residual_std": 0.12765590846538544
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          438,
+          617,
+          754,
+          12,
+          268,
+          105,
+          231,
+          343
+        ],
+        "mean_abs_corr_to_references": 0.028292974457144737,
+        "best_residual_energy_ratio": 0.9541707113041198,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1316352,
+        "estimated_storage_ratio": 3.5845974329054844,
+        "residual_mean_abs": 0.09969097375869751,
+        "residual_std": 0.12700337171554565
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 768,
+        "columns": 3072,
+        "reference_rows": [
+          438,
+          617,
+          754,
+          12,
+          268,
+          105,
+          231,
+          343,
+          87,
+          313,
+          682,
+          471,
+          161,
+          9,
+          253,
+          514
+        ],
+        "mean_abs_corr_to_references": 0.030178764835000038,
+        "best_residual_energy_ratio": 0.9285799705994728,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1377792,
+        "estimated_storage_ratio": 3.4247491638795986,
+        "residual_mean_abs": 0.09771697968244553,
+        "residual_std": 0.1252886950969696
+      }
+    },
+    "transformer.h.11.mlp.c_proj.weight": {
+      "1": {
+        "reference_count": 1,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1577
+        ],
+        "mean_abs_corr_to_references": 0.043289318680763245,
+        "best_residual_energy_ratio": 0.9939570903013077,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1267200,
+        "estimated_storage_ratio": 3.7236363636363636,
+        "residual_mean_abs": 0.15061576664447784,
+        "residual_std": 0.1976197212934494
+      },
+      "4": {
+        "reference_count": 4,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1577,
+          2129,
+          2377,
+          1480
+        ],
+        "mean_abs_corr_to_references": 0.03937448188662529,
+        "best_residual_energy_ratio": 0.9799370880696232,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1290240,
+        "estimated_storage_ratio": 3.657142857142857,
+        "residual_mean_abs": 0.14986826479434967,
+        "residual_std": 0.19622103869915009
+      },
+      "8": {
+        "reference_count": 8,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1577,
+          2129,
+          2377,
+          1480,
+          2604,
+          2013,
+          553,
+          1186
+        ],
+        "mean_abs_corr_to_references": 0.03768707811832428,
+        "best_residual_energy_ratio": 0.9620605191060182,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1320960,
+        "estimated_storage_ratio": 3.572093023255814,
+        "residual_mean_abs": 0.14881911873817444,
+        "residual_std": 0.19442300498485565
+      },
+      "16": {
+        "reference_count": 16,
+        "rows": 3072,
+        "columns": 768,
+        "reference_rows": [
+          1577,
+          2129,
+          2377,
+          1480,
+          2604,
+          2013,
+          553,
+          1186,
+          2294,
+          459,
+          2227,
+          3033,
+          1234,
+          2837,
+          828,
+          1623
+        ],
+        "mean_abs_corr_to_references": 0.04225267842411995,
+        "best_residual_energy_ratio": 0.9223822120579065,
+        "fp16_baseline_bytes": 4718592,
+        "reference_plus_fp16_coeff_plus_int4_residual_bytes": 1382400,
+        "estimated_storage_ratio": 3.4133333333333336,
+        "residual_mean_abs": 0.14683793485164642,
+        "residual_std": 0.19037149846553802
+      }
+    }
+  }
+}

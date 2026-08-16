@@ -1,0 +1,43 @@
+{
+  "run_id": "pruning50-gpt2-validated-20260815-134245",
+  "created_at_utc": "2026-08-15T08:13:03.386613+00:00",
+  "command": "src\\run_gpt2_pruning90.py --snapshot C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--gpt2\\snapshots\\607a30d783dfa663caf39e06633721c8d4cfcd7e --train-arrow C:\\Users\\NPC\\.cache\\huggingface\\datasets\\wikitext\\wikitext-2-raw-v1\\0.0.0\\b08601e04326c79dfdd32d625aee71d232d685c3\\wikitext-train.arrow --test-arrow C:\\Users\\NPC\\.cache\\huggingface\\datasets\\wikitext\\wikitext-2-raw-v1\\0.0.0\\b08601e04326c79dfdd32d625aee71d232d685c3\\wikitext-test.arrow --out results\\pruning50-gpt2-validated-20260815-134245 --device cuda --sparsity 0.50",
+  "model_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "device": "cuda",
+  "sparsity_target": 0.5,
+  "calibration_tokens": 8192,
+  "test_tokens": 283287,
+  "baseline_ppl": 36.09834249654618,
+  "baseline_bytes": {
+    "dense_fp16_bytes": 169869312,
+    "csr_fp16_uint16_bytes": 339996864,
+    "sparse_storage_ratio": 0.49962023179131443
+  },
+  "magnitude": {
+    "pruning": {
+      "target_parameters": 84934656,
+      "nonzero_parameters": 42467328,
+      "sparsity": 0.5
+    },
+    "ppl": 651.4589918970577,
+    "bytes": {
+      "dense_fp16_bytes": 169869312,
+      "csr_fp16_uint16_bytes": 170127552,
+      "sparse_storage_ratio": 0.9984820800807149
+    }
+  },
+  "activation_aware": {
+    "pruning": {
+      "target_parameters": 84934656,
+      "nonzero_parameters": 42467331,
+      "sparsity": 0.499999964678729
+    },
+    "ppl": 79.46217181757376,
+    "bytes": {
+      "dense_fp16_bytes": 169869312,
+      "csr_fp16_uint16_bytes": 170127564,
+      "sparse_storage_ratio": 0.9984820096524747
+    }
+  }
+}
