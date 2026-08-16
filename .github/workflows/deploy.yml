@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'results/research-dashboard-20260815/**'
 
 permissions:
   contents: read
