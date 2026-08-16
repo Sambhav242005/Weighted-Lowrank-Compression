@@ -378,6 +378,7 @@
     </div>
 
     <h3>Ratio frontier &mdash; detailed</h3>
+    <p>Both methods compress the same weight matrix by replacing it with a lower-<span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> approximation. SVD picks the directions with the most mathematical energy, regardless of whether the model uses them. The proposed method uses <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> to identify which directions receive actual <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">activation</span> traffic, then allocates the budget to those directions instead.</p>
     <p>At 2x compression, both methods produce negligible quality loss. The gap opens at 3x: SVD raises <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> by 21% while the weighted fit adds only 3.6%. Beyond 3x, SVD collapses rapidly &mdash; the model becomes essentially useless at 4x (+152%). The weighted fit degrades more gracefully, remaining usable at 4x (+18%) and only becoming impractical at 6x and beyond.</p>
     <p>The key observation: weighted 4x beats SVD 3x while storing 25% fewer parameters. The method recovers an entire compression tier that plain SVD destroys.</p>
     <div class="table-wrap">
