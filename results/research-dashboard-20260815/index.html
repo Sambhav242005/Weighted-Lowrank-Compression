@@ -378,6 +378,8 @@
     </div>
 
     <h3>Ratio frontier &mdash; detailed</h3>
+    <p>At 2x compression, both methods produce negligible quality loss. The gap opens at 3x: SVD raises <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> by 21% while the weighted fit adds only 3.6%. Beyond 3x, SVD collapses rapidly &mdash; the model becomes essentially useless at 4x (+152%). The weighted fit degrades more gracefully, remaining usable at 4x (+18%) and only becoming impractical at 6x and beyond.</p>
+    <p>The key observation: weighted 4x beats SVD 3x while storing 25% fewer parameters. The method recovers an entire compression tier that plain SVD destroys.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Ratio (rank)</th><th class="num">SVD delta</th><th class="num">Weighted delta</th></tr></thead>
