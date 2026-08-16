@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reader Guide — Activation-Weighted Low-Rank Compression</title>
+  <meta name="description" content="A plain-English guide to understanding activation-weighted low-rank compression of transformer weights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#17202a; --muted:#5e6b78; --paper:#fafbfc; --card:#fff; --line:#e2e8f0;
+      --blue:#0077bb; --teal:#009988; --orange:#ee7733; --red:#cc3311; --navy:#19324a;
+      --serif:'Crimson Pro',Georgia,serif; --mono:'JetBrains Mono',monospace;
+      --sans:'Inter',system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{color:var(--ink);background:var(--paper);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+
+    .wrap{width:min(780px,calc(100% - 48px));margin:0 auto}
+
+    /* ── Header ── */
+    .page-header{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+    .page-header .eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+    .page-header h1{font:clamp(26px,4vw,40px)/1.15 var(--serif);font-weight:600;color:var(--navy);margin-bottom:12px}
+    .page-header .lead{font:18px/1.6 var(--serif);color:var(--muted);max-width:600px}
+
+    /* ── Sections ── */
+    section{padding:40px 0;border-bottom:1px solid var(--line)}
+    section:last-of-type{border-bottom:none}
+    h2{font:clamp(20px,3vw,28px)/1.2 var(--serif);font-weight:600;color:var(--navy);margin-bottom:10px}
+    h3{font:600 17px/1.3 var(--sans);color:var(--navy);margin-bottom:8px}
+    p{margin-bottom:14px}
+    .section-lead{font:17px/1.6 var(--serif);color:var(--muted);max-width:600px;margin-bottom:20px}
+
+    /* ── Cards ── */
+    .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:14px}
+
+    /* ── Callout ── */
+    .callout{border-left:4px solid var(--teal);background:#f0f9f7;padding:18px 22px;border-radius:0 8px 8px 0;margin:20px 0}
+    .callout strong{color:#075f55}
+    .callout p:last-child{margin-bottom:0}
+
+    /* ── Step cards ── */
+    .steps{counter-reset:step}
+    .step{position:relative;padding:24px 24px 24px 72px;margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+    .step::before{counter-increment:step;content:counter(step);position:absolute;left:20px;top:22px;width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;font:700 16px/36px var(--sans);text-align:center}
+
+    /* ── Analogy box ── */
+    .analogy{background:#f8f5ff;border:1px solid #e0d4f5;border-radius:10px;padding:20px 24px;margin:20px 0}
+    .analogy .analogy-label{font:600 12px var(--sans);text-transform:uppercase;letter-spacing:.06em;color:#7c3aed;margin-bottom:8px}
+    .analogy p{margin-bottom:8px;font:17px/1.6 var(--serif)}
+    .analogy p:last-child{margin-bottom:0}
+
+    /* ── Two-column ── */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+    @media(max-width:700px){.two-col{grid-template-columns:1fr}}
+
+    /* ── Expandable ── */
+    details{margin:14px 0}
+    details summary{cursor:pointer;font:600 15px/1.4 var(--sans);color:var(--navy);list-style:none;display:flex;align-items:center;gap:6px}
+    details summary::before{content:'▸';font-size:12px;transition:transform .2s}
+    details[open] summary::before{transform:rotate(90deg)}
+    details summary::-webkit-details-marker{display:none}
+    details .detail-body{padding:14px 0 6px;font-size:15px;line-height:1.65}
+    details .detail-body p:last-child{margin-bottom:0}
+
+    /* ── Glossary ── */
+    .glossary{margin:20px 0}
+    .gloss-item{background:#f8f9fa;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+    .gloss-item dt{font:600 14px var(--sans);color:var(--navy);margin-bottom:4px}
+    .gloss-item dd{font-size:13px;color:var(--muted);line-height:1.5}
+
+    /* ── Equation ── */
+    .eq{font:15px/1.5 var(--mono);color:var(--navy);background:#f0f4f8;padding:2px 6px;border-radius:4px}
+    .eq-block{text-align:center;font:16px/1.6 var(--mono);color:var(--navy);padding:16px 0;background:#f8f9fa;border-radius:8px;margin:16px 0}
+
+    /* ── Table ── */
+    .table-wrap{overflow-x:auto;margin:14px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line)}
+    th{font:600 12px/1 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#f8f9fa}
+    .num{text-align:right;font-variant-numeric:tabular-nums}
+    .highlight{font-weight:700;color:var(--teal)}
+
+    /* ── Footer ── */
+    footer{padding:36px 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+    footer a{color:var(--blue);text-decoration:none}
+
+    /* ── Nav ── */
+    .back-link{display:inline-flex;align-items:center;gap:6px;font:500 14px var(--sans);color:var(--teal);text-decoration:none;margin-bottom:20px}
+    .back-link:hover{text-decoration:underline}
+
+    /* ── Focus ── */
+    :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+    @media(max-width:600px){
+      .page-header{padding:40px 0 28px}
+      section{padding:28px 0}
+      .step{padding-left:60px}
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="wrap">
+    <div class="back-link"><a href="index.html">← Back to main paper</a></div>
+    <div class="eyebrow">Reader guide</div>
+    <h1>How to understand this research</h1>
+    <p class="lead">A plain-English guide to activation-weighted low-rank compression. You don't need to be an ML researcher to follow the main idea.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════ THE ONE-SENTENCE VERSION ════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>The one-sentence version</h2>
+    <div class="callout">
+      <p><strong>When compressing a neural network, don't ask "what's mathematically biggest?" — ask "what does the model actually use?"</strong> The answer changes which parts of the network you preserve, and it makes compression 5–7× less destructive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ THE IDEA IN 30 SECONDS ══════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>The idea in 30 seconds</h2>
+
+    <p>Neural networks store their knowledge in massive matrices — grids of numbers with millions of entries. To make the model smaller, we replace these matrices with simpler approximations that keep the most important patterns.</p>
+
+    <p>The standard approach (SVD) keeps the directions with the most <em>mathematical energy</em>. But the model doesn't use all directions equally. Some directions carry most of the computational traffic; others are barely touched.</p>
+
+    <p>Our method keeps the directions with the most <em>activation traffic</em> — the ones the model actually uses. Same compression budget, very different results.</p>
+
+    <div class="analogy">
+      <div class="analogy-label">Road map analogy</div>
+      <p>Imagine compressing a road network. Standard SVD preserves the widest roads — even if some are abandoned highways. Our method preserves the busiest roads — the ones that carry real traffic. Same map size, but the important connections survive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ WHY THIS MATTERS ═══════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>Why this matters</h2>
+
+    <p>Previous attempts at low-rank compression of transformers hit a "drift wall" — at 3× compression, the model's performance collapses. This was thought to be a fundamental limit: compress too much, and errors compound through the network.</p>
+
+    <p>We show the wall is mostly an artifact of the wrong compression objective. When you optimize in the right geometry (activation space instead of weight space), the wall largely disappears.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>The problem</h3>
+        <p>Plain SVD at 3× compression raises perplexity by 21% on GPT-2 and 72% on Gemma — making models nearly unusable.</p>
+      </div>
+      <div class="card">
+        <h3>Our result</h3>
+        <p>Activation-weighted fitting at the same 3× compression raises perplexity by only 3.6% on GPT-2 and actually <em>improves</em> Gemma by 4.5%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ THE METHOD IN THREE STEPS ═══════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>The method in three steps</h2>
+    <p class="section-lead">No equations required. Here's the intuition behind each step.</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Observe what the model does</h3>
+        <p>Feed the model some sample text and record which directions in each weight matrix get activated. This creates an "activation profile" — a map of where the computational traffic flows.</p>
+      </div>
+      <div class="step">
+        <h3>Solve for the best compressed version</h3>
+        <p>Instead of finding the mathematically simplest approximation (SVD), find the simplest approximation that preserves the activation patterns you observed. This is a one-shot calculation — no training, no gradients.</p>
+      </div>
+      <div class="step">
+        <h3>Keep rank where it matters</h3>
+        <p>When deciding which directions to keep and which to discard, prioritize the directions that carry activation traffic. The result: the model's important computational pathways survive compression.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ HOW TO READ THE PAPER ══════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>How to read the paper</h2>
+    <p class="section-lead">The full paper is available as a <a href="PAPER.md">Markdown draft</a> or <a href="paper.tex">LaTeX source</a>. Here's how to approach it depending on your background.</p>
+
+    <details>
+      <summary>If you know basic machine learning</summary>
+      <div class="detail-body">
+        <p>Start with the introduction (Section 1) to understand why low-rank compression fails. Then skip to Section 5 (Results) to see the cross-scale comparison table. The key figure is the perplexity delta table — it shows our method beating SVD by 5–7× across three model sizes. Section 8 (Limitations) is essential reading to understand the scope of the claims.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>If you are an ML researcher</summary>
+      <div class="detail-body">
+        <p>Read the paper in order. Section 3 (Method) presents the closed-form solution and its derivation. Section 4 (Experimental Setup) describes the protocol — all results use identical calibration, evaluation, and control conditions. Section 5.4 (Matrix-family study) shows where the method works and where it doesn't. Section 6 (Analysis: Compression as Denoising) presents the most surprising finding. Section 7 (Storage Accounting) honestly positions the method against quantization. Check the pre-submission checklist for open gaps.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Key equations to understand</summary>
+      <div class="detail-body">
+        <p>The core optimization objective:</p>
+        <div class="eq-block">L(Ŵ) = (1/n) Σᵢ ‖(W − Ŵ)xᵢ‖² + β ‖Ŵ − W‖²_F</div>
+        <p>This says: find a compressed version Ŵ that produces small errors on the calibration activations (first term), while staying close to the original weights in directions where we have no evidence (second term, the anchor).</p>
+        <p>The closed-form solution:</p>
+        <div class="eq-block">M* = C (G + βnI)⁻¹</div>
+        <p>Where <span class="eq">G = XXᵀ</span> is the activation Gram matrix and <span class="eq">C = (Y−b)Xᵀ + βnW</span> is the cross-moment. This is computed in the eigenspace of G with ridge regularization.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ GLOSSARY ═══════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>Glossary</h2>
+
+    <div class="glossary">
+      <div class="gloss-item">
+        <dl><dt>Low-rank</dt>
+        <dd>A matrix represented using fewer underlying dimensions. Instead of storing every entry independently, you store two smaller matrices whose product approximates the original. This is a form of compression.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>SVD (Singular Value Decomposition)</dt>
+        <dd>A standard mathematical method that breaks a matrix into its most important directions, ranked by how much "energy" each direction carries. It's the default tool for low-rank approximation.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Activation</dt>
+        <dd>The signal produced inside a neural network when an input passes through a layer. Activations tell you which parts of the network are "firing" for a given input.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Calibration data</dt>
+        <dd>Representative inputs used to observe the model's activation patterns before compression. The method needs to "see" what the model does in order to know what to preserve.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Rank</dt>
+        <dd>The number of independent directions retained by the compressed representation. Rank-256 means keeping 256 main patterns. Higher rank = more faithful to original but less compression.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Perplexity (PPL)</dt>
+        <dd>A language-model metric measuring how well the model predicts text. Lower is better. A PPL of 36 is good; a PPL of 15,000 means the model is essentially guessing randomly.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Activation-weighted</dt>
+        <dd>A compression objective influenced by the directions emphasized by actual model activations, rather than by mathematical magnitude alone.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Gram matrix</dt>
+        <dd>A matrix summarizing which directions appear frequently in the calibration activations. It defines the geometry in which the compression error is measured.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Weight-space anchor</dt>
+        <dd>A regularization term that prevents the compressed model from producing arbitrarily large weights in directions the calibration data never excites. Without it, the fit diverges.</dd></dl>
+      </div>
+      <div class="gloss-item">
+        <dl><dt>Drift</dt>
+        <dd>The phenomenon where approximation errors in early layers compound through the network, causing later layers to receive inputs they weren't trained on. This is why per-layer compression quality doesn't guarantee whole-model quality.</dd></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ MAIN RESULTS ═══════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>Main results</h2>
+    <p class="section-lead">All results are on attention output projections at one-sided 3× compression, evaluated on WikiText-2.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model</th><th class="num">Baseline PPL</th><th class="num">Plain SVD</th><th class="num">Weighted fit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GPT-2 Small (124M)</td><td class="num">56.47</td><td class="num">+21.34%</td><td class="num highlight">+3.58%</td></tr>
+          <tr><td>Gemma-3-1B</td><td class="num">70.40</td><td class="num">+71.86%</td><td class="num highlight">−4.45%</td></tr>
+          <tr><td>Qwen2.5-7B</td><td class="num">12.29</td><td class="num">+26.31%</td><td class="num highlight">+3.84%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Negative values mean the compressed model outperforms the original. The improvement factor over SVD is 5.9×, 16.2×, and 6.9× respectively.</p>
+
+    <details>
+      <summary>What does "PPL increase" mean?</td></summary>
+      <div class="detail-body">
+        <p>Perplexity measures how confused the model is when predicting the next word. A PPL increase of +3.58% means the model is 3.58% more confused than the original. A PPL <em>decrease</em> of −4.45% means the compressed model is actually <em>less</em> confused than the original — it's a better language model after compression.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What does "beats the teacher" mean?</summary>
+      <div class="detail-body">
+        <p>When we say the compressed Gemma-3-1B "beats the teacher," we mean the compressed model achieves lower perplexity on held-out text than the original uncompressed model — without any fine-tuning. This is unusual: compression normally makes models worse, not better. Our interpretation is that activation-weighted truncation acts as denoising, removing weight directions that never fire on natural text but contribute noise to the model's predictions.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ LIMITATIONS ═════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>Limitations</h2>
+    <p class="section-lead">Where this result stops being supported.</p>
+
+    <ul style="margin:16px 0 0 18px;line-height:2.2">
+      <li><strong>Scope:</strong> Only attention output projections are demonstrated at 3×. MLP matrices (80% of parameters) don't have enough redundancy at this compression level.</li>
+      <li><strong>Seeds:</strong> Most results are single calibration runs. Multi-seed statistics are not yet available.</li>
+      <li><strong>Evaluation:</strong> Only perplexity on WikiText-2. No downstream tasks, no drift metrics.</li>
+      <li><strong>Latency:</strong> The compressed representation changes the compute graph. Speed and memory implications are unmeasured.</li>
+      <li><strong>Novelty:</strong> Head-to-head comparison against ASVD and EoRA (the closest related methods) has not been run.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WHAT WE DON'T CLAIM ════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>What this paper does not claim</h2>
+    <ul style="margin:16px 0 0 18px;line-height:2.2">
+      <li>That low-rank compression universally beats quantization for storage.</li>
+      <li>That every transformer matrix is equally compressible.</li>
+      <li>That activation weighting solves all compression problems.</li>
+      <li>That the method is ready for deployment.</li>
+      <li>That the denoising effect is general (it's observed on one architecture).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FURTHER READING ════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <h2>Further reading</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Full paper draft</h3>
+        <p style="font-size:14px">Available as <a href="PAPER.md">Markdown</a> or <a href="paper.tex">LaTeX</a>. Contains all equations, proofs, experimental details, and appendices.</p>
+      </div>
+      <div class="card">
+        <h3>Source code & experiments</h3>
+        <p style="font-size:14px"><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">GitHub repository</a> with standalone experiment scripts, results, and run contracts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="index.html">← Back to main paper</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
