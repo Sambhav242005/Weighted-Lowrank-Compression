@@ -58,12 +58,20 @@ GPT-2 Medium degrades 2-7x less than GPT-2 Small at the same compression ratio. 
 - The "shared structure" hypothesis is false
 
 ### 6. Weight-Space SVD is the Best Method
+ 
+ - Weight-space SVD: +21.36% PPL at 3x (Small), +9.91% (Medium)
+ - Activation-space methods: ALL give +173% PPL (identical, broken)
+ - The representation space matters, not the compression method
+ 
+### 7. Activation-Weighted Fitting Beats Plain SVD
+ 
+ - In Gemma-3-1B experiments, activation-weighted rank-384 fitting resulted in a minimal (~6.7%) PPL increase.
+ - Matched plain SVD produced catastrophic degradation (251.52 PPL vs 58.12 baseline).
+ - **Insight:** Weighting the fit by actual activations preserves high-traffic paths that plain SVD ignores.
+ - **Target:** Attention output projections (W_O) are the most compressible block type.
+ 
+ ## Practical Recommendations
 
-- Weight-space SVD: +21.36% PPL at 3x (Small), +9.91% (Medium)
-- Activation-space methods: ALL give +173% PPL (identical, broken)
-- The representation space matters, not the compression method
-
-## Practical Recommendations
 
 ### For GPT-2 Small (124M):
 - **2x compression**: Use uniform allocation (rank=384). +5.50% PPL.
