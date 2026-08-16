@@ -167,6 +167,26 @@
       h2{margin-bottom:10px}
       .card{padding:18px}
     }
+
+    /* ── Glossary term links ── */
+    .term-link{
+      color:var(--teal);
+      border-bottom:1px dashed var(--teal);
+      cursor:pointer;
+      text-decoration:none;
+      transition:all .15s
+    }
+    .term-link:hover{background:rgba(0,153,136,.1);border-bottom-style:solid}
+    .term-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+    .gloss-highlight{
+      animation:glossPop .6s ease;
+      scroll-margin-top:80px
+    }
+    @keyframes glossPop{
+      0%{background:rgba(0,153,136,.3);transform:scale(1)}
+      50%{background:rgba(0,153,136,.25);transform:scale(1.02)}
+      100%{background:transparent;transform:scale(1)}
+    }
   </style>
 </head>
 <body>
@@ -180,7 +200,7 @@
     <div class="meta">
       <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">GitHub</a> ·
       <a href="paper-reader.html">Reader guide</a> ·
-      <a href="https://sambhav242005.github.io/Weighted-Lowrank-Compression/">Paper draft</a>
+      <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/PAPER.md">Paper draft</a>
     </div>
   </div>
 </header>
@@ -348,7 +368,7 @@
 <section id="viz">
   <div class="wrap-wide">
     <h2>Interactive visualization</h2>
-    <p class="section-lead">Watch how two compression methods handle the same weight matrix differently.</p>
+    <p class="section-lead">Watch how two compression methods handle the same weight matrix differently. Drag to rotate, scroll to zoom.</p>
 
     <div class="viz-wrap">
       <div class="viz-canvas-wrap">
@@ -357,10 +377,10 @@
         </div>
       </div>
       <div class="viz-legend">
-        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#4a4a5a"></div>Gray dots — full weight distribution</div>
-        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#009988"></div>Teal dots — activation-important regions</div>
-        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#0077bb"></div>Blue plane — ordinary SVD approximation</div>
-        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#009988;border:1px solid #0077bb"></div>Deformed surface — activation-weighted fit</div>
+        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#5a6577"></div>Gray dots — all weights</div>
+        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#00e5cc"></div>Cyan dots — high-traffic weights</div>
+        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#4488cc"></div>Blue surface — SVD (rigid)</div>
+        <div class="viz-legend-item"><div class="viz-legend-dot" style="background:#ff8844"></div>Orange surface — weighted fit (adaptive)</div>
       </div>
       <div class="viz-steps">
         <div class="viz-step active" data-step="0">1. Full matrix</div>
@@ -371,7 +391,7 @@
       </div>
     </div>
 
-    <p class="small muted mt-md">Hover over the visualization to pause the animation. The cycle takes 6 seconds per stage.</p>
+    <p class="small muted mt-md">Drag to rotate the view. Scroll to zoom. Hover to pause the animation. The cycle takes 6 seconds per stage.</p>
   </div>
 </section>
 
@@ -690,7 +710,11 @@
   var container = document.getElementById('concept-canvas-container');
   if (!container) return;
 
-  // ── Responsive sizing ──
+  var label = document.getElementById('concept-label');
+  var stepsEl = document.querySelectorAll('#viz-steps .viz-step');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Responsive height ──
   function getHeight() {
     var w = container.clientWidth;
     if (w < 500) return 300;
@@ -698,6 +722,7 @@
     return 420;
   }
 
+  // ── Scene ──
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, container.clientWidth / getHeight(), 0.1, 1000);
   var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -705,17 +730,20 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  var label = document.getElementById('concept-label');
-  var stepsEl = document.querySelectorAll('#viz-steps .viz-step');
-
-  // ── Reduced motion ──
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   // ── Lighting ──
-  scene.add(new THREE.AmbientLight(0x404040, 2));
-  var pointLight = new THREE.PointLight(0x009988, 10, 100);
-  pointLight.position.set(10, 10, 10);
-  scene.add(pointLight);
+  scene.add(new THREE.AmbientLight(0x606070, 3));
+  var pl1 = new THREE.PointLight(0xffffff, 8, 100);
+  pl1.position.set(10, 10, 10);
+  scene.add(pl1);
+  var pl2 = new THREE.PointLight(0x4488cc, 4, 80);
+  pl2.position.set(-10, -5, -10);
+  scene.add(pl2);
+
+  // ── Colors (high contrast, easily distinguishable) ──
+  var COL_GRAY   = [0.35, 0.38, 0.45];   // point cloud base
+  var COL_CYAN   = [0.0, 0.9, 0.8];       // activation points — bright cyan
+  var COL_SVD    = 0x4488cc;              // SVD plane — steel blue
+  var COL_WEIGHT = 0xff8844;              // weighted surface — orange
 
   // ── Dense Weight Cloud ──
   var pointCount = 2000;
@@ -728,103 +756,196 @@
     positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     var isActive = Math.random() > 0.95;
     if (isActive) {
-      colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.6; colors[i * 3 + 2] = 0.5;
+      colors[i * 3] = COL_CYAN[0]; colors[i * 3 + 1] = COL_CYAN[1]; colors[i * 3 + 2] = COL_CYAN[2];
     } else {
-      colors[i * 3] = 0.3; colors[i * 3 + 1] = 0.3; colors[i * 3 + 2] = 0.4;
+      colors[i * 3] = COL_GRAY[0]; colors[i * 3 + 1] = COL_GRAY[1]; colors[i * 3 + 2] = COL_GRAY[2];
     }
   }
 
   var geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  var pointsMat = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.6 });
+  var pointsMat = new THREE.PointsMaterial({ size: 0.12, vertexColors: true, transparent: true, opacity: 0.7 });
   var points = new THREE.Points(geometry, pointsMat);
   scene.add(points);
 
-  // ── Surfaces (SVD = blue, Weighted = teal) ──
+  // ── SVD Surface (steel blue, flat) ──
   var svdGeo = new THREE.PlaneGeometry(12, 12, 32, 32);
-  var svdMat = new THREE.MeshPhongMaterial({ color: 0x0077bb, side: THREE.DoubleSide, transparent: true, opacity: 0.55, shininess: 80 });
+  var svdMat = new THREE.MeshPhongMaterial({
+    color: COL_SVD, side: THREE.DoubleSide, transparent: true,
+    opacity: 0, shininess: 60, specular: 0x222244
+  });
   var svdSurface = new THREE.Mesh(svdGeo, svdMat);
   svdSurface.rotation.x = Math.PI / 2;
   scene.add(svdSurface);
 
+  // ── Weighted Surface (orange, deforms) ──
   var wtdGeo = new THREE.PlaneGeometry(12, 12, 32, 32);
-  var wtdMat = new THREE.MeshPhongMaterial({ color: 0x009988, side: THREE.DoubleSide, transparent: true, opacity: 0, shininess: 100 });
+  var wtdMat = new THREE.MeshPhongMaterial({
+    color: COL_WEIGHT, side: THREE.DoubleSide, transparent: true,
+    opacity: 0, shininess: 100, specular: 0x442200
+  });
   var wtdSurface = new THREE.Mesh(wtdGeo, wtdMat);
   wtdSurface.rotation.x = Math.PI / 2;
   scene.add(wtdSurface);
 
-  camera.position.set(15, 12, 15);
-  camera.lookAt(0, 0, 0);
+  // ── Camera orbit state ──
+  var camRadius = 22;
+  var camTheta = Math.PI / 4;   // horizontal angle
+  var camPhi = Math.PI / 5;     // vertical angle (from top)
+  var camTarget = new THREE.Vector3(0, 0, 0);
 
-  // ── States ──
-  var state = 0;
+  function updateCamera() {
+    camera.position.x = camTarget.x + camRadius * Math.sin(camPhi) * Math.cos(camTheta);
+    camera.position.y = camTarget.y + camRadius * Math.cos(camPhi);
+    camera.position.z = camTarget.z + camRadius * Math.sin(camPhi) * Math.sin(camTheta);
+    camera.lookAt(camTarget);
+  }
+  updateCamera();
+
+  // ── Mouse/touch orbit controls ──
+  var isDragging = false;
+  var lastMouse = { x: 0, y: 0 };
+
+  container.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    lastMouse.x = e.clientX;
+    lastMouse.y = e.clientY;
+    container.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    var dx = e.clientX - lastMouse.x;
+    var dy = e.clientY - lastMouse.y;
+    camTheta -= dx * 0.005;
+    camPhi = Math.max(0.1, Math.min(Math.PI - 0.1, camPhi + dy * 0.005));
+    lastMouse.x = e.clientX;
+    lastMouse.y = e.clientY;
+    updateCamera();
+  });
+
+  window.addEventListener('mouseup', function() {
+    isDragging = false;
+    container.style.cursor = 'grab';
+  });
+
+  container.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    camRadius = Math.max(8, Math.min(50, camRadius + e.deltaY * 0.02));
+    updateCamera();
+  }, { passive: false });
+
+  // Touch support
+  var lastTouch = null;
+  var lastPinchDist = null;
+
+  container.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    } else if (e.touches.length === 2) {
+      var dx = e.touches[0].clientX - e.touches[1].clientX;
+      var dy = e.touches[0].clientY - e.touches[1].clientY;
+      lastPinchDist = Math.sqrt(dx * dx + dy * dy);
+    }
+  }, { passive: true });
+
+  container.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (e.touches.length === 1 && isDragging && lastTouch) {
+      var dx = e.touches[0].clientX - lastTouch.x;
+      var dy = e.touches[0].clientY - lastTouch.y;
+      camTheta -= dx * 0.005;
+      camPhi = Math.max(0.1, Math.min(Math.PI - 0.1, camPhi + dy * 0.005));
+      lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      updateCamera();
+    } else if (e.touches.length === 2 && lastPinchDist !== null) {
+      var dx = e.touches[0].clientX - e.touches[1].clientX;
+      var dy = e.touches[0].clientY - e.touches[1].clientY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      camRadius = Math.max(8, Math.min(50, camRadius - (dist - lastPinchDist) * 0.05));
+      lastPinchDist = dist;
+      updateCamera();
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchend', function() {
+    isDragging = false;
+    lastTouch = null;
+    lastPinchDist = null;
+  });
+
+  // ── Animation states ──
+  var currentState = -1; // force first update
   var states = [
     { label: "Step 1 — The full weight matrix (2,000 parameters shown)", color: "#82909d" },
-    { label: "Step 2 — Activation traffic becomes visible (teal = high-traffic)", color: "#009988" },
-    { label: "Step 3 — Plain SVD: rigid flat plane, ignores activation hotspots", color: "#0077bb" },
-    { label: "Step 4 — Weighted fit: surface bends toward high-traffic directions", color: "#009988" },
-    { label: "Step 5 — Same budget, different objective: weighted preserves what matters", color: "#009988" }
+    { label: "Step 2 — Activation traffic visible (cyan = high-traffic)", color: "#00e5cc" },
+    { label: "Step 3 — Plain SVD: rigid flat plane, ignores hotspots", color: "#4488cc" },
+    { label: "Step 4 — Weighted fit: surface bends toward high-traffic", color: "#ff8844" },
+    { label: "Step 5 — Same budget, different objective", color: "#ff8844" }
   ];
 
-  function updateSurfaces() {
+  function applyState(s) {
+    if (s === currentState) return;
+    currentState = s;
+
+    // Label
+    label.innerText = states[s].label;
+    label.style.borderLeftColor = states[s].color;
+
+    // Step indicator
+    for (var k = 0; k < stepsEl.length; k++) {
+      stepsEl[k].classList.toggle('active', k === s);
+    }
+
+    // Surfaces
     var posW = wtdSurface.geometry.attributes.position;
     var posS = svdSurface.geometry.attributes.position;
     for (var j = 0; j < posW.count; j++) {
       var x = posW.getX(j);
       var y = posW.getY(j);
-      var z = (state >= 3) ? Math.sin(x * 0.5) * Math.cos(y * 0.5) * 2 : 0;
+      var z = (s >= 3) ? Math.sin(x * 0.5) * Math.cos(y * 0.5) * 2 : 0;
       posW.setZ(j, z);
       posS.setZ(j, 0);
     }
     posW.needsUpdate = true;
     posS.needsUpdate = true;
 
-    // Visibility
-    svdMat.opacity = (state >= 2) ? 0.55 : 0;
-    wtdMat.opacity = (state >= 3) ? 0.65 : 0;
+    svdMat.opacity = (s >= 2) ? 0.5 : 0;
+    wtdMat.opacity = (s >= 3) ? 0.6 : 0;
   }
 
-  function updateSteps() {
-    for (var k = 0; k < stepsEl.length; k++) {
-      stepsEl[k].classList.toggle('active', k === state);
-    }
-  }
+  // Start at state 0
+  applyState(0);
 
-  // ── Hover to pause ──
+  // ── Hover/touch to pause ──
   var paused = false;
   container.addEventListener('mouseenter', function() { paused = true; });
   container.addEventListener('mouseleave', function() { paused = false; });
-  container.addEventListener('touchstart', function() { paused = !paused; }, { passive: true });
 
-  var lastCycle = 0;
+  var lastCycle = -1;
   var CYCLE_MS = 6000;
 
   function animate(t) {
     requestAnimationFrame(animate);
 
-    if (!prefersReducedMotion) {
-      points.rotation.y += 0.002;
-      svdSurface.rotation.z += 0.0015;
-      wtdSurface.rotation.z += 0.0015;
+    if (!prefersReducedMotion && !isDragging) {
+      points.rotation.y += 0.001;
     }
 
-    if (!paused) {
+    if (!paused && !isDragging) {
       var cycle = Math.floor((t / CYCLE_MS) % 5);
       if (cycle !== lastCycle) {
         lastCycle = cycle;
-        state = cycle;
-        label.innerText = states[state].label;
-        label.style.borderLeftColor = states[state].color;
-        updateSurfaces();
-        updateSteps();
+        applyState(cycle);
       }
     }
 
     renderer.render(scene, camera);
   }
 
-  // ── Resize (ResizeObserver) ──
+  // ── Resize ──
   function onResize() {
     var w = container.clientWidth;
     var h = getHeight();
@@ -840,6 +961,131 @@
   }
 
   animate(0);
+})();
+</script>
+
+<!-- ════════════════════════════ GLOSSARY TERM LINKING ══════════════════════════════════ -->
+<script>
+(function() {
+  var glossaryTerms = {
+    "low-rank": "low-rank",
+    "SVD": "svd",
+    "singular value decomposition": "svd",
+    "Truncated SVD": "svd",
+    "activation": "activation",
+    "activations": "activation",
+    "calibration data": "calibration-data",
+    "calibration inputs": "calibration-data",
+    "rank": "rank",
+    "perplexity": "perplexity",
+    "PPL": "perplexity",
+    "activation-weighted": "activation-weighted",
+    "Gram matrix": "gram-matrix",
+    "Gram": "gram-matrix",
+    "Frobenius norm": "frobenius-norm",
+    "hidden-state drift": "drift",
+    "representation drift": "drift",
+    "drift accumulation": "drift",
+    "drift wall": "drift",
+    "low-rank compression": "low-rank",
+    "low-rank approximation": "low-rank",
+    "weight matrix": "weight-matrix"
+  };
+
+  var glossarySection = document.getElementById("glossary");
+  var glossaryMap = {};
+
+  // Build map from glossary dt text → dt element
+  if (glossarySection) {
+    var dts = glossarySection.querySelectorAll("dt");
+    for (var i = 0; i < dts.length; i++) {
+      var key = dts[i].textContent.trim().toLowerCase();
+      glossaryMap[key] = dts[i];
+    }
+  }
+
+  // Walk all text nodes in main content, wrap matches with term-link spans
+  var main = document.querySelector("main") || document.body;
+  var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, null, false);
+  var textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+  var SKIP_PARENTS = "SCRIPT,STYLE,NAV,FOOTER,CODE,PRE,A,DT,DD,DL".split(",");
+
+  function isInsideTag(node, tagNames) {
+    var p = node.parentNode;
+    while (p && p !== main) {
+      if (tagNames.indexOf(p.tagName) !== -1) return true;
+      p = p.parentNode;
+    }
+    return false;
+  }
+
+  for (var i = 0; i < textNodes.length; i++) {
+    var node = textNodes[i];
+    if (isInsideTag(node, SKIP_PARENTS)) continue;
+    var text = node.nodeValue;
+    if (!text || text.trim().length < 3) continue;
+
+    // Sort terms longest first to match greedily
+    var sortedTerms = Object.keys(glossaryTerms).sort(function(a, b) { return b.length - a.length; });
+    var replaced = false;
+
+    for (var t = 0; t < sortedTerms.length; t++) {
+      var term = sortedTerms[t];
+      var regex = new RegExp("(?<![\\w-])(" + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ")(?![\\w-])", "i");
+      var match = regex.exec(text);
+      if (match) {
+        var span = document.createElement("span");
+        span.className = "term-link";
+        span.setAttribute("data-glossary", glossaryTerms[term]);
+        span.textContent = match[1];
+        span.title = "Click to see glossary definition";
+
+        var before = text.substring(0, match.index);
+        var after = text.substring(match.index + match[0].length);
+        var frag = document.createDocumentFragment();
+        if (before) frag.appendChild(document.createTextNode(before));
+        frag.appendChild(span);
+        if (after) frag.appendChild(document.createTextNode(after));
+        node.parentNode.replaceChild(frag, node);
+        replaced = true;
+        break;
+      }
+    }
+  }
+
+  // Click handler — scroll to glossary and highlight
+  document.addEventListener("click", function(e) {
+    var el = e.target;
+    while (el && !el.classList.contains("term-link")) el = el.parentNode;
+    if (!el) return;
+
+    e.preventDefault();
+    var glossaryId = el.getAttribute("data-glossary");
+    var targetDt = glossaryMap[glossaryId];
+
+    if (targetDt) {
+      var item = targetDt.closest(".gloss-item") || targetDt.parentElement;
+      // Remove old highlight
+      var old = glossarySection.querySelector(".gloss-highlight");
+      if (old) old.classList.remove("gloss-highlight");
+
+      // Scroll to glossary section
+      glossarySection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // After scroll, highlight the item
+      setTimeout(function() {
+        item.classList.add("gloss-highlight");
+        item.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 400);
+
+      // Remove highlight after animation
+      setTimeout(function() {
+        item.classList.remove("gloss-highlight");
+      }, 3500);
+    }
+  });
 })();
 </script>
 
