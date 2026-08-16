@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ResearchCompression evidence dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <style>
+    :root { --ink:#17202a; --muted:#5e6b78; --paper:#f7f8fa; --card:#fff; --line:#dfe5eb;
+      --blue:#0077bb; --teal:#009988; --orange:#ee7733; --red:#cc3311; --navy:#19324a; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:15px/1.55 Inter,Segoe UI,Arial,sans-serif; }
+    .wrap { width:min(1180px, calc(100% - 36px)); margin:0 auto; }
+    header { background:linear-gradient(135deg,#102638,#1e5067); color:white; padding:58px 0 44px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:700; color:#b5e3e9; }
+    h1 { max-width:820px; font-size:clamp(31px,5vw,56px); line-height:1.03; margin:13px 0 18px; letter-spacing:-.04em; }
+    header p { max-width:760px; color:#d9e8ed; font-size:18px; margin:0; }
+    main { padding:30px 0 70px; }
+    .callout { background:#e8f5f1; border:1px solid #a7d7cc; border-left:6px solid var(--teal); padding:18px 21px; border-radius:10px; margin-bottom:24px; }
+    .callout strong { color:#075f55; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:18px; margin:18px 0; }
+    .card { grid-column:span 6; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:0 4px 16px #17324a08; }
+    .wide { grid-column:span 12; } .third { grid-column:span 4; }
+    @media (max-width:800px) { .card,.third { grid-column:span 12; } }
+    h2 { font-size:23px; letter-spacing:-.02em; margin:4px 0 6px; }
+    h3 { font-size:17px; margin:0 0 6px; }
+    .sub { color:var(--muted); margin:0 0 14px; }
+    .metric { font-size:38px; line-height:1; font-weight:750; color:var(--navy); }
+    .metric small { display:block; color:var(--muted); font-size:13px; line-height:1.3; font-weight:500; margin-top:7px; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:600px) { .metrics { grid-template-columns:1fr; } }
+    svg { width:100%; height:auto; display:block; overflow:visible; }
+    .axis { stroke:#82909d; stroke-width:1; } .gridline { stroke:#e4e9ee; stroke-width:1; }
+    .label { fill:#465461; font-size:12px; } .value { fill:#17202a; font-size:12px; font-weight:700; }
+    .bar-blue { fill:var(--blue); } .bar-teal { fill:var(--teal); } .bar-orange { fill:var(--orange); } .bar-red { fill:var(--red); }
+    .legend { display:flex; flex-wrap:wrap; gap:12px; font-size:12px; color:var(--muted); margin-top:4px; }
+    .legend span { display:inline-flex; gap:6px; align-items:center; } .dot { width:10px; height:10px; border-radius:2px; display:inline-block; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 9px; text-align:left; vertical-align:top; }
+    th { background:#f1f4f6; color:#364550; font-size:12px; text-transform:uppercase; letter-spacing:.05em; }
+    tr:last-child td { border-bottom:0; } .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .status { display:inline-block; border-radius:99px; padding:3px 9px; font-size:12px; font-weight:700; }
+    .done { background:#d9f2ea; color:#086653; } .pending { background:#fff0d9; color:#875300; } .negative { background:#fde2dc; color:#8d2412; }
+    .note { color:var(--muted); font-size:12px; margin-top:10px; }
+    code { background:#eef2f5; padding:2px 5px; border-radius:4px; font-size:12px; }
+    footer { color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:18px; margin-top:28px; }
+  </style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">ResearchCompression · evidence dashboard · 15 Aug 2026</div>
+  <h1>Activation-weighted low-rank fitting remains the strongest direction.</h1>
+  <p>This report separates measured results from pending novelty and deployment claims. The primary scope is attention output projections; direct high-sparsity pruning is shown as a negative comparison.</p>
+</div></header>
+<main class="wrap">
+  <section class="callout"><strong>Current decision.</strong> On the pinned Gemma-3-1B run, activation-weighted rank-384 fitting averaged about 6.7% PPL increase across three calibration seeds, while matched plain SVD produced 251.52 PPL versus a 58.12 baseline. This supports an empirical advantage over SVD, but not algorithmic novelty until ASVD/EoRA controls are complete.</section>
+  
+  <article class="card wide" style="margin-bottom: 24px; overflow: hidden;">
+    <h2>Conceptual Visualization: Activation-Weighted Fitting</h2>
+    <p class="sub">Comparison between rigid SVD (Plain) and activation-aware low-rank fitting. Weighted fitting prioritizes the "high-traffic" pathways of the model.</p>
+    <div id="concept-canvas-container" style="width:100%; height:400px; background:#0f172a; border-radius:8px; cursor:grab; position:relative;">
+      <div id="concept-label" style="position:absolute; top:20px; left:20px; color:white; font-family:Inter,sans-serif; pointer-events:none; background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:4px; font-size:14px; border-left:4px solid var(--teal);">Initializing...</div>
+    </div>
+    <div class="note" style="margin-top:12px;">
+      <strong>How it works:</strong> The gray cloud represents the full weight matrix. <span style="color:var(--teal); font-weight:700;">Glowing points</span> are high-activation weights. <strong>Plain SVD</strong> (the flat plane) fits the average variance, often missing these critical spikes. <strong>Weighted Fitting</strong> bends the representation to maximize fidelity where the model actually "fires".
+    </div>
+  </article>
+  
+  <article class="card wide" style="margin-bottom: 24px; overflow: hidden;">
+    <h2>Conceptual Visualization: Activation-Weighted Fitting</h2>
+    <p class="sub">Comparison between rigid SVD (Plain) and activation-aware low-rank fitting. Weighted fitting prioritizes the "high-traffic" pathways of the model.</p>
+    <div id="concept-canvas-container" style="width:100%; height:400px; background:#0f172a; border-radius:8px; cursor:grab; position:relative;">
+      <div id="concept-label" style="position:absolute; top:20px; left:20px; color:white; font-family:Inter,sans-serif; pointer-events:none; background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:4px; font-size:14px; border-left:4px solid var(--teal);">Initializing...</div>
+    </div>
+    <div class="note" style="margin-top:12px;">
+      <strong>How it works:</strong> The gray cloud represents the full weight matrix. <span style="color:var(--teal); font-weight:700;">Glowing points</span> are high-activation weights. <strong>Plain SVD</strong> (the flat plane) fits the average variance, often missing these critical spikes. <strong>Weighted Fitting</strong> bends the representation to maximize fidelity where the model actually "fires".
+    </div>
+  </article>
+  <section class="metrics">
+    <div class="card"><div class="metric">6.7%<small>Mean Gemma PPL increase for weighted fitting across seeds 11, 23, 37</small></div></div>
+    <div class="card"><div class="metric">333%<small>Plain-SVD PPL increase in the same Gemma run</small></div></div>
+    <div class="card"><div class="metric">14<small>Regression tests passing after the shared-core and pruning changes</small></div></div>
+  </section>
+  <section class="grid">
+    <article class="card wide">
+      <h2>Figure 1. GPT-2 pruning quality</h2>
+      <p class="sub">Full token-contiguous WikiText-2 test split; lower PPL is better. Log scale is used because direct pruning produces catastrophic degradation.</p>
+      <svg viewBox="0 0 920 330" role="img" aria-label="Bar chart comparing GPT-2 perplexity for dense, 50 percent activation-aware, 50 percent magnitude, 90 percent activation-aware, and 90 percent magnitude pruning">
+        <line x1="72" y1="260" x2="890" y2="260" class="axis"/><line x1="72" y1="28" x2="72" y2="260" class="axis"/>
+        <line x1="72" y1="202" x2="890" y2="202" class="gridline"/><line x1="72" y1="144" x2="890" y2="144" class="gridline"/><line x1="72" y1="86" x2="890" y2="86" class="gridline"/><line x1="72" y1="28" x2="890" y2="28" class="gridline"/>
+        <text x="48" y="264" class="label">1</text><text x="40" y="206" class="label">10</text><text x="34" y="148" class="label">100</text><text x="28" y="90" class="label">1k</text><text x="22" y="32" class="label">10k</text><text x="10" y="18" class="label">PPL (log)</text>
+        <rect x="125" y="172" width="92" height="88" rx="5" class="bar-blue"/><rect x="285" y="105" width="92" height="155" rx="5" class="bar-teal"/><rect x="445" y="61" width="92" height="199" rx="5" class="bar-orange"/><rect x="605" y="30" width="92" height="230" rx="5" class="bar-teal" opacity=".78"/><rect x="765" y="28" width="92" height="232" rx="5" class="bar-red"/>
+        <text x="171" y="164" text-anchor="middle" class="value">36.10</text><text x="331" y="97" text-anchor="middle" class="value">79.46</text><text x="491" y="53" text-anchor="middle" class="value">651.46</text><text x="651" y="22" text-anchor="middle" class="value">15,652</text><text x="811" y="22" text-anchor="middle" class="value">16,635</text>
+        <text x="171" y="282" text-anchor="middle" class="label">Dense</text><text x="331" y="282" text-anchor="middle" class="label">50% aware</text><text x="491" y="282" text-anchor="middle" class="label">50% mag.</text><text x="651" y="282" text-anchor="middle" class="label">90% aware</text><text x="811" y="282" text-anchor="middle" class="label">90% mag.</text>
+      </svg>
+      <div class="note"><strong>Note.</strong> 50% activation-aware pruning is materially better than magnitude pruning, but still fails the quality gate (PPL 79.46 vs. 36.10). The 90% runs are retained as negative evidence.</div>
+    </article>
+    <article class="card">
+      <h2>Figure 2. Gemma weighted fit by seed</h2><p class="sub">Rank 384 on every attention output projection; full WikiText-2 test PPL.</p>
+      <svg viewBox="0 0 520 290" role="img" aria-label="Line chart showing Gemma baseline PPL 58.12 and weighted PPL for seeds 11, 23, and 37">
+        <line x1="54" y1="232" x2="490" y2="232" class="axis"/><line x1="54" y1="25" x2="54" y2="232" class="axis"/>
+        <line x1="54" y1="163" x2="490" y2="163" class="gridline"/><line x1="54" y1="94" x2="490" y2="94" class="gridline"/><line x1="54" y1="25" x2="490" y2="25" class="gridline"/>
+        <text x="23" y="236" class="label">56</text><text x="23" y="167" class="label">60</text><text x="23" y="98" class="label">64</text><text x="23" y="29" class="label">68</text>
+        <line x1="54" y1="196" x2="490" y2="196" stroke="#19324a" stroke-dasharray="5 4" stroke-width="2"/>
+        <polyline points="115,140 270,127 425,121" fill="none" stroke="#009988" stroke-width="4"/><circle cx="115" cy="140" r="7" fill="#009988"/><circle cx="270" cy="127" r="7" fill="#009988"/><circle cx="425" cy="121" r="7" fill="#009988"/>
+        <text x="115" y="126" text-anchor="middle" class="value">61.39</text><text x="270" y="113" text-anchor="middle" class="value">62.16</text><text x="425" y="107" text-anchor="middle" class="value">62.52</text>
+        <text x="115" y="254" text-anchor="middle" class="label">Seed 11</text><text x="270" y="254" text-anchor="middle" class="label">Seed 23</text><text x="425" y="254" text-anchor="middle" class="label">Seed 37</text><text x="58" y="190" class="label">baseline 58.12</text>
+      </svg><div class="note"><strong>Note.</strong> Three independent calibration samples were used; the held-out test stream was fixed.</div>
+    </article>
+    <article class="card">
+      <h2>Figure 3. Reference rows versus rank-k SVD</h2><p class="sub">Mean residual energy across 48 GPT-2 transformer-block matrices; lower is better.</p>
+      <svg viewBox="0 0 520 290" role="img" aria-label="Grouped bars comparing multi-reference residual energy with matched rank-k SVD">
+        <line x1="52" y1="232" x2="490" y2="232" class="axis"/><line x1="52" y1="25" x2="52" y2="232" class="axis"/><line x1="52" y1="129" x2="490" y2="129" class="gridline"/><line x1="52" y1="25" x2="490" y2="25" class="gridline"/>
+        <text x="17" y="236" class="label">0%</text><text x="11" y="133" class="label">50%</text><text x="8" y="29" class="label">100%</text>
+        <rect x="80" y="29" width="30" height="203" class="bar-orange"/><rect x="115" y="32" width="30" height="200" class="bar-blue"/><rect x="182" y="34" width="30" height="198" class="bar-orange"/><rect x="217" y="40" width="30" height="192" class="bar-blue"/><rect x="284" y="38" width="30" height="194" class="bar-orange"/><rect x="319" y="46" width="30" height="186" class="bar-blue"/><rect x="386" y="43" width="30" height="189" class="bar-orange"/><rect x="421" y="56" width="30" height="176" class="bar-blue"/>
+        <text x="112" y="254" text-anchor="middle" class="label">1</text><text x="214" y="254" text-anchor="middle" class="label">4</text><text x="316" y="254" text-anchor="middle" class="label">8</text><text x="418" y="254" text-anchor="middle" class="label">16</text><text x="250" y="280" text-anchor="middle" class="label">Number of references / rank k</text>
+      </svg><div class="legend"><span><i class="dot" style="background:#ee7733"></i>Reference rows</span><span><i class="dot" style="background:#0077bb"></i>Rank-k SVD</span></div><div class="note"><strong>Note.</strong> Reference-row coding is consistently less efficient than matched SVD. Values: references 97.9%, 95.7%, 93.9%, 91.3%; SVD 96.4%, 92.9%, 89.8%, 85.2%.</div>
+    </article>
+  </section>
+  <section class="grid">
+    <article class="card wide"><h2>Table 1. Validated experiment ledger</h2><table><thead><tr><th>Question</th><th>Result</th><th>Interpretation</th><th>Status</th></tr></thead><tbody>
+      <tr><td>Does activation weighting beat plain SVD?</td><td>Gemma: 61.39–62.52 PPL vs. SVD 251.52</td><td>Strong preliminary empirical advantage at attention output projections.</td><td><span class="status done">Measured</span></td></tr>
+      <tr><td>Does one/multiple reference neurons encode weights?</td><td>GPT-2 residual energy 97.9% at k=1; 91.3% at k=16</td><td>Reference-row coding is weaker than rank-k SVD.</td><td><span class="status negative">Rejected</span></td></tr>
+      <tr><td>Does direct 50% pruning preserve quality?</td><td>Activation-aware PPL 79.46 vs. dense 36.10</td><td>Moderate pruning improves over magnitude pruning but fails the quality gate.</td><td><span class="status negative">Negative</span></td></tr>
+      <tr><td>Is the method algorithmically novel?</td><td>ASVD/EoRA matched comparison not yet run</td><td>Cannot make a novelty claim; reframe as empirical/systems if matched baselines tie.</td><td><span class="status pending">Pending</span></td></tr>
+      <tr><td>Is deployment compression successful?</td><td>Packed whole-model artifact and latency not yet measured</td><td>No deployment claim yet.</td><td><span class="status pending">Pending</span></td></tr>
+    </tbody></table></article>
+    <article class="card third"><h3>Representation decision</h3><p>Keep the original activation-weighted low-rank direction. The pruning and reference-neuron experiments are negative controls, not replacements.</p></article>
+    <article class="card third"><h3>Next experiment</h3><p>Run matched ASVD/EoRA on the same Gemma protocol, then test weighted low-rank plus packed int4 residuals using the actual inference representation.</p></article>
+    <article class="card third"><h3>Reproducibility</h3><p>Model and dataset revisions are pinned. Each run writes to a unique results directory; prior artifacts are preserved.</p></article>
+  </section>
+  <section class="card wide"><h2>Evidence and provenance</h2><table><thead><tr><th>Artifact</th><th>Purpose</th><th>Location</th></tr></thead><tbody>
+    <tr><td>Gemma Track A</td><td>Three-seed weighted fit versus plain SVD</td><td><code>results/track-a-gemma-20260815-073809/metrics.json</code></td></tr>
+    <tr><td>GPT-2 pruning, 50%</td><td>Dense versus magnitude and activation-aware pruning</td><td><code>results/pruning50-gpt2-validated-20260815-134245/metrics.json</code></td></tr>
+    <tr><td>Reference-neuron/SVD sweep</td><td>k = 1, 4, 8, 16 reference rows versus rank-k SVD</td><td><code>results/reference-neuron-svd-gpt2-20260815-133126/metrics.json</code></td></tr>
+    <tr><td>Paper revision</td><td>Narrowed manuscript claim and limitations</td><td><code>PAPER.md</code> and <code>paper.tex</code></td></tr>
+  </tbody></table><p class="note">Chart values are transcribed from the listed JSON artifacts. This dashboard is a research summary, not a claim that all pre-existing exploratory tables use the same locked protocol.</p></section>
+  <footer>Generated as a standalone artifact for ResearchCompression. Colors use a colorblind-aware categorical palette; chart captions state the metric direction and evaluation scope.</footer>
+</main>
+
+<script>
+(function() {
+  const container = document.getElementById('concept-canvas-container');
+  if (!container) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  const label = document.getElementById('concept-label');
+  
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0x404040, 2);
+  scene.add(ambientLight);
+  const pointLight = new THREE.PointLight(0x009988, 10, 100);
+  pointLight.position.set(10, 10, 10);
+  scene.add(pointLight);
+
+  // 1. Dense Weight Cloud
+  const pointCount = 2000;
+  const positions = new Float32Array(pointCount * 3);
+  const colors = new Float32Array(pointCount * 3);
+  const activationIndices = [];
+
+  for (let i = 0; i < pointCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    const isActive = Math.random() > 0.95;
+    if (isActive) {
+      colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.6; colors[i * 3 + 2] = 0.5; // Teal
+      activationIndices.push(i);
+    } else {
+      colors[i * 3] = 0.3; colors[i * 3 + 1] = 0.3; colors[i * 3 + 2] = 0.4; // Muted Gray
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.6 });
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  // 2. The Low-Rank Surfaces
+  const surfaceGeo = new THREE.PlaneGeometry(12, 12, 32, 32);
+  const surfaceMat = new THREE.MeshPhongMaterial({ 
+    color: 0x0077bb, 
+    side: THREE.DoubleSide, 
+    transparent: true, 
+    opacity: 0.7,
+    shininess: 100 
+  });
+  const surface = new THREE.Mesh(surfaceGeo, surfaceMat);
+  surface.rotation.x = Math.PI / 2;
+  scene.add(surface);
+
+  camera.position.set(15, 12, 15);
+  camera.lookAt(0, 0, 0);
+
+  let state = 0; // 0: Dense, 1: Activations, 2: Plain SVD, 3: Weighted
+  const states = [
+    { label: "Dense Weights: Full Matrix", color: "#82909d" },
+    { label: "Activating: Identifying High-Traffic Paths", color: "#009988" },
+    { label: "Plain SVD: Rigid Average Fit", color: "#0077bb" },
+    { label: "Weighted Fit: Adaptive Fidelity", color: "#009988" }
+  ];
+
+  function updateSurface() {
+    const pos = surface.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      let z = 0;
+      if (state === 3) {
+        // Bend towards the "activations" (simplified as a sine wave for demo)
+        z = Math.sin(x * 0.5) * Math.cos(y * 0.5) * 2;
+      }
+      pos.setZ(i, z);
+    }
+    pos.needsUpdate = true;
+  }
+
+  function animate(t) {
+    requestAnimationFrame(animate);
+    
+    points.rotation.y += 0.002;
+    surface.rotation.z += 0.002;
+
+    const cycle = Math.floor((t / 4000) % 4);
+    if (cycle !== state) {
+      state = cycle;
+      label.innerText = states[state].label;
+      label.style.borderLeftColor = states[state].color;
+      updateSurface();
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+
+  animate(0);
+})();
+</script>
+</body>
+</html>
