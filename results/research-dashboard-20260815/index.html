@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ResearchCompression evidence dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
   <style>
     :root { --ink:#17202a; --muted:#5e6b78; --paper:#f7f8fa; --card:#fff; --line:#dfe5eb;
       --blue:#0077bb; --teal:#009988; --orange:#ee7733; --red:#cc3311; --navy:#19324a; }
@@ -53,6 +54,28 @@
 </div></header>
 <main class="wrap">
   <section class="callout"><strong>Current decision.</strong> On the pinned Gemma-3-1B run, activation-weighted rank-384 fitting averaged about 6.7% PPL increase across three calibration seeds, while matched plain SVD produced 251.52 PPL versus a 58.12 baseline. This supports an empirical advantage over SVD, but not algorithmic novelty until ASVD/EoRA controls are complete.</section>
+  
+  <article class="card wide" style="margin-bottom: 24px; overflow: hidden;">
+    <h2>Conceptual Visualization: Activation-Weighted Fitting</h2>
+    <p class="sub">Comparison between rigid SVD (Plain) and activation-aware low-rank fitting. Weighted fitting prioritizes the "high-traffic" pathways of the model.</p>
+    <div id="concept-canvas-container" style="width:100%; height:400px; background:#0f172a; border-radius:8px; cursor:grab; position:relative;">
+      <div id="concept-label" style="position:absolute; top:20px; left:20px; color:white; font-family:Inter,sans-serif; pointer-events:none; background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:4px; font-size:14px; border-left:4px solid var(--teal);">Initializing...</div>
+    </div>
+    <div class="note" style="margin-top:12px;">
+      <strong>How it works:</strong> The gray cloud represents the full weight matrix. <span style="color:var(--teal); font-weight:700;">Glowing points</span> are high-activation weights. <strong>Plain SVD</strong> (the flat plane) fits the average variance, often missing these critical spikes. <strong>Weighted Fitting</strong> bends the representation to maximize fidelity where the model actually "fires".
+    </div>
+  </article>
+  
+  <article class="card wide" style="margin-bottom: 24px; overflow: hidden;">
+    <h2>Conceptual Visualization: Activation-Weighted Fitting</h2>
+    <p class="sub">Comparison between rigid SVD (Plain) and activation-aware low-rank fitting. Weighted fitting prioritizes the "high-traffic" pathways of the model.</p>
+    <div id="concept-canvas-container" style="width:100%; height:400px; background:#0f172a; border-radius:8px; cursor:grab; position:relative;">
+      <div id="concept-label" style="position:absolute; top:20px; left:20px; color:white; font-family:Inter,sans-serif; pointer-events:none; background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:4px; font-size:14px; border-left:4px solid var(--teal);">Initializing...</div>
+    </div>
+    <div class="note" style="margin-top:12px;">
+      <strong>How it works:</strong> The gray cloud represents the full weight matrix. <span style="color:var(--teal); font-weight:700;">Glowing points</span> are high-activation weights. <strong>Plain SVD</strong> (the flat plane) fits the average variance, often missing these critical spikes. <strong>Weighted Fitting</strong> bends the representation to maximize fidelity where the model actually "fires".
+    </div>
+  </article>
   <section class="metrics">
     <div class="card"><div class="metric">6.7%<small>Mean Gemma PPL increase for weighted fitting across seeds 11, 23, 37</small></div></div>
     <div class="card"><div class="metric">333%<small>Plain-SVD PPL increase in the same Gemma run</small></div></div>
@@ -114,5 +137,119 @@
   </tbody></table><p class="note">Chart values are transcribed from the listed JSON artifacts. This dashboard is a research summary, not a claim that all pre-existing exploratory tables use the same locked protocol.</p></section>
   <footer>Generated as a standalone artifact for ResearchCompression. Colors use a colorblind-aware categorical palette; chart captions state the metric direction and evaluation scope.</footer>
 </main>
+
+<script>
+(function() {
+  const container = document.getElementById('concept-canvas-container');
+  if (!container) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  const label = document.getElementById('concept-label');
+  
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0x404040, 2);
+  scene.add(ambientLight);
+  const pointLight = new THREE.PointLight(0x009988, 10, 100);
+  pointLight.position.set(10, 10, 10);
+  scene.add(pointLight);
+
+  // 1. Dense Weight Cloud
+  const pointCount = 2000;
+  const positions = new Float32Array(pointCount * 3);
+  const colors = new Float32Array(pointCount * 3);
+  const activationIndices = [];
+
+  for (let i = 0; i < pointCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+    const isActive = Math.random() > 0.95;
+    if (isActive) {
+      colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.6; colors[i * 3 + 2] = 0.5; // Teal
+      activationIndices.push(i);
+    } else {
+      colors[i * 3] = 0.3; colors[i * 3 + 1] = 0.3; colors[i * 3 + 2] = 0.4; // Muted Gray
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const material = new THREE.PointsMaterial({ size: 0.1, vertexColors: true, transparent: true, opacity: 0.6 });
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  // 2. The Low-Rank Surfaces
+  const surfaceGeo = new THREE.PlaneGeometry(12, 12, 32, 32);
+  const surfaceMat = new THREE.MeshPhongMaterial({ 
+    color: 0x0077bb, 
+    side: THREE.DoubleSide, 
+    transparent: true, 
+    opacity: 0.7,
+    shininess: 100 
+  });
+  const surface = new THREE.Mesh(surfaceGeo, surfaceMat);
+  surface.rotation.x = Math.PI / 2;
+  scene.add(surface);
+
+  camera.position.set(15, 12, 15);
+  camera.lookAt(0, 0, 0);
+
+  let state = 0; // 0: Dense, 1: Activations, 2: Plain SVD, 3: Weighted
+  const states = [
+    { label: "Dense Weights: Full Matrix", color: "#82909d" },
+    { label: "Activating: Identifying High-Traffic Paths", color: "#009988" },
+    { label: "Plain SVD: Rigid Average Fit", color: "#0077bb" },
+    { label: "Weighted Fit: Adaptive Fidelity", color: "#009988" }
+  ];
+
+  function updateSurface() {
+    const pos = surface.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      let z = 0;
+      if (state === 3) {
+        // Bend towards the "activations" (simplified as a sine wave for demo)
+        z = Math.sin(x * 0.5) * Math.cos(y * 0.5) * 2;
+      }
+      pos.setZ(i, z);
+    }
+    pos.needsUpdate = true;
+  }
+
+  function animate(t) {
+    requestAnimationFrame(animate);
+    
+    points.rotation.y += 0.002;
+    surface.rotation.z += 0.002;
+
+    const cycle = Math.floor((t / 4000) % 4);
+    if (cycle !== state) {
+      state = cycle;
+      label.innerText = states[state].label;
+      label.style.borderLeftColor = states[state].color;
+      updateSurface();
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+
+  animate(0);
+})();
+</script>
 </body>
 </html>
