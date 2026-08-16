@@ -230,3 +230,35 @@ The "broken" behavior in Small models is because they lack redundancy:
   params, where plain low-rank fails). Next = per-family routing; MLP hybrid
   is the open GAP. results/hybrid_residual_split.json
 
+## Paper Improvements (2026-08-15)
+
+### "Improve on the Teacher" Concept Clarified
+The paper now clearly explains why compression can improve on the teacher:
+
+1. **The Problem**: Transformer weight matrices contain "dead directions" that are never excited by natural text. These directions carry no signal but contribute to weight-space capacity for spurious logits (incorrect predictions).
+
+2. **The Solution**: Activation-weighted low-rank fitting removes these noisy directions by:
+   - Using activation statistics to identify which weight directions are actually used
+   - Truncating directions that are never excited by calibration data
+   - This is analogous to regularization in ML — removing noisy parameters improves generalization
+
+3. **Evidence from Gemma-3-1B**:
+   - Teacher PPL: 70.40 → Compressed PPL: 67.47 (−4.45%)
+   - Top-1 agreement: only 74.4% (models disagree on 1 in 4 tokens)
+   - Entropy increases 12% (less overconfident)
+   - NLL decreases (better calibration)
+
+4. **Key Insight**: The compressed model is NOT a copy of the teacher — it's a denoised version that removes weight directions causing overconfident, incorrect predictions.
+
+### Paper Structure Improved
+- Abstract now includes a table for quick comparison
+- Contributions section clarified with numbered list
+- Section 6 expanded with dedicated "Why Compression Can Improve on the Teacher" subsection
+- Storage accounting section improved with clearer verdict
+
+### Current Status
+- Paper is clearer and easier to understand
+- "Improve on the Teacher" concept is now well-explained
+- All key findings are properly documented
+- Ready for final review and submission preparation
+
