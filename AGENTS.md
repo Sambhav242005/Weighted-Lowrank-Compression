@@ -70,6 +70,20 @@ A candidate may advance from exploratory to promising only when, at the same par
 
 Treat a candidate as a negative result when it repeatedly improves local metrics but not held-out global behavior. That is useful evidence for the central thesis, not a reason to tune indefinitely.
 
+## Portfolio Cover Asset
+
+Maintain a project-specific SVG at `docs/portfolio-cover.svg`.
+
+Rules:
+
+- The SVG must be hand-authored/static, not a raster screenshot, AI-generated image, base64 image, or external asset.
+- Use `width="1200"`, `height="760"`, `viewBox="0 0 1200 760"`.
+- It should visually summarize the real current project: architecture, workflow, UI, model pipeline, or system behavior.
+- Update this SVG whenever major project functionality, architecture, or branding changes.
+- Keep text minimal and readable at thumbnail size.
+- No fake product names, unrelated placeholder visuals, or generic charts.
+- The portfolio repo may copy this file into `public/project-assets` as the local backup/rendering copy.
+
 ## Status-report format
 
 ```md
