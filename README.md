@@ -10,7 +10,7 @@ of approximating in the wrong norm — and that an **activation-weighted
 closed-form low-rank fit** defeats plain SVD by 5–7x in perplexity delta
 across three architectures and scales, training-free.
 
-Paper draft: [PAPER.md](PAPER.md) (markdown) / [paper.tex](paper.tex)
+Paper draft: [PAPER.md](docs/PAPER.md) (markdown) / [paper.tex](docs/paper.tex)
 (LaTeX). Full experiment log: [THREAD.md](THREAD.md).
 
 ## Headline results (all measured, one-sided 3x rank on attention output projections)
@@ -84,10 +84,10 @@ the denoising effect; the productive direction is combining the two
 | `src/` | Standalone experiment scripts (one hypothesis each) |
 | `results/` | JSON artifacts for every run — never overwritten |
 | `THREAD.md` | Chronological experiment log with run contracts |
-| `MEMORY.md` | Condensed state of knowledge |
-| `PAPER.md` / `paper.tex` | Paper draft (markdown / LaTeX) |
+| `docs/MEMORY.md` | Condensed state of knowledge |
+| `docs/PAPER.md` / `docs/paper.tex` | Paper draft (markdown / LaTeX) |
 | `research-loop/` | Orchestrator, frontier, candidate records |
-| `LITERATURE.md` | Related work notes (QEP, EoRA, GPTQ, ...) |
+| `docs/LITERATURE.md` | Related work notes (QEP, EoRA, GPTQ, ...) |
 
 Key scripts for the current findings:
 

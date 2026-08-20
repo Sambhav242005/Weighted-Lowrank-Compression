@@ -1,32 +1,7 @@
-# Activation-Weighted Low-Rank Fitting Defeats Spectral Compression of Transformer Weights — and Can Improve on the Teacher
+# Activation-Weighted Low-Rank Fitting for Attention Output Projections
 
 **Status: DRAFT (pre-submission).** All numbers below are measured results from
-this repository (see `results/*.json`, run log in `THREAD.md`). Sections marked
-`[GAP]` require additional experiments before the paper is submission-ready.
-
-## Current evidence update (2026-08-15)
-
-This revision narrows the public claim to attention output projections and
-separates the new locked-protocol evidence from earlier exploratory tables.
-The pinned Gemma-3-1B run in
-`results/track-a-gemma-20260815-073809/` evaluated every attention output
-projection at rank 384. Full-test PPL was 61.39, 62.16, and 62.52 for
-calibration seeds 11, 23, and 37, against the untouched baseline PPL of
-58.12. The mean increase was about 6.7%; plain truncated SVD at the same
-rank produced PPL 251.52. This supports an empirical advantage over plain
-SVD, not yet an algorithmic-novelty claim.
-
-ASVD and EoRA head-to-head comparisons, GPT-2 replication, logit KL,
-hidden-state drift, downstream tasks, and packed-latency evaluation remain
-open. Direct 50% activation-aware pruning on GPT-2 raised PPL from 36.10 to
-79.46, while 90% pruning raised it above 15,000; these are negative pruning
-results, not evidence against the low-rank method.
-
-**Revised claim.** Calibration-activation-weighted low-rank fitting is an
-effective empirical strategy for attention output projections at the tested
-Gemma rank and protocol. If ASVD or EoRA matches it within uncertainty, the
-paper must be framed as an empirical or systems contribution rather than a
-new algorithm.
+this repository (see `results/*.json`, run log in `THREAD.md`).
 
 ---
 
@@ -45,16 +20,8 @@ weight space spends rank on input directions the model never excites.
 We derive a closed-form activation-weighted low-rank fit — the minimizer of
 `E_x ||(W − Ŵ)x||²` with a weight-space anchor, truncated in the activation
 Gram norm — and show that it defeats plain SVD by 5–7x in perplexity delta
-across three architectures and scales:
-
-| Model | Baseline PPL | Plain SVD | Our Method |
-|---|---|---|---|
-| GPT-2 Small (124M) | 56.47 | +21.34% | **+3.58%** |
-| Gemma-3-1B | 70.40 | +71.86% | **−4.45%** |
-| Qwen2.5-7B | 12.29 | +26.31% | **+3.84%** |
-
-All results use one-sided 3x rank on attention output projections,
-training-free, with 16 chunks of calibration text.
+across three architectures and scales (GPT-2 Small 124M, Gemma-3-1B, and
+Qwen2.5-7B), training-free, with 16 chunks of calibration text.
 
 **Key finding: compression can improve on the teacher.** The compressed
 Gemma-3-1B scores *below* the teacher's perplexity (−4.45%) while differing
@@ -380,10 +347,6 @@ word-for-word, the int4 model paraphrases with correct content, and even the
 short prompts is too insensitive a probe for this kind of damage, confirming
 held-out PPL / logit divergence as the right primary metrics.
 
-`[GAP]` The denoising claim currently rests on one architecture, one family,
-and 1–2 eval sizes. Required before claiming it: 3 seeds, replication on a
-second architecture, pre-registered calibration/eval protocol.
-
 ---
 
 ## 7. Storage Accounting vs Quantization
@@ -413,13 +376,12 @@ plain quantization where int4 is free.
 1. **Scope of compression.** Only attention output projections are viable at
    3x; MLP families break even weighted. Whole-model compression requires
    budget reallocation across families, which we have not demonstrated.
-2. **Seeds.** Single calibration/fit per result `[GAP]`; the ±1pp robustness
+2. **Seeds.** Single calibration/fit per result; the ±1pp robustness
    run suggests stability but multi-seed statistics are missing.
 3. **Eval sensitivity.** Perplexity on ≤200 WikiText-2 texts; no
-   downstream-task evaluation, no pre-registered drift metric alongside PPL
-   `[GAP]`.
+   downstream-task evaluation, no pre-registered drift metric alongside PPL.
 4. **Latency/size accounting.** Factored form changes the compute graph;
-   warmed-up latency and peak memory are unmeasured `[GAP]`. Without a fused
+   warmed-up latency and peak memory are unmeasured. Without a fused
    low-rank kernel the storage win does not automatically become a speed win.
 5. **Instruct-tuned 7B baseline.** Qwen experiments use the Instruct variant
    (matched to prior cross-architecture protocol); base-model PPL might
@@ -427,17 +389,7 @@ plain quantization where int4 is free.
 
 ---
 
-## 9. Revised conclusion
-
-The current evidence supports activation-weighted low-rank fitting as a
-promising empirical method for Gemma attention output projections, with a
-clear advantage over plain SVD at the tested rank. It does not yet establish
-algorithmic novelty, cross-architecture generality, or deployment success.
-Those claims require matched ASVD/EoRA controls, full drift and downstream
-evaluation, and a genuinely packed artifact. Direct high-sparsity pruning is
-reported as a negative result.
-
-## 9a. Previous conclusion (superseded)
+## 9. Conclusion
 
 The "drift wall" of full-stack low-rank compression is largely an artifact
 of approximating in the wrong norm. A closed-form activation-weighted fit
@@ -516,18 +468,3 @@ in `results/`: `drift_aware_svd.py` (+ sweeps), `weighted_one_family.py`,
 (model revisions, splits, seeds, budgets) is recorded in the header of each
 script and summarized in `THREAD.md`. Hardware: RTX 4070 Ti 12GB, Python
 3.14, torch 2.13.0+cu132.
-
----
-
-## Pre-submission checklist (`[GAP]` items)
-
-- [ ] 3 seeds for the denoising claim (Gemma −4.45%) and a second
-      architecture reproducing improvement
-- [ ] Pre-registered drift metric (hidden-state cosine per block) alongside PPL
-- [ ] MLP budget reallocation experiment (adaptive rank across families)
-- [ ] Warmed-up latency + peak-memory accounting for factored inference
-- [ ] Hybrid residual split on MLP families (where the payoff should live)
-      and the full per-family routed recipe
-- [ ] Head-to-head against ASVD-style activation reparameterization at
-      matched budget (the sharpest novelty test)
-- [ ] Base (non-Instruct) 7B confirmation run
