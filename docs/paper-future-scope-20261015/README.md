@@ -1,7 +1,16 @@
 # Paper with Future Scope and no appendices
 
-[Updated PDF](manuscript.pdf) · [IEEE conference source](ieee-conference.tex) ·
+[Latest IEEE PDF](ieee-conference.pdf) · [IEEE conference source](ieee-conference.tex) ·
 [Reference-style LaTeX](manuscript.tex) · [Authored text](manuscript.source.md)
+
+The eight-page IEEE PDF is exported directly from the current open source,
+including the horizontal charts and orange Ours labels. Future Scope is on
+page 7. All eight pages were visually checked, all fonts are embedded, and
+no text extends outside the page. Source and PDF hashes, compiler details
+and export checks are recorded in [pdf-export.json](pdf-export.json).
+The [earlier review PDF](manuscript.pdf) remains available with its earlier
+table layout. The IEEE conference format remains provisional until a venue
+is identified.
 
 The open **IEEE source** now clearly labels the measured anchored configuration
 as **Ours (anchored)** in orange. Gemma 3-1B, Qwen3.5-0.8B and LFM2.5-1.2B use
@@ -23,11 +32,13 @@ All plotted values match the original tables; see
 [chart-validation.json](chart-validation.json). The eight equations, abstract,
 bibliography and Future Scope remain unchanged by this chart edit.
 
-Compile `ieee-conference.tex` in the current editor to see these charts. The
-review PDF, Markdown and reference-style LaTeX retain the earlier table layout.
+Compile `ieee-conference.tex` in the current editor to see these charts, or
+open the latest IEEE PDF linked above. The earlier review PDF, Markdown and
+reference-style LaTeX retain the earlier table layout.
 The original export scripts describe that earlier layout; preserve the edited
-IEEE source when making later builds. No separate paper PDF was generated for
-the in-place chart edit.
+IEEE source when making later builds. The new IEEE PDF was compiled with
+Tectonic 0.17.0 from that exact source; the earlier ReportLab build scripts do
+not reproduce the IEEE layout.
 
 Appendices A and B have been removed from this edition's paper, including their
 cross-references. The five main results tables, original equations, abstract,
@@ -51,9 +62,11 @@ Sections 8.2 and 8.3 cover numerical controls, missing evaluation, broader tests
 and practical execution costs. The Conclusion is now Section 9, and the
 acknowledgment includes assistance with Future Scope.
 
-All eight displayed equations retain the previous 11.5-point formatting. All
-seven PDF pages have been visually reviewed. Both LaTeX sources compile with the
-desktop editor's compiler. The review PDF is an independent ReportLab rendering;
+In the earlier review PDF, all eight displayed equations retain the previous
+11.5-point formatting, and its seven pages were visually reviewed. The latest
+IEEE PDF follows IEEEtran's typesetting and has also been visually reviewed.
+Both LaTeX sources compile with the desktop editor's compiler. The earlier
+review PDF is an independent ReportLab rendering;
 the IEEE source uses the provisional conference class described in the
 [publication research](../paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md).
 
