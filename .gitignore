@@ -34,6 +34,7 @@ graphify-out/
 /docs/proofs/
 # Regenerable formula images; the formatted PDF embeds them and TeX is standalone.
 /docs/paper-reference-style-20261015/math/
+/docs/paper-ieee-preparation-20261015/math/
 
 # ---- LaTeX build products ----
 *.aux

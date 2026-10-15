@@ -1,0 +1,66 @@
+{
+  "checked_at": "2026-10-15T09:05:43.900517+00:00",
+  "abstract_words": 233,
+  "abstract_single_paragraph": true,
+  "abstract_no_abbreviations_equations_citations": true,
+  "humanizer_prose_pass": "3.1.0; 23 explicit prose changes plus abstract and acknowledgment",
+  "six_source_tables_unchanged": true,
+  "math_expressions_unchanged": true,
+  "all_22_research_citations_retained": true,
+  "assistance_citation_added": true,
+  "original_saved_sources_unchanged": true,
+  "selected_intervals_unchanged": true,
+  "pdf_pages": 7,
+  "off_page_text": [],
+  "all_pages_rendered": true,
+  "visual_review": "All seven review-PDF pages inspected in contact sheets; first-page abstract also inspected at full rendered size. No clipping or missing columns observed.",
+  "tex_compilation": {
+    "ieee_conference": {
+      "result": "success",
+      "compiler": "Codex desktop standalone compiler",
+      "sha256": "572ff0342d3ed1a0ed5732ef40d6e89f571547d3e1b688d8d7333c994289cfe7"
+    },
+    "reference_style": {
+      "result": "success",
+      "compiler": "Codex desktop standalone compiler",
+      "sha256": "8fdefe7029d1d83fae05dc576b04b30e2d83d5d52785d7476cc0b6f7023bc337"
+    }
+  },
+  "links_resolve": true,
+  "research_experiments_run": false,
+  "venue_verified": false,
+  "fee_verified": false,
+  "deadline_verified": false,
+  "submitted": false,
+  "artifacts": {
+    "abstract.md": {
+      "sha256": "16ee268efc3795a5db358c943c98e606d59ee30798c57ed53d252d3b3046575f",
+      "bytes": 1559
+    },
+    "manuscript.md": {
+      "sha256": "308c0758dc2862620d3a09b23872e9f6112f85d5507f0556e76e14b75e390257",
+      "bytes": 29226
+    },
+    "manuscript.pdf": {
+      "sha256": "48c82f3a28f8efb88ebe218eecae12aaeee7493922cc20c7292d4d4012a940b1",
+      "bytes": 599941
+    },
+    "manuscript.tex": {
+      "sha256": "8fdefe7029d1d83fae05dc576b04b30e2d83d5d52785d7476cc0b6f7023bc337",
+      "bytes": 52888
+    },
+    "ieee-conference.tex": {
+      "sha256": "572ff0342d3ed1a0ed5732ef40d6e89f571547d3e1b688d8d7333c994289cfe7",
+      "bytes": 52349
+    },
+    "paper_protocol_v2.bib": {
+      "sha256": "7a840a060b131907f45c7d1ffd617d3906441dd4246ffc17a59e0766dbd41fb0",
+      "bytes": 11476
+    },
+    "report.json": {
+      "sha256": "740cc9e2f634c6ab29ad8c8c8938dad59c4934312205bc4910d12be0b1179ee6",
+      "bytes": 16627
+    }
+  },
+  "humanizer_skill_sha256": "0612f1dfb1672b0ea9b97e139bf1f06cabe98d8b27424fe8ff01e1fb4cc99cad"
+}

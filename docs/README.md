@@ -13,6 +13,8 @@ execution. Ledger 5's five BF16 practical conditions are complete; see
 
 | Document | Purpose |
 |---|---|
+| [Readable abstract and paper](paper-ieee-preparation-20261015/README.md) | Humanizer prose pass, plain-language abstract and provisional IEEE source |
+| [IEEE publication research](paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md) | Verified publisher guidance, venue options and unresolved teacher-reported deadline/fee |
 | [Reference-style single-author PDF](paper-reference-style-20261015/manuscript.pdf) / [LaTeX](paper-reference-style-20261015/manuscript.tex) | Seven-page A4 two-column edition matching the supplied example |
 | [15 October revised paper](paper-revision-20261015/manuscript.md) / [PDF](paper-revision-20261015/manuscript.pdf) | Compact scientific narrative and tables; original frozen evidence preserved |
 | [Editorial revision notes](paper-revision-20261015/README.md) | Changes, evidence checks, build instructions and export limitations |

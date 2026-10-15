@@ -17,6 +17,11 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
+- [Readable paper PDF](docs/paper-ieee-preparation-20261015/manuscript.pdf),
+  [plain-language abstract](docs/paper-ieee-preparation-20261015/abstract.md), and
+  [provisional IEEE conference source](docs/paper-ieee-preparation-20261015/ieee-conference.tex).
+  The [publication research](docs/paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md)
+  records verified IEEE guidance and the still-unidentified submission venue/deadline.
 - [Single-author, two-column paper PDF](docs/paper-reference-style-20261015/manuscript.pdf)
   and [LaTeX](docs/paper-reference-style-20261015/manuscript.tex): seven-page edition
   matching the supplied reference's A4/Times layout, with the verified current evidence.
