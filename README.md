@@ -17,9 +17,11 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
-- [Readable paper PDF](docs/paper-ieee-preparation-20261015/manuscript.pdf),
-  [plain-language abstract](docs/paper-ieee-preparation-20261015/abstract.md), and
-  [provisional IEEE conference source](docs/paper-ieee-preparation-20261015/ieee-conference.tex).
+- [Readable paper PDF](docs/paper-math-readable-20261015/manuscript.pdf),
+  [plain-language abstract](docs/paper-math-readable-20261015/abstract.md), and
+  [provisional IEEE conference source](docs/paper-math-readable-20261015/ieee-conference.tex).
+  The latest edition uses larger displayed equations, stacked fractions and
+  correctly aligned inline symbols; [formatting notes](docs/paper-math-readable-20261015/README.md).
   The [publication research](docs/paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md)
   records verified IEEE guidance and the still-unidentified submission venue/deadline.
 - [Single-author, two-column paper PDF](docs/paper-reference-style-20261015/manuscript.pdf)

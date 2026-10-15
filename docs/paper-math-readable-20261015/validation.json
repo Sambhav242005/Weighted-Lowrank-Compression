@@ -1,0 +1,29 @@
+{
+  "pdf_pages": 7,
+  "unchanged_source_files": {
+    "manuscript.md": true,
+    "abstract.md": true,
+    "paper_protocol_v2.bib": true,
+    "report.json": true,
+    "figures/provenance.json": true
+  },
+  "earlier_edition_unchanged": true,
+  "display_equations": 8,
+  "display_font_sizes_pt": [
+    11.5
+  ],
+  "display_equations_shrunk": false,
+  "ieee_source_equations_match_pdf": true,
+  "page_boundary_overflow": [],
+  "rank_equation_pages": [
+    2
+  ],
+  "proof_directory": "docs\\proofs\\math-readability-20261015",
+  "pdf_sha256": "b8c32e6d30ee30faefe99969b8a5f8c5688dbf546e0980b0ca13cb60e26ec9ab",
+  "experiments_run": false,
+  "latex_compilation": {
+    "ieee-conference.tex": "success: desktop editor compiler",
+    "manuscript.tex": "success: desktop editor compiler"
+  },
+  "visual_review": "All seven rendered pages reviewed; rank formulas and drift definitions inspected at larger scale"
+}

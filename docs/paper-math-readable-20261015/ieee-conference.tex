@@ -1,0 +1,501 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,array,booktabs,graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\sloppy
+% Provisional conference format; actual venue and metadata remain unresolved.
+% Mathematics uses stacked fractions and separate numbered displays.
+\begin{document}
+\title{Activation-Weighted Low-Rank Compression: Likelihood, Drift, and Practical Cost}
+\author{\IEEEauthorblockN{Sambhav Surana}}
+\maketitle
+\begin{abstract}Large language models use large matrices, or tables of numbers, to turn text into predictions. Replacing some of these matrices with two smaller ones can save storage, but the replacements may change how information passes through the model. We study whether a compression method guided by the model's observed inputs can preserve its predictions and the internal signals passed between layers. We compare this method with a version that also penalizes changes to the original weights, using the same number of stored values. Tests on three pretrained language models show that the penalty provides no consistent improvement in both prediction quality and internal similarity. In one model, prediction quality improves while average error in these internal signals grows to 3.86 times that of the method without the penalty. Tests on consecutive layers also find a group where both prediction quality and internal similarity worsen for all three choices of fitting data. Separate storage and timing tests remove 29.17\% of the weights in the selected matrices, but reduce the complete model file by only 0.894\%; execution time varies with the workload. These findings show that prediction quality alone cannot establish whether compression preserves the original computation. Failed numerical accuracy checks, incomplete additional tests for one model, and evaluation on a previously used text dataset make the findings exploratory. A practical compression claim therefore needs separate evidence for prediction quality, internal behavior, storage, and speed.\end{abstract}
+\begin{IEEEkeywords}low-rank compression; activation weighting; representation drift; transformer evaluation; inference cost.\end{IEEEkeywords}
+\section{Introduction}
+Language models use weight matrices to transform text into predictions. Low-rank compression replaces a large matrix with two smaller factors. The replacement saves weights, but its effect depends on the rest of the model. A factorized layer may closely match the original on calibration inputs and still receive different inputs after earlier layers have been compressed. A compressed model may also predict text more accurately while its internal representations move farther from those of the original model, which we call the teacher. We measure these outcomes separately.\par\smallskip
+We test whether a weight-space anchor improves prediction quality and internal similarity when the number of stored factor weights is fixed. Activation weighting gives more importance to input directions observed during calibration. The anchor adds a penalty for changing the original weights. It changes how the factors are fitted but adds no branch at inference. We compare it with covariance weighting without the anchor, using the same factor budget, and measure storage and execution cost.\par\smallskip
+The study separates the effects of activation weighting, anchoring and extra ridge shrinkage. We test attention-output replacements across the full stack and in consecutive groups, measuring prediction quality alongside the changes that propagate through the residual stream. We also measure complete checkpoint size and runtime. The results show where an average joint improvement fails to hold across calibration seeds or layer groups, and where better prediction quality accompanies greater internal drift.\par\smallskip
+The results remain exploratory. Some strict numerical accuracy checks failed, and Qwen's primary comparison is available without a complete validation rank frontier. The later practical cohort uses bfloat16 (BF16), has only two calibration seeds, and adds no BF16 drift measurements. We do not claim a new whitening algorithm or reliable preservation of the complete model's computation.\par\smallskip
+\section{Related work and comparison scope}
+Data-aware low-rank approximation predates this study. DRONE and weighted language-model factorization establish earlier approaches that use data or task information when selecting a low-rank representation \cite{chen2021drone} \cite{hsu2022weighted}. ASVD combines activation-magnitude scaling with sensitivity-based rank selection; its v5 covariance variant, ASVD+, uses a Cholesky factor of the activation Gram matrix \cite{yuan2023asvd}. SVD-LLM v5 combines covariance whitening with sequential factor-wise low-rank adaptation fine-tuning, while SVD-LLM(W) denotes its whitening-only component \cite{wang2024svdllm}. Our controls use fixed ranks and omit rank search and recovery fine-tuning. They isolate the diagonal-scaling and covariance-weighting components of those methods. For invertible covariance in exact arithmetic, unanchored covariance weighting shares the whitening geometry; numerical cutoffs and regularization still require separate qualification.\par\smallskip
+Accumulated error and rank allocation motivate distinct comparisons. SVD-LLM V2 studies truncation and rank allocation \cite{wang2025svdllmv2}. The SAES-SVD and LACE-SVD preprints address accumulated/local error and cumulative correction, respectively \cite{hu2026saessvd} \cite{liu2026lacesvd}. Zero Sum SVD considers loss-sensitive global component selection, and IO-SVD introduces input/output whitening with heterogeneous ranks \cite{abbasi2026zerosum} \cite{abbasi2026iosvd}. These methods remain candidates for future comparisons at matched budgets; we did not run them here. Related work on quantization-error propagation reinforces the need to evaluate downstream effects, without making quantization and low-rank truncation equivalent \cite{arai2025qep}.\par\smallskip
+Compression also depends on the deployed representation. GPTQ, AWQ and SparseGPT study quantization or pruning rather than our fixed-rank factors \cite{frantar2022gptq} \cite{lin2023awq} \cite{frantar2023sparsegpt}. EoRA uses eigenspace-informed low-rank compensation \cite{liu2024eora}. SVDQuant illustrates the execution cost of separate branches in diffusion models, a different application domain \cite{li2024svdquant}. These methods provide context for the practical measurements; we did not benchmark them or establish faster language-model inference. Centered kernel alignment and temperature scaling provide representation and calibration diagnostics, respectively; neither establishes teacher preservation \cite{kornblith2019cka} \cite{guo2017calibration}.\par\smallskip
+\section{Methods}
+\subsection{Representation and parameter budget}
+For a projection $W\in\mathbb{R}^{o\times i}$, replace $Wx+b$ with $U(Vx)+b$, where $U\in\mathbb{R}^{o\times r}$ and $V\in\mathbb{R}^{r\times i}$. The original bias is applied once. The factors contain $r(o+i)$ weights, compared with $oi$ in the dense matrix. Parameter savings therefore require
+\begin{equation}r<\frac{oi}{o+i}.\end{equation}
+Rank reduction by itself does not specify the storage saving.\par\smallskip
+Only the output projections of full-attention blocks are replaced. Attention heads are not pruned. Embeddings, feed-forward layers and other untargeted weights remain dense; Qwen's DeltaNet and LFM's convolutional mixers also remain dense. For Gemma, each of 26 targets has shape 1152 by 1024. Rank 384 retains 835,584 of 1,179,648 weights per target: a 29.17\% targeted reduction, or 8,945,664 weights across the stack. This fraction is not the whole-model saving.\par\smallskip
+The hybrid primary ranks follow
+\begin{equation}r=\left\lfloor\frac{17}{24}\,\frac{oi}{o+i}\right\rfloor,\end{equation}
+giving rank 483 for Qwen and 725 for LFM. This approximately matches Gemma's retained target-weight fraction, rather than imposing the same integer rank on different shapes. Validation-only frontier ranks use
+\begin{equation}\left\lfloor\frac{\min(o,i)}{d}\right\rfloor,\end{equation}
+with $d\in\{2,3,4\}$. Within each comparison, the anchor and whitening methods use identical target shapes, ranks and factor precision.\par\smallskip
+\subsection{Weighting, anchoring and extra ridge}
+Let $X\in\mathbb{R}^{i\times n}$ contain calibration activations and write $A=UV$. The anchored objective is
+\begin{equation}J_\beta(A)=\|(W-A)X\|_F^2+\beta n\|W-A\|_F^2,\end{equation}
+subject to rank at most $r$. The first term weights directions by observed activation energy; the second penalizes weight-space deviation even in weakly observed directions. The anchor changes the fitting geometry while keeping the factor budget and inference graph fixed.\par\smallskip
+With exact teacher outputs, define $H=XX^T+\beta nI$ and $C=WH$. The BF16 practical implementation instead fits measured outputs: it first removes the bias, $Y_b=Y-b\mathbf{1}^T$, and minimizes
+\begin{equation}\|Y_b-AX\|_F^2+\beta n\|W-A\|_F^2,\end{equation}
+giving $C=Y_bX^T+\beta nW$. This equals the exact-output objective only when $Y_b=WX$; finite-precision measured outputs need not satisfy that identity. The historical extra-ridge solver uses $G=H+\lambda I$, with $\lambda=\rho\operatorname{mean}(\operatorname{eig}(H))$. It forms $A_{\mathrm{full}}=CG^\dagger$, truncates $A_{\mathrm{full}}G^{1/2}$ to rank $r$, and maps back using $G^{\dagger/2}$.\par\smallskip
+For nonsingular $H$, exact outputs and no extra ridge, the solution is
+\begin{equation}A_\beta=[WH^{1/2}]_rH^{-1/2},\end{equation}
+where brackets denote the best rank-$r$ singular-value truncation. Without rank reduction, this recovers $W$. For singular or numerically truncated geometry, recovery is restricted to retained spectral directions. In contrast, positive extra ridge generally shrinks the unrestricted solution even before truncation. Consequently, an effect of the historical solver cannot automatically be attributed to low rank or to anchoring alone.\par\smallskip
+The unanchored whitening component sets $\beta=\rho=0$. The selected anchor uses $\beta=0.03$ and $\rho=0$. Plain singular value decomposition (SVD) is a weight-space control. The fixed-rank diagonal ASVD component uses $s_j=\max(\operatorname{mean}_t|X_{jt}|,10^{-8})^{0.5}$, truncates $W\operatorname{diag}(s)$ and scales back. Covariance fitting and weighted decomposition use 64-bit floating-point computation (FP64), then 32-bit floating-point factors (FP32) before the declared storage cast; plain SVD uses FP32. The weighted implementation retains regularized eigenvalues strictly above $10^{-7}\lambda_{\max}(G)$ and clamps negative numerical eigenvalues to zero. These finite-precision choices limit exact-arithmetic equivalence claims.\par\smallskip
+\subsection{Local error and propagated residual drift}
+Local error compares the original and replacement projection on identical teacher activations. Propagated drift instead compares the outputs of every complete block in independent teacher and compressed-model forward passes on the same token sequence. The student therefore receives its own upstream hidden states. Both models use the observed token context; this is not free-running generated-text evaluation.\par\smallskip
+Let $h_{\ell,t}$ and $\widehat h_{\ell,t}$ be teacher and student block-output states at scored positions $t\in\mathcal{T}$. We use
+\begin{equation}D_\ell=\frac{\sum_{t\in\mathcal{T}}\|\widehat h_{\ell,t}-h_{\ell,t}\|_2^2}{\max\left(\sum_{t\in\mathcal{T}}\|h_{\ell,t}\|_2^2,\,10^{-30}\right)}\end{equation}
+ and
+\begin{equation}D=\frac{1}{L}\sum_{\ell=1}^{L}D_\ell\end{equation}
+ over all model blocks. Errors and reference energy accumulate across all scored windows before normalization. The metric $D$ averages the energy ratio for each block. It differs from both a last-layer error and an average of per-token ratios. For subgroup replacements, it includes unchanged upstream blocks as well as downstream blocks, so group location affects its interpretation.\par\smallskip
+Cosine distance, residual norm ratios, window-based linear centered kernel alignment (CKA), and teacher-to-student logit Kullback-Leibler (KL) divergence are secondary diagnostics. Low drift indicates similarity in the measured representation coordinates; it is not a theorem of functional equivalence. A representation change can preserve or improve an output metric. Conversely, a favorable average drift score need not guarantee good final logits or likelihood.\par\smallskip
+\section{Experimental protocol and evidence boundaries}
+\subsection{Data, selection and uncertainty}
+All reported quality comparisons use the native WikiText-2 splits \cite{merity2016wikitext}. Calibration draws 16 disjoint chunks of 512 tokens from training data, paired across methods for seeds 11, 23 and 37 in the historical quality cohorts. Native validation selects regularization; native test evaluates the frozen setting. Rows retain dataset order and are joined with two newlines without added special tokens. Evaluation uses context 512, stride 256, exactly-once shifted-target masking and the final partial window. Negative log-likelihood (NLL) is total token loss divided by scored targets; perplexity (PPL) is its exponential. Native-tokenizer metrics are compared within models, never used to rank different tokenizers.\par\smallskip
+The original anchor sweep is $\beta\in\{0,0.03,0.1,0.3,1\}$. Extra-ridge fractions are $\rho\in\{0,0.001,0.01\}$ at $\beta=0.1$. Validation NLL ties within $10^{-6}$ prefer less regularization. The selected ridge-free anchor is frozen before the primary comparisons; hybrid validation frontiers are development evidence, not additional confirmation.\par\smallskip
+Tables report calibration-seed means and sample standard deviations, with seed-independent SVD fitted once. Seeds describe calibration variation, not independently pretrained models. Paired 95\% bootstrap intervals use 2,000 resamples of contiguous 4,096-target evaluation blocks. The incomplete tail remains in full-test NLL but is excluded from fixed-block resampling. Appendix uncertainty therefore describes evaluation-block variation conditional on the fitted model; it does not replace seed uncertainty. Comparisons across many groups and ranks remain descriptive rather than multiplicity-corrected discoveries \cite{biderman2024evaluation}.\par\smallskip
+\subsection{Numerical controls, coverage and practical amendment}
+The original strict numerical check for 16-bit floating-point (FP16) factorization failed. Copied-teacher and factor-split identity controls can match exactly, but do not establish that SVD-based factor preparation has equivalent numerical behavior. Later BF16 controls likewise do not retroactively validate the FP16 cohort: the BF16 full-rank SVD control has NLL 3.452658 versus 3.451550 for its teacher and fails its recorded probe and NLL gates. Higher-precision execution improves NLL agreement while the strict probe still fails. Because these checks failed, the results describe the recorded implementations. They cannot isolate the ideal mathematical objectives from numerical error.\par\smallskip
+The Qwen continuation contains all eight primary-test records but only 10 of 18 declared validation-frontier records. The continuation reuses observations from an interrupted attempt; they do not count as independent replications. LFM's eight primary-test and 18 frontier records are complete. Completion of either dispatcher or saved rows does not remove the readiness limitation.\par\smallskip
+A later practical amendment evaluates only BF16 Gemma: one dense teacher and whitening/anchor factors for seeds 11 and 23, five conditions in total. It is separate from the stopped FP16/INT8 practical cohort and does not supply new drift evidence. Its two seeds cannot satisfy the original three-seed promotion gate. No missing frontier point, seed, corpus or task is inferred from execution completion.\par\smallskip
+\section{Results}
+\subsection{Activation-aware fitting improves on plain SVD, but anchoring has a small mixed Gemma effect}
+Table 1 compares all 26 Gemma attention-output projections at rank 384 using the historical FP16 cohort. The dense reference NLL is 3.451563. Activation-aware components have substantially lower NLL and drift than plain SVD at the same factor budget. The anchor's mean NLL is slightly lower than whitening's, but both remain worse than the dense reference on this corpus.\par\smallskip
+Table 1. Gemma full-stack native-test comparison. Values are mean \(\pm\) sample seed standard deviation; a dash indicates a single seed-independent fit. Drift is the dimensionless primary residual error $D$.\par\smallskip
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
+Method & NLL & Residual drift & Seeds \\
+\midrule
+Plain SVD & 5.088681 (-) & 0.074248 (-) & 1 \\
+Diagonal ASVD component & 3.694466 \(\pm\) 0.002420 & 0.030972 \(\pm\) 0.000197 & 3 \\
+Covariance whitening & 3.572814 \(\pm\) 0.011819 & 0.010638 \(\pm\) 0.000382 & 3 \\
+Anchor (beta=0.03) & 3.565921 \(\pm\) 0.009576 & 0.010547 \(\pm\) 0.000492 & 3 \\
+Extra ridge (beta=0.1, rho=0.01) & 3.579034 \(\pm\) 0.008521 & 0.011836 \(\pm\) 0.000139 & 3 \\
+\bottomrule\end{tabular}}\par\medskip
+Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift also decreases slightly, from 0.010638 to 0.010547, but drift worsens in two of the three paired seeds. Therefore the aggregate does not establish a reproducible joint improvement. The historical extra-ridge setting is worse than whitening on both metrics in every paired seed. The validation full-rank ridge control further demonstrates why shrinkage must be distinguished from rank reduction; an unrestricted-rank control is not a matched compressed baseline.\par\smallskip
+\begin{figure}[t]\centering\resizebox{\columnwidth}{!}{\begin{minipage}{350pt}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\qbezier(35.000,32.473)(40.800,32.977)(46.600,33.480)
+\qbezier(46.600,33.480)(52.400,37.191)(58.200,40.902)
+\qbezier(58.200,40.902)(64.000,38.694)(69.800,36.487)
+\qbezier(69.800,36.487)(75.600,38.982)(81.400,41.477)
+\qbezier(81.400,41.477)(87.200,43.612)(93.000,45.746)
+\qbezier(93.000,45.746)(98.800,55.266)(104.600,64.786)
+\qbezier(104.600,64.786)(110.400,95.497)(116.200,126.207)
+\qbezier(116.200,126.207)(122.000,118.480)(127.800,110.753)
+\qbezier(127.800,110.753)(133.600,126.483)(139.400,142.213)
+\qbezier(139.400,142.213)(145.200,135.669)(151.000,129.125)
+\qbezier(151.000,129.125)(156.800,131.750)(162.600,134.375)
+\qbezier(162.600,134.375)(168.400,140.894)(174.200,147.413)
+\qbezier(174.200,147.413)(180.000,147.874)(185.800,148.335)
+\qbezier(185.800,148.335)(191.600,147.719)(197.400,147.104)
+\qbezier(197.400,147.104)(203.200,142.011)(209.000,136.918)
+\qbezier(209.000,136.918)(214.800,135.181)(220.600,133.443)
+\qbezier(220.600,133.443)(226.400,142.391)(232.200,151.339)
+\qbezier(232.200,151.339)(238.000,155.094)(243.800,158.849)
+\qbezier(243.800,158.849)(249.600,151.859)(255.400,144.869)
+\qbezier(255.400,144.869)(261.200,136.835)(267.000,128.801)
+\qbezier(267.000,128.801)(272.800,123.086)(278.600,117.371)
+\qbezier(278.600,117.371)(284.400,110.409)(290.200,103.446)
+\qbezier(290.200,103.446)(296.000,104.520)(301.800,105.593)
+\qbezier(301.800,105.593)(307.600,104.787)(313.400,103.981)
+\qbezier(313.400,103.981)(319.200,134.491)(325.000,165.000)
+\put(35.000,32.473){\circle*{2}}
+\put(46.600,33.480){\circle*{2}}
+\put(58.200,40.902){\circle*{2}}
+\put(69.800,36.487){\circle*{2}}
+\put(81.400,41.477){\circle*{2}}
+\put(93.000,45.746){\circle*{2}}
+\put(104.600,64.786){\circle*{2}}
+\put(116.200,126.207){\circle*{2}}
+\put(127.800,110.753){\circle*{2}}
+\put(139.400,142.213){\circle*{2}}
+\put(151.000,129.125){\circle*{2}}
+\put(162.600,134.375){\circle*{2}}
+\put(174.200,147.413){\circle*{2}}
+\put(185.800,148.335){\circle*{2}}
+\put(197.400,147.104){\circle*{2}}
+\put(209.000,136.918){\circle*{2}}
+\put(220.600,133.443){\circle*{2}}
+\put(232.200,151.339){\circle*{2}}
+\put(243.800,158.849){\circle*{2}}
+\put(255.400,144.869){\circle*{2}}
+\put(267.000,128.801){\circle*{2}}
+\put(278.600,117.371){\circle*{2}}
+\put(290.200,103.446){\circle*{2}}
+\put(301.800,105.593){\circle*{2}}
+\put(313.400,103.981){\circle*{2}}
+\put(325.000,165.000){\circle*{2}}
+\put(328.000,168.000){\makebox(0,0)[l]{\tiny 1}}
+\qbezier(35.000,25.287)(40.800,25.716)(46.600,26.144)
+\qbezier(46.600,26.144)(52.400,26.801)(58.200,27.458)
+\qbezier(58.200,27.458)(64.000,27.288)(69.800,27.118)
+\qbezier(69.800,27.118)(75.600,27.863)(81.400,28.608)
+\qbezier(81.400,28.608)(87.200,29.345)(93.000,30.082)
+\qbezier(93.000,30.082)(98.800,32.374)(104.600,34.667)
+\qbezier(104.600,34.667)(110.400,47.485)(116.200,60.303)
+\qbezier(116.200,60.303)(122.000,60.337)(127.800,60.372)
+\qbezier(127.800,60.372)(133.600,68.640)(139.400,76.909)
+\qbezier(139.400,76.909)(145.200,77.315)(151.000,77.720)
+\qbezier(151.000,77.720)(156.800,78.678)(162.600,79.637)
+\qbezier(162.600,79.637)(168.400,83.214)(174.200,86.792)
+\qbezier(174.200,86.792)(180.000,87.785)(185.800,88.777)
+\qbezier(185.800,88.777)(191.600,88.368)(197.400,87.958)
+\qbezier(197.400,87.958)(203.200,84.652)(209.000,81.346)
+\qbezier(209.000,81.346)(214.800,79.995)(220.600,78.645)
+\qbezier(220.600,78.645)(226.400,81.055)(232.200,83.466)
+\qbezier(232.200,83.466)(238.000,82.848)(243.800,82.229)
+\qbezier(243.800,82.229)(249.600,77.823)(255.400,73.417)
+\qbezier(255.400,73.417)(261.200,69.024)(267.000,64.632)
+\qbezier(267.000,64.632)(272.800,62.179)(278.600,59.726)
+\qbezier(278.600,59.726)(284.400,56.578)(290.200,53.431)
+\qbezier(290.200,53.431)(296.000,53.017)(301.800,52.603)
+\qbezier(301.800,52.603)(307.600,50.439)(313.400,48.276)
+\qbezier(313.400,48.276)(319.200,54.372)(325.000,60.469)
+\put(35.000,25.287){\circle*{2}}
+\put(46.600,26.144){\circle*{2}}
+\put(58.200,27.458){\circle*{2}}
+\put(69.800,27.118){\circle*{2}}
+\put(81.400,28.608){\circle*{2}}
+\put(93.000,30.082){\circle*{2}}
+\put(104.600,34.667){\circle*{2}}
+\put(116.200,60.303){\circle*{2}}
+\put(127.800,60.372){\circle*{2}}
+\put(139.400,76.909){\circle*{2}}
+\put(151.000,77.720){\circle*{2}}
+\put(162.600,79.637){\circle*{2}}
+\put(174.200,86.792){\circle*{2}}
+\put(185.800,88.777){\circle*{2}}
+\put(197.400,87.958){\circle*{2}}
+\put(209.000,81.346){\circle*{2}}
+\put(220.600,78.645){\circle*{2}}
+\put(232.200,83.466){\circle*{2}}
+\put(243.800,82.229){\circle*{2}}
+\put(255.400,73.417){\circle*{2}}
+\put(267.000,64.632){\circle*{2}}
+\put(278.600,59.726){\circle*{2}}
+\put(290.200,53.431){\circle*{2}}
+\put(301.800,52.603){\circle*{2}}
+\put(313.400,48.276){\circle*{2}}
+\put(325.000,60.469){\circle*{2}}
+\put(328.000,63.469){\makebox(0,0)[l]{\tiny 2}}
+\qbezier(35.000,25.002)(40.800,25.147)(46.600,25.292)
+\qbezier(46.600,25.292)(52.400,25.439)(58.200,25.585)
+\qbezier(58.200,25.585)(64.000,25.504)(69.800,25.422)
+\qbezier(69.800,25.422)(75.600,25.621)(81.400,25.820)
+\qbezier(81.400,25.820)(87.200,25.905)(93.000,25.991)
+\qbezier(93.000,25.991)(98.800,26.570)(104.600,27.149)
+\qbezier(104.600,27.149)(110.400,30.837)(116.200,34.525)
+\qbezier(116.200,34.525)(122.000,34.660)(127.800,34.796)
+\qbezier(127.800,34.796)(133.600,38.179)(139.400,41.562)
+\qbezier(139.400,41.562)(145.200,41.748)(151.000,41.933)
+\qbezier(151.000,41.933)(156.800,42.806)(162.600,43.679)
+\qbezier(162.600,43.679)(168.400,45.194)(174.200,46.710)
+\qbezier(174.200,46.710)(180.000,47.163)(185.800,47.616)
+\qbezier(185.800,47.616)(191.600,47.543)(197.400,47.470)
+\qbezier(197.400,47.470)(203.200,46.166)(209.000,44.862)
+\qbezier(209.000,44.862)(214.800,44.316)(220.600,43.769)
+\qbezier(220.600,43.769)(226.400,44.747)(232.200,45.725)
+\qbezier(232.200,45.725)(238.000,45.495)(243.800,45.264)
+\qbezier(243.800,45.264)(249.600,43.581)(255.400,41.897)
+\qbezier(255.400,41.897)(261.200,40.299)(267.000,38.700)
+\qbezier(267.000,38.700)(272.800,37.942)(278.600,37.183)
+\qbezier(278.600,37.183)(284.400,36.189)(290.200,35.194)
+\qbezier(290.200,35.194)(296.000,35.232)(301.800,35.270)
+\qbezier(301.800,35.270)(307.600,34.333)(313.400,33.396)
+\qbezier(313.400,33.396)(319.200,35.418)(325.000,37.439)
+\put(35.000,25.002){\circle*{2}}
+\put(46.600,25.292){\circle*{2}}
+\put(58.200,25.585){\circle*{2}}
+\put(69.800,25.422){\circle*{2}}
+\put(81.400,25.820){\circle*{2}}
+\put(93.000,25.991){\circle*{2}}
+\put(104.600,27.149){\circle*{2}}
+\put(116.200,34.525){\circle*{2}}
+\put(127.800,34.796){\circle*{2}}
+\put(139.400,41.562){\circle*{2}}
+\put(151.000,41.933){\circle*{2}}
+\put(162.600,43.679){\circle*{2}}
+\put(174.200,46.710){\circle*{2}}
+\put(185.800,47.616){\circle*{2}}
+\put(197.400,47.470){\circle*{2}}
+\put(209.000,44.862){\circle*{2}}
+\put(220.600,43.769){\circle*{2}}
+\put(232.200,45.725){\circle*{2}}
+\put(243.800,45.264){\circle*{2}}
+\put(255.400,41.897){\circle*{2}}
+\put(267.000,38.700){\circle*{2}}
+\put(278.600,37.183){\circle*{2}}
+\put(290.200,35.194){\circle*{2}}
+\put(301.800,35.270){\circle*{2}}
+\put(313.400,33.396){\circle*{2}}
+\put(325.000,37.439){\circle*{2}}
+\put(328.000,40.439){\makebox(0,0)[l]{\tiny 3}}
+\qbezier(35.000,25.000)(40.800,25.140)(46.600,25.280)
+\qbezier(46.600,25.280)(52.400,25.423)(58.200,25.566)
+\qbezier(58.200,25.566)(64.000,25.487)(69.800,25.409)
+\qbezier(69.800,25.409)(75.600,25.591)(81.400,25.773)
+\qbezier(81.400,25.773)(87.200,25.866)(93.000,25.959)
+\qbezier(93.000,25.959)(98.800,26.537)(104.600,27.115)
+\qbezier(104.600,27.115)(110.400,30.734)(116.200,34.353)
+\qbezier(116.200,34.353)(122.000,34.423)(127.800,34.492)
+\qbezier(127.800,34.492)(133.600,37.823)(139.400,41.154)
+\qbezier(139.400,41.154)(145.200,41.360)(151.000,41.565)
+\qbezier(151.000,41.565)(156.800,42.502)(162.600,43.439)
+\qbezier(162.600,43.439)(168.400,44.956)(174.200,46.473)
+\qbezier(174.200,46.473)(180.000,46.936)(185.800,47.399)
+\qbezier(185.800,47.399)(191.600,47.341)(197.400,47.283)
+\qbezier(197.400,47.283)(203.200,45.983)(209.000,44.683)
+\qbezier(209.000,44.683)(214.800,44.134)(220.600,43.585)
+\qbezier(220.600,43.585)(226.400,44.631)(232.200,45.678)
+\qbezier(232.200,45.678)(238.000,45.458)(243.800,45.238)
+\qbezier(243.800,45.238)(249.600,43.577)(255.400,41.916)
+\qbezier(255.400,41.916)(261.200,40.302)(267.000,38.688)
+\qbezier(267.000,38.688)(272.800,37.936)(278.600,37.185)
+\qbezier(278.600,37.185)(284.400,36.206)(290.200,35.226)
+\qbezier(290.200,35.226)(296.000,35.233)(301.800,35.240)
+\qbezier(301.800,35.240)(307.600,34.323)(313.400,33.406)
+\qbezier(313.400,33.406)(319.200,35.443)(325.000,37.481)
+\put(35.000,25.000){\circle*{2}}
+\put(46.600,25.280){\circle*{2}}
+\put(58.200,25.566){\circle*{2}}
+\put(69.800,25.409){\circle*{2}}
+\put(81.400,25.773){\circle*{2}}
+\put(93.000,25.959){\circle*{2}}
+\put(104.600,27.115){\circle*{2}}
+\put(116.200,34.353){\circle*{2}}
+\put(127.800,34.492){\circle*{2}}
+\put(139.400,41.154){\circle*{2}}
+\put(151.000,41.565){\circle*{2}}
+\put(162.600,43.439){\circle*{2}}
+\put(174.200,46.473){\circle*{2}}
+\put(185.800,47.399){\circle*{2}}
+\put(197.400,47.283){\circle*{2}}
+\put(209.000,44.683){\circle*{2}}
+\put(220.600,43.585){\circle*{2}}
+\put(232.200,45.678){\circle*{2}}
+\put(243.800,45.238){\circle*{2}}
+\put(255.400,41.916){\circle*{2}}
+\put(267.000,38.688){\circle*{2}}
+\put(278.600,37.185){\circle*{2}}
+\put(290.200,35.226){\circle*{2}}
+\put(301.800,35.240){\circle*{2}}
+\put(313.400,33.406){\circle*{2}}
+\put(325.000,37.481){\circle*{2}}
+\put(328.000,40.481){\makebox(0,0)[l]{\tiny 4}}
+\qbezier(35.000,25.121)(40.800,25.270)(46.600,25.419)
+\qbezier(46.600,25.419)(52.400,25.600)(58.200,25.782)
+\qbezier(58.200,25.782)(64.000,25.682)(69.800,25.582)
+\qbezier(69.800,25.582)(75.600,25.855)(81.400,26.128)
+\qbezier(81.400,26.128)(87.200,26.227)(93.000,26.326)
+\qbezier(93.000,26.326)(98.800,27.009)(104.600,27.693)
+\qbezier(104.600,27.693)(110.400,32.072)(116.200,36.452)
+\qbezier(116.200,36.452)(122.000,36.278)(127.800,36.105)
+\qbezier(127.800,36.105)(133.600,39.591)(139.400,43.078)
+\qbezier(139.400,43.078)(145.200,43.217)(151.000,43.355)
+\qbezier(151.000,43.355)(156.800,44.398)(162.600,45.440)
+\qbezier(162.600,45.440)(168.400,47.072)(174.200,48.705)
+\qbezier(174.200,48.705)(180.000,49.212)(185.800,49.720)
+\qbezier(185.800,49.720)(191.600,49.662)(197.400,49.603)
+\qbezier(197.400,49.603)(203.200,48.172)(209.000,46.742)
+\qbezier(209.000,46.742)(214.800,46.135)(220.600,45.529)
+\qbezier(220.600,45.529)(226.400,46.789)(232.200,48.048)
+\qbezier(232.200,48.048)(238.000,47.817)(243.800,47.585)
+\qbezier(243.800,47.585)(249.600,45.768)(255.400,43.950)
+\qbezier(255.400,43.950)(261.200,42.176)(267.000,40.402)
+\qbezier(267.000,40.402)(272.800,39.572)(278.600,38.742)
+\qbezier(278.600,38.742)(284.400,37.661)(290.200,36.580)
+\qbezier(290.200,36.580)(296.000,36.596)(301.800,36.612)
+\qbezier(301.800,36.612)(307.600,35.593)(313.400,34.574)
+\qbezier(313.400,34.574)(319.200,36.924)(325.000,39.274)
+\put(35.000,25.121){\circle*{2}}
+\put(46.600,25.419){\circle*{2}}
+\put(58.200,25.782){\circle*{2}}
+\put(69.800,25.582){\circle*{2}}
+\put(81.400,26.128){\circle*{2}}
+\put(93.000,26.326){\circle*{2}}
+\put(104.600,27.693){\circle*{2}}
+\put(116.200,36.452){\circle*{2}}
+\put(127.800,36.105){\circle*{2}}
+\put(139.400,43.078){\circle*{2}}
+\put(151.000,43.355){\circle*{2}}
+\put(162.600,45.440){\circle*{2}}
+\put(174.200,48.705){\circle*{2}}
+\put(185.800,49.720){\circle*{2}}
+\put(197.400,49.603){\circle*{2}}
+\put(209.000,46.742){\circle*{2}}
+\put(220.600,45.529){\circle*{2}}
+\put(232.200,48.048){\circle*{2}}
+\put(243.800,47.585){\circle*{2}}
+\put(255.400,43.950){\circle*{2}}
+\put(267.000,40.402){\circle*{2}}
+\put(278.600,38.742){\circle*{2}}
+\put(290.200,36.580){\circle*{2}}
+\put(301.800,36.612){\circle*{2}}
+\put(313.400,34.574){\circle*{2}}
+\put(325.000,39.274){\circle*{2}}
+\put(328.000,42.274){\makebox(0,0)[l]{\tiny 5}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0}}
+\put(305,12){\makebox(0,0)[l]{\tiny 25}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.00020401}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.12381}}
+\put(170,0){\makebox(0,0){\scriptsize Block index}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Normalized residual squared error}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: SVD; 26 measured points.\par
+\noindent\footnotesize Series 2: ASVD component; 26 measured points.\par
+\noindent\footnotesize Series 3: Whitening; 26 measured points.\par
+\noindent\footnotesize Series 4: Anchor; 26 measured points.\par
+\noindent\footnotesize Series 5: Extra ridge; 26 measured points.\par
+\end{minipage}}\caption{Gemma residual drift from the same saved coordinates. Individual-seed variation is retained in the companion PDF figure and original evidence.}\end{figure}
+\subsection{A full-stack average does not predict every consecutive group}
+The completed composition cohort evaluates single projections, groups of two, groups of four and all 26 projections. Smaller groups occur at early, middle and late positions, with fixed per-target rank. Table 2 reports paired mean differences, anchor minus whitening; negative values favor the anchor. It uses only the unique completed cohort. Interrupted predecessors remain in the evidence ledger and are not counted as new observations.\par\smallskip
+Table 2. Composition heterogeneity across three calibration seeds. Block indices are zero-based. Jointly better counts seeds with strictly lower NLL and strictly lower $D$; it does not assert statistical significance.\par\smallskip
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
+Blocks & Mean NLL difference & Mean drift difference & Jointly better \\
+\midrule
+0 & -0.0000484 & -3.392768e-06 & 2/3 \\
+12 & -0.0003431 & +1.50569e-06 & 0/3 \\
+25 & -0.0002025 & +3.248449e-07 & 0/3 \\
+0-1 & -0.0000478 & -8.883664e-05 & 1/3 \\
+12-13 & +0.0000058 & +2.945603e-06 & 0/3 \\
+24-25 & -0.0001833 & -2.956141e-08 & 0/3 \\
+0-3 & -0.0002942 & -0.0001338675 & 2/3 \\
+11-14 & +0.0027237 & +6.855561e-05 & 0/3 \\
+22-25 & -0.0009939 & -1.052808e-05 & 2/3 \\
+All 26 & -0.0068927 & -9.051551e-05 & 1/3 \\
+\bottomrule\end{tabular}}\par\medskip
+For middle blocks 11-14, anchor NLL is 3.475825 versus 3.473102 for whitening, and drift is 0.00044914 versus 0.00038059. Both metrics worsen in all three seeds. Other groups have mixed signs or much smaller differences. The full-stack average gain therefore does not hold for every group. Drift also need not grow monotonically with group size: layer position, downstream sensitivity and the unchanged blocks included in the average all affect the result.\par\smallskip
+\subsection{Hybrid-model results separate likelihood from teacher-state fidelity}
+Table 3 shows primary-test means for the two hybrid models. Each method targets six full-attention output projections, with matching ranks within model. Qwen's rank is 483 and LFM's is 725. Their other mixer families remain dense. Three calibration seeds are present for each activation-aware method; the dense teacher and plain-SVD controls are recorded once.\par\smallskip
+Table 3. Within-model hybrid primary-test results. NLL and drift entries show whitening → anchor. Cross-model differences are not architecture-only causal effects.\par\smallskip
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
+Model / primary rank & NLL: whitening → anchor & Drift: whitening → anchor & Record coverage \\
+\midrule
+Qwen, rank 483 & 2.934439 → 2.943324 & 0.006155 → 0.012762 & 8/8 test; 10/18 validation \\
+LFM, rank 725 & 4.056405 → 3.835916 & 0.035880 → 0.138346 & 8/8 test; 18/18 validation \\
+\bottomrule\end{tabular}}\par\medskip
+Qwen's anchor has higher NLL and higher drift than whitening in every seed. This weakens the anchor hypothesis at its measured primary rank, even though its incomplete validation frontier prevents a complete frontier claim.\par\smallskip
+LFM shows the clearest disagreement between the metrics: anchor NLL is lower in every seed, while drift increases in every seed and is approximately 3.86 times the whitening mean. Its anchor NLL is also below the dense teacher's 3.998736, whereas its drift remains nonzero and much larger than whitening's. Better observed next-token likelihood therefore does not certify reproduction of the teacher's hidden-state computation. The result alone also cannot identify denoising, beneficial regularization or a particular causal mechanism. The three fully measured LFM validation ranks show the same qualitative likelihood/drift tradeoff, but remain development observations.\par\smallskip
+\subsection{Targeted compression yields modest whole-model storage savings and mixed timing}
+The BF16 practical cohort's dense checkpoint contains 1,999,883,711 bytes; each factorized checkpoint contains 1,982,003,507 bytes, including archive overhead. The reduction is 17,880,204 bytes, or 0.894\%. Identical anchor and whitening factor budgets yield identical checkpoint sizes. The 29.17\% reduction in targeted weights therefore translates to less than 1\% of this whole-model serialization, because most weights remain untouched.\par\smallskip
+Table 4. Separate BF16 practical cohort. Temperature is selected on validation from a bounded grid, then frozen; all five saved selections are approximately 1.090508. GiB uses $2^{30}$ bytes. These are descriptive full-test aggregates without paired block intervals.\par\smallskip
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}@{}}\toprule
+BF16 condition & Seed & Raw NLL & Scaled NLL & Whole GiB \\
+\midrule
+Dense teacher & - & 3.451549 & 3.422601 & 1.862537 \\
+Whitening & 11 & 3.556086 & 3.541726 & 1.845885 \\
+Anchor & 11 & 3.556826 & 3.542255 & 1.845885 \\
+Whitening & 23 & 3.568431 & 3.553267 & 1.845885 \\
+Anchor & 23 & 3.562949 & 3.545341 & 1.845885 \\
+\bottomrule\end{tabular}}\par\medskip
+Temperature scaling reduces NLL for both the teacher and compressed conditions, without closing the teacher-relative NLL gap. This supports treating calibration as a control rather than interpreting raw likelihood differences as denoising. The practical BF16 rows are not pooled with historical FP16 quality or drift measurements.\par\smallskip
+Timing uses a resident NVIDIA GeForce RTX 4070 Ti, batch size one, 10 warmups and 30 synchronized samples. Prefill is measured at 128 and 512 tokens. Cached 128-token decode is timed separately and excludes the initial prompt pass. Table 5 compares anchor with same-seed BF16 whitening under identical workloads. Ratios below one indicate lower median latency; they are descriptive workload comparisons, not a new acceptance gate.\par\smallskip
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.3000\columnwidth}p{0.3000\columnwidth}p{0.3000\columnwidth}@{}}\toprule
+Workload & Seed 11 median ratio & Seed 23 median ratio \\
+\midrule
+Prefill 128 & 1.1876 & 0.9370 \\
+Decode 128 after prompt 128 & 1.1073 & 0.9679 \\
+Prefill 512 & 1.0108 & 0.9473 \\
+Decode 128 after prompt 512 & 0.9876 & 0.9580 \\
+\bottomrule\end{tabular}}\par\medskip
+Median ratios vary by seed and workload: the anchor is slower for seed 11 at the 128-token conditions, while the observed seed-23 ratios favor it. Peak allocated/reserved memory and serialized bytes match between the paired factorized methods. These observations establish neither a consistent anchoring speed advantage nor general acceleration over the dense teacher. CUDA allocator peaks are not total device memory or system RAM. Whole-model reload probes cover a 128-token prompt and one cached next-token forward, not arbitrary generation or the entire test corpus.\par\smallskip
+\section{Discussion}
+LFM predicts text better under the anchored fit while its residual representations differ more from the teacher's. This result limits what likelihood alone can tell us about preservation. Residual similarity also has limits: $D$ compares states in fixed coordinates, and different states can implement similar functions. A stronger preservation claim needs agreement across final logits, task performance, drift measurements and generation tests. Smaller storage or a better score on one measure does not supply that evidence.\par\smallskip
+Matched covariance weighting is the relevant baseline for the anchor. Gains over plain SVD show the value of data-aware fitting in this implementation, but cannot establish what the anchor adds or whether it is novel. Gemma's small average advantage, Qwen's joint worsening and LFM's tradeoff provide no consistent basis for adding the same anchor across models. The models also differ in pretrained weights, tokenizers, mixers and historical inference precision, so we cannot attribute those outcomes solely to architecture.\par\smallskip
+The numerical controls also constrain causal interpretation. The measured operator includes factor casting, multiplication order, spectral cutoffs and finite-precision execution. Without passing the strict readiness checks, we cannot assign every downstream difference to the mathematical objective alone. Future comparisons need to resolve these failures. An exact identity split does not validate a different decomposition path.\par\smallskip
+Model-level storage and speed depend on which layers are compressed and how the factors execute. A targeted parameter saving can be diluted by embeddings and other dense components. Two dependent matrix multiplications can incur launch and intermediate-memory costs despite using fewer weights. Faster covariance preparation, fused BF16 factor execution and runtime-aware rank allocation are reasonable future hypotheses, but require new frozen protocols and matched quality/resource budgets. They are not measured benefits of the present study.\par\smallskip
+\section{Limitations and reproducibility}
+WikiText-2 has already influenced this project; native-test results are regression evidence, not a fresh-domain confirmation. No downstream task or free-running generation equivalence is established. A locked sample from C4, whose provenance is described in the T5 study, could provide fresh confirmation \cite{raffel2020t5}; HellaSwag and ARC-Challenge could evaluate additional capabilities \cite{zellers2019hellaswag} \cite{clark2018arc}. None was executed here.\par\smallskip
+The scope is attention-output replacement at recorded budgets. Multilayer perceptrons (MLPs), hybrid non-attention mixers, larger models and other rank allocations require separate conclusions. Three calibration seeds provide limited variation, and the later BF16 practical amendment has only two. Within-model matching does not make different model families or FP16/BF16 cohorts interchangeable. The Qwen frontier's eight absent validation measurements remain missing. The original strict numerical-readiness failure, incomplete coverage and unfulfilled promotion gates prevent promotion of a general preservation claim.\par\smallskip
+Every main table is reconstructed from the frozen evidence, with its source run identified in Appendix A and exact extraction fields retained in the revision manifest. The full historical report preserves commands, package/device versions, asset revisions, token manifests, factor recipes, source/checkpoint hashes, failed attempts and recovery accounting. Reused records are not independent replications. Recorded charged wall time includes failed/retried work and some reboot downtime; the first reboot has an unbounded unlogged tail, so no exact 24 GPU-hour compliance claim is made. This revision uses the saved measurements without changing the fitting budget, model or dataset.\par\smallskip
+\section{Conclusion}
+Activation-aware low-rank fitting improves on plain SVD at the tested attention-output budgets. Adding the anchor provides no consistent joint improvement in likelihood and residual fidelity over matched whitening. Gemma's small average gain does not hold across all layer groups. Qwen worsens on both metrics, while LFM improves likelihood and increases drift. The separate BF16 practical cohort saves 0.894\% of the complete checkpoint size and has mixed timing results. Compression remains unproven as a way to preserve the original computation across the tested models.\par\smallskip
+\section*{Acknowledgment}
+OpenAI Codex \cite{openaicodex2026} assisted with drafting and editing the Abstract, Introduction, Methods, Discussion and Conclusion, and with preparing formatting, table-assembly and plotting scripts. Numerical results in this revision come from the saved experiment records; this editorial work did not run a new compression experiment.\par\smallskip
+\appendix
+\section{Evidence map and completion status}
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{0.3000\columnwidth}p{0.3000\columnwidth}p{0.3000\columnwidth}@{}}\toprule
+Evidence & Source run & Saved state \\
+\midrule
+Gemma & \texttt{baselines-20261013-175255-6a00d4e8} & completed \\
+Composition & \texttt{composition-20261014-054423-dbd821ff} & completed \\
+Qwen & \texttt{architecture-replication-20261014-093845-97378b5e} & incomplete \\
+LFM & \texttt{architecture-replication-20261014-103759-8d32ab84} & completed \\
+Practical & \texttt{practical-bf16-20261014-135107-82168ad5} & completed \\
+\bottomrule\end{tabular}}\par\medskip
+The complete predecessor/continuation history and all unabridged tables remain in the frozen evidence report (../../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md). The original manuscript (../../results/paper-v2/revised-report-20261014-151432-07c08d61/manuscript.md) is unchanged. The revision evidence file (report.json) retains selected already-recorded paired intervals for the primary comparisons and the middle-four-block counterexample, also reproduced in the PDF and LaTeX appendices. The complete comparison family remains in the frozen report. These intervals are not adjusted for the many tested groups or configurations.\par\smallskip
+\section{Selected paired uncertainty}
+Already-recorded 95 percent evaluation-block intervals for anchor minus whitening. These are conditional on the fitted model, not calibration-seed intervals; no multiplicity correction is applied. Full-test NLL retains the tail excluded from fixed-block resampling.
+\subsection*{Gemma full stack}
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{.10\columnwidth}p{.23\columnwidth}p{.35\columnwidth}p{.23\columnwidth}@{}}\toprule
+Seed & Full NLL difference & 95\% block interval & Drift difference \\\midrule
+11 & -0.003119 & [-0.005598, -0.000577] & +3.02265e-06 \\
+23 & -0.008670 & [-0.012362, -0.004879] & -0.000321962 \\
+37 & -0.008889 & [-0.011564, -0.006193] & +4.73925e-05 \\
+\bottomrule\end{tabular}}\par\smallskip
+71 blocks; 2,000 resamples; 1,465 excluded tail targets.\par
+\subsection*{Gemma blocks 11-14}
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{.10\columnwidth}p{.23\columnwidth}p{.35\columnwidth}p{.23\columnwidth}@{}}\toprule
+Seed & Full NLL difference & 95\% block interval & Drift difference \\\midrule
+11 & +0.003885 & [+0.002661, +0.005130] & +6.89941e-05 \\
+23 & +0.003590 & [+0.002338, +0.004954] & +6.64841e-05 \\
+37 & +0.000696 & [-0.000486, +0.001933] & +7.01887e-05 \\
+\bottomrule\end{tabular}}\par\smallskip
+71 blocks; 2,000 resamples; 1,465 excluded tail targets.\par
+\subsection*{Qwen primary test}
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{.10\columnwidth}p{.23\columnwidth}p{.35\columnwidth}p{.23\columnwidth}@{}}\toprule
+Seed & Full NLL difference & 95\% block interval & Drift difference \\\midrule
+11 & +0.009942 & [+0.008274, +0.011897] & +0.00672854 \\
+23 & +0.008792 & [+0.007209, +0.010678] & +0.00673952 \\
+37 & +0.007922 & [+0.006199, +0.009876] & +0.00635344 \\
+\bottomrule\end{tabular}}\par\smallskip
+72 blocks; 2,000 resamples; 2,280 excluded tail targets.\par
+\subsection*{LFM primary test}
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\noindent\begin{tabular}{@{}p{.10\columnwidth}p{.23\columnwidth}p{.35\columnwidth}p{.23\columnwidth}@{}}\toprule
+Seed & Full NLL difference & 95\% block interval & Drift difference \\\midrule
+11 & -0.232608 & [-0.246727, -0.218354] & +0.101829 \\
+23 & -0.207524 & [-0.224013, -0.190238] & +0.103415 \\
+37 & -0.221333 & [-0.239081, -0.203409] & +0.102153 \\
+\bottomrule\end{tabular}}\par\smallskip
+73 blocks; 2,000 resamples; 24 excluded tail targets.\par
+\begin{thebibliography}{99}
+\bibitem{chen2021drone} Patrick Chen, Hsiang-Fu Yu, Inderjit S. Dhillon et al.. DRONE: Data-aware Low-rank Compression for Large NLP Models. Advances in Neural Information Processing Systems, 2021. \href{https://proceedings.neurips.cc/paper/2021/hash/f56de5ef149cf0aedcc8f4797031e229-Abstract.html}{Primary source}.
+\bibitem{hsu2022weighted} Yen-Chang Hsu, Ting Hua, Sung-En Chang et al.. Language Model Compression with Weighted Low-Rank Factorization. International Conference on Learning Representations, 2022. \href{https://openreview.net/pdf?id=uPv9Y3gmAI5}{Primary source}.
+\bibitem{yuan2023asvd} Zhihang Yuan, Yuzhang Shang, Yue Song et al.. ASVD: Activation-aware Singular Value Decomposition for Compressing Large Language Models. arXiv:2312.05821, 2023. \href{https://arxiv.org/abs/2312.05821}{Primary source}.
+\bibitem{wang2024svdllm} Xin Wang, Yu Zheng, Zhongwei Wan et al.. SVD-LLM: Truncation-aware Singular Value Decomposition for Large Language Model Compression. arXiv:2403.07378, 2024. \href{https://arxiv.org/abs/2403.07378}{Primary source}.
+\bibitem{wang2025svdllmv2} Xin Wang, Samiul Alam, Zhongwei Wan et al.. SVD-LLM V2: Optimizing Singular Value Truncation for Large Language Model Compression. Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), 2025. \href{https://aclanthology.org/2025.naacl-long.217/}{Primary source}.
+\bibitem{liu2024eora} Shih-Yang Liu, Maksim Khadkevich, Nai Chit Fung et al.. EoRA: Fine-tuning-free Compensation for Compressed LLM with Eigenspace Low-Rank Approximation. arXiv:2410.21271, 2024. \href{https://arxiv.org/abs/2410.21271}{Primary source}.
+\bibitem{hu2026saessvd} Xing Hu, Dawei Yang, Yuan Cheng et al.. SAES-SVD: Self-Adaptive Suppression of Accumulated and Local Errors for SVD-based LLM Compression. arXiv:2602.03051, 2026. \href{https://arxiv.org/abs/2602.03051}{Primary source}.
+\bibitem{liu2026lacesvd} Zhuowen Liu, Longkun Hao, Shiyu Feng et al.. LACE-SVD: Loss-Aware SVD with Cumulative Error Correction for LLM Compression. arXiv:2607.03057, 2026. \href{https://arxiv.org/abs/2607.03057}{Primary source}.
+\bibitem{abbasi2026zerosum} Ali Abbasi, Chayne Thrash, Haoran Qin et al.. Zero Sum SVD: Balancing Loss Sensitivity for Low Rank LLM Compression. arXiv:2602.02848, 2026. \href{https://arxiv.org/abs/2602.02848}{Primary source}.
+\bibitem{abbasi2026iosvd} Ali Abbasi, Chayne Thrash, Haoran Qin et al.. IO-SVD: Input-Output Whitened SVD for Adaptive-Rank LLM Compression. arXiv:2605.15626, 2026. \href{https://arxiv.org/abs/2605.15626}{Primary source}.
+\bibitem{arai2025qep} Yamato Arai, Yuma Ichikawa. Quantization Error Propagation: Revisiting Layer-Wise Post-Training Quantization. arXiv:2504.09629, 2025. \href{https://arxiv.org/abs/2504.09629}{Primary source}.
+\bibitem{frantar2022gptq} Elias Frantar, Saleh Ashkboos, Torsten Hoefler et al.. GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers. arXiv:2210.17323, 2022. \href{https://arxiv.org/abs/2210.17323}{Primary source}.
+\bibitem{lin2023awq} Ji Lin, Jiaming Tang, Haotian Tang et al.. AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration. arXiv:2306.00978, 2023. \href{https://arxiv.org/abs/2306.00978}{Primary source}.
+\bibitem{frantar2023sparsegpt} Elias Frantar, Dan Alistarh. SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot. arXiv:2301.00774, 2023. \href{https://arxiv.org/abs/2301.00774}{Primary source}.
+\bibitem{li2024svdquant} Muyang Li, Yujun Lin, Zhekai Zhang et al.. SVDQuant: Absorbing Outliers by Low-Rank Components for 4-Bit Diffusion Models. arXiv:2411.05007, 2024. \href{https://arxiv.org/abs/2411.05007}{Primary source}.
+\bibitem{kornblith2019cka} Simon Kornblith, Mohammad Norouzi, Honglak Lee et al.. Similarity of Neural Network Representations Revisited. Proceedings of the 36th International Conference on Machine Learning, 2019. \href{https://proceedings.mlr.press/v97/kornblith19a.html}{Primary source}.
+\bibitem{guo2017calibration} Chuan Guo, Geoff Pleiss, Yu Sun et al.. On Calibration of Modern Neural Networks. Proceedings of the 34th International Conference on Machine Learning, 2017. \href{https://proceedings.mlr.press/v70/guo17a.html}{Primary source}.
+\bibitem{biderman2024evaluation} Stella Biderman, Hailey Schoelkopf, Lintang Sutawika et al.. Lessons from the Trenches on Reproducible Evaluation of Language Models. arXiv:2405.14782, 2024. \href{https://arxiv.org/abs/2405.14782}{Primary source}.
+\bibitem{merity2016wikitext} Stephen Merity, Caiming Xiong, James Bradbury et al.. Pointer Sentinel Mixture Models. arXiv:1609.07843, 2016. \href{https://arxiv.org/abs/1609.07843}{Primary source}.
+\bibitem{raffel2020t5} Colin Raffel, Noam Shazeer, Adam Roberts et al.. Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer. Journal of Machine Learning Research, 2020. \href{https://jmlr.org/papers/v21/20-074.html}{Primary source}.
+\bibitem{zellers2019hellaswag} Rowan Zellers, Ari Holtzman, Yonatan Bisk et al.. HellaSwag: Can a Machine Really Finish Your Sentence?. Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, 2019. \href{https://aclanthology.org/P19-1472/}{Primary source}.
+\bibitem{clark2018arc} Peter Clark, Isaac Cowhey, Oren Etzioni et al.. Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge. arXiv:1803.05457, 2018. \href{https://arxiv.org/abs/1803.05457}{Primary source}.
+\bibitem{openaicodex2026} OpenAI. Codex. , 2026. \href{https://openai.com/codex/}{Primary source}.
+\end{thebibliography}
+\end{document}
