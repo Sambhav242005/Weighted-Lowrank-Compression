@@ -1,0 +1,6341 @@
+[
+  {
+    "id": "seed-11-00-svd",
+    "seed": 11,
+    "specification": {
+      "method": "svd"
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-00-svd\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "svd"
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "ecda0776637a6cfabe6eb895c92da85a543e553bf4f60418d67ec7f6bf68cd4e",
+      "fit_seconds": 1.8005371999997806,
+      "peak_fitting_allocated_bytes": 2281484288,
+      "peak_fitting_reserved_bytes": 3468689408
+    },
+    "metrics": {
+      "nll_sum": 1323716.0860053815,
+      "targets": 257289,
+      "nll": 5.1448607830314605,
+      "ppl": 171.54760067164602,
+      "logit_kl": 1.5454736522646615,
+      "nll_blocks": [
+        {
+          "nll_sum": 20057.789941470663,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19077.851539255822,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19502.31536767192,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17734.974930166423,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20343.358333990393,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20997.035866852573,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23397.816544822756,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 18726.744589437247,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21314.046675027905,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21145.85081391872,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21008.93323135381,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20899.217516830664,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20570.014337651657,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19108.616930735952,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20832.218180609852,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 18752.53815674106,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21772.754120174057,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20589.230117732775,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22809.061019239925,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20075.867023519822,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22812.2215774633,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22100.195126405924,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20815.337293290093,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20527.093796162895,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20684.616637915708,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21217.810774532172,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21039.360432388356,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19544.4883718521,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20642.36255650279,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21088.19168530998,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23116.611207919654,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23521.14694958924,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21499.679340229064,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23363.58945040079,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 24144.01975230375,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21807.551344158976,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21764.347379842715,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20933.844037051615,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22516.41015032156,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21122.95974736003,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20915.89345983081,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19758.11638752538,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22009.750417651583,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22726.35040532061,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19827.684777271406,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21457.002933824835,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20491.613761943612,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 19363.88084689808,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20747.035290379612,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20250.196606764042,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20192.459357876818,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 18261.830847289035,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20600.52817736742,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20854.955979111088,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23758.869566741785,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22432.8418659565,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21389.08133533506,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20911.894877659302,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 23826.89577116995,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 20374.1970544557,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 21519.25882152133,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 22626.386459733905,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16441.288155547987,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 4.1938810616647455
+    }
+  },
+  {
+    "id": "seed-11-01-fullrank_ridge",
+    "seed": 11,
+    "specification": {
+      "method": "fullrank_ridge",
+      "beta": 0.1,
+      "ridge_fraction": 0.01
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-01-fullrank_ridge\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "fullrank_ridge",
+        "beta": 0.1,
+        "ridge_fraction": 0.01
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 1024,
+          "factor_parameters": 2228224,
+          "factor_tensor_bytes": 4456448,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "measured_teacher_bias_subtracted",
+      "budget_role": "unmatched full-rank shrinkage control",
+      "factor_parameters": 57933824,
+      "serialized_bytes": 115883207,
+      "sha256": "d55cb807497c99f598f3e5278700bffa43238629632705d12672bd22727d51c8",
+      "fit_seconds": 27.02175669999997,
+      "peak_fitting_allocated_bytes": 2729661440,
+      "peak_fitting_reserved_bytes": 2764046336
+    },
+    "metrics": {
+      "nll_sum": 900314.5391842625,
+      "targets": 257289,
+      "nll": 3.4992344763447427,
+      "ppl": 33.0901109976535,
+      "logit_kl": 0.00908823149058679,
+      "nll_blocks": [
+        {
+          "nll_sum": 13049.589884197214,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13196.878272120484,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12897.881538912188,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11507.08351738978,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13278.932585241972,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14593.35719547443,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16484.20502985218,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11944.035044234319,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14065.449262289645,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14592.833117533723,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14646.725503934098,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13249.480448067436,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13350.428635325521,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13253.12737222371,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14899.857435685837,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12752.199514569224,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15201.18650893317,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14212.553945809923,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14915.458482980088,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13646.486166302933,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16207.952408141911,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14850.950349579325,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14388.397634595516,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13901.92259722745,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13431.086766751425,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13667.876890572294,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14107.508315999276,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13253.71649181941,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14339.319017885897,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13646.25009381472,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15159.033803982544,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15714.2892847705,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14659.070236916043,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15531.80459702616,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16319.407402207067,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15009.941261483473,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14432.530745181706,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14962.353984448058,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15767.799321635372,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14217.710798588567,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14774.273129831967,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13530.08515297497,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14483.243463749715,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14989.155011294992,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13573.581133609281,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14433.079653867775,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14136.05447265273,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13321.239285748718,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13974.685142997187,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13861.949247682805,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13881.404578920516,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12286.182553538594,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14221.58265341651,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14485.957544189718,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16149.584327641089,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15738.273579330242,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14919.946119071808,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14691.50495843764,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16546.98690696957,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14049.332016680235,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15062.550556410948,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15957.256917479064,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11939.959314062362,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.0018566285171217611
+    }
+  },
+  {
+    "id": "seed-11-02-anchored",
+    "seed": 11,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.0,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-02-anchored\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "anchored",
+        "beta": 0.0,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "129c426aaf740430f901ab328bb713b24a436edd11afd70c5e7fad5212f2191b",
+      "fit_seconds": 25.44136509999953,
+      "peak_fitting_allocated_bytes": 2634241024,
+      "peak_fitting_reserved_bytes": 2667577344
+    },
+    "metrics": {
+      "nll_sum": 926443.3974720283,
+      "targets": 257289,
+      "nll": 3.6007889862062825,
+      "ppl": 36.627121340011215,
+      "logit_kl": 0.12411812924201933,
+      "nll_blocks": [
+        {
+          "nll_sum": 13485.345334560901,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13590.041371238458,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13192.30716823088,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11741.160560094955,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13578.14297297431,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14874.961485062013,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16878.773831107315,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12715.759390358216,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14470.880107565205,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14962.25551124537,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15151.779463558853,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13481.985225885779,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13845.048278024089,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13865.33795575492,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15345.119237664498,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13102.60590107397,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15561.564659103227,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14583.971814628945,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15231.549231521363,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14059.550071462043,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16604.68266073661,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15210.60745030071,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14748.232430428267,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14117.810819854934,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13929.781889207952,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14261.549039110756,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14749.94836253958,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13759.862885778064,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14686.52754410071,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14331.198156575454,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15814.608750733547,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16391.81821230473,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14934.344425286748,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15942.018496286035,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16761.89512073215,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15396.819598085567,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14681.575305554608,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15360.10437535851,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16143.195885503112,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14782.180653568008,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14997.233938772566,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13815.172603690586,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14825.7067929765,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15435.97923521098,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13975.776247107606,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14713.791242648353,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14490.780122660566,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13589.229277055121,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14306.170231830398,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14140.058406231266,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14396.428656704942,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12755.84765942971,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14759.987058168743,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14796.038340567116,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16782.163674500887,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16118.198554316987,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15232.68502322165,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15302.359641679213,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16980.23656631788,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14477.137687426855,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15480.196964198753,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16410.242368220206,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12335.075545929547,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.10894533719132293
+    }
+  },
+  {
+    "id": "seed-11-03-anchored",
+    "seed": 11,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.03,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-03-anchored\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "anchored",
+        "beta": 0.03,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "218da1b279b05ee9c68eaa214bc5077f7f2361139cacba812b28780f5db61c60",
+      "fit_seconds": 25.781877399999757,
+      "peak_fitting_allocated_bytes": 2634241024,
+      "peak_fitting_reserved_bytes": 2667577344
+    },
+    "metrics": {
+      "nll_sum": 925371.3782403592,
+      "targets": 257289,
+      "nll": 3.596622390542772,
+      "ppl": 36.47482842688835,
+      "logit_kl": 0.12397538531091858,
+      "nll_blocks": [
+        {
+          "nll_sum": 13384.238985657434,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13514.965099422829,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13172.739354854646,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11738.29817443667,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13544.410630523322,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14908.612017052852,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16961.190213419846,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12609.605648727498,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14510.355645036714,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14912.832107259557,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15074.969449860691,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13485.465667002572,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13792.67142659217,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13767.936161402446,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15340.08518997865,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12998.02978186421,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15577.866432284674,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14633.983813543062,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15252.363550440816,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13979.298087935444,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16676.8306208852,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15232.341197157948,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14794.986579484772,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14214.110370001916,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13981.018225347449,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14246.490463072205,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14669.597475891827,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13688.673027671291,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14643.233866136929,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14248.982863186728,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15796.926305326633,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16338.058608442167,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14999.301750663464,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15938.178392611939,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16755.300455432865,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15392.779364795773,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14682.63828205783,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15278.35588010303,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16010.284777896013,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14661.251645322074,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14971.789807683846,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13725.042938254046,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14829.563500751841,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15438.867255848018,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13961.253422921034,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14755.814045850333,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14542.920119177666,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13642.451469041647,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14296.807382288891,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14189.197581327284,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14420.468806277959,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12713.454116663808,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14707.32274399855,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14792.94103372877,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16684.198510949966,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16099.066281514079,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15281.225761533713,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15269.6060453619,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17007.19024576465,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14474.243887512366,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15418.478097916086,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16437.49541673981,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12302.722180468729,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.10433442293663386
+    }
+  },
+  {
+    "id": "seed-11-04-anchored",
+    "seed": 11,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.1,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-04-anchored\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "anchored",
+        "beta": 0.1,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "fecff12ef906ec540fa2fe9f282200152e8be88d82b6476a806c14a1fbad7122",
+      "fit_seconds": 25.693758500000513,
+      "peak_fitting_allocated_bytes": 2634241024,
+      "peak_fitting_reserved_bytes": 2667577344
+    },
+    "metrics": {
+      "nll_sum": 925404.6630205408,
+      "targets": 257289,
+      "nll": 3.596751757830847,
+      "ppl": 36.47954738175757,
+      "logit_kl": 0.13588581779489772,
+      "nll_blocks": [
+        {
+          "nll_sum": 13359.832612459253,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13506.13138848538,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13164.773998662095,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11697.18122094855,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13557.31604746083,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14921.86646498373,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16927.250458973187,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12588.392950044403,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14535.64249636057,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14877.689223980007,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15071.075273409806,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13468.899409398073,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13792.844857966404,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13734.825177789447,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15400.362711304522,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13040.830804962294,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15590.069566947728,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14667.9784993082,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15199.44063686108,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13927.475542812492,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16709.07940062025,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15225.977697407241,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14829.440064739203,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14291.175968643656,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14020.294930595672,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14216.609630283625,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14735.263706970767,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13695.43125595605,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14690.2795748871,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14235.432481814016,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15726.674183171708,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16338.296078144791,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15009.70852303147,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15925.046663451936,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16773.34643837731,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15418.487165412473,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14704.481661344442,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15290.554914688139,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15956.928971178495,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14670.90669307344,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14918.399308786145,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13747.675581780888,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14844.616040966132,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15456.295736785338,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13996.468936142322,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14761.478435122248,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14539.59321919491,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13615.394607284441,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14282.228600277609,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14231.001519855221,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14408.114572123694,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12697.977097741561,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14761.713351620536,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14760.027842131065,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16610.937243699154,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16088.721848480862,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15246.756683671629,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15260.34424440068,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17057.55949441978,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14419.11599697917,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15462.498688564316,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16410.496479179477,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12333.952144423994,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.10447729692746854
+    }
+  },
+  {
+    "id": "seed-11-05-anchored",
+    "seed": 11,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.3,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-05-anchored\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "anchored",
+        "beta": 0.3,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "78a9a1b33728855c04bfd983bab6c112ebcd8861ffbc0424b4bac59b057ea56b",
+      "fit_seconds": 24.8332019999998,
+      "peak_fitting_allocated_bytes": 2634241024,
+      "peak_fitting_reserved_bytes": 2667577344
+    },
+    "metrics": {
+      "nll_sum": 928161.0631149499,
+      "targets": 257289,
+      "nll": 3.6074650028370816,
+      "ppl": 36.872462651331276,
+      "logit_kl": 0.15972813184285464,
+      "nll_blocks": [
+        {
+          "nll_sum": 13402.442888217847,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13568.452323536665,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13291.05232578668,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11680.377150775501,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13596.72079952457,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14978.873522979498,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17000.222363776753,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12664.283542938747,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14566.388012742078,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14977.812704084863,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15143.038709983754,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13487.461116185092,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13823.132374582317,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13721.929335736888,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15409.470908612413,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13159.860573672033,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15613.008434797463,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14708.15728450354,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15232.67033089776,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13997.631192042907,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16734.264888109086,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15257.728517670706,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14878.348016766715,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14358.40768517417,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14131.106792404957,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14211.863540054524,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14869.34097924531,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13760.258792692155,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14751.185750097618,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14348.592494025728,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15757.200788381975,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16351.541929950065,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15015.259394200344,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15947.590218155314,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16911.42487973548,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15482.973869790294,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14720.292273750441,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15350.300202455168,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15989.494247034396,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14678.042425992986,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14955.18859635928,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13798.91845914317,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14888.848539376355,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15404.642037892598,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14073.865320036199,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14817.753666008255,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14553.06692681223,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13663.180925495733,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14305.809646156456,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14246.845071725787,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14454.861199766561,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12758.550266843755,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14755.825994263374,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14776.427772759198,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16647.6369200435,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16154.785767325215,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15288.810477486026,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15254.447968269058,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17081.27841735509,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14387.331253983604,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15506.210652717244,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16472.539165536815,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12386.034488529433,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.11637344219261814
+    }
+  },
+  {
+    "id": "seed-11-06-anchored",
+    "seed": 11,
+    "specification": {
+      "method": "anchored",
+      "beta": 1.0,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-06-anchored\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "anchored",
+        "beta": 1.0,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "18e554ee2e70143b3c9414d0326881c0d57b5fbb328bb4e94edf05026e899e1e",
+      "fit_seconds": 24.62047900000016,
+      "peak_fitting_allocated_bytes": 2634241024,
+      "peak_fitting_reserved_bytes": 2667577344
+    },
+    "metrics": {
+      "nll_sum": 930305.272157898,
+      "targets": 257289,
+      "nll": 3.615798857152455,
+      "ppl": 37.18103640170817,
+      "logit_kl": 0.19537386736347814,
+      "nll_blocks": [
+        {
+          "nll_sum": 13392.624724936526,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13679.309557079887,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13297.617486071173,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11726.397696042783,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13662.622544855876,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15000.908867119673,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17028.397979585432,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12598.608205375469,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14661.006604819795,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14975.828209540574,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15138.491114772914,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13590.467066369689,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13794.123921715653,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13721.793683377375,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15432.051437239148,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13296.13310578929,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15642.01268916615,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14740.354226460418,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15342.392463253054,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14065.431158928463,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16758.75786733883,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15283.140380742725,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14879.663614553923,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14395.530990273197,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14258.9114355903,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14271.396349977316,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14851.141666895172,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13844.204464304406,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14744.005212530377,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14383.369041251979,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15783.894611138967,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16346.96854740294,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15124.220229152306,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15963.08548018607,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17010.888716795685,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15508.408415899517,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14746.351710799441,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15333.032264285815,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16004.019713129324,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14620.561026308773,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14983.683186491267,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13877.56020515156,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14928.964811356058,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15427.813932836172,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14108.907802979365,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14871.406144738256,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14574.11711455835,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13710.713438862549,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14381.010494697992,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14258.382900579374,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14476.12286284232,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12823.176095748127,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14767.575849783723,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14792.103483603772,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16704.849123428343,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16219.030112793203,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15301.95664932721,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15235.442741621111,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17163.518805851258,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14453.273412968541,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15521.65041616006,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16521.133843829943,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12304.754246633238,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.12571601155490897
+    }
+  },
+  {
+    "id": "seed-11-07-legacy_ridge",
+    "seed": 11,
+    "specification": {
+      "method": "legacy_ridge",
+      "beta": 0.1,
+      "ridge_fraction": 0.0
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-07-legacy_ridge\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "legacy_ridge",
+        "beta": 0.1,
+        "ridge_fraction": 0.0
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "measured_teacher_bias_subtracted",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "aec3053d93e01e19b053bfad09c80460d8e5c2d05d9752cf9c270d19e78607d3",
+      "fit_seconds": 25.857084999999643,
+      "peak_fitting_allocated_bytes": 2729661440,
+      "peak_fitting_reserved_bytes": 2761949184
+    },
+    "metrics": {
+      "nll_sum": 925431.0668203266,
+      "targets": 257289,
+      "nll": 3.596854380950319,
+      "ppl": 36.48329121880563,
+      "logit_kl": 0.13592026970785887,
+      "nll_blocks": [
+        {
+          "nll_sum": 13360.218945614673,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13506.961716760572,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13166.886892966482,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11698.629362746986,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13556.944171117284,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14920.959051669575,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16929.607729831052,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12588.258285995758,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14532.345497933968,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14877.35321471651,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15070.05969966263,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13469.396408479952,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13791.56412311476,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13733.940803710771,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15402.182678582052,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13042.267959840996,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15590.057114550902,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14667.34797993186,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15200.339125016879,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13927.932103407715,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16711.976753735915,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15226.624498610323,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14827.27571078029,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14291.074097916673,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14022.431812366936,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14216.834773282277,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14735.840542683152,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13697.010211415589,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14689.115186871379,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14237.078590434918,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15725.48044623388,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16334.157168544523,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15002.781351641315,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15926.211999735879,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16775.440126644942,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15419.762725580615,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14705.480216047348,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15290.948006817707,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15955.278070191984,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14671.435012545,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14919.002655206481,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13751.476757030425,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14844.952270360964,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15458.343462614052,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13997.288706875483,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14760.525656452694,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14541.8440204793,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13618.00301999686,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14282.444105063938,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14231.05817873649,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14408.051621249222,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12698.025939815074,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14761.959064580791,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14759.157001155952,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16613.97769671702,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16091.396851141086,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15246.507404031523,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15261.989155315387,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17061.869482064038,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14419.847031925263,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15462.40410538073,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16410.338141533895,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12335.114324867522,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.10459064764916781
+    }
+  },
+  {
+    "id": "seed-11-08-legacy_ridge",
+    "seed": 11,
+    "specification": {
+      "method": "legacy_ridge",
+      "beta": 0.1,
+      "ridge_fraction": 0.001
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-08-legacy_ridge\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "legacy_ridge",
+        "beta": 0.1,
+        "ridge_fraction": 0.001
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "measured_teacher_bias_subtracted",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "80db7f4910c219e460a96b95d8852ff8239c9dc810163136a850c4ba54143300",
+      "fit_seconds": 26.367857000000186,
+      "peak_fitting_allocated_bytes": 2729661440,
+      "peak_fitting_reserved_bytes": 2761949184
+    },
+    "metrics": {
+      "nll_sum": 925540.1756373193,
+      "targets": 257289,
+      "nll": 3.597278452002687,
+      "ppl": 36.498766007479695,
+      "logit_kl": 0.13658052891474814,
+      "nll_blocks": [
+        {
+          "nll_sum": 13359.307320890366,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13523.268623955893,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13172.324475649904,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11693.96407353357,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13557.865752457117,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14950.585503041992,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16921.713837852978,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12595.008332187412,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14539.36970677291,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14878.806140764296,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15074.08068034963,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13476.09126679317,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13798.717057635913,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13729.69862965362,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15398.9649281999,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13046.66715435823,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15595.096663467906,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14668.165271254911,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15179.829301270569,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13924.526847277491,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16714.01646335567,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15228.357408332227,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14828.480415442726,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14295.744525715243,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14022.9121558427,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14219.86580386464,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14737.060595387782,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13696.120461428305,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14690.223011285765,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14247.034323186948,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15705.04532910895,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16320.79700695048,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15005.115922785306,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15920.64015591348,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16783.03457626319,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15409.23905871807,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14708.110916716105,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15295.30616344222,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15967.237163515063,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14687.976539383817,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14926.766555881884,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13741.89784482574,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14847.62761367416,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15464.24929855892,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14000.73399921701,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14760.937283884821,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14548.451041896187,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13620.525845284006,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14284.462150910773,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14233.477667269366,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14414.087622792238,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12700.678493498264,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14763.191244553193,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14763.4106295589,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16617.43565216096,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16080.45441086212,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15250.37752158352,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15268.820964899962,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17065.87802302855,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14429.991921267672,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15460.874310302577,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16393.50506661675,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12335.97091078537,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.1050591719043179
+    }
+  },
+  {
+    "id": "seed-11-09-legacy_ridge",
+    "seed": 11,
+    "specification": {
+      "method": "legacy_ridge",
+      "beta": 0.1,
+      "ridge_fraction": 0.01
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-09-legacy_ridge\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "legacy_ridge",
+        "beta": 0.1,
+        "ridge_fraction": 0.01
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "measured_teacher_bias_subtracted",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "1c013e5ff5457c18412c9f511acb2d308f14830f332e5bc581c1cf151ea0d064",
+      "fit_seconds": 26.501538800000162,
+      "peak_fitting_allocated_bytes": 2729661440,
+      "peak_fitting_reserved_bytes": 2761949184
+    },
+    "metrics": {
+      "nll_sum": 927997.6094869905,
+      "targets": 257289,
+      "nll": 3.6068297108970477,
+      "ppl": 36.84904531221068,
+      "logit_kl": 0.14363814638348782,
+      "nll_blocks": [
+        {
+          "nll_sum": 13395.42013570309,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13564.379815705575,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13274.024327032836,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 11729.648497599017,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13587.793391072788,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14988.555034035191,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16977.58907597946,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12688.138901732324,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14556.313720577427,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14913.613658459304,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15109.099691439576,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13521.135598059016,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13866.234523260035,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13768.414662313313,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15409.07505380336,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13074.14629222683,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15638.45147302255,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14699.210987785511,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15192.236135779036,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13979.27516160829,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16720.936984812375,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15295.384747955246,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14835.794637474348,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14314.756875024366,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14065.858255774714,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14221.851965933864,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14787.281000202944,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13706.453147203807,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14733.270928174708,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14265.087172252155,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15765.503408273507,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16349.914902817574,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15052.30005627728,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15949.742086574255,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16843.421317381028,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15449.153449209203,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14752.514481773716,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15354.776070397755,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16008.915280267931,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14667.189930055174,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14978.763405415753,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13763.09481087714,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14890.655114718902,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15474.501977845794,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14047.248103190897,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14803.96560176654,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14568.443994988396,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13654.919878537723,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14329.126549497043,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14230.912065691586,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14441.39466490888,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12747.420544299079,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14775.955636693281,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14853.053288573748,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16666.69997352676,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16142.996579634979,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15347.672848609465,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15318.832582784991,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17118.12892880739,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14459.834244325171,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15487.739687381894,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16419.878556388314,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12403.507613496331,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.11566444437686974
+    }
+  },
+  {
+    "id": "seed-11-10-asvd",
+    "seed": 11,
+    "specification": {
+      "method": "asvd"
+    },
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\seed-11-10-asvd\\factors.pt",
+    "metadata": {
+      "specification": {
+        "method": "asvd"
+      },
+      "precision": "float16",
+      "targets": [
+        {
+          "name": "model.layers.0.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.1.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.2.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.4.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.5.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.6.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.8.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.9.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.10.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.12.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.13.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.14.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.16.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.17.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.18.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.20.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.21.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.22.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.24.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        },
+        {
+          "name": "model.layers.25.self_attn.o_proj",
+          "shape": [
+            1152,
+            1024
+          ],
+          "rank": 384,
+          "factor_parameters": 835584,
+          "factor_tensor_bytes": 1671168,
+          "bias_parameters": 0
+        }
+      ],
+      "factor_convention": "unbalanced",
+      "output_source": "teacher_exact_WX",
+      "budget_role": "matched fixed-rank comparison",
+      "factor_parameters": 21725184,
+      "serialized_bytes": 43465927,
+      "sha256": "c0665e7983b676073ead63e1aea3e8ad2be282bbd780c5ad4c6152d92524d5c3",
+      "fit_seconds": 1.7856464999995296,
+      "peak_fitting_allocated_bytes": 2302984192,
+      "peak_fitting_reserved_bytes": 2367684608
+    },
+    "metrics": {
+      "nll_sum": 961250.915734964,
+      "targets": 257289,
+      "nll": 3.736074669865264,
+      "ppl": 41.93306555911924,
+      "logit_kl": 0.3629916871685222,
+      "nll_blocks": [
+        {
+          "nll_sum": 13755.915293150741,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14001.250489821616,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13712.001720753677,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12323.584309463156,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14157.683474648136,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15419.565099209307,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17461.12623737084,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13026.466209144399,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15012.074692836752,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15432.160947584372,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15264.75222658262,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14269.4787640438,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14274.67996690259,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14050.184912105306,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15736.689290077109,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13958.149271634391,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16279.244601040737,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15250.747442915395,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16358.195066444663,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14793.816367291132,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17356.5955278795,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15798.841457292614,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15243.45939396722,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14811.430172757493,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14619.390819340828,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14689.960627052731,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15243.015170581566,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14392.338864804915,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15220.702846366064,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14616.211578830793,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16258.813218263633,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17023.781985920272,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15750.106939043733,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16748.712340050777,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17682.652846277168,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16105.290372860822,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15629.51688172761,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15587.446874088098,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16506.13986980888,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15118.975910989175,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15583.824544966585,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14336.604037016252,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15455.15565575941,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16139.488905695966,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14612.968087047258,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15451.918000619298,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15119.461278309227,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14271.131414030811,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15115.927432983783,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14914.533718470848,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14784.9854408035,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 13260.967829830437,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15179.50342846536,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15206.227712758046,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16993.35823929873,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16636.215411343284,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15619.369988005998,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 15619.792196334049,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 17847.89001680308,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 14938.231339189937,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16026.194381159366,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 16770.5256799944,
+          "targets": 4096
+        },
+        {
+          "nll_sum": 12425.490915154369,
+          "targets": 3337
+        }
+      ],
+      "teacher_relative_ppl_change": 0.2695913799571643
+    }
+  }
+]

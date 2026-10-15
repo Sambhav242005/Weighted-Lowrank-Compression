@@ -25,10 +25,13 @@ calibration/
 # ---- Hugging Face cache (if it ever lands in the repo) ----
 .cache/
 models--*/
+paper-assets/wikitext-*/
 
 # ---- Tooling output ----
 graphify-out/
 .remember/tmp/
+# Local document-rendering QA proofs; original experiment evidence stays eligible.
+/docs/proofs/
 
 # ---- LaTeX build products ----
 *.aux

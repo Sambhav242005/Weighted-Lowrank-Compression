@@ -1,0 +1,18 @@
+{
+  "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u docs/continue_after_reboot3_20261014.py",
+  "launcher_pid": 12504,
+  "launcher_start_epoch": 1791970724.4488332,
+  "launched_epoch": 1791970724.4521165,
+  "preserved_files": {
+    "src/paper_architecture_panel.py": "47d891723366eea0899c978832022b557ab4b09787fa2a363ecd8b7fc596ed14",
+    "src/paper_architecture_recovery.py": "d1f429906b4f081504593a14c7698c6bf527b00d2070b67aeaf6821e967b863b",
+    "configs/paper_architecture_panel_v3.json": "f12bc817acdfe5edcee23bc208f408dfb69511ab1a0594ddb843895cf00e57c0",
+    "configs/paper_architecture_recovery_v4.json": "3ec8c06c5d7b9414b58346e2199bcb9f74d3a487ca76dbb6ed96cbb01053e29e",
+    "docs/continue_after_review_20261014.py": "9d728dbcb5293cdeff004ccbe0a0640a9eed4f3c7abae1f170c76dfc8f93803b",
+    "docs/continue_after_reboot3_20261014.py": "7978a2210686001b94c4cb85a0dd56acfa7ebb5de9240c19429f74e50c9047df",
+    "results/paper-v2/revised-orchestration-20261014-3/status.json": "70eb935a6397061c84c48a2c6b4877b17288eeb0a1f82ce860d93d65e74fa027",
+    "results/paper-v2/architecture-panel-20261014-082806-42b906d1/status.json": "4a78b9ce3413ff620bedac4f6b5a568a6ae0d9d60481ef24ce0218358690ba88",
+    "results/paper-v2/interruption-accounting-20261014-reboot3.json": "4251421dd6f7c55a046c8842087c7a15b4d06b58cebe837ddbc85b363ea8131b"
+  },
+  "ledger": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-4\\status.json"
+}

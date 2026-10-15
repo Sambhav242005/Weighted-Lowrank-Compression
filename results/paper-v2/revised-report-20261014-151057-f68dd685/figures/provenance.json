@@ -1,0 +1,4107 @@
+{
+  "generated_utc": "2026-10-14T15:10:57.837777+00:00",
+  "report_input_sha256": "5c484b282a197b5fbc06441acafa5f74601a7fd266d071af640918111e395bd3",
+  "generator_sha256": "abe0f68a946312cb45a7765a1b4a4503a695378192158f0b676778cfdff0a526",
+  "figures": [
+    {
+      "run_id": "architecture-replication-20261014-093845-97378b5e",
+      "kind": "architecture-primary",
+      "png": "figures/architecture-replication-20261014-093845-97378b5e-architecture-primary.png",
+      "svg": "figures/architecture-replication-20261014-093845-97378b5e-architecture-primary.svg",
+      "caption": "Qwen/Qwen3.5-0.8B: primary native-test teacher-relative NLL for PARTIAL cohort: incomplete; records test 8/8, validation 10/18; individual paired seed points, mean and sample seed SD when at least two seeds exist. Actual target factor counts/fractions shown. Strict promotion remains disabled.",
+      "png_sha256": "ce60cf0cf3191e6857c9c79efae5445317c02abe6428d09b3ddf062ad2e33f39",
+      "svg_sha256": "6f1d947f7e0cbc32e1080b6920cc8a52be01d9290c116f388705539e8600547a"
+    },
+    {
+      "run_id": "architecture-replication-20261014-093845-97378b5e",
+      "kind": "architecture-frontier",
+      "png": "figures/architecture-replication-20261014-093845-97378b5e-architecture-frontier.png",
+      "svg": "figures/architecture-replication-20261014-093845-97378b5e-architecture-frontier.svg",
+      "caption": "Qwen/Qwen3.5-0.8B: validation-only rank frontier for PARTIAL cohort: incomplete; records test 8/8, validation 10/18. Each point aggregates only one exact rank recipe and available paired seeds; error bars are sample seed SD. X is actual retained target weight parameter fraction, not whole-model storage or a rank compression factor. Validation is not independent confirmation.",
+      "png_sha256": "0b9f8bc3c3d79dfdabdc0b47a71d10a7c02577805fbed2cacdccbd1341aea206",
+      "svg_sha256": "6090574c29c25d75bc7d91737c397a3c7fa194427f107806872c794737df79d5"
+    },
+    {
+      "run_id": "architecture-replication-20261014-103759-8d32ab84",
+      "kind": "architecture-primary",
+      "png": "figures/architecture-replication-20261014-103759-8d32ab84-architecture-primary.png",
+      "svg": "figures/architecture-replication-20261014-103759-8d32ab84-architecture-primary.svg",
+      "caption": "LiquidAI/LFM2.5-1.2B-Instruct: primary native-test teacher-relative NLL for completed exploratory cohort; individual paired seed points, mean and sample seed SD when at least two seeds exist. Actual target factor counts/fractions shown. Strict promotion remains disabled.",
+      "png_sha256": "c18010a98694092e1fd32df0d3446b69b1bcc9abdedf68755f22bedadeb1efe3",
+      "svg_sha256": "7c38d1af32eaeab7db81f053033fe8714749fe5b57f76548093eade3d8f08e0e"
+    },
+    {
+      "run_id": "architecture-replication-20261014-103759-8d32ab84",
+      "kind": "architecture-frontier",
+      "png": "figures/architecture-replication-20261014-103759-8d32ab84-architecture-frontier.png",
+      "svg": "figures/architecture-replication-20261014-103759-8d32ab84-architecture-frontier.svg",
+      "caption": "LiquidAI/LFM2.5-1.2B-Instruct: validation-only rank frontier for completed exploratory cohort. Each point aggregates only one exact rank recipe and available paired seeds; error bars are sample seed SD. X is actual retained target weight parameter fraction, not whole-model storage or a rank compression factor. Validation is not independent confirmation.",
+      "png_sha256": "5d92fbda82a0b183e8e96c39ddbd8f8def44a86cddfb36f4b3783bb3b17128c0",
+      "svg_sha256": "94bfa291ba78ae56c506e70b31a648b011a54ee10eaf99eef0d4693402444ab8"
+    },
+    {
+      "run_id": "baselines-20261013-175255-6a00d4e8",
+      "kind": "drift",
+      "png": "figures/baselines-20261013-175255-6a00d4e8-drift.png",
+      "svg": "figures/baselines-20261013-175255-6a00d4e8-drift.svg",
+      "caption": "Gemma Stage C residual drift: individual seeds (dotted), mean (solid), sample seed SD (shaded). Single retained cohort; strict FP16 readiness remains failed.",
+      "png_sha256": "400c18c93a78c549df43a4d1f22a69e71353da895fc0702089433bb3a7b8fe6c",
+      "svg_sha256": "bef01afa4e558a5ba5d0d6bc40cf2a80d31ffd6b8860e99be974d2bca63bcbcb"
+    },
+    {
+      "run_id": "practical-bf16-20261014-135107-82168ad5",
+      "kind": "storage",
+      "png": "figures/practical-bf16-20261014-135107-82168ad5-storage.png",
+      "svg": "figures/practical-bf16-20261014-135107-82168ad5-storage.svg",
+      "caption": "Gemma Stage F raw native-test NLL versus actual whole-model checkpoint bytes; seed numbers label points. Factor-only full-rank controls excluded; no speed or lossless-compression claim.",
+      "png_sha256": "a1f7f67ef3772a270465ed4b531a2a9bc0f651aea4597b591f7407a36ea662f1",
+      "svg_sha256": "1e1c169447e566cda90c0319ef79ab1c7bbbd1bcc4aba37389d39aeb28035a77"
+    }
+  ],
+  "unavailable": [
+    {
+      "run_id": "practical-20261014-113642-0fe078b5",
+      "kind": "storage",
+      "reason": "cohort incomplete or required measured drift/whole-checkpoint NLL data missing"
+    }
+  ],
+  "inputs": [
+    {
+      "run_id": "architecture-replication-20261014-082807-5c73f669",
+      "state": "interrupted",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669",
+      "metrics": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\metrics.json",
+        "sha256": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+        "bytes": 209673
+      },
+      "contract": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\contract.json",
+        "sha256": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+        "bytes": 29113
+      },
+      "display": "preserved source attempt; drawn through validated continuation",
+      "supersession": {
+        "successor": "architecture-replication-20261014-093845-97378b5e",
+        "source_state": "interrupted",
+        "successor_state": "incomplete",
+        "reused_records": 10,
+        "independent_replication": false,
+        "source_artifacts": {
+          "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+          "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+          "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3",
+          "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+          "config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898",
+          "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd"
+        },
+        "reason": "Unique validated continuation includes every original record unchanged; original attempt remains in the evidence and manuscript appendix."
+      }
+    },
+    {
+      "run_id": "architecture-replication-20261014-093845-97378b5e",
+      "state": "incomplete",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e",
+      "metrics": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\metrics.json",
+        "sha256": "4f9abd4faba80fad601ccc1901c83f57dede6e4b5ffea5285106158668d9d61c",
+        "bytes": 376493
+      },
+      "contract": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\contract.json",
+        "sha256": "645110c88d204dde20b38d9ccd2306bb301a08c1c16bb8eb7ff39deceafc98b8",
+        "bytes": 33366
+      },
+      "validation_teacher": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\validation-teacher.json",
+        "sha256": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+        "bytes": 11944
+      },
+      "figure_data": {
+        "model": "Qwen/Qwen3.5-0.8B",
+        "run_id": "architecture-replication-20261014-093845-97378b5e",
+        "state": "incomplete",
+        "partial": true,
+        "record_counts": {
+          "test": 8,
+          "validation": 10
+        },
+        "primary_test": [
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "svd"
+            },
+            "factor_parameters": 8902656,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.70751953125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.2637724661186134,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 3.180992892463157,
+                "targets": 297192,
+                "checkpoint_sha256": "29653de68c0570f7cd9542f7f989538263dbb5bbc7e92e732b761ac750b05260"
+              }
+            ],
+            "mean": 0.2637724661186134,
+            "sample_std": null,
+            "seed_count": 1,
+            "three_seeds": false
+          },
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 8902656,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.70751953125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.017729573982878666,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9349500003274223,
+                "targets": 297192,
+                "checkpoint_sha256": "9345445f02200738592e33754f481777e912ca5be122a00f79c91c45fc02b49c"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.01834903390205378,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9355694602465974,
+                "targets": 297192,
+                "checkpoint_sha256": "0524a62d72806de3f575f54971b6900945081871a2edcd180933ba3cb95c773a"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.015576143944743048,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9327965702892866,
+                "targets": 297192,
+                "checkpoint_sha256": "5a50805aff974ee82fb7005eeddd077c7b85e5c24c963e0ddc273823d3ac425e"
+              }
+            ],
+            "mean": 0.017218250609891832,
+            "sample_std": 0.0014554443900955654,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 483,
+                "factor_parameters": 1483776,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 8902656,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.70751953125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.027671234663971145,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9448916610085147,
+                "targets": 297192,
+                "checkpoint_sha256": "7e1ec082468626f3fdba1ed7cd5c9d11843f6e8b83c4893dc07a3c11c71bae44"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.027140932203966184,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9443613585485098,
+                "targets": 297192,
+                "checkpoint_sha256": "c84c22280cb456461bf48c8600dc0f0e1bd4f7c29a2c983f348e5c31cda62c8e"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.023498128723487,
+                "teacher_nll": 2.9172204263445436,
+                "measured_nll": 2.9407185550680306,
+                "targets": 297192,
+                "checkpoint_sha256": "4c70ebcfe51861e00eddf6911fd1b6425d06d1767cb833bd38211381c0c07fff"
+              }
+            ],
+            "mean": 0.026103431863808108,
+            "sample_std": 0.002271785314350171,
+            "seed_count": 3,
+            "three_seeds": true
+          }
+        ],
+        "validation_frontier": [
+          {
+            "split": "validation",
+            "rank_divisor": 2,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 9437184,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.75,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.013285639369033042,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.9841401424358494,
+                "targets": 261410,
+                "checkpoint_sha256": "b2f49bf0dba8d04450b890efc690c8a100adf4b1b20d804303f76c0df4f9b8ce"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.016948021649912715,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.987802524716729,
+                "targets": 261410,
+                "checkpoint_sha256": "9ce1b0c137d66e8d071a032098165dcf14dcdb121c445fd8b264475a8aafd609"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.014485769225723644,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.98534027229254,
+                "targets": 261410,
+                "checkpoint_sha256": "2a3de2d2640dfcc6ed97d304f8fd02ac5252dcdd6834feb68f041b0bc8426766"
+              }
+            ],
+            "mean": 0.014906476748223133,
+            "sample_std": 0.0018670851901938198,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 2,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 1572864,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 9437184,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.75,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.024542011061982727,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.995396514128799,
+                "targets": 261410,
+                "checkpoint_sha256": "061390aaf17c7c96c9343171f496ae176e8a9f598fc9d5e7298d5b73f396483a"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.0224490672075337,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.99330357027435,
+                "targets": 261410,
+                "checkpoint_sha256": "97123aff0133dda89887b137f1fd4cc42af275e894786d1bcc01f9324109071c"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.02077024928651472,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 2.991624752353331,
+                "targets": 261410,
+                "checkpoint_sha256": "55173b573c1f123cfe8c9d51b86c1015632af802c8cc0042c7aca3862470bb3d"
+              }
+            ],
+            "mean": 0.022587109185343717,
+            "sample_std": 0.001889666217470342,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 3,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 6285312,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.49951171875,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.03511434891211529,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 3.0059688519789316,
+                "targets": 261410,
+                "checkpoint_sha256": "232ac23c4ffd5a2359d851a04001c3673e36590e2ed2b1917dc3a88c84f67b4d"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.042381538574038924,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 3.0132360416408552,
+                "targets": 261410,
+                "checkpoint_sha256": "f4d0fbe72d0f9b45cc537495333f539929db74fb44dfb6c549f7634eb08a749d"
+              }
+            ],
+            "mean": 0.03874794374307711,
+            "sample_std": 0.0051386790901149755,
+            "seed_count": 2,
+            "three_seeds": false
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 3,
+            "target_recipes": [
+              {
+                "name": "model.layers.3.self_attn.o_proj",
+                "block_index": 3,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.7.self_attn.o_proj",
+                "block_index": 7,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.11.self_attn.o_proj",
+                "block_index": 11,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.15.self_attn.o_proj",
+                "block_index": 15,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.19.self_attn.o_proj",
+                "block_index": 19,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.23.self_attn.o_proj",
+                "block_index": 23,
+                "shape": [
+                  1024,
+                  2048
+                ],
+                "rank": 341,
+                "factor_parameters": 1047552,
+                "dense_parameters": 2097152,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 6285312,
+            "dense_target_parameters": 12582912,
+            "model": "Qwen/Qwen3.5-0.8B",
+            "retained_target_parameter_fraction": 0.49951171875,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.06281147788550445,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 3.0336659809523208,
+                "targets": 261410,
+                "checkpoint_sha256": "f2faa059d9431ba0cea22adff7aa456942d5e9dd5a4ef2ca82eff14af4769e30"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.06920199217564393,
+                "teacher_nll": 2.9708545030668163,
+                "measured_nll": 3.0400564952424602,
+                "targets": 261410,
+                "checkpoint_sha256": "1ea66779a91ef9a84d381305a5263d0a941d3244021bdcd387ab7b2b1b59fdc3"
+              }
+            ],
+            "mean": 0.06600673503057419,
+            "sample_std": 0.004518775989827164,
+            "seed_count": 2,
+            "three_seeds": false
+          }
+        ],
+        "unavailable": [],
+        "interpretation": "Within-model same-split teacher-relative NLL; validation frontier is not independent confirmation. Target factor fraction excludes bias, untargeted weights and serialization overhead."
+      }
+    },
+    {
+      "run_id": "architecture-replication-20261014-103759-8d32ab84",
+      "state": "completed",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84",
+      "metrics": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\metrics.json",
+        "sha256": "c0c47cbbe026ed5920b03c72daa93a3b4e9af002e6447325335c09cdf1be818c",
+        "bytes": 483762
+      },
+      "contract": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\contract.json",
+        "sha256": "a0a92e7fdbd9ee4a1e56cea320d4495175e57fb18d6de532a5cc888ee6e56793",
+        "bytes": 31243
+      },
+      "validation_teacher": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\validation-teacher.json",
+        "sha256": "38bc5d47b2783bf5053b92054be162aa48e0b21c8e95013b36c68f2be7bad0ef",
+        "bytes": 10486
+      },
+      "figure_data": {
+        "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+        "run_id": "architecture-replication-20261014-103759-8d32ab84",
+        "state": "completed",
+        "partial": false,
+        "record_counts": {
+          "test": 8,
+          "validation": 18
+        },
+        "primary_test": [
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "svd"
+            },
+            "factor_parameters": 17817600,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.7080078125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": -0.1463035814816025,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 3.8524319793110346,
+                "targets": 299032,
+                "checkpoint_sha256": "ef9c90c924dc4a20f469076e76a1df203f208cdc11ef21e68866a03f7ffb14d1"
+              }
+            ],
+            "mean": -0.1463035814816025,
+            "sample_std": null,
+            "seed_count": 1,
+            "three_seeds": false
+          },
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 17817600,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.7080078125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.08015986645488393,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 4.078895427247521,
+                "targets": 299032,
+                "checkpoint_sha256": "feda142dd844d8f2dee75de6f024423c1419859c232364e5a8b3f45925ea1a84"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.03440648977071348,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 4.033142050563351,
+                "targets": 299032,
+                "checkpoint_sha256": "a7a33fdf090dbe7a5f72568f4927da59776fbfaedc8b543a0bbcd802c24b20fe"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.05844084594601995,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 4.057176406738657,
+                "targets": 299032,
+                "checkpoint_sha256": "dad2204e10f5ee34dfe1105abf91b64d5eac6f25e07e3d317f0739319303c5de"
+              }
+            ],
+            "mean": 0.05766906739053912,
+            "sample_std": 0.02288645016390535,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "test",
+            "rank_divisor": null,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 725,
+                "factor_parameters": 2969600,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 17817600,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.7080078125,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": -0.1524484653732019,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 3.8462870954194353,
+                "targets": 299032,
+                "checkpoint_sha256": "fd7401b10f26058303dd559c480ef36f35c0f97600af75f19a5d260dfb308a31"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": -0.17311734871635176,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 3.8256182120762854,
+                "targets": 299032,
+                "checkpoint_sha256": "1458c3c5f7320f9161aa6efd68e5be18ff1f8b4a89fa6c326305e448a2161124"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": -0.1628925168812434,
+                "teacher_nll": 3.998735560792637,
+                "measured_nll": 3.8358430439113937,
+                "targets": 299032,
+                "checkpoint_sha256": "5284cd6772bb57b5e4329fcf6d4e553e80e32df6f8911c75fd78f5a5883bda0a"
+              }
+            ],
+            "mean": -0.16281944365693235,
+            "sample_std": 0.0103346354282707,
+            "seed_count": 3,
+            "three_seeds": true
+          }
+        ],
+        "validation_frontier": [
+          {
+            "split": "validation",
+            "rank_divisor": 2,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 25165824,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 1.0,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.021082418824660998,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.127814248759292,
+                "targets": 261818,
+                "checkpoint_sha256": "bd282c10951d4faf1dcc1e5e4f5132ec5dd07e1fbe9646c3404eb54ea042fe43"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.001177324515280631,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.107909154449912,
+                "targets": 261818,
+                "checkpoint_sha256": "9c7bf395be7e7054675f4c49fa666568f919452f42ea3dc565f2f51d030f76ac"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.00944620108788996,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.116178031022521,
+                "targets": 261818,
+                "checkpoint_sha256": "98363763ba4b1731e99af430e64d58b8b5a1c14fde2d4424ba5e8551fd810256"
+              }
+            ],
+            "mean": 0.01056864814261053,
+            "sample_std": 0.009999905520019668,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 2,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 1024,
+                "factor_parameters": 4194304,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 25165824,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 1.0,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": -0.1057006537295484,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.001031176205083,
+                "targets": 261818,
+                "checkpoint_sha256": "d2533e496cec671ef29719f2a9c7265e1f334bc24bf18854b8b86ea717a78089"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": -0.11096228503328698,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.995769544901344,
+                "targets": 261818,
+                "checkpoint_sha256": "eeae5d26b55f0b1973e79c7f93196505d0723e1070415d600d57b1ef4392a772"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": -0.11223703075484748,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.9944947991797837,
+                "targets": 261818,
+                "checkpoint_sha256": "e60ef099a0f9f2b935244abca18ae0a79312b3320894845d95986c953a78cdd3"
+              }
+            ],
+            "mean": -0.10963332317256096,
+            "sample_std": 0.0034649185956761946,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 3,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 16760832,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.666015625,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.06499876101292568,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.171730590947557,
+                "targets": 261818,
+                "checkpoint_sha256": "2d97ff9a826ab9f6c069fc2f4a577b40b8114742278c38c30472558a955c4243"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.02949847128827443,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.136230301222906,
+                "targets": 261818,
+                "checkpoint_sha256": "e837db1f0543abc59c0e4948294dc58c42cd593cd31bb8e017491d8b3ac8c14d"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.060442870559146655,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.167174700493778,
+                "targets": 261818,
+                "checkpoint_sha256": "c8c43b535363aa78e8466ee0c3b8b6752bad01567791cd2c2cd55476bf395cdf"
+              }
+            ],
+            "mean": 0.05164670095344892,
+            "sample_std": 0.019315721380075226,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 3,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 682,
+                "factor_parameters": 2793472,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 16760832,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.666015625,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": -0.213475220507366,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.893256609427265,
+                "targets": 261818,
+                "checkpoint_sha256": "196ad1aebb3d3af5412e480924792429bd7a21e2e8ff8db332c09dafc766bae8"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": -0.2315519198730791,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.875179910061552,
+                "targets": 261818,
+                "checkpoint_sha256": "a2d1f147728944eadffa97dcb30d2dfdc8143532c0458e4fd94ad21b919c9c75"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": -0.2191272346662947,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.8876045952683365,
+                "targets": 261818,
+                "checkpoint_sha256": "0b883ed1a389b96e423dfe596a121fbf3a20dc6d7d100c077a32a8d5eaba48b5"
+              }
+            ],
+            "mean": -0.2213847916822466,
+            "sample_std": 0.009247388158274658,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 4,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 12582912,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.5,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": 0.14168078211067225,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.248412612045303,
+                "targets": 261818,
+                "checkpoint_sha256": "3f1ce3dd164a2fc714aa76b89b0c56da7deb48f1d99f122ca32653573e2e95f8"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": 0.08101603573519878,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.18774786566983,
+                "targets": 261818,
+                "checkpoint_sha256": "591b4b3b86a77fe7a0c977984a5b4148aae40f062cc65c489c77ffd73a3183a1"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": 0.12427572330568015,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 4.231007553240311,
+                "targets": 261818,
+                "checkpoint_sha256": "a8508f65aa9503d720f3b607edc411c6e60275a08a584fb591fbc8b3285564b1"
+              }
+            ],
+            "mean": 0.11565751371718373,
+            "sample_std": 0.031237125597333205,
+            "seed_count": 3,
+            "three_seeds": true
+          },
+          {
+            "split": "validation",
+            "rank_divisor": 4,
+            "target_recipes": [
+              {
+                "name": "model.layers.2.self_attn.out_proj",
+                "block_index": 2,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.5.self_attn.out_proj",
+                "block_index": 5,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.8.self_attn.out_proj",
+                "block_index": 8,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.10.self_attn.out_proj",
+                "block_index": 10,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.12.self_attn.out_proj",
+                "block_index": 12,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              },
+              {
+                "name": "model.layers.14.self_attn.out_proj",
+                "block_index": 14,
+                "shape": [
+                  2048,
+                  2048
+                ],
+                "rank": 512,
+                "factor_parameters": 2097152,
+                "dense_parameters": 4194304,
+                "precision": "bfloat16"
+              }
+            ],
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "factor_parameters": 12582912,
+            "dense_target_parameters": 25165824,
+            "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+            "retained_target_parameter_fraction": 0.5,
+            "per_seed": [
+              {
+                "seed": 11,
+                "teacher_relative_nll_difference": -0.20646305137160414,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.900268778563027,
+                "targets": 261818,
+                "checkpoint_sha256": "e3d1c4e60a5f19ddd055e1b48ff599b768d4780e73babd6f129606b452f8a5c8"
+              },
+              {
+                "seed": 23,
+                "teacher_relative_nll_difference": -0.21870378909949562,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.8880280408351355,
+                "targets": 261818,
+                "checkpoint_sha256": "2e5b71502ef190cd42deebe9d4e726d0d1b51428dee474770435191a0385b848"
+              },
+              {
+                "seed": 37,
+                "teacher_relative_nll_difference": -0.21640404272022762,
+                "teacher_nll": 4.106731829934631,
+                "measured_nll": 3.8903277872144035,
+                "targets": 261818,
+                "checkpoint_sha256": "1fe047b3a25bf894695078141cb495015138eda70198a4c0e7cf6cc618f003ae"
+              }
+            ],
+            "mean": -0.2138569610637758,
+            "sample_std": 0.006505738524889503,
+            "seed_count": 3,
+            "three_seeds": true
+          }
+        ],
+        "unavailable": [],
+        "interpretation": "Within-model same-split teacher-relative NLL; validation frontier is not independent confirmation. Target factor fraction excludes bias, untargeted weights and serialization overhead."
+      }
+    },
+    {
+      "run_id": "baselines-20261013-175255-6a00d4e8",
+      "state": "completed",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+      "metrics": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\metrics.json",
+        "sha256": "75b5c39e40325852101a05376019937bccd02c2e039b09b282b656da6850cad4",
+        "bytes": 418346
+      },
+      "contract": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\contract.json",
+        "sha256": "1e007cea0630a72b47e6ea59ebbffd86977c09120f61fbf23446f93085a8be18",
+        "bytes": 21676
+      },
+      "figure_data": [
+        {
+          "specification": {
+            "method": "svd"
+          },
+          "scope": {},
+          "per_seed": [
+            {
+              "seed": 11,
+              "values": [
+                0.0068020047905937376,
+                0.007690901357047546,
+                0.01424357823986149,
+                0.01034548897693021,
+                0.014751740416188135,
+                0.018520409492090904,
+                0.0353309557338911,
+                0.0895590575008603,
+                0.07591415322417426,
+                0.10369056729604482,
+                0.09213515720484786,
+                0.09677049416246349,
+                0.10828134357816808,
+                0.10909510061354571,
+                0.1080083487954307,
+                0.0990157932643565,
+                0.09594750957057727,
+                0.11174731671671015,
+                0.1183780890540736,
+                0.10603505597177111,
+                0.09184928522365922,
+                0.08175743485234975,
+                0.06946348094785675,
+                0.07135906547411776,
+                0.069936057827472,
+                0.12380877091392703
+              ]
+            }
+          ],
+          "mean": [
+            0.0068020047905937376,
+            0.007690901357047546,
+            0.01424357823986149,
+            0.01034548897693021,
+            0.014751740416188135,
+            0.018520409492090904,
+            0.0353309557338911,
+            0.0895590575008603,
+            0.07591415322417426,
+            0.10369056729604482,
+            0.09213515720484786,
+            0.09677049416246349,
+            0.10828134357816808,
+            0.10909510061354571,
+            0.1080083487954307,
+            0.0990157932643565,
+            0.09594750957057727,
+            0.11174731671671015,
+            0.1183780890540736,
+            0.10603505597177111,
+            0.09184928522365922,
+            0.08175743485234975,
+            0.06946348094785675,
+            0.07135906547411776,
+            0.069936057827472,
+            0.12380877091392703
+          ],
+          "sample_std": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "specification": {
+            "method": "asvd"
+          },
+          "scope": {},
+          "per_seed": [
+            {
+              "seed": 11,
+              "values": [
+                0.00046211498630621814,
+                0.0012170983814929956,
+                0.0023996222037255418,
+                0.002071123375449296,
+                0.0033413887024114314,
+                0.004594751293170843,
+                0.008791061312366595,
+                0.03181099564685828,
+                0.03191863735205843,
+                0.046454612440242696,
+                0.047078367812494665,
+                0.04877664201447556,
+                0.05515292788018982,
+                0.0569270508445284,
+                0.05618352705091335,
+                0.050283474340207995,
+                0.04790461653110911,
+                0.05213187958391722,
+                0.05107903477670675,
+                0.043255521383679114,
+                0.035412270616604,
+                0.03105775062607519,
+                0.025439255201016992,
+                0.024667471066343153,
+                0.020793607398785014,
+                0.03152830971484161
+              ]
+            },
+            {
+              "seed": 23,
+              "values": [
+                0.0004454982325054227,
+                0.0012184830224316607,
+                0.0023786936444519647,
+                0.002076758952196867,
+                0.0034702775847744475,
+                0.004756090898408666,
+                0.008750270753525208,
+                0.031135574345897678,
+                0.031154997239124137,
+                0.04584747383706013,
+                0.04663785698486914,
+                0.04828153775738872,
+                0.0546055547305437,
+                0.05634847270667477,
+                0.055639398757957315,
+                0.04984208805041533,
+                0.047450631709858186,
+                0.05176502789450279,
+                0.050741700673838916,
+                0.043005618007989715,
+                0.03528001730123111,
+                0.030948467767597857,
+                0.0254062911982889,
+                0.024704448742729517,
+                0.02089056210853884,
+                0.03172376172612048
+              ]
+            },
+            {
+              "seed": 37,
+              "values": [
+                0.0004635450319368511,
+                0.001207817437027615,
+                0.0023432129271723375,
+                0.0020730375110814417,
+                0.003355571027919295,
+                0.004720808158299602,
+                0.008675122927607094,
+                0.03117096978540102,
+                0.031226676041777916,
+                0.04580025640881431,
+                0.04653481773948715,
+                0.048268105176605826,
+                0.05452098495607134,
+                0.05626072568358466,
+                0.05554496275518268,
+                0.049727516299717014,
+                0.0473445487345339,
+                0.051572423849787385,
+                0.05037241159284922,
+                0.04259199882034021,
+                0.034891319541446884,
+                0.030584383187729443,
+                0.025069998130192145,
+                0.02435225796473138,
+                0.02057727111039863,
+                0.03130672569472212
+              ]
+            }
+          ],
+          "mean": [
+            0.0004570527502494973,
+            0.0012144662803174238,
+            0.0023738429251166145,
+            0.002073639946242535,
+            0.003389079105035058,
+            0.00469055011662637,
+            0.0087388183311663,
+            0.031372513259385656,
+            0.031433436877653494,
+            0.046034114228705715,
+            0.04675034751228365,
+            0.04844209498282337,
+            0.05475982252226829,
+            0.05651208307826261,
+            0.05578929618801778,
+            0.049951026230113445,
+            0.047566598991833735,
+            0.0518231104427358,
+            0.050731049014464964,
+            0.04295104607066968,
+            0.03519453581976067,
+            0.030863533860467498,
+            0.02530518150983268,
+            0.02457472592460135,
+            0.02075381353924083,
+            0.03151959904522807
+          ],
+          "sample_std": [
+            1.0032019629667026e-05,
+            5.799538382628696e-06,
+            2.8515762814042422e-05,
+            2.86568096827473e-06,
+            7.067658327334309e-05,
+            8.481909495507733e-05,
+            5.8811527344353884e-05,
+            0.0003801490659953998,
+            0.0004217215763505005,
+            0.00036492661017235807,
+            0.00028870791387683556,
+            0.00028980406458000547,
+            0.00034305521204106314,
+            0.00036204084064509644,
+            0.00034466363254563235,
+            0.00029355234787614454,
+            0.0002974983900069888,
+            0.00028421447257241775,
+            0.00035343199399149217,
+            0.00033511060901156726,
+            0.0002707910974028235,
+            0.0002478497717506015,
+            0.00020434058068167013,
+            0.00019354800958486647,
+            0.0001603916326433182,
+            0.0002086544264926109
+          ]
+        },
+        {
+          "specification": {
+            "beta": 0.0,
+            "method": "whitening",
+            "ridge_fraction": 0.0
+          },
+          "scope": {},
+          "per_seed": [
+            {
+              "seed": 11,
+              "values": [
+                0.00019605843001042168,
+                0.0004471476796847689,
+                0.0006998396734655802,
+                0.0005566454739944953,
+                0.0008823489958643115,
+                0.0009953487022921275,
+                0.0019846108526950616,
+                0.008435533145007286,
+                0.008562600119027219,
+                0.014533561382380595,
+                0.014828730871317815,
+                0.016327846756930654,
+                0.018899795084713768,
+                0.019645805034882512,
+                0.019495055585545738,
+                0.017263367599289637,
+                0.016309782011116478,
+                0.017955660616960755,
+                0.017542374518399618,
+                0.014640535224137807,
+                0.01187280439969264,
+                0.010563952924515964,
+                0.008850299019988125,
+                0.008920523151626522,
+                0.007310882928690637,
+                0.010721355681593731
+              ]
+            },
+            {
+              "seed": 23,
+              "values": [
+                0.00021510268095929625,
+                0.00046451669397174796,
+                0.0007249006754365873,
+                0.0005857221865927532,
+                0.0009579034642795951,
+                0.0010632842209323378,
+                0.002117589435746893,
+                0.008483574618539363,
+                0.008685354773605197,
+                0.014598158308787853,
+                0.01498254720971006,
+                0.016505195477414233,
+                0.019195223555245708,
+                0.020010414980991386,
+                0.019897107057024473,
+                0.017579910235887317,
+                0.016629105850089865,
+                0.018347820404484464,
+                0.017945453723401887,
+                0.014989714506175788,
+                0.012153394929280872,
+                0.010808027956874324,
+                0.009041666481924154,
+                0.009106805612346646,
+                0.007485090549494197,
+                0.011060744447281697
+              ]
+            },
+            {
+              "seed": 37,
+              "values": [
+                0.00020606983598748098,
+                0.0004745200356718358,
+                0.0007371740647255493,
+                0.0005881163072401789,
+                0.0009432239354153914,
+                0.0011782651160550234,
+                0.0022025163629402233,
+                0.008921054967387404,
+                0.009310194570127895,
+                0.015348936823113443,
+                0.015651903375786817,
+                0.01725326356746521,
+                0.020019280172463162,
+                0.02085726625209345,
+                0.020736155921984887,
+                0.018375642241919257,
+                0.017387180715799654,
+                0.019202992842424795,
+                0.018796823995391135,
+                0.01573682767953938,
+                0.012873596376401997,
+                0.011509425392451395,
+                0.00972180862004255,
+                0.009785731562739507,
+                0.008054144676538614,
+                0.011777382719228834
+              ]
+            }
+          ],
+          "mean": [
+            0.00020574364898573298,
+            0.0004620614697761176,
+            0.0007206381378759056,
+            0.0005768279892758091,
+            0.0009278254651864326,
+            0.0010789660130931628,
+            0.002101572217127393,
+            0.008613387576978018,
+            0.00885271648758677,
+            0.01482688550476063,
+            0.01515439381893823,
+            0.016695435267270034,
+            0.019371432937474214,
+            0.020171162089322448,
+            0.0200427728548517,
+            0.017739640025698736,
+            0.016775356192335333,
+            0.018502157954623337,
+            0.018094884079064212,
+            0.015122359136617658,
+            0.012299931901791837,
+            0.010960468757947227,
+            0.009204591373984944,
+            0.009271020108904226,
+            0.0076167060515744825,
+            0.011186494282701421
+          ],
+          "sample_std": [
+            9.52631471351905e-06,
+            1.3850363260896286e-05,
+            1.9028691823934726e-05,
+            1.7519514711571144e-05,
+            4.006187824382573e-05,
+            9.246103265701297e-05,
+            0.00010983221894339437,
+            0.0002675283408085481,
+            0.0004009137354958895,
+            0.00045326192755486136,
+            0.00043766618084546666,
+            0.0004911643834178864,
+            0.0005801715480892965,
+            0.0006215217573256389,
+            0.0006332427692203237,
+            0.0005730828251432006,
+            0.0005533885291261773,
+            0.0006378279389517371,
+            0.0006404357469536655,
+            0.0005600537790528679,
+            0.0005162373082178047,
+            0.000490823996234689,
+            0.0004580290777740221,
+            0.0004553802799034102,
+            0.00038871774688633887,
+            0.0005391271110648753
+          ]
+        },
+        {
+          "specification": {
+            "beta": 0.03,
+            "method": "anchored",
+            "ridge_fraction": 0.0
+          },
+          "scope": {},
+          "per_seed": [
+            {
+              "seed": 11,
+              "values": [
+                0.00019445799950316067,
+                0.00043796500910330883,
+                0.0006848611464912584,
+                0.0005466463450857796,
+                0.0008394000246182289,
+                0.0009653361890343845,
+                0.001958434153374919,
+                0.00837343265403139,
+                0.008372321201395501,
+                0.014250518715346558,
+                0.01461276245263899,
+                0.016226587161593017,
+                0.0188762286253701,
+                0.01967733188528383,
+                0.019563896970663405,
+                0.017316217951190357,
+                0.016369016624960913,
+                0.018146249629594328,
+                0.017731962537363855,
+                0.014818727519541566,
+                0.011965399538812718,
+                0.010647250893799603,
+                0.008924348745798186,
+                0.008909922814171816,
+                0.00732521546628412,
+                0.01078656255179138
+              ]
+            },
+            {
+              "seed": 23,
+              "values": [
+                0.00021351068398354293,
+                0.0004526007926279094,
+                0.0007077199571009433,
+                0.0005727840161419936,
+                0.0009145757416859216,
+                0.001056086213950456,
+                0.0020889738485007185,
+                0.008362473458113993,
+                0.008302010891546955,
+                0.013816826705554423,
+                0.014168602478979867,
+                0.015805914849479456,
+                0.01837796263106876,
+                0.019188758698505327,
+                0.019120890751479987,
+                0.01690086371344247,
+                0.015963867784652166,
+                0.01785608653048562,
+                0.017521842042604815,
+                0.014707370501710289,
+                0.011950012361439794,
+                0.010666325139440137,
+                0.009002031509392312,
+                0.009054325767149141,
+                0.0074888257319611976,
+                0.011002082110062181
+              ]
+            },
+            {
+              "seed": 37,
+              "values": [
+                0.00020406087842751434,
+                0.0004640965991784765,
+                0.0007198374190608426,
+                0.0005746577063266468,
+                0.0009056665715343243,
+                0.00113153604481565,
+                0.0021673871574090023,
+                0.008648331553163616,
+                0.009079826639862612,
+                0.015332269698116581,
+                0.015707057416466157,
+                0.017419578722132793,
+                0.02023260967517348,
+                0.021074684627014183,
+                0.02094801552483187,
+                0.01852798856407099,
+                0.017505477033185137,
+                0.019377812166256888,
+                0.01896169438351448,
+                0.01589038584319775,
+                0.012950448914460806,
+                0.011573446727885238,
+                0.00977096185159784,
+                0.009770887781251406,
+                0.008061690283116972,
+                0.011881294538236832
+              ]
+            }
+          ],
+          "mean": [
+            0.000204009853971406,
+            0.00045155413363656493,
+            0.0007041395075510148,
+            0.00056469602251814,
+            0.0008865474459461583,
+            0.00105098614926683,
+            0.0020715983864282132,
+            0.008461412555103,
+            0.00858471957760169,
+            0.014466538373005855,
+            0.014829474116028338,
+            0.01648402691106842,
+            0.019162266977204113,
+            0.019980258403601115,
+            0.019877601082325086,
+            0.017581690076234606,
+            0.016612787147599405,
+            0.01846004944211228,
+            0.018071832987827715,
+            0.015138827954816535,
+            0.012288620271571106,
+            0.010962340920374992,
+            0.009232447368929446,
+            0.009245045454190788,
+            0.007625243827120764,
+            0.011223313066696798
+          ],
+          "sample_std": [
+            9.526444725005792e-06,
+            1.3097198984793364e-05,
+            1.7760901580442088e-05,
+            1.565952809909069e-05,
+            4.107314002608631e-05,
+            8.32172218369565e-05,
+            0.00010555458059881494,
+            0.0001619693176832497,
+            0.0004302140597925995,
+            0.0007804743655610136,
+            0.0007917915492449509,
+            0.0008370688095575596,
+            0.0009598397619350501,
+            0.0009787760257486753,
+            0.0009531022697507993,
+            0.0008454232116312235,
+            0.0007991919791709505,
+            0.0008079387163597823,
+            0.0007777709387921615,
+            0.0006532453911403377,
+            0.0005732120512679339,
+            0.0005293190792813446,
+            0.00046798187889341585,
+            0.0004610809775988788,
+            0.0003867249817020735,
+            0.0005799283427000291
+          ]
+        },
+        {
+          "specification": {
+            "beta": 0.1,
+            "method": "legacy_ridge",
+            "ridge_fraction": 0.01
+          },
+          "scope": {},
+          "per_seed": [
+            {
+              "seed": 11,
+              "values": [
+                0.00028420404568310707,
+                0.0005415111251849651,
+                0.0008469573804722675,
+                0.0006841177867647643,
+                0.0011118871765663793,
+                0.001267008822501479,
+                0.0024151852371385556,
+                0.010120482674810936,
+                0.009818570859235223,
+                0.016005026373041825,
+                0.016375260866599146,
+                0.018212873563670413,
+                0.02110611971827231,
+                0.021981887656667667,
+                0.021861605383612228,
+                0.01933564978419947,
+                0.018278845674253034,
+                0.020396644522211356,
+                0.019951845901547242,
+                0.016717695646566447,
+                0.013539931466992755,
+                0.012052246689629217,
+                0.01011502023842988,
+                0.010087186428417617,
+                0.008319636488707564,
+                0.012347877042446121
+              ]
+            },
+            {
+              "seed": 23,
+              "values": [
+                0.00032135063151104184,
+                0.0005713226940466194,
+                0.000891300692187167,
+                0.0007317828402218057,
+                0.001243418626400916,
+                0.0013960688291802434,
+                0.002584741233166326,
+                0.010181136877476838,
+                0.009836930697236018,
+                0.016105359189475258,
+                0.016391347591229486,
+                0.018269010689849964,
+                0.021265883921012956,
+                0.022206100095455684,
+                0.022135663309554597,
+                0.019544217537774855,
+                0.0184627210440462,
+                0.02066839764739791,
+                0.02028916208868917,
+                0.01708123752882563,
+                0.013871128767896892,
+                0.012381932992364725,
+                0.010449462804827845,
+                0.010451959148007752,
+                0.008624940608362587,
+                0.012655942735411782
+              ]
+            },
+            {
+              "seed": 37,
+              "values": [
+                0.0003263761881075955,
+                0.0006088218409495757,
+                0.0009450294796432162,
+                0.0007377936557079938,
+                0.001245548903493146,
+                0.0014619085676344562,
+                0.00274383084247513,
+                0.010642293863930749,
+                0.010369930427422382,
+                0.016383583180246103,
+                0.01646306371897102,
+                0.01826897275404994,
+                0.021025942647862183,
+                0.021898194265067356,
+                0.0217811429742755,
+                0.01931849485656966,
+                0.018246187568675857,
+                0.02059316257346742,
+                0.020192268582442264,
+                0.01700523836871293,
+                0.013995131235931177,
+                0.012574798962389118,
+                0.01072016349513248,
+                0.010830244580822554,
+                0.00902518125044285,
+                0.013414629231933263
+              ]
+            }
+          ],
+          "mean": [
+            0.00031064362176724813,
+            0.0005738852200603867,
+            0.0008944291841008836,
+            0.0007178980942315213,
+            0.0012002849021534804,
+            0.0013749954064387262,
+            0.002581252437593337,
+            0.010314637805406174,
+            0.010008477327964541,
+            0.016164656247587728,
+            0.016409890725599886,
+            0.018250285669190104,
+            0.021132648762382484,
+            0.02202872733906357,
+            0.021926137222480775,
+            0.01939945405951466,
+            0.018329251428991698,
+            0.020552734914358897,
+            0.020144425524226225,
+            0.016934723848035002,
+            0.013802063823606941,
+            0.012336326214794354,
+            0.010428215512796735,
+            0.010456463385749308,
+            0.008656586115837667,
+            0.012806149669930388
+          ],
+          "sample_std": [
+            2.3034809363398347e-05,
+            3.372844524825409e-05,
+            4.911084152394198e-05,
+            2.9408576217044718e-05,
+            7.656208550484854e-05,
+            9.914405944259536e-05,
+            0.0001643505772660183,
+            0.00028537449534104045,
+            0.0003131621436949454,
+            0.00019612093181445338,
+            4.6746348470959156e-05,
+            3.2399839341324714e-05,
+            0.00012215071132151933,
+            0.00015920730819278758,
+            0.00018586133460840606,
+            0.00012566193283563678,
+            0.00011673577674419379,
+            0.00014031477818787018,
+            0.0001736728855970022,
+            0.00019175478679544364,
+            0.00023532781881394424,
+            0.00026424458946570575,
+            0.0003031306250565066,
+            0.000371549553333178,
+            0.0003538353166524536,
+            0.0005490097001210549
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "practical-bf16-20261014-135107-82168ad5",
+      "state": "completed",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-bf16-20261014-135107-82168ad5",
+      "metrics": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-bf16-20261014-135107-82168ad5\\metrics.json",
+        "sha256": "f8d68265b7a64459ae89f7970f9b88bfa4fda91a24bc54cb8df74f5815b47b15",
+        "bytes": 117221
+      },
+      "contract": {
+        "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-bf16-20261014-135107-82168ad5\\contract.json",
+        "sha256": "e2aea2e8e73ed5647eab7a7dac272afac11a61adf149250fc6aa44d1267fce8d",
+        "bytes": 27538
+      },
+      "figure_data": [
+        {
+          "label": "teacher",
+          "seed": null,
+          "bits": 16,
+          "precision": "bfloat16",
+          "whole_checkpoint_bytes": 1999883711,
+          "raw_test_nll": 3.451549497917139,
+          "whole_checkpoint": {
+            "bytes": 1999883711,
+            "sha256": "34d331cd31220f4bb754baf85ca5beb02074856a239bf12e7ff3bb6be13b485b",
+            "bf16_recipes": {},
+            "precision": "bfloat16"
+          },
+          "scope": "actual serialized whole-model bytes, including archive overhead"
+        },
+        {
+          "label": "baseline",
+          "seed": 11,
+          "bits": 16,
+          "precision": "bfloat16",
+          "whole_checkpoint_bytes": 1982003507,
+          "raw_test_nll": 3.5560861806228936,
+          "whole_checkpoint": {
+            "bytes": 1982003507,
+            "sha256": "3f7ee42bec4ecbe67972742b15c57bdf6fa4c9cdeb621b208e70170f3ba8edc9",
+            "bf16_recipes": {
+              "model.layers.0.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.1.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.2.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.3.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.4.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.5.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.6.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.7.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.8.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.9.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.10.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.11.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.12.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.13.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.14.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.15.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.16.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.17.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.18.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.19.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.20.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.21.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.22.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.23.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.24.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.25.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              }
+            },
+            "precision": "bfloat16"
+          },
+          "scope": "actual serialized whole-model bytes, including archive overhead"
+        },
+        {
+          "label": "baseline",
+          "seed": 23,
+          "bits": 16,
+          "precision": "bfloat16",
+          "whole_checkpoint_bytes": 1982003507,
+          "raw_test_nll": 3.5684314702774858,
+          "whole_checkpoint": {
+            "bytes": 1982003507,
+            "sha256": "f2938b510b92a6715268e319dd1f0d77e9f5237adf6a2e58a9110bf2f349a4a5",
+            "bf16_recipes": {
+              "model.layers.0.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.1.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.2.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.3.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.4.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.5.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.6.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.7.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.8.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.9.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.10.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.11.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.12.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.13.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.14.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.15.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.16.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.17.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.18.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.19.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.20.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.21.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.22.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.23.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.24.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.25.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              }
+            },
+            "precision": "bfloat16"
+          },
+          "scope": "actual serialized whole-model bytes, including archive overhead"
+        },
+        {
+          "label": "solver",
+          "seed": 11,
+          "bits": 16,
+          "precision": "bfloat16",
+          "whole_checkpoint_bytes": 1982003507,
+          "raw_test_nll": 3.556826295671628,
+          "whole_checkpoint": {
+            "bytes": 1982003507,
+            "sha256": "ab84abea54a4f3b56d60e999f296825d3f9b23317d96e2a550307da002e94105",
+            "bf16_recipes": {
+              "model.layers.0.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.1.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.2.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.3.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.4.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.5.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.6.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.7.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.8.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.9.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.10.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.11.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.12.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.13.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.14.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.15.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.16.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.17.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.18.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.19.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.20.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.21.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.22.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.23.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.24.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.25.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              }
+            },
+            "precision": "bfloat16"
+          },
+          "scope": "actual serialized whole-model bytes, including archive overhead"
+        },
+        {
+          "label": "solver",
+          "seed": 23,
+          "bits": 16,
+          "precision": "bfloat16",
+          "whole_checkpoint_bytes": 1982003507,
+          "raw_test_nll": 3.562948816866699,
+          "whole_checkpoint": {
+            "bytes": 1982003507,
+            "sha256": "7057d9bba940a19f0eb56911e29fce4567f21b00f297fc699747ab85f8714e64",
+            "bf16_recipes": {
+              "model.layers.0.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.1.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.2.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.3.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.4.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.5.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.6.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.7.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.8.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.9.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.10.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.11.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.12.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.13.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.14.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.15.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.16.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.17.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.18.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.19.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.20.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.21.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.22.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.23.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.24.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              },
+              "model.layers.25.self_attn.o_proj": {
+                "left_shape": [
+                  1152,
+                  384
+                ],
+                "right_shape": [
+                  384,
+                  1024
+                ],
+                "storage": "bf16",
+                "compute": "bf16"
+              }
+            },
+            "precision": "bfloat16"
+          },
+          "scope": "actual serialized whole-model bytes, including archive overhead"
+        }
+      ]
+    }
+  ],
+  "presentation_supersession": {
+    "superseded": {
+      "architecture-replication-20261014-082807-5c73f669": {
+        "successor": "architecture-replication-20261014-093845-97378b5e",
+        "source_state": "interrupted",
+        "successor_state": "incomplete",
+        "reused_records": 10,
+        "independent_replication": false,
+        "source_artifacts": {
+          "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+          "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+          "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3",
+          "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+          "config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898",
+          "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd"
+        },
+        "reason": "Unique validated continuation includes every original record unchanged; original attempt remains in the evidence and manuscript appendix."
+      }
+    },
+    "warnings": [],
+    "interpretation": "Display selection only; no pooling, deletion or independent replication from reused rows. Partial successors retain their actual state and coverage."
+  },
+  "interpretation": "Exploratory measured cohorts only. Drift bands are sample seed SD, not confidence intervals; no cross-run pooling."
+}

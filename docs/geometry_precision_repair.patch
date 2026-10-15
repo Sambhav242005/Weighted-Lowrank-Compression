@@ -1,0 +1,30 @@
+*** Begin Patch
+*** Update File: C:/Users/NPC/Desktop/ResearchCompression/src/paper_comparisons.py
+@@
+         self.tokens = 0
++        self.valid_cka_tokens = 0
+@@
+         if len(x) > 1:
+             x, y = x-x.mean(0), y-y.mean(0)
+-            gx, gy = x @ x.T, y @ y.T
+-            denominator = (gx.square().sum()*gy.square().sum()).sqrt()
+-            self.cka += ((gx*gy).sum()/denominator.clamp_min(1e-30)).item()*len(x)
++            # CKA is invariant to independent positive rescaling. Normalize
++            # centered features before float32 GEMM, then reduce in float64:
++            # both tiny variance and large finite FP16 activations remain safe.
++            scale_x, scale_y = x.abs().amax(), y.abs().amax()
++            if scale_x.item() > 0 and scale_y.item() > 0:
++                x, y = x/scale_x, y/scale_y
++                gx, gy = (x @ x.T).double(), (y @ y.T).double()
++                norm_x, norm_y = gx.square().sum().sqrt(), gy.square().sum().sqrt()
++                if norm_x.item() > 0 and norm_y.item() > 0:
++                    similarity = (gx*gy).sum()/(norm_x*norm_y)
++                    if not torch.isfinite(similarity):
++                        raise FloatingPointError('nonfinite linear CKA')
++                    self.cka += similarity.clamp(0, 1).item()*len(x)
++                    self.valid_cka_tokens += len(x)
+@@
+-                'window_linear_cka': self.cka/max(self.tokens, 1), 'tokens': self.tokens}
++                'window_linear_cka': self.cka/self.valid_cka_tokens if self.valid_cka_tokens else None,
++                'valid_cka_tokens': self.valid_cka_tokens, 'tokens': self.tokens}
+*** End Patch

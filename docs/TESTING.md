@@ -1,5 +1,16 @@
 # Testing Guide
 
+Current human restriction: new model testing is BF16 only with at most two seeds.
+The active continuation's three focused offline checks run BF16 fixtures only:
+
+```powershell
+rtk .venv-cuda/Scripts/python.exe -m pytest tests/unit/test_bf16_practical.py -q
+```
+
+These passed before launch. Reporting/export verification is CPU artifact
+processing, not another model-format experiment. Older model-format examples
+below describe retained historical protocols, not current authorization to run.
+
 ## Purpose
 
 Tests must establish that a compression result is both technically correct and scientifically credible. A small reconstruction error, a passing single-layer experiment, or a visually plausible generation is not sufficient evidence that a compressed transformer preserves global behavior.
@@ -13,9 +24,39 @@ This guide covers four layers of verification:
 
 ## Current status
 
-The repository currently has no dedicated `tests/` directory or test configuration. Files named `quick_test.py`, `gpu_test.py`, and `causality_test.py` are executable research scripts, not isolated tests. Pytest attempts to collect them and fails because their imports assume execution from `src`.
+The repository has a dedicated `tests/` directory and `pytest.ini`, which restricts discovery to `tests/test_*.py` and files matching that name below `tests/`. Files such as `src/quick_test.py`, `src/gpu_test.py`, and `src/causality_test.py` remain executable research scripts and are excluded from ordinary discovery.
 
-Until the test suite is introduced, do not use a bare `pytest` run as evidence that the project is healthy. Keep experimental scripts out of test discovery and avoid model downloads or GPU execution at import time.
+Use the existing CUDA environment for the current study:
+
+```powershell
+rtk .venv-cuda/Scripts/python.exe -m pytest -q tests
+```
+
+The system Python environment has an incompatible Transformers/Hub combination; passing a test there does not establish that the study can load its models. CPU tests verify implementation behavior and do not establish compression quality or pass the real-model FP16 readiness gate. Real-model results and numerical diagnosis are recorded in `docs/PAPER_V2_IMPLEMENTATION.md` and the retained run directories.
+
+Additional regression checks for the applied metric and composition repairs live under `docs/test_*repair.py` and `docs/test_geometry_equality_optimization.py`; run these explicitly. Keep research scripts out of test discovery and avoid model downloads or GPU execution at import time.
+
+On 14 October 2026 the existing offline suite passed **89 tests and 7 subtests**:
+
+```powershell
+rtk .venv-cuda/Scripts/python.exe -m pytest tests/unit tests/integration tests/test_paper_followups.py -q
+```
+
+The reporting and document-export suite independently passed **27 tests and
+26 subtests** using the system interpreter after the BF16 reporting amendment:
+
+```powershell
+rtk C:/Python314/python.exe -m pytest docs/test_report_revised_study_20261014.py docs/test_export_paper_pdf_20261014.py docs/test_export_paper_latex_20261014.py -q
+```
+
+These are CPU artifact checks and perform no model-format experiment.
+Recovery-specific checks added after the earlier offline snapshot must
+also pass before the resumed experiment is launched. The additive architecture
+recovery adapter passed four focused CPU tests before launch:
+
+```powershell
+rtk .venv-cuda/Scripts/python.exe -m pytest tests/unit/test_architecture_recovery.py -q
+```
 
 ## Required test layout
 
@@ -97,23 +138,22 @@ For each approved benchmark configuration, store a compact immutable reference r
 
 A new candidate is comparable only if its run contract matches the reference. Flag—not silently overwrite—a result when it changes the model revision, tokenizer, data split, parameter budget, metric definition, or measurement hardware.
 
-## Commands after the test suite is implemented
+## Existing offline verification commands
 
 ```powershell
-# Fast, offline checks for every code change
-py -3 -m pytest -q -m "not gpu and not network"
+# Current offline unit/integration/follow-up checks
+rtk .venv-cuda/Scripts/python.exe -m pytest tests/unit tests/integration tests/test_paper_followups.py -q
 
 # Local integration tests only
-py -3 -m pytest -q tests/integration
+rtk .venv-cuda/Scripts/python.exe -m pytest -q tests/integration
 
-# Opt-in GPU/model verification on a prepared machine
-py -3 -m pytest -q -m gpu
-
-# Full scientific regression on cached models/data
-py -3 -m pytest -q tests/regression -m "gpu and network"
+# Artifact reporting and Markdown/LaTeX/PDF export checks
+rtk C:/Python314/python.exe -m unittest docs.test_report_revised_study_20261014 docs.test_export_paper_latex_20261014 docs.test_export_paper_pdf_20261014
 ```
 
 The default command must finish without GPU, internet access, a Hugging Face cache, or writes outside its temporary test directory.
+The GPU and scientific-regression layouts above describe required future
+coverage; they are not permission to launch another model study or download assets.
 
 ## Test gates for an experiment
 

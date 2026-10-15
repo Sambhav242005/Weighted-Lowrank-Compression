@@ -1,0 +1,36 @@
+{
+  "test": {
+    "tokens": 292282,
+    "sha256": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc"
+  },
+  "train": {
+    "tokens": 2459302,
+    "sha256": "950ace441dd12b00ed9aec525a4d07d6a8f70ba2cf6cf9cc7cc39bc379accbca"
+  },
+  "validation": {
+    "tokens": 257290,
+    "sha256": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc"
+  },
+  "calibration_seed11": {
+    "positions": [
+      2067456,
+      1173504,
+      1280000,
+      1653760,
+      718848,
+      296960,
+      1383424,
+      556544,
+      2181120,
+      2258944,
+      430592,
+      1218048,
+      1377280,
+      1268224,
+      999424,
+      811008
+    ],
+    "token_sha256": "2aec1708bf8abe8477ce67b750ccfaa3763bc0ef638f2a163ea67c7312581d44",
+    "used_for_fitting": false
+  }
+}

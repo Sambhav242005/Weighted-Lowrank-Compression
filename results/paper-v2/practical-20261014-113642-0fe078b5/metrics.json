@@ -1,0 +1,5589 @@
+[
+  {
+    "label": "teacher",
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.218650983260783,
+          9.397902579850744,
+          8.648302097010015,
+          7.964352451526088,
+          7.341086339229437,
+          6.774039688599033,
+          6.2592323597706745,
+          5.793163879032349,
+          5.372813075256033,
+          4.995662511898782,
+          4.6597401192202454,
+          4.363693558758195,
+          4.106907238491433,
+          3.889675369101976,
+          3.713443272700068,
+          3.5811162986586496,
+          3.4973795687510743,
+          3.4688759516771563,
+          3.5039049866110634,
+          3.6111588503719703,
+          3.7971413559816876,
+          4.062689532344571,
+          4.400301064414467,
+          4.7943777729577945,
+          5.224774542144309,
+          5.6717092648077125,
+          6.119403029925033,
+          6.557106780549203,
+          6.9782580501062865,
+          7.379172362678701,
+          7.757996957972409,
+          8.114025298762806,
+          8.447277390782528
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.451562542535798,
+        "ppl": 31.549651486382494,
+        "targets": 292281,
+        "accuracy": 0.38908105555954714,
+        "entropy": 2.787301813807375,
+        "ece_15": 0.08882964374002145,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 5152,
+            "confidence_sum": 268.4947811225429,
+            "correct": 176
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 22191,
+            "confidence_sum": 2285.8832211196423,
+            "correct": 1627
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 29241,
+            "confidence_sum": 4888.023256838322,
+            "correct": 3738
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 30291,
+            "confidence_sum": 7057.824836343527,
+            "correct": 5306
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 27876,
+            "confidence_sum": 8349.132149159908,
+            "correct": 6369
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 25058,
+            "confidence_sum": 9168.756677299738,
+            "correct": 6849
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21755,
+            "confidence_sum": 9408.712918549776,
+            "correct": 7168
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18596,
+            "confidence_sum": 9288.412412166595,
+            "correct": 7029
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15944,
+            "confidence_sum": 9023.459443211555,
+            "correct": 6749
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 14421,
+            "confidence_sum": 9126.47530913353,
+            "correct": 6963
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 13221,
+            "confidence_sum": 9251.188559174538,
+            "correct": 7236
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 12270,
+            "confidence_sum": 9405.64249074459,
+            "correct": 7379
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 12156,
+            "confidence_sum": 10133.98285973072,
+            "correct": 8217
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 13710,
+            "confidence_sum": 12356.95977962017,
+            "correct": 10687
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 30399,
+            "confidence_sum": 29671.26840776205,
+            "correct": 28228
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.4225586621688593,
+        "ppl": 30.647731977378594,
+        "targets": 292281,
+        "accuracy": 0.38908105555954714,
+        "entropy": 3.4336779725221893,
+        "ece_15": 0.031423522103069174,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 11226,
+            "confidence_sum": 555.3906548744999,
+            "correct": 498
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 32957,
+            "confidence_sum": 3346.9908703118563,
+            "correct": 3278
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 36267,
+            "confidence_sum": 6038.962641984224,
+            "correct": 5779
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 32845,
+            "confidence_sum": 7635.822113096714,
+            "correct": 7271
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28401,
+            "confidence_sum": 8487.476529330015,
+            "correct": 7772
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23485,
+            "confidence_sum": 8583.336062699556,
+            "correct": 7845
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 19523,
+            "confidence_sum": 8440.31243827939,
+            "correct": 7556
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 16345,
+            "confidence_sum": 8154.347217410803,
+            "correct": 7285
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 14020,
+            "confidence_sum": 7936.51393276453,
+            "correct": 7091
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 12147,
+            "confidence_sum": 7685.800670623779,
+            "correct": 6895
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 10859,
+            "confidence_sum": 7594.924850702286,
+            "correct": 6690
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 10120,
+            "confidence_sum": 7755.417587280273,
+            "correct": 6946
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 9979,
+            "confidence_sum": 8318.178847849369,
+            "correct": 7626
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 11528,
+            "confidence_sum": 10394.142396748066,
+            "correct": 9792
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 22579,
+            "confidence_sum": 21977.8816498518,
+            "correct": 21397
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.057834749999983615,
+        "p95_seconds": 0.05980025499961812,
+        "peak_allocated_bytes": 2131966976,
+        "peak_reserved_bytes": 2149580800
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.477800300000126,
+        "p95_seconds": 6.640367949999972,
+        "peak_allocated_bytes": 2072190464,
+        "peak_reserved_bytes": 2155872256
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.05582500000036816,
+        "p95_seconds": 0.05969350999994275,
+        "peak_allocated_bytes": 2344404992,
+        "peak_reserved_bytes": 2405433344
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.059219450000455,
+        "p95_seconds": 6.140314104999925,
+        "peak_allocated_bytes": 2085045248,
+        "peak_reserved_bytes": 2405433344
+      }
+    ],
+    "whole_checkpoint": {
+      "bytes": 1999884339,
+      "sha256": "b00d2d7a735b4ccb0c7a27909ab9d143a50690e7c07fd2aa68f545aad7de9319",
+      "packed_recipes": {}
+    }
+  },
+  {
+    "label": "baseline",
+    "seed": 11,
+    "bits": 16,
+    "specification": {
+      "method": "whitening",
+      "beta": 0.0,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-02-whitening\\factors.pt",
+    "source_sha256": "129c426aaf740430f901ab328bb713b24a436edd11afd70c5e7fad5212f2191b",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "90b2508f342818213cfd60af2a6995daa3a57d37678a7cedb60142123c542e88",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "313bdfcc565f92de25d56fd6cbfefa32986ae6cb618061a86da5ad82726aff1f",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "b4d96eb760f8af0bbf6af2a708740d0b17c7effcc94b4d4330dde86c0e6a40f7",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "991532e1e81fe2e02ad45a455cbc77bd0625e7805e4a6e314a1edf5d404e61f2",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "b9beda9bf975b914eb48855bd4c05717bdb6ba49341b3e678b3267c444abed41",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "53eea9306d022c77d12d2a89580637a35bdfe904ff21fe0a8e110696aed494c9",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "4a9418feb85c04d4369b04517d2569c80ab150fb8cd30ad40119c9e01642f156",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "0f223c8d2ea1500dc5f322e6a3d7e725315d1778a3f74d5b7e40c4808c28763f",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "a02371823cbdef1f84b1c2b87a7e1795d2be2995076eaa2107adb9239e49319e",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "7ec0f0eba6b4587963fa869211c4642f577fa6cbbfd6bdbc6fecfb750467422c",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "df148e57cfcc6ee0480de29eb303ccfff04d358c53cfedbe6f316428bb73c685",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "300e331752ef309a2d64233d21306d42e548fde4e2b26323272398eb9f72ea6e",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "d6e4e65f466a1608a1142bd4b72da08fd25ad30c78d663116c73a5cf81734007",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "e5d3ad742868bd629efb48fcc9fda2993e3c680561baee90b80b27c532f1d499",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "afd57f333db2b333b69c6296f57a503ff2e39f6f5490f75bfb0e3c8b3f553c19",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "a05cdb81fb47018e1cd4c0d409c59a300aaaf5b7dccb7ddc9f3022540362fe05",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "b789a1c23d78b76e7e00d56b6963671fd0efb637dc155c32448066500b7ede78",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "db028ac3be6e89a0bb2c4851de928781f62e4bc7a69000b4a83e24c1c5761c67",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "d4f5250253546e485a3918e748045d6245cb252feccdda88282ab549afb74a13",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "fb15005d0e47c8d392f38b8875248a095a0c36ff88aba07ceeb1d07b3f4d7cbf",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "8e29e9c31b7eaeb36c42af5eb6feb41e1cfaf6599e3246c4747925a92fa484fe",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "90fab5cc1be0ce35cb99d81be28854de99c187a3968eaca310147fac358dde9d",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "8f5752145728898ad03028d4f9d4ef97a4d752cf4915f24ba10800adc896ff78",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "f8dc207ae05421e290cdd33b466474a6acd94143b8824b307c22ac65cf3408ef",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "291b7b03e0877acb347faf7b3f78d16632185fe261095e44079f888b9c6a508a",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "4514974533a3209c4c3ebf61b34e44cb8f90a6eae094d84de046f67c75d3df5a",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 43509058,
+    "whole_checkpoint": {
+      "bytes": 1982002675,
+      "sha256": "0fdbdf24ed0673804e9fe3dd90c1ab574c61a1bb066f290c26728c22ea019ae9",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.008941349082688177,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "d424745e1c2fe55ac9b81ac9069f8c91872c60a89a0b06f136a27004e7c30ffb",
+        "cached_next_logits_sha256": "ba540590030ea325cf974e201203d0aa5cfb92dbf3a0b3fc29240ddffa3c2420"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "d424745e1c2fe55ac9b81ac9069f8c91872c60a89a0b06f136a27004e7c30ffb",
+        "cached_next_logits_sha256": "ba540590030ea325cf974e201203d0aa5cfb92dbf3a0b3fc29240ddffa3c2420"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.317023303040065,
+          9.489672423295868,
+          8.734238300520902,
+          8.045200713685155,
+          7.417580400499708,
+          6.846914342525873,
+          6.329238474984117,
+          5.861086408130886,
+          5.439492600057058,
+          5.062021212496292,
+          4.726812312312666,
+          4.4326611783627925,
+          4.179137879035048,
+          3.9667578748582146,
+          3.7972086982674713,
+          3.673618562977985,
+          3.6007889875123884,
+          3.5852181313376463,
+          3.634592621156933,
+          3.7563679748812473,
+          3.9552705145015086,
+          4.23027012639692,
+          4.572586927262006,
+          4.966388733335499,
+          5.392240321027989,
+          5.831573276666484,
+          6.269882971762784,
+          6.697448603909683,
+          7.108387970430562,
+          7.499404060395765,
+          7.868840134691623,
+          8.216073963944016,
+          8.54114835607543
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.56275408559503,
+        "ppl": 35.26017307855308,
+        "targets": 292281,
+        "accuracy": 0.3781326873796107,
+        "entropy": 3.0520213439713926,
+        "ece_15": 0.06981053802934574,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 8306,
+            "confidence_sum": 418.3001273199916,
+            "correct": 297
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 27201,
+            "confidence_sum": 2772.4366904571652,
+            "correct": 2253
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31582,
+            "confidence_sum": 5272.18742159009,
+            "correct": 4215
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 31336,
+            "confidence_sum": 7302.401321306825,
+            "correct": 5858
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28434,
+            "confidence_sum": 8515.524522513151,
+            "correct": 6851
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 24876,
+            "confidence_sum": 9096.122114419937,
+            "correct": 7191
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21492,
+            "confidence_sum": 9288.060201436281,
+            "correct": 7295
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18225,
+            "confidence_sum": 9096.893153697252,
+            "correct": 7238
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15394,
+            "confidence_sum": 8710.393907248974,
+            "correct": 7001
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13722,
+            "confidence_sum": 8678.360856831074,
+            "correct": 6960
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12218,
+            "confidence_sum": 8540.21598470211,
+            "correct": 6987
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11148,
+            "confidence_sum": 8541.160667002201,
+            "correct": 7083
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 10841,
+            "confidence_sum": 9039.419201791286,
+            "correct": 7720
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12268,
+            "confidence_sum": 11060.056560218334,
+            "correct": 9932
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25238,
+            "confidence_sum": 24593.761135220528,
+            "correct": 23640
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.548153434048178,
+        "ppl": 34.749091717669224,
+        "targets": 292281,
+        "accuracy": 0.3781326873796107,
+        "entropy": 3.7370594149883454,
+        "ece_15": 0.014899993823651859,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 16733,
+            "confidence_sum": 798.6425511315465,
+            "correct": 832
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 38010,
+            "confidence_sum": 3820.626470886171,
+            "correct": 4060
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38320,
+            "confidence_sum": 6377.242302253842,
+            "correct": 6650
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33532,
+            "confidence_sum": 7800.282210588455,
+            "correct": 7784
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28338,
+            "confidence_sum": 8473.501216381788,
+            "correct": 8331
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23139,
+            "confidence_sum": 8458.325067609549,
+            "correct": 8108
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18728,
+            "confidence_sum": 8095.76516726613,
+            "correct": 7785
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15526,
+            "confidence_sum": 7743.646332323551,
+            "correct": 7335
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13203,
+            "confidence_sum": 7467.297501087189,
+            "correct": 7076
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 11027,
+            "confidence_sum": 6973.835813879967,
+            "correct": 6584
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9625,
+            "confidence_sum": 6731.176813304424,
+            "correct": 6272
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8792,
+            "confidence_sum": 6740.871107637882,
+            "correct": 6391
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8799,
+            "confidence_sum": 7332.621978580952,
+            "correct": 6991
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10287,
+            "confidence_sum": 9275.540270864964,
+            "correct": 8926
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18222,
+            "confidence_sum": 17695.632939517498,
+            "correct": 17396
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.05902969999988272,
+        "p95_seconds": 0.08538865000055011,
+        "peak_allocated_bytes": 2115451904,
+        "peak_reserved_bytes": 2195718144
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.4449885499998345,
+        "p95_seconds": 6.623190185000385,
+        "peak_allocated_bytes": 2055675392,
+        "peak_reserved_bytes": 2197815296
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.05369864999920537,
+        "p95_seconds": 0.05501142499915659,
+        "peak_allocated_bytes": 2327889920,
+        "peak_reserved_bytes": 2445279232
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.110490250001021,
+        "p95_seconds": 6.472632104999775,
+        "peak_allocated_bytes": 2068595712,
+        "peak_reserved_bytes": 2445279232
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "seed": 11,
+    "bits": 8,
+    "specification": {
+      "method": "whitening",
+      "beta": 0.0,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-02-whitening\\factors.pt",
+    "source_sha256": "129c426aaf740430f901ab328bb713b24a436edd11afd70c5e7fad5212f2191b",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "adc24d1ecde21e3afef11fa7fa8da070db2e246eddbeba03a2f208f91d2bb8c6",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "f7b2cc04c66cdc4688a02c9f42d051485b5a28135a300af98666faaae8943aa2",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "e1abcb1c5f2bfe83a19f71e2965f56d34e313d35dde98eb0fd2738082b8e6670",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "f20154c393fbd366fe9b3bbd3cdf0486f4e3486c03c28e0e26750505d014aa55",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "08bd79abf2c8d315997b05d3483a9a129680707ed0d5e51615bb972e719d2adc",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "ac6b191c364e8e58668da1c3078b7810b2091d48aeff492557f17b057484b2c0",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "21308569d0be5552117b5f81279557b195dc9595c1bb822577f4107c3f36ad06",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "f0a60b2a2e31c06ddc12a9f875e7cb573bb63f86ec6e61981d4898aa816e474b",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "baf47fed23c9c56c51e1f977d7d74233421d5cdd51f288cd438f536623e51998",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "44537add7b88f0aec756df54b954e737e0e1e49fd8f6cefd48e72a1aec397346",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "ce9c747cb52ea59654760b7678039c9488b59c17f539c5155209632886be2b43",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "dbf487a1932dc0d58408b5a784411f5eb70f2563c4536ac324b1ed85170aa5d3",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "c087959682b832803625cb87f316fd356f95ba83b22c9b49ed5219bfae73f6fb",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "6c3df939f0e8a5aaeef8da744ce184c3331644e0361ef7de04ea31a2d066f200",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "182d3ae7136a04b7b49f41820d32fbde44d181e0497eb3a173ffef16b95294bf",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "0bedc4a9511a672c576f8f2bef01c2b0980a646e6529889185ea692a9209bf1d",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "9128d02826aae15c31a523c0e9653d0e1a6af5b75e3177eecac48e8ae348f251",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "1a248e97746eb1c6b3879fbc36662c8c69d45e380542168653aee0932f62f258",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "1091525dab2f1cf371e07b98f8101741300474aae3c6a6fcc52252d6c1e98d1b",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "cfa94ab72db88e478bb74eabb39c3facabff473c6476356df7ea6fa18c90401e",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "7cffe6ab4dcb3bf53d28f489957a2a36504f79eafc98ee81860157dae874bdf9",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "4f39964b303526f93cc30b59aae183d4e19184f2962b432d4ea42b23dbec82e3",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "328448f74560e68f2f2dbfc750290f88ac0bfcb4f295001a5f9ee412ca71a004",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "2c638b0d3b99502af7f11597248c1082613f66a59a4b3e7b94781242da6ad83b",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "f4e852a3cf3badb0ff78006e26df551b7e5dcea632b0f4eea4353c63ceeb455d",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "0edc8d840aad6616a193d722fcefc499469aea442cf12c9c63a697325a430d89",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 22118386,
+    "whole_checkpoint": {
+      "bytes": 1960613787,
+      "sha256": "92a39c1ba428a2ff06fd23b0fd001808c9e7a4e063ed6c53b22d353229dafdb5",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.019636411583500046,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "437be084e6dc0760bd2b65f5f577c5cf5c4314a92d5d0c229535ef70afaab44b",
+        "cached_next_logits_sha256": "d1398e49df5311d2e6e8e8d1270db4a007614ec1c83da6d6104363329f02f1b5"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "437be084e6dc0760bd2b65f5f577c5cf5c4314a92d5d0c229535ef70afaab44b",
+        "cached_next_logits_sha256": "d1398e49df5311d2e6e8e8d1270db4a007614ec1c83da6d6104363329f02f1b5"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.315929654721439,
+          9.488676739405095,
+          8.73333720681177,
+          8.04439279183914,
+          7.416866681722641,
+          6.84629838136912,
+          6.328726675045883,
+          5.860688378048068,
+          5.4392213167969885,
+          5.061893523849314,
+          4.726849239041522,
+          4.432888297438198,
+          4.179585816268631,
+          3.9674626244137547,
+          3.7982120000399933,
+          3.6749677680357884,
+          3.60253575346077,
+          3.5874145123983876,
+          3.637282390050424,
+          3.7595729459368017,
+          3.958974036676539,
+          4.2344053080202695,
+          4.577040683055171,
+          4.971018492907935,
+          5.396895873148555,
+          5.836124935372322,
+          6.274242295306263,
+          6.701567391923092,
+          7.112245227867733,
+          7.50299534849691,
+          7.872170619160188,
+          8.219154253798422,
+          8.543991760507973
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.5630814076515924,
+        "ppl": 35.271716400008685,
+        "targets": 292281,
+        "accuracy": 0.3781395301097232,
+        "entropy": 3.0563094974347216,
+        "ece_15": 0.06930440558936753,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 8346,
+            "confidence_sum": 420.62949059251696,
+            "correct": 322
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 27285,
+            "confidence_sum": 2780.8126346841455,
+            "correct": 2225
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31542,
+            "confidence_sum": 5263.672412872314,
+            "correct": 4227
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 31306,
+            "confidence_sum": 7293.640181571245,
+            "correct": 5811
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28654,
+            "confidence_sum": 8579.73405072093,
+            "correct": 6894
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 24957,
+            "confidence_sum": 9128.53373453021,
+            "correct": 7254
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21186,
+            "confidence_sum": 9159.85227227211,
+            "correct": 7299
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18265,
+            "confidence_sum": 9111.023186802864,
+            "correct": 7304
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15502,
+            "confidence_sum": 8773.58767926693,
+            "correct": 7044
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13684,
+            "confidence_sum": 8658.623354017735,
+            "correct": 6978
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12266,
+            "confidence_sum": 8576.973771333694,
+            "correct": 6985
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11151,
+            "confidence_sum": 8544.953312337399,
+            "correct": 7042
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 10737,
+            "confidence_sum": 8950.604684829712,
+            "correct": 7679
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12352,
+            "confidence_sum": 11131.111374795437,
+            "correct": 9987
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25048,
+            "confidence_sum": 24405.608829438686,
+            "correct": 23472
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.5488307131444046,
+        "ppl": 34.77263452272739,
+        "targets": 292281,
+        "accuracy": 0.3781395301097232,
+        "entropy": 3.7418385556925284,
+        "ece_15": 0.014500775762935056,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 16755,
+            "confidence_sum": 799.399626320228,
+            "correct": 821
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 38118,
+            "confidence_sum": 3827.8959428817034,
+            "correct": 4116
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38139,
+            "confidence_sum": 6340.544390976429,
+            "correct": 6498
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33897,
+            "confidence_sum": 7882.044111832976,
+            "correct": 7983
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28194,
+            "confidence_sum": 8428.471882283688,
+            "correct": 8220
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23213,
+            "confidence_sum": 8488.073138535023,
+            "correct": 8292
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18622,
+            "confidence_sum": 8050.604314535856,
+            "correct": 7723
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15615,
+            "confidence_sum": 7794.192540407181,
+            "correct": 7437
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13132,
+            "confidence_sum": 7430.355416953564,
+            "correct": 7027
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 11099,
+            "confidence_sum": 7022.004755020142,
+            "correct": 6625
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9540,
+            "confidence_sum": 6673.031652271748,
+            "correct": 6222
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8841,
+            "confidence_sum": 6775.716477870941,
+            "correct": 6404
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8824,
+            "confidence_sum": 7353.289430916309,
+            "correct": 7040
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10291,
+            "confidence_sum": 9279.137073338032,
+            "correct": 8924
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18001,
+            "confidence_sum": 17480.308630645275,
+            "correct": 17191
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.06479794999995647,
+        "p95_seconds": 0.09071198999927216,
+        "peak_allocated_bytes": 2094046208,
+        "peak_reserved_bytes": 2164260864
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 7.11784765000084,
+        "p95_seconds": 7.2362801700001,
+        "peak_allocated_bytes": 2038453760,
+        "peak_reserved_bytes": 2168455168
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.059287299999596144,
+        "p95_seconds": 0.06291703000024426,
+        "peak_allocated_bytes": 2306484224,
+        "peak_reserved_bytes": 2420113408
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.723544100000254,
+        "p95_seconds": 6.79397279499899,
+        "peak_allocated_bytes": 2047190016,
+        "peak_reserved_bytes": 2420113408
+      }
+    ]
+  },
+  {
+    "label": "solver",
+    "seed": 11,
+    "bits": 16,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.03,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-03-anchored\\factors.pt",
+    "source_sha256": "218da1b279b05ee9c68eaa214bc5077f7f2361139cacba812b28780f5db61c60",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "fcc2a53865f9c812bf9faa00889ffcc8b931355f5d632268a3da0cf5c0a661ec",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "a3950a3be889ecbe2404ea8f0d57f98ef2fbd4944aacd5483b7756dec8d88bd3",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "54a5ae0eff3b96b0ad0e8ec1d086d4a5251f5d1fe4c188457a6abf208dea9d54",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "19da2a157f2a04bc1f2420852ac2eda83451819ddb3d5d85fedea5019f73825e",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "fe3c18f64d35f29445b33999ff1ff3964bb132172e250a64944b5b03ce1c0e74",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "2b0534195ea2ec66c8c2736f103af003ebe19c699ef57f8178bb2d4281d56d1e",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "3eb416dc0180b7db4ef223d94d84a668217b81210641849437dd5835f7fdfaaf",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "910b3a9432ecc0577d252db0228b99233ff6d5ee5fe03c318c7a40fd1cc6b74b",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "0bb5cf41b7368bf6abed3d33b48698c8ac637bf299c641c92d5d76183856d62d",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "3b5b428c84b299a2e58b30e4039e0989b25624019f52ec9c5e4cddfcbcdbe5fd",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "ef7a0cad9ef139f3fa5daab14ff57aec821f55e392992fb51b2362e8e75def6d",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "f8344d7e07f67c5c2138f06d805041fd51be1dbbb682ba5cf0c5981bedff275f",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "1a5af4dfef37439dcd1d4b781457c8090ad5ae1b640c75fc800cf5c0cb8ac12d",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "ab0639ff22b22fa9cd61f5d6f11f1c0df05797929aa6e1f757079de45b20f6e1",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "14b45503305c8170a0d2be6eaf57bb152834cadcc5dfe960a4f07d8627ffb422",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "5e4192f00f62ac2d7be285afabb41b18eb4ef6f73a3249b373be1b82bf69f9ee",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "409b101c52590686ee150a1939e08bfd60e08a4e884b161357f01407dd988a22",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "c5dbdcd4ef34f28f6eeaebc1b9df0b9d7986a95043ac8d4320d00cc92d10edc6",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "05fa5965b9ba5bb1c09f32d1619018da8e929e3a81d39fd66b9ef9e10c464b2b",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "15d67ecc97408e8049fbe96c9b495e9b193dd19937ed023abd835d4c1869391b",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "27b079dfb058c92e9a8b5871d2e619cc484515921117c3bb0fe8e3d2a8a46036",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "ada5bfed29ab697eea396fd7a548e4a41c5a33344f3b40f5d502fa18955b9374",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "23c6868cb00370a26aef060b0b364ab396f0d24c6de0c8189cba036fe8d5c422",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "53f8295bc0b80f68fc01bb6b75e08cba6d2f27e277b8354b36461f00c8f72be6",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "dd89282b598c93a5b400b7f4886900b7e7c120bb43564e44b4e7b51bc16080ca",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "e9c6f03bc752c60453db652d3b31dbd674970afcce7ec0e6f8d5d5e294fcd413",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 43509058,
+    "whole_checkpoint": {
+      "bytes": 1982002675,
+      "sha256": "dad6dc4c4242f0c0b32c083e1baaeaf2fd14e011d75581a24cb3406e8d56bfc7",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.008941349082688177,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "0ea5b0edf9ef092bfcad3e7366b8ddbc632a1af695c5f58534a4a2ed32199a55",
+        "cached_next_logits_sha256": "08e507e96beb55aa003c70042a2c23afbee2d013231eb6a0c10c35f8e8ff7ac2"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "0ea5b0edf9ef092bfcad3e7366b8ddbc632a1af695c5f58534a4a2ed32199a55",
+        "cached_next_logits_sha256": "08e507e96beb55aa003c70042a2c23afbee2d013231eb6a0c10c35f8e8ff7ac2"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.328164155012068,
+          9.499597526197926,
+          8.743021343369932,
+          8.052905712462247,
+          7.424261887047227,
+          6.852617226394081,
+          6.3339979113269775,
+          5.864927500086174,
+          5.442430181360109,
+          5.064060003973786,
+          4.727947852349752,
+          4.432882148692829,
+          4.1784310457176765,
+          3.9651168255031117,
+          3.79464791331654,
+          3.6701937906773296,
+          3.596622394257691,
+          3.5805207545440867,
+          3.629667578968237,
+          3.751571710457698,
+          3.9509273076903564,
+          4.226585813504198,
+          4.569625500538976,
+          4.964108831370805,
+          5.3905444022457685,
+          5.830345608300352,
+          6.26901344502232,
+          6.696844774853977,
+          7.1079779712419064,
+          7.499134718118261,
+          7.868672555066986,
+          8.215979857403045,
+          8.541107191256149
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.5596348339392465,
+        "ppl": 35.150359083076566,
+        "targets": 292281,
+        "accuracy": 0.3784919307105149,
+        "entropy": 3.042502869322819,
+        "ece_15": 0.07094618193052017,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 7686,
+            "confidence_sum": 390.51516891177744,
+            "correct": 275
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 26717,
+            "confidence_sum": 2725.153698839247,
+            "correct": 2169
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31505,
+            "confidence_sum": 5262.740758270025,
+            "correct": 4161
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 31553,
+            "confidence_sum": 7354.368202924728,
+            "correct": 5854
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28703,
+            "confidence_sum": 8595.05580240488,
+            "correct": 6878
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 25132,
+            "confidence_sum": 9198.251870632172,
+            "correct": 7288
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21534,
+            "confidence_sum": 9311.937278747559,
+            "correct": 7320
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18298,
+            "confidence_sum": 9132.720404058695,
+            "correct": 7267
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15495,
+            "confidence_sum": 8768.291119277477,
+            "correct": 7008
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13912,
+            "confidence_sum": 8802.31305384636,
+            "correct": 6967
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12140,
+            "confidence_sum": 8488.826290488243,
+            "correct": 7010
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11141,
+            "confidence_sum": 8534.984558224678,
+            "correct": 7081
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 10761,
+            "confidence_sum": 8967.693107247353,
+            "correct": 7701
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12420,
+            "confidence_sum": 11192.600344121456,
+            "correct": 9985
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25284,
+            "confidence_sum": 24636.769342839718,
+            "correct": 23662
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.544645736348703,
+        "ppl": 34.62741593428267,
+        "targets": 292281,
+        "accuracy": 0.3784919307105149,
+        "entropy": 3.731154046570965,
+        "ece_15": 0.014620507551199978,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 15886,
+            "confidence_sum": 765.3934053201228,
+            "correct": 785
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 37644,
+            "confidence_sum": 3785.9895389676094,
+            "correct": 3981
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38501,
+            "confidence_sum": 6405.587346166372,
+            "correct": 6543
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33883,
+            "confidence_sum": 7874.8888335675,
+            "correct": 7909
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28519,
+            "confidence_sum": 8525.953564852476,
+            "correct": 8342
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23301,
+            "confidence_sum": 8514.45422309637,
+            "correct": 8208
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18870,
+            "confidence_sum": 8153.5064443051815,
+            "correct": 7823
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15684,
+            "confidence_sum": 7828.321493417025,
+            "correct": 7387
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13172,
+            "confidence_sum": 7454.625528156757,
+            "correct": 6984
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 11023,
+            "confidence_sum": 6972.812292337418,
+            "correct": 6704
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9541,
+            "confidence_sum": 6670.2497645020485,
+            "correct": 6190
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8789,
+            "confidence_sum": 6736.398237884045,
+            "correct": 6386
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8938,
+            "confidence_sum": 7447.875732123852,
+            "correct": 7059
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10357,
+            "confidence_sum": 9339.872740447521,
+            "correct": 8951
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18173,
+            "confidence_sum": 17651.08567047119,
+            "correct": 17374
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.06039919999966514,
+        "p95_seconds": 0.07227621499987434,
+        "peak_allocated_bytes": 2115451904,
+        "peak_reserved_bytes": 2195718144
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.621244099999785,
+        "p95_seconds": 6.86619120000014,
+        "peak_allocated_bytes": 2055675392,
+        "peak_reserved_bytes": 2197815296
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.0581728999995903,
+        "p95_seconds": 0.06183209000073475,
+        "peak_allocated_bytes": 2327889920,
+        "peak_reserved_bytes": 2445279232
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.181787450000229,
+        "p95_seconds": 6.365259014999083,
+        "peak_allocated_bytes": 2068595712,
+        "peak_reserved_bytes": 2445279232
+      }
+    ]
+  },
+  {
+    "label": "solver",
+    "seed": 11,
+    "bits": 8,
+    "specification": {
+      "method": "anchored",
+      "beta": 0.03,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-03-anchored\\factors.pt",
+    "source_sha256": "218da1b279b05ee9c68eaa214bc5077f7f2361139cacba812b28780f5db61c60",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "5d1fd8eca0720614d492b523f39e26ac181fd1d8bf34a719a5392fdff622b0e8",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "70a9011afad9a9e4b99893135e1ef95d413349c52c0fd7cadf9eb4b979ec0ff1",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "688d192e31cda4b41346dffa237ae698692a8e3dedbb6e89a0f66a4e88fbfac2",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "64cd791cd2368980e6ce50f1c3c3be5f490c2929dbacaecb9fba3e36e9df5a50",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "b8de37a26d0f08e4c01071449742546db3e4048cb2d5c818f020895b3848dd2c",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "a6bf0466b51c148dde2ea8c05524a809a87cdabd5cf521c47e4e026bf9bc5f2a",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "5ea45f36a98ca8b2ae4545bfe0816aec22b98a917b95c1f7ca2418a3dca66436",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "e715c1e04b376d8c29dffb7f00487b26f00c3d05d2a665fc65e2dd36bcd9439a",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "c7d3ef3f4522a58483a676a9f67525b77c742312e3bb6bd51a89351f77315e60",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "083648875850d130b007a7a06a64b766ca104f8e9e18c6137bde9e859d702ee0",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "7acb0758761d1aa44c759c76806f6664f267bafa3b29db2db7fcbb22482042c0",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "7e3e53c436d33a768f25e50809be9077348cc03a9b9ea0a299b73f8efd27c657",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "968b49460ab659779a7f7ab92a4c370b291eefd914472f851b06e66ca1e598ea",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "aaa550d1f0dc5bfdcf2a6000f1b3ee8f4a237da9566077ffdeafc37873f30fe2",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "57e4525bc9ba5b6aff80e6435bf173a3b28fac3cab48ea9f1876dd066ae419d3",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "d7df849c381efa7aac377edf77bab8db87d18ffcc0aac458145bc2fd1a7aa714",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "b0b70e09043704c705ded1856d63b6a638c2197270e6fbe43cee47a26d59560a",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "9d770cff344640a4d0d48b8834ce1526895e0de52747b5c747dac27f24b7a802",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "bb8238fd7dc30391884a19f793c5ba40e1f10dadef73f71da55acda353360916",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "75c1e1d46153726d2708ce48ef91ae99e1a5dd570866f34d8fd8c06adb7496d3",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "11b98d86e3d49a2c7a9ab09a0d43bac9505b91b8a6579ffdf911d878c427f7ac",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "260a05f2348db62673a5281b866cd6f3ce8207661a0d8e3dff4d58c8530b5c61",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "5a74a79491bcd12460b5368677c6ffdb8484f678a4cafca54ea96f8e7264d3a4",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "087af4669c081c3fd8415d169518c77fc37dd743d81b7aa3d08cafb4105448e5",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "adeedf0b41174b4bcb4380c188d00df929a110e13618bf8f3768fbe33dd816be",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "b326e128659d28167953cf14c1f77f508b2d682143e352ba0de490b6f9793ed7",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 22118386,
+    "whole_checkpoint": {
+      "bytes": 1960613787,
+      "sha256": "26c2a665cfb8480bba9f94b70e95b9782ad7a08bd385339801e951e8e77d15a0",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.019636411583500046,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "8e732e4464fdb6e7e5a941820e79c926b42a01c9ca4e2e647b3e495502ef9527",
+        "cached_next_logits_sha256": "b076c8299e7d680771315db9dc13f50d3bacc2bddc04490cf040c9f3cd1cd46a"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "8e732e4464fdb6e7e5a941820e79c926b42a01c9ca4e2e647b3e495502ef9527",
+        "cached_next_logits_sha256": "b076c8299e7d680771315db9dc13f50d3bacc2bddc04490cf040c9f3cd1cd46a"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.33357830160363,
+          9.504581226245847,
+          8.747614410079427,
+          8.057144548141187,
+          7.428179788250507,
+          6.856244583369776,
+          6.337362430339837,
+          5.868054481963211,
+          5.445342772703529,
+          5.066779636715037,
+          4.730494902209547,
+          4.435276874825882,
+          4.1806948602323954,
+          3.967273578467586,
+          3.796725206290722,
+          3.672222989174717,
+          3.5986364584864377,
+          3.5825485011186693,
+          3.6317249226172317,
+          3.753652734774521,
+          3.9529996613766856,
+          4.228594172085164,
+          4.571508303443972,
+          4.965825700838283,
+          5.392091887554394,
+          5.831746005522318,
+          6.270292773610626,
+          6.6980212248575075,
+          7.109062482666034,
+          7.5001343870480435,
+          7.869593293750174,
+          8.216827367373062,
+          8.541887078534062
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.561945167250239,
+        "ppl": 35.23166201082687,
+        "targets": 292281,
+        "accuracy": 0.37830717699747846,
+        "entropy": 3.042582340152781,
+        "ece_15": 0.07120748600844551,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 7763,
+            "confidence_sum": 394.54455147124827,
+            "correct": 288
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 26722,
+            "confidence_sum": 2726.4360141679645,
+            "correct": 2182
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31418,
+            "confidence_sum": 5244.2416335344315,
+            "correct": 4076
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 31468,
+            "confidence_sum": 7327.388536721468,
+            "correct": 5847
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28656,
+            "confidence_sum": 8574.947601258755,
+            "correct": 6875
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 25265,
+            "confidence_sum": 9243.825198620558,
+            "correct": 7351
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21401,
+            "confidence_sum": 9250.959096372128,
+            "correct": 7179
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18201,
+            "confidence_sum": 9084.779455661774,
+            "correct": 7262
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15633,
+            "confidence_sum": 8843.559490442276,
+            "correct": 7092
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13862,
+            "confidence_sum": 8769.020248115063,
+            "correct": 6955
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12352,
+            "confidence_sum": 8637.04709994793,
+            "correct": 7119
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11078,
+            "confidence_sum": 8492.218393325806,
+            "correct": 7039
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 10797,
+            "confidence_sum": 8999.463862419128,
+            "correct": 7643
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12353,
+            "confidence_sum": 11130.490172207355,
+            "correct": 9953
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25312,
+            "confidence_sum": 24665.673863768578,
+            "correct": 23711
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.546773276614683,
+        "ppl": 34.7011655808425,
+        "targets": 292281,
+        "accuracy": 0.37830717699747846,
+        "entropy": 3.731291100229638,
+        "ece_15": 0.014913456904113238,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 15960,
+            "confidence_sum": 768.6880221785977,
+            "correct": 797
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 37735,
+            "confidence_sum": 3796.2896425947547,
+            "correct": 3996
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38342,
+            "confidence_sum": 6380.132443919778,
+            "correct": 6494
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33907,
+            "confidence_sum": 7883.127384066582,
+            "correct": 7931
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28456,
+            "confidence_sum": 8506.10350331664,
+            "correct": 8296
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23148,
+            "confidence_sum": 8457.702016830444,
+            "correct": 8092
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18935,
+            "confidence_sum": 8182.905021369457,
+            "correct": 7885
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15643,
+            "confidence_sum": 7805.954170376062,
+            "correct": 7377
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13238,
+            "confidence_sum": 7490.946785390377,
+            "correct": 7073
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 11112,
+            "confidence_sum": 7027.840695142746,
+            "correct": 6654
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9512,
+            "confidence_sum": 6650.235793888569,
+            "correct": 6168
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8884,
+            "confidence_sum": 6809.681529283524,
+            "correct": 6459
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8923,
+            "confidence_sum": 7436.129920423031,
+            "correct": 7054
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10233,
+            "confidence_sum": 9227.21333527565,
+            "correct": 8855
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18253,
+            "confidence_sum": 17728.444818854332,
+            "correct": 17441
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.06678435000048921,
+        "p95_seconds": 0.07246704499902988,
+        "peak_allocated_bytes": 2094046208,
+        "peak_reserved_bytes": 2164260864
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 7.1962691499993525,
+        "p95_seconds": 7.340182824999647,
+        "peak_allocated_bytes": 2038453760,
+        "peak_reserved_bytes": 2168455168
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.061121949999687786,
+        "p95_seconds": 0.06488728500080469,
+        "peak_allocated_bytes": 2306484224,
+        "peak_reserved_bytes": 2420113408
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.745539500000632,
+        "p95_seconds": 6.956859909999002,
+        "peak_allocated_bytes": 2047190016,
+        "peak_reserved_bytes": 2420113408
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "seed": 23,
+    "bits": 16,
+    "specification": {
+      "method": "whitening",
+      "beta": 0.0,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-02-whitening\\factors.pt",
+    "source_sha256": "42a554516b16b2d600e26e1d6e22685a2599e6d578752578061586adf0913731",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "367b7c9c41c32860dfe4ad4e697e86888bebe648e3b5e3fc1c5486c38a9c3286",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "74ba637f24f761b1619091e0879c7d387f9fa81382fd0885cd8b93dc8db29af9",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "57940902a7532be065f538d3be60222af3e207740774653ee64fb2a4402763a2",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "44d423601649bfe5a4a06ed116caad03765585bdd6ea10246016a57695c61fdd",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "68630c18a90081d303c99f9854c9f4ab1239616f0967ec2fe39bddc4b2615051",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "376ddd323bd22ec62d6edd8e23e637a5e2961e5fb78c0e9db7240a00084875a6",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "5a28eaa6579e4f4498c4464090220417577b64b0cad7a2a9de2daef09edd00c3",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "dd409921e1c410faa43500d5b4de2da28c603ab469051b834645ec20027c8ae0",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "2262ea0d07184ce000e99a2dbf58b6769b1a2ab117e6dca643640d5201d50454",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 1673381,
+        "sha256": "cd6e853b0f6af6c72ada1ac4c1a7249190e23d86a085a8e8a6b01c26bc821fb6",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "68806b78603dd2793c97d3143515772b2035c6a42107bba49dcae23bb8d60802",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "8338aa9496c59561f34fbcefe0ceba622497ec123fce3177bb67ab613cfbe05f",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "b530b12a40ab9a8518ea89b75f9f9394cca6b2e01dc4dc2fcf674497e914ee1b",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "86f3fa6545fdd64c096653c6c03e18deaf05258ff1c15234c8294ff4eb8c3afb",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "b8f92cf682e9d4e644ae952f0ee0921f505f16e8a363e4e048382684c1d5ffa6",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "9636e4be5adadd20d79b429fdc172cd57ca4dd90bd0c4a93cc2c65039e51b91a",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "7afaf69eec37539792e2f0cee6d9679d8221b86303cea81925dd4793a77eec44",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "a92f0501d00178eef63a5f5c50cb2eb5e297b0be50a6a3e5b0a90012fc6e795c",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "bdf10e8d63ac7e6f9e305f96e537e2f5a8e6caa3b7a2a0c636503820b534b23a",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "5c439594dfb6b019b80f4a72227cc8b75cc5c15978016635e00e0539ecf00b2f",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "39e92da535c4175ef638399987b2c8813cf39845d90de3b04fee872914df0d5c",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "30dc5ca6d72dfb4c6c7096fed75d6e63b31bdd26e2eb5dfa6cd89b577b5f0882",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "b7a63eb96d93a7fa9ffea04a297939302fc401017188a65c4b81992f7e0a7a51",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "b5e973dcc752795e7b4e2fc6816115e6620d5032dadbe70602e5f56735c26712",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "5f6a9a78ae8056aa7f0834113891392e613ef783a07682cfcd86e70642c576f2",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 1673453,
+        "sha256": "5ceeed4a6d4de82bea1b2b0ef86911617bbbf2d0ec9ee3ed872acc5cecb70111",
+        "reload_exact": true,
+        "bits": 16,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 43509058,
+    "whole_checkpoint": {
+      "bytes": 1982002675,
+      "sha256": "0a635336ec86c962d040def5facb511ffafc838a2494ffbb104f4ef0357360bc",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 16
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.008941349082688177,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "73d8eb02aaeedcdf49a7765fc285e20209ac7d57f3cc27ddb0b767386f7e5023",
+        "cached_next_logits_sha256": "3ebf7ef675d02df09996b1485826ccbc20fc2a92a2bcf84b77d969e0f8dc7551"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "73d8eb02aaeedcdf49a7765fc285e20209ac7d57f3cc27ddb0b767386f7e5023",
+        "cached_next_logits_sha256": "3ebf7ef675d02df09996b1485826ccbc20fc2a92a2bcf84b77d969e0f8dc7551"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.337681506957749,
+          9.508706131705868,
+          8.75178839298403,
+          8.061397989738765,
+          7.432546991489615,
+          6.86076474836472,
+          6.342080750412815,
+          5.873023440993363,
+          5.45062336478509,
+          5.072442558164061,
+          4.736621130672451,
+          4.441957269823686,
+          4.188027894571652,
+          3.9753602929652367,
+          3.80565979138353,
+          3.682077862261953,
+          3.6094406888262642,
+          3.594264508096186,
+          3.644239437705717,
+          3.766805395151822,
+          3.966644484257444,
+          4.242629502723833,
+          4.585826509091694,
+          4.980249169410396,
+          5.4063809218263845,
+          5.845667523709014,
+          6.28367509304421,
+          6.710758868207464,
+          7.121097298516978,
+          7.511439688086949,
+          7.880164877344209,
+          8.226677433276627,
+          8.551039018616859
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.5698566072208973,
+        "ppl": 35.51150069375177,
+        "targets": 292281,
+        "accuracy": 0.37763658944645734,
+        "entropy": 3.0483498718728708,
+        "ece_15": 0.07090614935942942,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 8215,
+            "confidence_sum": 416.4916081856936,
+            "correct": 317
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 27005,
+            "confidence_sum": 2746.356802456081,
+            "correct": 2222
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31830,
+            "confidence_sum": 5313.166190683842,
+            "correct": 4248
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 31196,
+            "confidence_sum": 7265.8715411275625,
+            "correct": 5780
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28610,
+            "confidence_sum": 8563.188968449831,
+            "correct": 6880
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 24856,
+            "confidence_sum": 9091.901375770569,
+            "correct": 7127
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21061,
+            "confidence_sum": 9110.855020850897,
+            "correct": 7237
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18499,
+            "confidence_sum": 9237.010172724724,
+            "correct": 7321
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15483,
+            "confidence_sum": 8761.857809066772,
+            "correct": 6905
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13526,
+            "confidence_sum": 8559.06276589632,
+            "correct": 6866
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12229,
+            "confidence_sum": 8551.785929858685,
+            "correct": 6943
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11156,
+            "confidence_sum": 8549.434804975986,
+            "correct": 7001
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 10954,
+            "confidence_sum": 9128.082361996174,
+            "correct": 7854
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12222,
+            "confidence_sum": 11020.574848115444,
+            "correct": 9811
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25439,
+            "confidence_sum": 24784.88004076481,
+            "correct": 23864
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.554351843919809,
+        "ppl": 34.965149747163196,
+        "targets": 292281,
+        "accuracy": 0.37763658944645734,
+        "entropy": 3.7331856866361663,
+        "ece_15": 0.01590698961729416,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 16685,
+            "confidence_sum": 799.0461472016759,
+            "correct": 821
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 37916,
+            "confidence_sum": 3814.4605729430914,
+            "correct": 4095
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38225,
+            "confidence_sum": 6348.876776322722,
+            "correct": 6535
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33736,
+            "confidence_sum": 7846.022063598037,
+            "correct": 7884
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28109,
+            "confidence_sum": 8405.630270153284,
+            "correct": 8211
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 22998,
+            "confidence_sum": 8405.757728397846,
+            "correct": 8020
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18866,
+            "confidence_sum": 8152.383783340454,
+            "correct": 7825
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15579,
+            "confidence_sum": 7770.2619450986385,
+            "correct": 7252
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13069,
+            "confidence_sum": 7394.134186506271,
+            "correct": 6971
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 10974,
+            "confidence_sum": 6940.180988073349,
+            "correct": 6544
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9822,
+            "confidence_sum": 6868.215248525143,
+            "correct": 6373
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8832,
+            "confidence_sum": 6768.50360763073,
+            "correct": 6398
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8787,
+            "confidence_sum": 7327.630015492439,
+            "correct": 6959
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10390,
+            "confidence_sum": 9369.634368598461,
+            "correct": 9018
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18293,
+            "confidence_sum": 17761.384250581264,
+            "correct": 17470
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.058893450000141456,
+        "p95_seconds": 0.0691703199996482,
+        "peak_allocated_bytes": 2115451904,
+        "peak_reserved_bytes": 2195718144
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.590236549999645,
+        "p95_seconds": 6.835141649999877,
+        "peak_allocated_bytes": 2055675392,
+        "peak_reserved_bytes": 2197815296
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.05657514999893465,
+        "p95_seconds": 0.06035710999967705,
+        "peak_allocated_bytes": 2327889920,
+        "peak_reserved_bytes": 2445279232
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 6.145128850000219,
+        "p95_seconds": 6.472887710000305,
+        "peak_allocated_bytes": 2068595712,
+        "peak_reserved_bytes": 2445279232
+      }
+    ]
+  },
+  {
+    "label": "baseline",
+    "seed": 23,
+    "bits": 8,
+    "specification": {
+      "method": "whitening",
+      "beta": 0.0,
+      "ridge_fraction": 0.0
+    },
+    "source_checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-02-whitening\\factors.pt",
+    "source_sha256": "42a554516b16b2d600e26e1d6e22685a2599e6d578752578061586adf0913731",
+    "factor_reload": {
+      "model.layers.0.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "71f3d58e43c004053b0f266de6e68cda06146dbe006941597c01066e9f1e8f8d",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.1.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "9d68080a9c92e14487b600aaa51dc7754b59bdead07fafa5dd6386ab5d916960",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.2.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "31cf0dacab83e89c572c4d65018269c8c9de57935be08321e57dfe5ec2c4b348",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.3.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "d507d4f6aec7dc1d51d9ce6ae98bdb231758514a623fd0a83cc8373aed7bbefd",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.4.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "d604d298e823bc1c853ec18b3293410450b4d5aff6edcadabcfc0d37c156865a",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.5.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "b086364062f9efcf6d805c742887f2eadb3cb1625db88f1a902247bd28d07890",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.6.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "a20c418f59b2daeca41c07e287d6ecb3464ce9ec50409ba6b5579b5a13653921",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "03272cf145b9e4bee9bc7e8de096be21a757c339bacd293fe0b5dcf55e299f67",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.8.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "25cb445547876be168d39199f73dbf85378eb643f231cb5348d57ca6599d007f",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.9.self_attn.o_proj": {
+        "bytes": 850701,
+        "sha256": "f75e04db4497aee3def7c85a9c16ca2d2b0e65d6560a3b113e75aebb1a1806ce",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.10.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "d2301888c09d99b775e3b67e6e4843f3815c1414007b8896cb6fcb89fbb9d897",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "280d66c74c511a751280cfb3ae220fd3f9ebdfcf83a8ea014ed326122ff19fca",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.12.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "5accfbe74ba40e1d1f932a8f758029ccbc971ee2dbe1e36de44bbe640156dbfb",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.13.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "684fbb46151bed3b974f75522f2a105ee6785fcd15409f45c6792064dc4fcf53",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.14.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "ea1f1ba510b4ca320eae2411236a04322220fb1931da3c41cffa51368d574ca8",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "73b1b4c79307646f8390923ddad9e9063c778387439380712170457afaf41293",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.16.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "bb3b873853e98840a19d86dea997e5356e318dbfaac33702673051c8e6816464",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.17.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "c211066f06a06f6bc3749ca38892e56156096920db16e1d6cd37b33edb603ee3",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.18.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "87dca892bbe3421c1b42c0f208aef43938650fbf3b832b3c1d4b94010a28b708",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "85d81566aa4ed8c7faddb8f5c530dc00130a6511009361aadf7fafc2fbe4efaa",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.20.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "382507eabaa3251e3cd7d4e4a8e067afb1f6600ce919ba9a29e92a9de2fae99a",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.21.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "42df012373bcb68931f58336ec51aab2927c07f1a1bd849079414496edddee2f",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.22.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "2f62f2440b3fb5393a6d065c298384148e565cf6baca4c74c7009df9ba90c90c",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "e8bca7ec6bc992f6393fd40e21113848ce68aea60d4ecfe3a9fa83393573c33f",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.24.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "ad63d6ebe62b0ef818bf09afd1be8c259a43634510683fd0f08d9d304455afb0",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      },
+      "model.layers.25.self_attn.o_proj": {
+        "bytes": 850711,
+        "sha256": "e14564d79a8e3ee99a0d196465963a575d9e6b6ad6af19ad61a38bd8e7665419",
+        "reload_exact": true,
+        "bits": 8,
+        "metadata": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "factor_checkpoint_bytes": 22118386,
+    "whole_checkpoint": {
+      "bytes": 1960613787,
+      "sha256": "45e77dec7013dd5cec2273e223a8cb5f113e7d20c5c4fcd418235e7206646f8a",
+      "packed_recipes": {
+        "model.layers.0.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.1.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.2.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.3.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.4.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.5.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.6.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.7.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.8.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.9.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.10.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.11.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.12.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.13.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.14.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.15.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.16.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.17.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.18.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.19.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.20.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.21.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.22.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.23.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.24.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        },
+        "model.layers.25.self_attn.o_proj": {
+          "in_features": 1024,
+          "out_features": 1152,
+          "rank": 384,
+          "bits": 8
+        }
+      }
+    },
+    "whole_model_savings_fraction": 0.019636411583500046,
+    "whole_model_reload_parity": {
+      "exact": true,
+      "before": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "5f5f2413afc57aced77d474ed7f1ec916a3ba6a6440e68af93a33d69aa643c8c",
+        "cached_next_logits_sha256": "a93e81fe54ea79ba6f8585917873de717f6b77aedcd64e6e1608af0c23bceafd"
+      },
+      "after": {
+        "prompt_tokens": 128,
+        "prompt_logits_sha256": "5f5f2413afc57aced77d474ed7f1ec916a3ba6a6440e68af93a33d69aa643c8c",
+        "cached_next_logits_sha256": "a93e81fe54ea79ba6f8585917873de717f6b77aedcd64e6e1608af0c23bceafd"
+      },
+      "scope": "128-token prompt logits and one cached next-token forward"
+    },
+    "calibration": {
+      "fit": {
+        "temperature": 1.0905077326652577,
+        "selection_split": "validation",
+        "targets": 257289,
+        "fit": "bounded_grid",
+        "grid": [
+          0.25,
+          0.2726269331663144,
+          0.2973017787506803,
+          0.32420988866275247,
+          0.3535533905932738,
+          0.38555270635198524,
+          0.42044820762685725,
+          0.4585020216023356,
+          0.5,
+          0.5452538663326288,
+          0.5946035575013605,
+          0.6484197773255048,
+          0.7071067811865475,
+          0.7711054127039704,
+          0.8408964152537145,
+          0.9170040432046712,
+          1.0,
+          1.0905077326652577,
+          1.189207115002721,
+          1.2968395546510096,
+          1.4142135623730951,
+          1.542210825407941,
+          1.6817928305074292,
+          1.8340080864093427,
+          1.9999999999999998,
+          2.1810154653305154,
+          2.378414230005442,
+          2.5936791093020197,
+          2.82842712474619,
+          3.084421650815882,
+          3.363585661014858,
+          3.6680161728186857,
+          4.0
+        ],
+        "validation_nll": [
+          10.315957393055923,
+          9.488655673369609,
+          8.733255240570905,
+          8.044237170593364,
+          7.416623642128908,
+          6.845952999524691,
+          6.328262640102382,
+          5.860087486405184,
+          5.438463098252089,
+          5.060954843031273,
+          4.725704323232663,
+          4.431509460582301,
+          4.177945447035076,
+          3.965537179539371,
+          3.795988931310389,
+          3.6724557261546322,
+          3.599778871150877,
+          3.5845109060815514,
+          3.63440670807402,
+          3.7569948128083173,
+          3.957046080377131,
+          4.233483483695729,
+          4.577352922421776,
+          4.972587539027424,
+          5.3995778212447165,
+          5.839698362632353,
+          6.278471680421116,
+          6.706234553792022,
+          7.117163893887264,
+          7.508015297146304,
+          7.877176850858679,
+          8.224063058085159,
+          8.548744775297727
+        ],
+        "boundary_hit": false
+      },
+      "raw_test": {
+        "temperature": 1.0,
+        "nll": 3.5634629236702047,
+        "ppl": 35.28517569212376,
+        "targets": 292281,
+        "accuracy": 0.37823190696624137,
+        "entropy": 3.0396653365915807,
+        "ece_15": 0.07175850934249423,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 8038,
+            "confidence_sum": 406.93853274639696,
+            "correct": 331
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 27051,
+            "confidence_sum": 2747.312724262476,
+            "correct": 2162
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 31616,
+            "confidence_sum": 5283.63317771256,
+            "correct": 4165
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 30894,
+            "confidence_sum": 7197.583835795522,
+            "correct": 5836
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28484,
+            "confidence_sum": 8524.463833868504,
+            "correct": 6788
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 24797,
+            "confidence_sum": 9068.752663969994,
+            "correct": 7066
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 21256,
+            "confidence_sum": 9192.140281260014,
+            "correct": 7271
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 18498,
+            "confidence_sum": 9233.477661788464,
+            "correct": 7263
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 15502,
+            "confidence_sum": 8770.232790529728,
+            "correct": 6944
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 13614,
+            "confidence_sum": 8612.476031303406,
+            "correct": 6849
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 12398,
+            "confidence_sum": 8669.687332332134,
+            "correct": 7072
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 11158,
+            "confidence_sum": 8553.411794781685,
+            "correct": 7014
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 11021,
+            "confidence_sum": 9182.215939044952,
+            "correct": 7831
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 12347,
+            "confidence_sum": 11132.360372066498,
+            "correct": 9938
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 25607,
+            "confidence_sum": 24948.961897671223,
+            "correct": 24020
+          }
+        ]
+      },
+      "scaled_test": {
+        "temperature": 1.0905077326652577,
+        "nll": 3.547770836034456,
+        "ppl": 34.73579932718265,
+        "targets": 292281,
+        "accuracy": 0.37823190696624137,
+        "entropy": 3.724688196098806,
+        "ece_15": 0.016467555200018327,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.06666666666666667,
+            "targets": 16634,
+            "confidence_sum": 798.280679342337,
+            "correct": 832
+          },
+          {
+            "lower": 0.06666666666666667,
+            "upper": 0.13333333333333333,
+            "targets": 37613,
+            "confidence_sum": 3784.8515799865127,
+            "correct": 4019
+          },
+          {
+            "lower": 0.13333333333333333,
+            "upper": 0.2,
+            "targets": 38056,
+            "confidence_sum": 6321.686888426542,
+            "correct": 6503
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.26666666666666666,
+            "targets": 33431,
+            "confidence_sum": 7775.009087398648,
+            "correct": 7818
+          },
+          {
+            "lower": 0.26666666666666666,
+            "upper": 0.3333333333333333,
+            "targets": 28220,
+            "confidence_sum": 8439.576911568642,
+            "correct": 8097
+          },
+          {
+            "lower": 0.3333333333333333,
+            "upper": 0.4,
+            "targets": 23121,
+            "confidence_sum": 8453.939406692982,
+            "correct": 8188
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.4666666666666667,
+            "targets": 18897,
+            "confidence_sum": 8164.957018196583,
+            "correct": 7723
+          },
+          {
+            "lower": 0.4666666666666667,
+            "upper": 0.5333333333333333,
+            "targets": 15581,
+            "confidence_sum": 7772.289799243212,
+            "correct": 7239
+          },
+          {
+            "lower": 0.5333333333333333,
+            "upper": 0.6,
+            "targets": 13058,
+            "confidence_sum": 7384.669187366962,
+            "correct": 7006
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.6666666666666666,
+            "targets": 11175,
+            "confidence_sum": 7065.82360804081,
+            "correct": 6579
+          },
+          {
+            "lower": 0.6666666666666666,
+            "upper": 0.7333333333333333,
+            "targets": 9903,
+            "confidence_sum": 6928.903238415718,
+            "correct": 6449
+          },
+          {
+            "lower": 0.7333333333333333,
+            "upper": 0.8,
+            "targets": 8817,
+            "confidence_sum": 6757.33246666193,
+            "correct": 6392
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.8666666666666667,
+            "targets": 8894,
+            "confidence_sum": 7413.447508692741,
+            "correct": 7022
+          },
+          {
+            "lower": 0.8666666666666667,
+            "upper": 0.9333333333333333,
+            "targets": 10438,
+            "confidence_sum": 9411.856971085072,
+            "correct": 9059
+          },
+          {
+            "lower": 0.9333333333333333,
+            "upper": 1.0,
+            "targets": 18443,
+            "confidence_sum": 17906.185620605946,
+            "correct": 17624
+          }
+        ]
+      }
+    },
+    "timing": [
+      {
+        "mode": "prefill",
+        "prefill_tokens": 128,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.06487979999928939,
+        "p95_seconds": 0.06680491499964773,
+        "peak_allocated_bytes": 2094046208,
+        "peak_reserved_bytes": 2164260864
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 128,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 7.230322599999454,
+        "p95_seconds": 8.778722354999172,
+        "peak_allocated_bytes": 2038453760,
+        "peak_reserved_bytes": 2168455168
+      },
+      {
+        "mode": "prefill",
+        "prefill_tokens": 512,
+        "decode_tokens": 0,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 0.061118300000998715,
+        "p95_seconds": 0.06554820500005007,
+        "peak_allocated_bytes": 2306484224,
+        "peak_reserved_bytes": 2420113408
+      },
+      {
+        "mode": "decode",
+        "prefill_tokens": 512,
+        "decode_tokens": 128,
+        "batch_size": 1,
+        "warmups": 10,
+        "measurements": 30,
+        "use_cache": true,
+        "median_seconds": 7.095125649999318,
+        "p95_seconds": 7.334720524999921,
+        "peak_allocated_bytes": 2047190016,
+        "peak_reserved_bytes": 2420113408
+      }
+    ]
+  }
+]

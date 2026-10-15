@@ -1,0 +1,20 @@
+*** Begin Patch
+*** Update File: C:/Users/NPC/Desktop/ResearchCompression/src/paper_comparisons.py
+@@
+         if x.shape != y.shape or not torch.isfinite(x).all() or not torch.isfinite(y).all():
+             raise FloatingPointError('invalid diagnostic activations')
++        if torch.equal(x, y):
++            # Exact observed tensor equality permits skipping duplicate norm
++            # reductions and centered-Gram GEMMs. Preserve cosine's epsilon
++            # behavior for zero/tiny norms rather than assuming distance zero.
++            squared_norm = x.double().square().sum().item()
++            self.reference += squared_norm
++            self.candidate += squared_norm
++            self.cosine += (1-F.cosine_similarity(x, y, dim=-1)).double().sum().item()
++            self.tokens += len(x)
++            if len(x) > 1 and (x-x.mean(0)).abs().amax().item() > 0:
++                self.cka += len(x)
++                self.valid_cka_tokens += len(x)
++            return
+         self.error += (x-y).double().square().sum().item()
+*** End Patch

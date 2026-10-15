@@ -1,127 +1,126 @@
 # ResearchCompression
 
+**Authorized bounded work is complete: five BF16 practical conditions, two
+seeds (11 and 23).** No research GPU worker remains; follow-up automation is paused.
+The old FP16/INT8 run remains stopped. See the
+[BF16 amendment](docs/BF16_TWO_SEED_20261014.md). All historical results remain preserved.
+
+
 Can a pretrained transformer's dense weights be replaced by a more compact
 representation **without breaking the global computation**?
 
-This repository is an evidence-driven research loop answering that question.
-After a long negative phase (layerwise low-rank replacements compound into
-catastrophic full-stack drift), we found the failure was mostly an artifact
-of approximating in the wrong norm — and that an **activation-weighted
-closed-form low-rank fit** defeats plain SVD by 5–7x in perplexity delta
-across three architectures and scales, training-free.
+An empirical study of activation-aware low-rank compression, anchoring and
+cross-layer drift. **Current state: Bounded experiments and review artifacts complete, 14 October 2026.**
 
-Paper draft: [PAPER.md](docs/PAPER.md) (markdown) / [paper.tex](docs/paper.tex)
-(LaTeX). Full experiment log: [THREAD.md](THREAD.md).
+The user resumed work after review. See the [continuation decision](docs/CONTINUATION_20261014.md)
+and the [active execution ledger](results/paper-v2/revised-orchestration-20261014-5-bf16/status.json).
 
-## Headline results (all measured, one-sided 3x rank on attention output projections)
+## Start here
 
-| Model | Baseline PPL | Plain SVD | Weighted fit (β=0.1) |
-|---|---|---|---|
-| GPT-2 Small (124M) | 56.47 | +21.34% | **+3.58%** |
-| Gemma-3-1B (`gemma-3-1b-it`) | 70.40 | +71.86% | **−4.45%** (beats the teacher) |
-| Qwen2.5-7B-Instruct (fp16) | 12.29 | +26.31% | **+3.84%** |
+- [Remaining paper tasks](TASKS.md): experiment, manuscript and release checklist.
+- [Review handoff](docs/REVIEW_20261014.md): completed work and known limits.
+- [Final bounded-study evidence report](results/paper-v2/revised-report-20261014-151432-07c08d61/report.md).
+- [Review manuscript PDF](results/paper-v2/revised-report-20261014-151432-07c08d61/manuscript.pdf)
+  and [Markdown/figures](results/paper-v2/revised-report-20261014-151432-07c08d61/manuscript.md).
+  Qwen remains budget-limited; all gaps are explicit in this final bounded-study report.
+- [Documentation index](docs/README.md): protocol, audits, testing and historical drafts.
 
-Protocol: WikiText-2 train for calibration (16×512 tokens), WikiText-2 test
-for evaluation (50 texts, 256 tokens; Gemma also verified on 200 texts:
-−7.34%). The 7B run cleared its pre-registered decision rule (≤10% supports
-/ ≥20% falsifies) → **SUPPORTS**: compression redundancy scales.
+## What is compressed
 
-## The method (one paragraph)
+In each of Gemma's 26 transformer blocks, the attention-output projection mixes
+the attention heads' 1,024 output features into the 1,152-dimensional hidden
+representation. We replace that projection with two rank-384 factors:
 
-For a linear layer `y = Wx`, capture calibration activations `X` with a
-forward hook, then solve in closed form — no gradient steps:
+```text
+Original:  1,024 features -> W [1,152 x 1,024] -> 1,152 features
+Low-rank:  1,024 features -> V [384 x 1,024] -> 384 features
+                         -> U [1,152 x 384] -> 1,152 features
 
-```
-G  = X Xᵀ + β·n·I                      # activation Gram + anchor
-C  = (Y − bias) Xᵀ + β·n·W             # cross-moment (bias subtracted!)
-M* = C · G⁻¹                           # full-rank optimum (eigenspace solve)
-Ŵ  = rank-r truncation of M* in the G-weighted norm
+Dense:     1,152 x 1,024                 = 1,179,648 weights
+Factors:   384 x 1,024 + 1,152 x 384      =   835,584 weights
+Reduction: 344,064 weights per projection, or 29.2% of the target weights
 ```
 
-Three bugs cost us order-of-magnitude blowups before this worked: Conv1D
-bias double-counting (+3470% PPL), an ill-posed β=0 fit, and divergent
-alternating subspace iteration. Details in [THREAD.md](THREAD.md).
+The low-rank representation creates the reduction. Anchoring guides the fitting
+of the factors; whitening uses the same factor budget. Whole-model savings are
+smaller, and actual checkpoint size, inference latency and peak-memory results
+remain unfinished.
 
-## Storage: what actually gets converted (byte-level, real numbers)
+![Original and anchored low-rank architecture](docs/figures/gemma-1b-anchored-architecture-20261014.png)
 
-**"3x compression" is a rank convention, not a storage ratio.** The rank-d/3
-approximation of a d×d matrix is stored *factored*, and here is exactly what
-changes on disk for one Qwen2.5-7B `o_proj` matrix (3584×3584, rank 1194 —
-our measured 7B configuration):
+## Completed Gemma quality reference (historical FP16 cohort)
 
-**Before conversion** — the dense matrix:
-```
-3584 × 3584 = 12,845,056 weights × 2 bytes (fp16) = 25.69 MB
-```
+Native WikiText-2 test, context/stride 512/256, all attention-output projections,
+rank 384, FP16 factors. Lower perplexity is better.
 
-**The conversion** — the dense matrix is discarded and replaced by two
-factors `U` (3584×1194) and `V` (1194×3584) with `Ŵ = U·V`. Inference
-`y = Wx` becomes `y = U(Vx)` — two smaller matmuls.
+| Method | Test perplexity |
+|---|---:|
+| Dense teacher | 31.55 |
+| Plain SVD | 162.18 |
+| Fixed-rank ASVD component | 40.22 |
+| Whitening component | 35.62 |
+| Anchor, beta 0.03 and no extra ridge | 35.37 |
+| Legacy extra-ridge variant | 35.84 |
 
-**After conversion** (per matrix):
+Calibration-dependent results are means across seeds 11/23/37; SVD and teacher
+are evaluated once. Anchoring slightly improves full-stack NLL versus whitening,
+but does not consistently improve residual drift. The middle four-layer group
+worsens both NLL and drift across all three seeds. All evidence remains
+exploratory; no practical or universal advantage is established.
 
-| Serialization | What is stored | Total | Ratio | Measured PPL cost |
-|---|---|---|---|---|
-| fp16 factors | 8,558,592 factor params × 2 B | 17.12 MB | 1.50x | +3.86% |
-| **int8 factors** | 8,558,592 codes × 1 B + 4,778 per-row scales (9.6 KB) | **8.57 MB** | **3.00x** | **+3.80% (lossless vs fp16)** |
-| int4 factors | 8,558,592 codes × 0.5 B + 9.6 KB scales | 4.29 MB | 5.99x | +8.22% |
+Completed: Gemma regularization/baselines, 60 composition records with reuse
+identified, and seven numerical BF16/FP8 controls. The new architecture assets are
+pinned Qwen3.5-0.8B and LFM2.5-1.2B. Qwen's eight primary test records are saved;
+its bounded run closed with 10/18 validation records and an explicit budget gap.
+LFM completed all 26 declared records. The revised panel contains three models,
+including Gemma; GPT-2 is excluded from future execution.
 
-So at int8, one `o_proj` matrix shrinks from **25.69 MB to 8.57 MB — one
-third of the space — at no extra quality cost**.
+See the [current amendment](docs/EXPERIMENT_PLAN_20261014_AMENDMENT.md) for exact
+revisions, hybrid attention-only scope, validation rank frontier and unchanged
+budget limits. Reliable preservation of global computation remains unresolved.
 
-**Model-level honesty:** Qwen2.5-7B has 28 `o_proj` matrices = 5.09% of its
-7.07B params. Converting all of them saves 28 × 17.12 MB = **479 MB**,
-i.e. the model goes 14.14 GB → ~13.66 GB (~3.4% whole-model). That is why
-we do not claim to beat quantization on storage — int4 quantization gives
-~3.6x the *entire* model at ~0.3–1% PPL. Our value is quality-at-rank and
-the denoising effect; the productive direction is combining the two
-(quantized factors, or SVDQuant-style low-rank branch + int4 residual).
+Qwen's frozen primary comparison is now saved for all three seeds: mean native
+test perplexity is **18.811 for whitening and 18.979 for anchor**. Anchor also has
+higher residual drift in every seed. This weakens the anchor hypothesis for
+these six full-attention outputs at rank 483. Its full validation frontier remains
+incomplete; final BF16 practical-cost results remain pending. These PPL values must
+not be used to rank Qwen against Gemma because their tokenizers differ.
 
 ## Repository map
 
-| Path | What |
+| Path | Contents |
 |---|---|
-| `src/` | Standalone experiment scripts (one hypothesis each) |
-| `results/` | JSON artifacts for every run — never overwritten |
-| `THREAD.md` | Chronological experiment log with run contracts |
-| `docs/MEMORY.md` | Condensed state of knowledge |
-| `docs/PAPER.md` / `docs/paper.tex` | Paper draft (markdown / LaTeX) |
-| `research-loop/` | Orchestrator, frontier, candidate records |
-| `docs/LITERATURE.md` | Related work notes (QEP, EoRA, GPTQ, ...) |
+| [TASKS.md](TASKS.md) | Remaining work and completion criteria |
+| [docs/](docs/README.md) | Current documentation, figures, audits and historical material |
+| [configs/](configs/README.md) | Pinned current and preserved experiment configurations |
+| [src/](src/README.md) | Current paper modules and preserved earlier experiments |
+| `tests/` | Protocol, mathematics, runner and reporting verification |
+| [results/](results/README.md) | Immutable measurements, run contracts and reports |
+| `paper-assets/` | Local preparation manifests and cached dataset; model snapshots live in the HF cache |
+| [docs/archive/](docs/archive/README.md) | Historical drafts, former README and earlier Word paper |
+| [THREAD.md](THREAD.md), `research-loop/` | Earlier research history and orchestration |
 
-Key scripts for the current findings:
+The dated audit/recovery utilities remain at their recorded paths so existing
+contracts, hashes and references remain usable. Research JSON/provenance stays
+eligible for Git; large checkpoints, caches and environments remain ignored.
 
-| Script | Result file | Finding |
-|---|---|---|
-| `src/drift_aware_svd.py` | `results/drift_aware_svd*.json` | Breakthrough: +21.34% → +3.58% (GPT-2) |
-| `src/weighted_gemma_oproj.py` | `results/weighted_gemma_oproj*.json` | Gemma beats baseline (−4.45% / −7.34%) |
-| `src/weighted_qwen7b_oproj.py` | `results/weighted_qwen7b_oproj.json` | 7B validation: +3.84% (verdict: SUPPORTS) |
-| `src/weighted_qwen7b_factor_quant.py` | `results/weighted_qwen7b_factor_quant.json` | int8 factors lossless (3.0x/matrix) |
-| `src/hybrid_residual_split.py` | `results/hybrid_residual_split.json` | Hybrid UV + int4 residual: weighted branch +0.56%, beats SVD branch and pure int4 |
-| `src/storage_vs_quantization.py` | `results/storage_vs_quantization.json` | Storage accounting vs quantization |
-| `src/compare_gemma_output.py` / `compare_qwen7b_output.py` | `results/compare_*.json` | Qualitative generation comparisons |
+## Verification and execution
 
-## Running experiments
+Use the working CUDA environment for the CPU unit suite:
 
 ```powershell
-# Windows PowerShell; every command goes through the rtk wrapper (AGENTS.md)
-.venv-cuda\Scripts\python.exe src\<script>.py     # run from repo root
+rtk .venv-cuda/Scripts/python.exe -m pytest tests/unit -q
 ```
 
-Requirements: `requirements.txt` (torch 2.13+cu132, transformers, datasets,
-accelerate, safetensors). Hardware used: RTX 4070 Ti 12 GB, 32 GB RAM
-(Qwen-7B runs in fp16 with partial CPU offload — offloaded weights sit on
-the meta device; the scripts read them from safetensors shards instead).
+See [TESTING.md](docs/TESTING.md) for verification and the
+[finalization guide](docs/REVISED_STUDY_FINALIZATION_20261014.md) for reports and
+plots. The reporting interpreter on this PC is separate from the CUDA environment.
 
-## Current status and open questions
+The authorized continuation runs sequentially with fresh output directories,
+verified provenance and cumulative cost accounting. Existing review snapshots
+remain preserved; consult the active ledger for current process/stage state.
+Do not blindly rerun a historical dispatcher or overwrite an earlier run.
 
-- ✅ Breakthrough method validated at 3 scales with matched SVD controls
-- ✅ 7B decision rule pre-registered and cleared (SUPPORTS)
-- ✅ Factor quantization proven lossless at int8
-- ✅ Hybrid residual split measured: weighted-fit branch beats SVD branch and pure int4 (o_proj)
-- ⬜ `[GAP]` 3-seed replication of the Gemma denoising effect
-- ⬜ `[GAP]` Pre-registered drift metric alongside PPL
-- ⬜ `[GAP]` MLP budget reallocation (adaptive rank across families)
-- ⬜ `[GAP]` Latency / peak-memory accounting for factored inference
-- ⬜ `[GAP]` Hybrid residual split on MLP families + per-family routed recipe
-- ⬜ `[GAP]` Head-to-head vs ASVD-style reparameterization (novelty test)
+The [former README](docs/archive/README-before-20261014-cleanup.md) and historical
+papers are preserved. Their subset-evaluation numbers, denoising interpretations
+and lossless-INT8 claims are not current matched-study conclusions.

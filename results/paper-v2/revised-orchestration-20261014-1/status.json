@@ -1,0 +1,9 @@
+{
+  "state": "interrupted",
+  "stages": [],
+  "excluded_models": [
+    "openai-community/gpt2"
+  ],
+  "max_models": 4,
+  "reason": "Dispatcher stopped by user-reported PC reboot; recovered in revised orchestration2"
+}

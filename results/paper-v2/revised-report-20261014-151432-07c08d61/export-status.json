@@ -1,0 +1,25 @@
+{
+  "state": "prepared",
+  "exports": {
+    "latex": {
+      "state": "prepared",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-report-20261014-151432-07c08d61\\manuscript.tex",
+      "sha256": "f5b36fe379190e3dbfcc9bc15ab15150f5ed8fcbea8e11d10eb61b96abb8939d",
+      "bytes": 198934,
+      "format": "standalone LaTeX source, not compiler-verified",
+      "exporter_source": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\docs\\export_paper_latex_20261014.py",
+      "exporter_sha256": "a0e3b7650a0d027fa285824267a70fa5658deb57d28f09ee2c007a68444f3f88"
+    },
+    "pdf": {
+      "state": "prepared",
+      "path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-report-20261014-151432-07c08d61\\manuscript.pdf",
+      "sha256": "d6bd82b26404685f04a609bdbfd1002565e6f6226fae3331b4f686122487e74e",
+      "bytes": 974637,
+      "format": "ReportLab PDF, not compiled from LaTeX",
+      "exporter_source": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\docs\\export_paper_pdf_20261014.py",
+      "exporter_sha256": "7af94c6a6d2e25c282917f1ceecc0d79fab75300310059ea28881b44374c9265"
+    }
+  },
+  "latex_compilation_verified": false,
+  "interpretation": "ReportLab PDF and standalone LaTeX are separate review artifacts. Compiler success requires an independent successful compiler diagnostic."
+}

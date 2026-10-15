@@ -1,0 +1,147 @@
+{
+  "state": "passed",
+  "run": "architecture-replication-20261014-103759-8d32ab84",
+  "records": 26,
+  "split_counts": {
+    "test": 8,
+    "validation": 18
+  },
+  "native_targets": {
+    "test": 299032,
+    "validation": 261818
+  },
+  "elapsed_seconds": 3519.9643412999994,
+  "files_hashed": {
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_architecture_recovery.py": {
+      "sha256": "d1f429906b4f081504593a14c7698c6bf527b00d2070b67aeaf6821e967b863b",
+      "bytes": 23697
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_precision.py": {
+      "sha256": "f6eee373f1e63bfb42ac2e399656d2a1835c371c5a5451da8a6c4abe507ae9ed",
+      "bytes": 19497
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_math.py": {
+      "sha256": "462fef7da621573324844e0e848821a299d6ff1e9dc7f3558306ad040160ea29",
+      "bytes": 3244
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_comparisons.py": {
+      "sha256": "a49af5f7dbb1cb961266e2715b2d46f933577dfd0219b5e856d6bb95b4c76787",
+      "bytes": 29318
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_protocol.py": {
+      "sha256": "95cd7ef5fb0420cd5f27a9cb6fdf7fe032d51cb0eae9cc4906afb992b7c7fa27",
+      "bytes": 3045
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_architecture_panel.py": {
+      "sha256": "47d891723366eea0899c978832022b557ab4b09787fa2a363ecd8b7fc596ed14",
+      "bytes": 43821
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-00-seed-11\\factors.pt": {
+      "sha256": "ef9c90c924dc4a20f469076e76a1df203f208cdc11ef21e68866a03f7ffb14d1",
+      "bytes": 35639807
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-01-seed-11\\factors.pt": {
+      "sha256": "feda142dd844d8f2dee75de6f024423c1419859c232364e5a8b3f45925ea1a84",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-02-seed-11\\factors.pt": {
+      "sha256": "fd7401b10f26058303dd559c480ef36f35c0f97600af75f19a5d260dfb308a31",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-03-seed-23\\factors.pt": {
+      "sha256": "a7a33fdf090dbe7a5f72568f4927da59776fbfaedc8b543a0bbcd802c24b20fe",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-04-seed-23\\factors.pt": {
+      "sha256": "1458c3c5f7320f9161aa6efd68e5be18ff1f8b4a89fa6c326305e448a2161124",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-05-seed-37\\factors.pt": {
+      "sha256": "dad2204e10f5ee34dfe1105abf91b64d5eac6f25e07e3d317f0739319303c5de",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-06-seed-37\\factors.pt": {
+      "sha256": "5284cd6772bb57b5e4329fcf6d4e553e80e32df6f8911c75fd78f5a5883bda0a",
+      "bytes": 35639871
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-07-seed-11\\factors.pt": {
+      "sha256": "bd282c10951d4faf1dcc1e5e4f5132ec5dd07e1fbe9646c3404eb54ea042fe43",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-08-seed-11\\factors.pt": {
+      "sha256": "d2533e496cec671ef29719f2a9c7265e1f334bc24bf18854b8b86ea717a78089",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-09-seed-23\\factors.pt": {
+      "sha256": "9c7bf395be7e7054675f4c49fa666568f919452f42ea3dc565f2f51d030f76ac",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-10-seed-23\\factors.pt": {
+      "sha256": "eeae5d26b55f0b1973e79c7f93196505d0723e1070415d600d57b1ef4392a772",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-11-seed-37\\factors.pt": {
+      "sha256": "98363763ba4b1731e99af430e64d58b8b5a1c14fde2d4424ba5e8551fd810256",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-12-seed-37\\factors.pt": {
+      "sha256": "e60ef099a0f9f2b935244abca18ae0a79312b3320894845d95986c953a78cdd3",
+      "bytes": 50336319
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-13-seed-11\\factors.pt": {
+      "sha256": "2d97ff9a826ab9f6c069fc2f4a577b40b8114742278c38c30472558a955c4243",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-14-seed-11\\factors.pt": {
+      "sha256": "196ad1aebb3d3af5412e480924792429bd7a21e2e8ff8db332c09dafc766bae8",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-15-seed-23\\factors.pt": {
+      "sha256": "e837db1f0543abc59c0e4948294dc58c42cd593cd31bb8e017491d8b3ac8c14d",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-16-seed-23\\factors.pt": {
+      "sha256": "a2d1f147728944eadffa97dcb30d2dfdc8143532c0458e4fd94ad21b919c9c75",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-17-seed-37\\factors.pt": {
+      "sha256": "c8c43b535363aa78e8466ee0c3b8b6752bad01567791cd2c2cd55476bf395cdf",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-18-seed-37\\factors.pt": {
+      "sha256": "0b883ed1a389b96e423dfe596a121fbf3a20dc6d7d100c077a32a8d5eaba48b5",
+      "bytes": 33526335
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-19-seed-11\\factors.pt": {
+      "sha256": "3f1ce3dd164a2fc714aa76b89b0c56da7deb48f1d99f122ca32653573e2e95f8",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-20-seed-11\\factors.pt": {
+      "sha256": "e3d1c4e60a5f19ddd055e1b48ff599b768d4780e73babd6f129606b452f8a5c8",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-21-seed-23\\factors.pt": {
+      "sha256": "591b4b3b86a77fe7a0c977984a5b4148aae40f062cc65c489c77ffd73a3183a1",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-22-seed-23\\factors.pt": {
+      "sha256": "2e5b71502ef190cd42deebe9d4e726d0d1b51428dee474770435191a0385b848",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-23-seed-37\\factors.pt": {
+      "sha256": "a8508f65aa9503d720f3b607edc411c6e60275a08a584fb591fbc8b3285564b1",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\fit-24-seed-37\\factors.pt": {
+      "sha256": "1fe047b3a25bf894695078141cb495015138eda70198a4c0e7cf6cc618f003ae",
+      "bytes": 25170495
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\docs\\audit_lfm_evidence_20261014.py": {
+      "sha256": "dc389bceca741160ccb3e8054f4a9839f60f8ec0df0af5b4d9fad942afb53133",
+      "bytes": 4601
+    }
+  },
+  "errors": [],
+  "limitation": "Historical three-seed BF16 evidence predates the new two-seed cap; this audit performs no model forward or new seed experiment.",
+  "script_sha256": "dc389bceca741160ccb3e8054f4a9839f60f8ec0df0af5b4d9fad942afb53133"
+}

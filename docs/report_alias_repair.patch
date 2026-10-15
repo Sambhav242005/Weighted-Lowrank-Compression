@@ -1,0 +1,117 @@
+--- a/src/paper_reporting.py
++++ b/src/paper_reporting.py
+@@ -241,18 +241,24 @@
+     for record in practical:
+         if record.get("bits") != 16 or record.get("label") not in ("baseline", "solver"):
+             continue
+-        key = (json.dumps(record.get("specification", {}), sort_keys=True), record.get("seed"))
++        key = (json.dumps(canonical_specification(record.get("specification", {})), sort_keys=True), record.get("seed"))
+         source = next((r for r in global_records if r.get("seed") == record.get("seed") and
+-                       r.get("specification") == record.get("specification")), None)
++                       canonical_specification(r.get("specification", {})) == canonical_specification(record.get("specification", {}))
++                       and r.get("metadata", {}).get("sha256") == record.get("source_sha256")), None)
+         source_match = source is not None and bool(record.get("source_sha256")) and record["source_sha256"] == source.get("metadata", {}).get("sha256")
+         timings = {(r.get("mode"), r.get("prefill_tokens")): r for r in record.get("timing", [])}
+-        timing_complete = set(timings) == expected_conditions and all(
++        timing_complete = len(record.get("timing", [])) == 4 and set(timings) == expected_conditions and all(
+             t.get("batch_size") == 1 and t.get("warmups") == 10 and t.get("measurements") == 30
+             and t.get("use_cache") is True and t.get("decode_tokens") == (128 if mode == "decode" else 0)
+             and all(_number(t.get(m)) and t[m] > 0 for m in ("median_seconds", "peak_allocated_bytes", "peak_reserved_bytes"))
+             for (mode, _), t in timings.items())
+         primary = timings.get(("decode", 512), {})
+-        joined[key] = {"matched": matched["comparable"] and selection_match and complete and source_match and timing_complete,
++        if key in joined:
++            joined[key]["matched"] = False
++            joined[key].setdefault("ambiguous_alias_labels", [joined[key].get("label")]).append(record.get("label"))
++            joined[key].setdefault("ambiguous_alias_records", []).append(record)
++            continue
++        joined[key] = {"label": record.get("label"), "matched": matched["comparable"] and selection_match and complete and source_match and timing_complete,
+                        "selection_hash_matches": selection_match, "source_hash_matches": source_match,
+                        "timing_complete": timing_complete, "timings": timings,
+                        "serialized_bytes": record.get("whole_checkpoint", {}).get("bytes"),
+@@ -261,6 +267,40 @@
+                        "peak_memory_bytes": primary.get("peak_allocated_bytes"),
+                        "primary_hardware_condition": "decode 128 tokens from 512-token prefill"}
+     return joined
++
++
++def reduce_alias_records(records):
++    """Deduplicate proven identical quality aliases, retaining every source."""
++    by_seed = {}
++    for record in records:
++        by_seed.setdefault(record.get("seed"), []).append(record)
++    clean, evidence = [], []
++    for seed, values in by_seed.items():
++        sources = [{"id": v.get("id"), "label": v.get("label"),
++                    "specification": v.get("specification"),
++                    "checkpoint": v.get("checkpoint", v.get("source_checkpoint")),
++                    "checkpoint_sha256": v.get("metadata", {}).get("sha256") or
++                        v.get("checkpoint_sha256") or v.get("source_sha256")}
++                   for v in values]
++        def fingerprint(record):
++            factor_hash = record.get("metadata", {}).get("sha256") or record.get("checkpoint_sha256") or record.get("source_sha256")
++            quality = record.get("metrics")
++            if not factor_hash or not isinstance(quality, dict) or not quality:
++                return None
++            return {"factor_hash": factor_hash, "metrics": quality,
++                    "factor_parameters": record.get("metadata", {}).get("factor_parameters"),
++                    "serialized_bytes": record.get("metadata", {}).get("serialized_bytes"),
++                    "checkpoint_sha256": record.get("checkpoint_sha256"),
++                    "group": record.get("group"), "rank": record.get("rank"), "split": record.get("split")}
++        reference = fingerprint(values[0])
++        conflict = len(values) > 1 and (reference is None or any(fingerprint(v) != reference for v in values[1:]))
++        if not conflict:
++            clean.append(values[0])
++        evidence.append({"seed": seed, "records": len(values), "sources": sources,
++                         "equivalent_aliases": len(values) > 1 and not conflict,
++                         "conflicting_alias_evidence": conflict,
++                         "raw_conflicting_records": values if conflict else []})
++    return clean, evidence
+ 
+ 
+ def build_run_report(directory, *, practical_directory=None):
+@@ -284,10 +324,15 @@
+     for record in raw:
+         specification = canonical_specification(record.get("specification", {}))
+         scope = {name: record[name] for name in ("group", "rank", "split", "bits") if name in record}
++        if "timing" in record and "label" in record:
++            scope["timing_label"] = record["label"]
+         if scope:
+             specification["_report_scope"] = scope
+         key = json.dumps(specification, sort_keys=True)
+         grouped.setdefault(key, []).append(record)
++    alias_evidence = {}
++    for key in list(grouped):
++        grouped[key], alias_evidence[key] = reduce_alias_records(grouped[key])
+     normalized = normalize_contract(contract)
+     provenance = validate_matched_contracts(normalized, normalized)
+     hardware = link_practical_evidence(directory, practical_directory) if practical_directory else {}
+@@ -304,7 +349,7 @@
+     for baseline_key in baseline_keys:
+         baseline_records = grouped.get(baseline_key, [])
+         for key, records in grouped.items():
+-            if key == baseline_key:
++            if key == baseline_key or not records or not baseline_records:
+                 continue
+             if json.loads(key).get("_report_scope") != json.loads(baseline_key).get("_report_scope"):
+                 continue
+@@ -335,6 +380,10 @@
+                         flat.update({m: measured.get(m) for m in ("serialized_bytes", "latency_median_ms", "peak_memory_bytes")})
+                     values.append(flat)
+                 return values
++            alias_conflict = any(e["conflicting_alias_evidence"] for k in (key, baseline_key) for e in alias_evidence[k])
++            if alias_conflict:
++                matched["comparable"] = False
++                matched["mismatched"] = [*matched["mismatched"], "conflicting_alias_evidence"]
+             candidate_flat, baseline_flat = enriched(records, key), enriched(baseline_records, baseline_key)
+             gate = assess_promotion(candidate_flat, baseline_flat, uncertainty, contracts=matched)
+             all_conditions = bool(practical_directory)
+@@ -364,6 +413,8 @@
+     return {"run_id": directory.name, "state": status.get("state", "unknown"),
+             "practical_run_id": Path(practical_directory).name if practical_directory else None,
+             "classification": "exploratory", "missing_evidence": missing,
++            "alias_evidence": alias_evidence,
++            "equivalence_note": "Canonical aliases are not independent method comparisons; conflicts excluded from aggregates.",
+             "comparisons": comparisons, "method_summaries": {
+                 key: summarize_seeds([_flatten_record(r) for r in records]) for key, records in grouped.items()},
+             "note": "fixed-rank ASVD and whitening-only SVD-LLM are component comparisons"}

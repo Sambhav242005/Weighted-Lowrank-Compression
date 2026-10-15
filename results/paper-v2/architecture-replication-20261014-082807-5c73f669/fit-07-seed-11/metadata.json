@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 9437184,
+  "serialized_bytes": 18878975,
+  "sha256": "b2f49bf0dba8d04450b890efc690c8a100adf4b1b20d804303f76c0df4f9b8ce",
+  "factor_tensor_bytes": 18874368,
+  "fit_seconds": 7.44863579999992,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "block_index": 3,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "block_index": 7,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "block_index": 11,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "block_index": 15,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "block_index": 19,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "block_index": 23,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 512,
+      "factor_parameters": 1572864,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 2310331392,
+  "peak_fitting_reserved_bytes": 2506096640
+}

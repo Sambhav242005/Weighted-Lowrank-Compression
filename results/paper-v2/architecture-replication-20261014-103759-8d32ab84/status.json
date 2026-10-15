@@ -1,0 +1,7 @@
+{
+  "state": "completed",
+  "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+  "elapsed_seconds": 3519.9643412999994,
+  "records": 26,
+  "exploratory": true
+}

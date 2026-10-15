@@ -1,0 +1,9 @@
+{
+  "artifacts": {
+    "contract.json": "a0a92e7fdbd9ee4a1e56cea320d4495175e57fb18d6de532a5cc888ee6e56793",
+    "metrics.json": "c0c47cbbe026ed5920b03c72daa93a3b4e9af002e6447325335c09cdf1be818c",
+    "teacher-audit.json": "c240585d3e52b829c893b179e9f837ca7d999615cd92a92cb6ba74d941a38867",
+    "readiness.json": "1d6a13a56b80c84820b97064f48eed1986f97d25fcb61a0f3e33a70d52c7b151",
+    "validation-teacher.json": "38bc5d47b2783bf5053b92054be162aa48e0b21c8e95013b36c68f2be7bad0ef"
+  }
+}

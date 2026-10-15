@@ -1,0 +1,14 @@
+{
+  "observed_epoch": 1791970357.6629593,
+  "observed_utc": "2026-10-14T09:32:37.662959+00:00",
+  "system_boot_epoch": 1791970132.8027894,
+  "expected_process_ids": [
+    13540,
+    3748
+  ],
+  "expected_processes_present": false,
+  "ledger_state": "running architecture-panel",
+  "classification": "interrupted; terminal cause not yet diagnosed",
+  "completed_qwen_records": 10,
+  "action": "No restart; preserve artifacts and recover remaining budget before continuation"
+}

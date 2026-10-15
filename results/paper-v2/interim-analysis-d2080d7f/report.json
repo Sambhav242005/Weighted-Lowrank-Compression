@@ -1,0 +1,1669 @@
+{
+  "run_id": "baselines-20261013-175255-6a00d4e8",
+  "state": "completed",
+  "practical_run_id": null,
+  "classification": "exploratory",
+  "missing_evidence": [],
+  "alias_evidence": {
+    "{\"method\": \"svd\"}": [
+      {
+        "seed": 11,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-11-00-svd",
+            "label": null,
+            "specification": {
+              "method": "svd"
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-00-svd\\factors.pt",
+            "checkpoint_sha256": "ecda0776637a6cfabe6eb895c92da85a543e553bf4f60418d67ec7f6bf68cd4e"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      }
+    ],
+    "{\"method\": \"asvd\"}": [
+      {
+        "seed": 11,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-11-01-asvd",
+            "label": null,
+            "specification": {
+              "method": "asvd"
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-01-asvd\\factors.pt",
+            "checkpoint_sha256": "c0665e7983b676073ead63e1aea3e8ad2be282bbd780c5ad4c6152d92524d5c3"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 23,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-23-01-asvd",
+            "label": null,
+            "specification": {
+              "method": "asvd"
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-01-asvd\\factors.pt",
+            "checkpoint_sha256": "593c468635d2dd59906fee0cd2a47a98c1ff34c188b23215b040720a2556addf"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 37,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-37-01-asvd",
+            "label": null,
+            "specification": {
+              "method": "asvd"
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-01-asvd\\factors.pt",
+            "checkpoint_sha256": "f85cc15bc6a9aa05ed3e3b6ed91fdb850c0a6a0323badd1ff7553699e7bc735d"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      }
+    ],
+    "{\"beta\": 0.0, \"method\": \"whitening\", \"ridge_fraction\": 0.0}": [
+      {
+        "seed": 11,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-11-02-whitening",
+            "label": null,
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-02-whitening\\factors.pt",
+            "checkpoint_sha256": "129c426aaf740430f901ab328bb713b24a436edd11afd70c5e7fad5212f2191b"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 23,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-23-02-whitening",
+            "label": null,
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-02-whitening\\factors.pt",
+            "checkpoint_sha256": "42a554516b16b2d600e26e1d6e22685a2599e6d578752578061586adf0913731"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 37,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-37-02-whitening",
+            "label": null,
+            "specification": {
+              "method": "whitening",
+              "beta": 0.0,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-02-whitening\\factors.pt",
+            "checkpoint_sha256": "3ba3615fe46aa29b024959a32e80fe34144e4f13ce46075da4eedd4aeb6e3ad4"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      }
+    ],
+    "{\"beta\": 0.03, \"method\": \"anchored\", \"ridge_fraction\": 0.0}": [
+      {
+        "seed": 11,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-11-03-anchored",
+            "label": null,
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-03-anchored\\factors.pt",
+            "checkpoint_sha256": "218da1b279b05ee9c68eaa214bc5077f7f2361139cacba812b28780f5db61c60"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 23,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-23-03-anchored",
+            "label": null,
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-03-anchored\\factors.pt",
+            "checkpoint_sha256": "34694e918184b362b85d560d7b7375944bdf330511a4f8ed97fe584f929c3ffc"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 37,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-37-03-anchored",
+            "label": null,
+            "specification": {
+              "method": "anchored",
+              "beta": 0.03,
+              "ridge_fraction": 0.0
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-03-anchored\\factors.pt",
+            "checkpoint_sha256": "17f97f476c76a3a694a88d9769a8f1ab34c6b3c0906af7bbc7453a536e4096b4"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      }
+    ],
+    "{\"beta\": 0.1, \"method\": \"legacy_ridge\", \"ridge_fraction\": 0.01}": [
+      {
+        "seed": 11,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-11-04-legacy_ridge",
+            "label": null,
+            "specification": {
+              "method": "legacy_ridge",
+              "beta": 0.1,
+              "ridge_fraction": 0.01
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-04-legacy_ridge\\factors.pt",
+            "checkpoint_sha256": "1c013e5ff5457c18412c9f511acb2d308f14830f332e5bc581c1cf151ea0d064"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 23,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-23-04-legacy_ridge",
+            "label": null,
+            "specification": {
+              "method": "legacy_ridge",
+              "beta": 0.1,
+              "ridge_fraction": 0.01
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-04-legacy_ridge\\factors.pt",
+            "checkpoint_sha256": "e64acfde1d62777b00a73506a4e645db2538cfec42a7325a0fb2f8512a045566"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      },
+      {
+        "seed": 37,
+        "records": 1,
+        "sources": [
+          {
+            "id": "seed-37-04-legacy_ridge",
+            "label": null,
+            "specification": {
+              "method": "legacy_ridge",
+              "beta": 0.1,
+              "ridge_fraction": 0.01
+            },
+            "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-04-legacy_ridge\\factors.pt",
+            "checkpoint_sha256": "d22fe9eecf18b6032697ca4b806214536720dde54e0e4de910634a4807eb2b73"
+          }
+        ],
+        "equivalent_aliases": false,
+        "conflicting_alias_evidence": false,
+        "raw_conflicting_records": []
+      }
+    ]
+  },
+  "equivalence_note": "Canonical aliases are not independent method comparisons; conflicts excluded from aggregates.",
+  "comparisons": [
+    {
+      "candidate": {
+        "method": "svd"
+      },
+      "baseline": {
+        "beta": 0.0,
+        "method": "whitening",
+        "ridge_fraction": 0.0
+      },
+      "candidate_summary": {
+        "seeds": [
+          11
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": false,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 5.0886811214988885,
+            "logit_kl": 1.5586715373081979,
+            "primary_drift": 0.07424758312303882,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 5.0886811214988885,
+            "std": null,
+            "count": 1,
+            "complete": false
+          },
+          "logit_kl": {
+            "mean": 1.5586715373081979,
+            "std": null,
+            "count": 1,
+            "complete": false
+          },
+          "primary_drift": {
+            "mean": 0.07424758312303882,
+            "std": null,
+            "count": 1,
+            "complete": false
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": null,
+            "count": 1,
+            "complete": false
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "baseline_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.56275408559503,
+            "logit_kl": 0.13262774704302774,
+            "primary_drift": 0.010324710225531702,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.5698566072208973,
+            "logit_kl": 0.13598840485136496,
+            "primary_drift": 0.010524397309095334,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.5858307978466852,
+            "logit_kl": 0.14603496586248646,
+            "primary_drift": 0.011063442235805195,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.5728138302208707,
+            "std": 0.011819159783592983,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.13821703925229306,
+            "std": 0.006975921988379896,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.010637516590144077,
+            "std": 0.0003821363952300504,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "uncertainty": {
+        "11": {
+          "difference": 1.5259270359038637,
+          "confidence_interval": [
+            1.4943535833878134,
+            1.5596674649359294
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 1.526963313415228,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        }
+      },
+      "matched_contract": {
+        "comparable": false,
+        "missing": [],
+        "mismatched": [
+          "readiness_passed"
+        ],
+        "readiness_passed": false,
+        "classification": "exploratory"
+      },
+      "promotion": {
+        "promoted": false,
+        "hypothesis": "inconclusive",
+        "classification": "exploratory",
+        "checks": {
+          "nll": false,
+          "logit_kl": false,
+          "primary_drift": false,
+          "serialized_bytes": false,
+          "latency_median_ms": false,
+          "peak_memory_bytes": false
+        },
+        "global_gate": false,
+        "hardware_regression_limit": 0.05,
+        "missing_evidence": [
+          "three paired seeds",
+          "matched run contracts",
+          "passed readiness with recorded evidence",
+          "nll",
+          "logit_kl",
+          "primary_drift",
+          "serialized_bytes",
+          "latency_median_ms",
+          "peak_memory_bytes",
+          "established global advantage under uncertainty",
+          "matched completed Stage-F storage and all four hardware conditions"
+        ],
+        "decision": "no established advantage within uncertainty",
+        "all_hardware_conditions_passed": false
+      }
+    },
+    {
+      "candidate": {
+        "method": "asvd"
+      },
+      "baseline": {
+        "beta": 0.0,
+        "method": "whitening",
+        "ridge_fraction": 0.0
+      },
+      "candidate_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.697111535434364,
+            "logit_kl": 0.37660137271295824,
+            "primary_drift": 0.03118204278984501,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.693921383508993,
+            "logit_kl": 0.3773523001325091,
+            "primary_drift": 0.030942521331881596,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.692365249104149,
+            "logit_kl": 0.370608657270889,
+            "primary_drift": 0.030790671865169903,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.6944660560158353,
+            "std": 0.00241956805791424,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.37485411003878544,
+            "std": 0.0036957915120699185,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.030971745328965503,
+            "std": 0.0001973153102889687,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "baseline_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.56275408559503,
+            "logit_kl": 0.13262774704302774,
+            "primary_drift": 0.010324710225531702,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.5698566072208973,
+            "logit_kl": 0.13598840485136496,
+            "primary_drift": 0.010524397309095334,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.5858307978466852,
+            "logit_kl": 0.14603496586248646,
+            "primary_drift": 0.011063442235805195,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.5728138302208707,
+            "std": 0.011819159783592983,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.13821703925229306,
+            "std": 0.006975921988379896,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.010637516590144077,
+            "std": 0.0003821363952300504,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "uncertainty": {
+        "11": {
+          "difference": 0.13435744983933437,
+          "confidence_interval": [
+            0.12208941117886445,
+            0.14684303527631282
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.13448046045923576,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "23": {
+          "difference": 0.12406477628810314,
+          "confidence_interval": [
+            0.1140738804768457,
+            0.13439828040507174
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.12440374314135588,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "37": {
+          "difference": 0.10653445125745864,
+          "confidence_interval": [
+            0.09858797073867313,
+            0.11492986771691276
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.10667353359540374,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        }
+      },
+      "matched_contract": {
+        "comparable": false,
+        "missing": [],
+        "mismatched": [
+          "readiness_passed"
+        ],
+        "readiness_passed": false,
+        "classification": "exploratory"
+      },
+      "promotion": {
+        "promoted": false,
+        "hypothesis": "inconclusive",
+        "classification": "exploratory",
+        "checks": {
+          "nll": false,
+          "logit_kl": false,
+          "primary_drift": false,
+          "serialized_bytes": true,
+          "latency_median_ms": false,
+          "peak_memory_bytes": false
+        },
+        "global_gate": false,
+        "hardware_regression_limit": 0.05,
+        "missing_evidence": [
+          "matched run contracts",
+          "passed readiness with recorded evidence",
+          "latency_median_ms",
+          "peak_memory_bytes",
+          "established global advantage under uncertainty",
+          "matched completed Stage-F storage and all four hardware conditions"
+        ],
+        "decision": "no established advantage within uncertainty",
+        "all_hardware_conditions_passed": false
+      }
+    },
+    {
+      "candidate": {
+        "beta": 0.03,
+        "method": "anchored",
+        "ridge_fraction": 0.0
+      },
+      "baseline": {
+        "beta": 0.0,
+        "method": "whitening",
+        "ridge_fraction": 0.0
+      },
+      "candidate_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.5596348339392465,
+            "logit_kl": 0.13231159417324223,
+            "primary_drift": 0.010327732877186257,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.5611864415845127,
+            "logit_kl": 0.13334314135880437,
+            "primary_drift": 0.010202435573502321,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.57694210135138,
+            "logit_kl": 0.14460912723575034,
+            "primary_drift": 0.011110834781549542,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.5659211256250463,
+            "std": 0.009575922986403876,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.136754620922599,
+            "std": 0.006821728114379171,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.010547001077412707,
+            "std": 0.0004922968494903399,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "baseline_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.56275408559503,
+            "logit_kl": 0.13262774704302774,
+            "primary_drift": 0.010324710225531702,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.5698566072208973,
+            "logit_kl": 0.13598840485136496,
+            "primary_drift": 0.010524397309095334,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.5858307978466852,
+            "logit_kl": 0.14603496586248646,
+            "primary_drift": 0.011063442235805195,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.5728138302208707,
+            "std": 0.011819159783592983,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.13821703925229306,
+            "std": 0.006975921988379896,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.010637516590144077,
+            "std": 0.0003821363952300504,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "uncertainty": {
+        "11": {
+          "difference": -0.0031192516557841613,
+          "confidence_interval": [
+            -0.005598433325437209,
+            -0.0005771062229211223
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": -0.003069222128221489,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": true,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "23": {
+          "difference": -0.00867016563638367,
+          "confidence_interval": [
+            -0.012361615163134877,
+            -0.004879390368432393
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": -0.008560964606249673,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": true,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "37": {
+          "difference": -0.008888696495308254,
+          "confidence_interval": [
+            -0.011564302129920533,
+            -0.006193025270745394
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": -0.008889474302069626,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": true,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        }
+      },
+      "matched_contract": {
+        "comparable": false,
+        "missing": [],
+        "mismatched": [
+          "readiness_passed"
+        ],
+        "readiness_passed": false,
+        "classification": "exploratory"
+      },
+      "promotion": {
+        "promoted": false,
+        "hypothesis": "inconclusive",
+        "classification": "exploratory",
+        "checks": {
+          "nll": true,
+          "logit_kl": true,
+          "primary_drift": false,
+          "serialized_bytes": true,
+          "latency_median_ms": false,
+          "peak_memory_bytes": false
+        },
+        "global_gate": true,
+        "hardware_regression_limit": 0.05,
+        "missing_evidence": [
+          "matched run contracts",
+          "passed readiness with recorded evidence",
+          "latency_median_ms",
+          "peak_memory_bytes",
+          "matched completed Stage-F storage and all four hardware conditions"
+        ],
+        "decision": "no established advantage within uncertainty",
+        "all_hardware_conditions_passed": false
+      }
+    },
+    {
+      "candidate": {
+        "beta": 0.1,
+        "method": "legacy_ridge",
+        "ridge_fraction": 0.01
+      },
+      "baseline": {
+        "beta": 0.0,
+        "method": "whitening",
+        "ridge_fraction": 0.0
+      },
+      "candidate_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.5700958288904117,
+            "logit_kl": 0.15299493128189706,
+            "primary_drift": 0.01168366455975469,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.579942337144112,
+            "logit_kl": 0.15579337249400582,
+            "primary_drift": 0.011869712339292703,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.5870646414922094,
+            "logit_kl": 0.16455472411134608,
+            "primary_drift": 0.011954535923705998,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.579034269175578,
+            "std": 0.008520774076064977,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.15778100929574965,
+            "std": 0.006030773383794164,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.011835970940917796,
+            "std": 0.0001385521036485226,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "baseline_summary": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "expected_seeds": [
+          11,
+          23,
+          37
+        ],
+        "complete": true,
+        "per_seed": [
+          {
+            "seed": 11,
+            "nll": 3.56275408559503,
+            "logit_kl": 0.13262774704302774,
+            "primary_drift": 0.010324710225531702,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 23,
+            "nll": 3.5698566072208973,
+            "logit_kl": 0.13598840485136496,
+            "primary_drift": 0.010524397309095334,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          },
+          {
+            "seed": 37,
+            "nll": 3.5858307978466852,
+            "logit_kl": 0.14603496586248646,
+            "primary_drift": 0.011063442235805195,
+            "serialized_bytes": 43465927,
+            "latency_median_ms": null,
+            "peak_memory_bytes": null
+          }
+        ],
+        "metrics": {
+          "nll": {
+            "mean": 3.5728138302208707,
+            "std": 0.011819159783592983,
+            "count": 3,
+            "complete": true
+          },
+          "logit_kl": {
+            "mean": 0.13821703925229306,
+            "std": 0.006975921988379896,
+            "count": 3,
+            "complete": true
+          },
+          "primary_drift": {
+            "mean": 0.010637516590144077,
+            "std": 0.0003821363952300504,
+            "count": 3,
+            "complete": true
+          },
+          "serialized_bytes": {
+            "mean": 43465927,
+            "std": 0.0,
+            "count": 3,
+            "complete": true
+          },
+          "latency_median_ms": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          },
+          "peak_memory_bytes": {
+            "mean": null,
+            "std": null,
+            "count": 0,
+            "complete": false
+          }
+        }
+      },
+      "uncertainty": {
+        "11": {
+          "difference": 0.007341743295384272,
+          "confidence_interval": [
+            0.0035781685630120177,
+            0.011322591469446464
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.007358043732914079,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "23": {
+          "difference": 0.010085729923213327,
+          "confidence_interval": [
+            0.00549965436317942,
+            0.01504279117529553
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.010195171973247596,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        },
+        "37": {
+          "difference": 0.0012338436455246004,
+          "confidence_interval": [
+            -0.002438464246056018,
+            0.00520269695332208
+          ],
+          "confidence": 0.95,
+          "block_size": 4096,
+          "blocks": 71,
+          "targets": 292281,
+          "resamples": 2000,
+          "seed": 11,
+          "bootstrap_targets": 290816,
+          "excluded_partial_targets": 1465,
+          "bootstrap_difference": 0.0012706044011388724,
+          "direction": "candidate_minus_baseline",
+          "sufficient_blocks": true,
+          "established_nll_advantage": false,
+          "interpretation": "evaluation-block uncertainty; seed variation reported separately"
+        }
+      },
+      "matched_contract": {
+        "comparable": false,
+        "missing": [],
+        "mismatched": [
+          "readiness_passed"
+        ],
+        "readiness_passed": false,
+        "classification": "exploratory"
+      },
+      "promotion": {
+        "promoted": false,
+        "hypothesis": "inconclusive",
+        "classification": "exploratory",
+        "checks": {
+          "nll": false,
+          "logit_kl": false,
+          "primary_drift": false,
+          "serialized_bytes": true,
+          "latency_median_ms": false,
+          "peak_memory_bytes": false
+        },
+        "global_gate": false,
+        "hardware_regression_limit": 0.05,
+        "missing_evidence": [
+          "matched run contracts",
+          "passed readiness with recorded evidence",
+          "latency_median_ms",
+          "peak_memory_bytes",
+          "established global advantage under uncertainty",
+          "matched completed Stage-F storage and all four hardware conditions"
+        ],
+        "decision": "no established advantage within uncertainty",
+        "all_hardware_conditions_passed": false
+      }
+    }
+  ],
+  "method_summaries": {
+    "{\"method\": \"svd\"}": {
+      "seeds": [
+        11
+      ],
+      "expected_seeds": [
+        11,
+        23,
+        37
+      ],
+      "complete": false,
+      "per_seed": [
+        {
+          "seed": 11,
+          "nll": 5.0886811214988885,
+          "logit_kl": 1.5586715373081979,
+          "primary_drift": 0.07424758312303882,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        }
+      ],
+      "metrics": {
+        "nll": {
+          "mean": 5.0886811214988885,
+          "std": null,
+          "count": 1,
+          "complete": false
+        },
+        "logit_kl": {
+          "mean": 1.5586715373081979,
+          "std": null,
+          "count": 1,
+          "complete": false
+        },
+        "primary_drift": {
+          "mean": 0.07424758312303882,
+          "std": null,
+          "count": 1,
+          "complete": false
+        },
+        "serialized_bytes": {
+          "mean": 43465927,
+          "std": null,
+          "count": 1,
+          "complete": false
+        },
+        "latency_median_ms": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        },
+        "peak_memory_bytes": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        }
+      }
+    },
+    "{\"method\": \"asvd\"}": {
+      "seeds": [
+        11,
+        23,
+        37
+      ],
+      "expected_seeds": [
+        11,
+        23,
+        37
+      ],
+      "complete": true,
+      "per_seed": [
+        {
+          "seed": 11,
+          "nll": 3.697111535434364,
+          "logit_kl": 0.37660137271295824,
+          "primary_drift": 0.03118204278984501,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 23,
+          "nll": 3.693921383508993,
+          "logit_kl": 0.3773523001325091,
+          "primary_drift": 0.030942521331881596,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 37,
+          "nll": 3.692365249104149,
+          "logit_kl": 0.370608657270889,
+          "primary_drift": 0.030790671865169903,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        }
+      ],
+      "metrics": {
+        "nll": {
+          "mean": 3.6944660560158353,
+          "std": 0.00241956805791424,
+          "count": 3,
+          "complete": true
+        },
+        "logit_kl": {
+          "mean": 0.37485411003878544,
+          "std": 0.0036957915120699185,
+          "count": 3,
+          "complete": true
+        },
+        "primary_drift": {
+          "mean": 0.030971745328965503,
+          "std": 0.0001973153102889687,
+          "count": 3,
+          "complete": true
+        },
+        "serialized_bytes": {
+          "mean": 43465927,
+          "std": 0.0,
+          "count": 3,
+          "complete": true
+        },
+        "latency_median_ms": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        },
+        "peak_memory_bytes": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        }
+      }
+    },
+    "{\"beta\": 0.0, \"method\": \"whitening\", \"ridge_fraction\": 0.0}": {
+      "seeds": [
+        11,
+        23,
+        37
+      ],
+      "expected_seeds": [
+        11,
+        23,
+        37
+      ],
+      "complete": true,
+      "per_seed": [
+        {
+          "seed": 11,
+          "nll": 3.56275408559503,
+          "logit_kl": 0.13262774704302774,
+          "primary_drift": 0.010324710225531702,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 23,
+          "nll": 3.5698566072208973,
+          "logit_kl": 0.13598840485136496,
+          "primary_drift": 0.010524397309095334,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 37,
+          "nll": 3.5858307978466852,
+          "logit_kl": 0.14603496586248646,
+          "primary_drift": 0.011063442235805195,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        }
+      ],
+      "metrics": {
+        "nll": {
+          "mean": 3.5728138302208707,
+          "std": 0.011819159783592983,
+          "count": 3,
+          "complete": true
+        },
+        "logit_kl": {
+          "mean": 0.13821703925229306,
+          "std": 0.006975921988379896,
+          "count": 3,
+          "complete": true
+        },
+        "primary_drift": {
+          "mean": 0.010637516590144077,
+          "std": 0.0003821363952300504,
+          "count": 3,
+          "complete": true
+        },
+        "serialized_bytes": {
+          "mean": 43465927,
+          "std": 0.0,
+          "count": 3,
+          "complete": true
+        },
+        "latency_median_ms": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        },
+        "peak_memory_bytes": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        }
+      }
+    },
+    "{\"beta\": 0.03, \"method\": \"anchored\", \"ridge_fraction\": 0.0}": {
+      "seeds": [
+        11,
+        23,
+        37
+      ],
+      "expected_seeds": [
+        11,
+        23,
+        37
+      ],
+      "complete": true,
+      "per_seed": [
+        {
+          "seed": 11,
+          "nll": 3.5596348339392465,
+          "logit_kl": 0.13231159417324223,
+          "primary_drift": 0.010327732877186257,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 23,
+          "nll": 3.5611864415845127,
+          "logit_kl": 0.13334314135880437,
+          "primary_drift": 0.010202435573502321,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 37,
+          "nll": 3.57694210135138,
+          "logit_kl": 0.14460912723575034,
+          "primary_drift": 0.011110834781549542,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        }
+      ],
+      "metrics": {
+        "nll": {
+          "mean": 3.5659211256250463,
+          "std": 0.009575922986403876,
+          "count": 3,
+          "complete": true
+        },
+        "logit_kl": {
+          "mean": 0.136754620922599,
+          "std": 0.006821728114379171,
+          "count": 3,
+          "complete": true
+        },
+        "primary_drift": {
+          "mean": 0.010547001077412707,
+          "std": 0.0004922968494903399,
+          "count": 3,
+          "complete": true
+        },
+        "serialized_bytes": {
+          "mean": 43465927,
+          "std": 0.0,
+          "count": 3,
+          "complete": true
+        },
+        "latency_median_ms": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        },
+        "peak_memory_bytes": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        }
+      }
+    },
+    "{\"beta\": 0.1, \"method\": \"legacy_ridge\", \"ridge_fraction\": 0.01}": {
+      "seeds": [
+        11,
+        23,
+        37
+      ],
+      "expected_seeds": [
+        11,
+        23,
+        37
+      ],
+      "complete": true,
+      "per_seed": [
+        {
+          "seed": 11,
+          "nll": 3.5700958288904117,
+          "logit_kl": 0.15299493128189706,
+          "primary_drift": 0.01168366455975469,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 23,
+          "nll": 3.579942337144112,
+          "logit_kl": 0.15579337249400582,
+          "primary_drift": 0.011869712339292703,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        },
+        {
+          "seed": 37,
+          "nll": 3.5870646414922094,
+          "logit_kl": 0.16455472411134608,
+          "primary_drift": 0.011954535923705998,
+          "serialized_bytes": 43465927,
+          "latency_median_ms": null,
+          "peak_memory_bytes": null
+        }
+      ],
+      "metrics": {
+        "nll": {
+          "mean": 3.579034269175578,
+          "std": 0.008520774076064977,
+          "count": 3,
+          "complete": true
+        },
+        "logit_kl": {
+          "mean": 0.15778100929574965,
+          "std": 0.006030773383794164,
+          "count": 3,
+          "complete": true
+        },
+        "primary_drift": {
+          "mean": 0.011835970940917796,
+          "std": 0.0001385521036485226,
+          "count": 3,
+          "complete": true
+        },
+        "serialized_bytes": {
+          "mean": 43465927,
+          "std": 0.0,
+          "count": 3,
+          "complete": true
+        },
+        "latency_median_ms": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        },
+        "peak_memory_bytes": {
+          "mean": null,
+          "std": null,
+          "count": 0,
+          "complete": false
+        }
+      }
+    }
+  },
+  "note": "fixed-rank ASVD and whitening-only SVD-LLM are component comparisons"
+}

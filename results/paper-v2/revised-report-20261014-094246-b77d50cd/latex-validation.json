@@ -1,0 +1,8 @@
+{
+  "state": "success",
+  "compiler": "Codex desktop built-in compiler",
+  "source_sha256": "935ea47d7a1ee6f694c7e3cc386e48f8ec70947e04851273277b1bc0d7a79758",
+  "verified_utc": "2026-10-14T09:43:34.083362+00:00",
+  "pdf_file_independent_reportlab": true,
+  "scope": "interim source only; final source still requires compiler diagnostics"
+}

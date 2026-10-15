@@ -1,0 +1,10 @@
+{
+  "action": "Non-destructive repository documentation cleanup",
+  "archived_readme": "docs\\archive\\README-before-20261014-cleanup.md",
+  "readme_sha256": "ed06cfb006f47cd4a5832151c7cf1b9c23a9c481af3163c59be9ba78c7cbd9cc",
+  "moved_historical_draft_from": "Activation_Weighted_Low_Rank_Compression_Paper.docx",
+  "moved_historical_draft_to": "docs\\archive\\Activation_Weighted_Low_Rank_Compression_Paper.docx",
+  "draft_sha256": "d1486078530fb7f06822d336b89c52ccb915011fc09f052a9b60818668e3ac78",
+  "experiments_resumed": false,
+  "results_deleted": false
+}

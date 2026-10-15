@@ -1,0 +1,8 @@
+{
+  "state": "incomplete",
+  "exploratory": true,
+  "budget_limited_models": [
+    "Qwen/Qwen3.5-0.8B"
+  ],
+  "advance_to_practical": false
+}

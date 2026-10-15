@@ -1,0 +1,9 @@
+{
+  "checks": "30 combined precision and architecture CPU tests passed; full pinned checkpoints passed CPU asset preflight",
+  "preflight": "results/paper-v2/architecture-asset-preflight-de585fb3/preflight.json",
+  "artifacts": {
+    "src/paper_architecture_panel.py": "be8ed8c1c4f3da563b76a6f28465bc0a8261d14099b60768916e942f3deaa5b0",
+    "tests/unit/test_architecture_panel.py": "4b06bb049c09a06132991d18af17bea9830992f9c7bd8986f06a8d645b54afb5",
+    "configs/paper_architecture_panel_v3.json": "aeb75237de0c35cefe099f716e21eacea5141d3429a9d2a390185bc147de2b3d"
+  }
+}

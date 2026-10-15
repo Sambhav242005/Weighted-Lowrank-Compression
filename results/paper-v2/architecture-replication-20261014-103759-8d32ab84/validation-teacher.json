@@ -1,0 +1,436 @@
+{
+  "split": "validation",
+  "metrics": {
+    "nll_sum": 1075216.3142498252,
+    "targets": 261818,
+    "nll": 4.106731829934631,
+    "ppl": 60.747858461371166,
+    "logit_kl": 0.0,
+    "nll_blocks": [
+      {
+        "nll_sum": 15501.597541151708,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15235.791561877744,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15619.471780340398,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14095.692702750159,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15849.012648944059,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17478.618451530594,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 19088.22662393714,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15739.601463003142,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16378.615063256999,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17678.62096547248,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18267.66596713595,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15727.228698219486,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15406.278325981082,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15863.365260064573,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17376.251678575834,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15869.30515741706,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16713.045288856367,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15952.932891200107,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16789.43043386136,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16123.603652014695,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17327.73958340555,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18618.009889920435,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15830.310873432769,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15498.813099907173,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15829.803568956966,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15092.494107212762,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16229.31645810391,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17234.132237791415,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14764.004671900984,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16399.255168890377,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16409.559845712924,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18071.2531523949,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17404.01647070868,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17588.65942906266,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17854.939427063488,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18423.294142840652,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17086.55819585186,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17369.28923829428,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17579.000222949675,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18051.0507126328,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16429.084544607336,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16771.323905680798,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17005.074412645503,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17348.29012765264,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17212.688461884336,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16183.723451312948,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16971.069987934432,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16213.66674348578,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14976.048788173954,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16564.738335793518,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16088.827057021292,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17314.744512292273,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15193.411565177768,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17451.859394640644,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17142.244614284093,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18181.601008387035,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18515.4026104562,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18145.11579301978,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16837.928480784773,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 19157.02921234943,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16780.799946078514,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17346.013550707226,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 18921.11393392348,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17048.65715890556,
+        "targets": 3770
+      }
+    ],
+    "local_output": {
+      "model.layers.2.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -6.421970317048462e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      },
+      "model.layers.5.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -4.414265108567112e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      },
+      "model.layers.8.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -4.787166926402745e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      },
+      "model.layers.10.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -4.194348651894816e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      },
+      "model.layers.12.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -3.918883939085831e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      },
+      "model.layers.14.self_attn.out_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -3.6513872138374376e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261818,
+        "tokens": 261818
+      }
+    },
+    "residual_by_block": [
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261818
+      }
+    ],
+    "primary_drift": 0.0,
+    "drift_scope": "all decoder blocks, including unchanged DeltaNet/convolution blocks"
+  },
+  "token_hash": "39925def3b66746301175b66c40d18da1b03028aafd8516d93ebe706e115cd7f",
+  "purpose": "validation frontier reference only"
+}

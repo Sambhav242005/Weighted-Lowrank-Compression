@@ -1,0 +1,25 @@
+{
+  "state": "cancelled",
+  "reason": "User requested finish now and review before further work",
+  "stopped_pids": [
+    19612,
+    21864,
+    29976,
+    34680
+  ],
+  "epoch": 1791958501.6406517,
+  "elapsed_seconds": 382.99257254600525,
+  "completed_variants": [
+    "teacher_bf16",
+    "copy_bf16",
+    "identity_bf16",
+    "svd_bf16",
+    "svd_fp32_compute",
+    "svd_fp8_e4m3",
+    "svd_fp8_e5m2"
+  ],
+  "incomplete_variants": [
+    "dense_fp8_e4m3",
+    "dense_fp8_e5m2"
+  ]
+}

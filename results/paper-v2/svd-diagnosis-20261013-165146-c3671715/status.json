@@ -1,0 +1,8 @@
+{
+  "state": "completed",
+  "elapsed_seconds": 686.9660573000001,
+  "passed_variants": [
+    "dense_svd_fp32",
+    "float32_execution"
+  ]
+}

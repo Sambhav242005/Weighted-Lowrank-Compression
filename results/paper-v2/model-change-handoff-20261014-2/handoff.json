@@ -1,0 +1,10 @@
+{
+  "pid": 31000,
+  "composition_state": {
+    "state": "completed",
+    "elapsed_seconds": 1454.3653187
+  },
+  "composition": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\composition-20261014-054423-dbd821ff",
+  "gpt2_removed": true,
+  "reason": "Reboot recovery completed composition; explicit model-panel amendment"
+}

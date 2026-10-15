@@ -211,14 +211,14 @@ class PackedLowRankLinear(nn.Module):
     def _factor(self, name: str, rows: int, cols: int) -> Tensor:
         packed = getattr(self, name)
         if self.bits == 16:
-            return packed.to(dtype=torch.float32)
+            return packed
         codes = _unpack_unsigned(packed, rows * cols, self.bits).reshape(rows, cols).float()
         params = getattr(self, f"{name}_params")
         return codes * params[:, :1] + params[:, 1:2]
 
     def forward(self, x: Tensor) -> Tensor:
-        v = self._factor("v", self.rank, self.in_features)
-        u = self._factor("u", self.out_features, self.rank)
+        v = self._factor("v", self.rank, self.in_features).to(dtype=x.dtype, device=x.device)
+        u = self._factor("u", self.out_features, self.rank).to(dtype=x.dtype, device=x.device)
         result = torch.matmul(torch.matmul(x, v.transpose(0, 1)), u.transpose(0, 1))
         return result + self.bias.to(result.dtype) if self.bias is not None else result
 

@@ -1,0 +1,32 @@
+{
+  "state": "running precision",
+  "stages": [
+    {
+      "stage": "precision",
+      "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_precision --config configs/paper_exploratory_resume_v2.json --offload gpu",
+      "started_epoch": 1791958118.6237366
+    }
+  ],
+  "excluded_models": [
+    "openai-community/gpt2"
+  ],
+  "max_models": 4,
+  "incomplete_cohorts": [],
+  "released_completed_recovery_parent": 31000,
+  "handoff": {
+    "pid": 31000,
+    "composition_state": {
+      "state": "completed",
+      "elapsed_seconds": 1454.3653187
+    },
+    "composition": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\composition-20261014-054423-dbd821ff",
+    "gpt2_removed": true,
+    "reason": "Reboot recovery completed composition; explicit model-panel amendment"
+  },
+  "accounting_edit": {
+    "file": "src\\paper_study.py",
+    "before_sha256": "517b392eeb7f338990662a9a9c30c4f7457795b96e51cb30e8074468af5d86c6",
+    "after_sha256": "0971d4c78e5440281f47db0ceccac62952e6a225f9c6a31306f76a44a09e3a18",
+    "purpose": "charge BF16/FP8 controls to original readiness cap"
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "split": "validation",
+  "metrics": {
+    "nll_sum": 776611.0756466965,
+    "targets": 261410,
+    "nll": 2.9708545030668163,
+    "ppl": 19.508582619392435,
+    "logit_kl": 0.0,
+    "nll_blocks": [
+      {
+        "nll_sum": 10464.87853849883,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 10701.631150412002,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11459.565984801418,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 9302.641074356943,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12081.047968947067,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12048.127555504529,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14055.947457938883,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11146.327942107913,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11814.02827609536,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12573.45351868074,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12712.206688323833,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11461.65383639612,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11139.18267454076,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11240.501391396208,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12057.479629495854,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11963.380701940658,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11542.2384978293,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11989.735656498899,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11600.104362008544,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11907.181734199929,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12401.686801486732,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13910.19448628548,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11913.352925793792,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11927.239859069923,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12115.017729240193,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11336.98078120357,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12343.26440142242,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12913.533323694734,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 10232.023301568315,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12093.821847302253,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11809.16485805076,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13667.066772708058,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12602.828737169206,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13140.810662698008,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12692.934112151575,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13741.221188485608,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12175.963387592235,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12864.05170139108,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12655.675448126276,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12987.37393116486,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12135.289703510673,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12290.54744056143,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11965.659403944126,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12730.579118875328,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12460.020045832833,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11671.33062499703,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12432.890043387015,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12097.838454960496,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 10921.012697197388,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12091.83107365996,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11482.634327362985,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12083.003634990413,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 9989.721398506217,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12620.877470748868,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12804.590652943913,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13490.39509937113,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13032.604028874788,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12704.574776695492,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11866.384429880854,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13972.888274749872,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12063.139435530855,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13159.885070430355,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13551.654194667484,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 10206.203348438397,
+        "targets": 3362
+      }
+    ],
+    "local_output": {
+      "model.layers.3.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -3.892394671055788e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      },
+      "model.layers.7.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -1.790579072801892e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      },
+      "model.layers.11.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -2.788588063207327e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      },
+      "model.layers.15.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -3.2986511455781194e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      },
+      "model.layers.19.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -5.409131203881228e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      },
+      "model.layers.23.self_attn.o_proj": {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": -3.0362092109295804e-09,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "valid_cka_tokens": 261410,
+        "tokens": 261410
+      }
+    },
+    "residual_by_block": [
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      },
+      {
+        "normalized_squared_error": 0.0,
+        "cosine_distance": 0.0,
+        "norm_ratio": 1.0,
+        "window_linear_cka": 1.0,
+        "tokens": 261410
+      }
+    ],
+    "primary_drift": 0.0,
+    "drift_scope": "all decoder blocks, including unchanged DeltaNet/convolution blocks"
+  },
+  "token_hash": "d153ca59ec3910d5b591301e733de2dacedc0a7e9ffd25e78ca84f4f6bafdbeb",
+  "purpose": "validation frontier reference only"
+}

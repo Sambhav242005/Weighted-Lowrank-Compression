@@ -1,0 +1,663 @@
+{
+  "run_id": "practical-20261014-113642-0fe078b5",
+  "output_directory": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-20261014-113642-0fe078b5",
+  "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_benchmark run --config configs/paper_practical_after_panel_v3.json --stage local-core",
+  "environment": {
+    "ready": true,
+    "missing": [],
+    "git_revision": "c166136ab2afd3feb4b93c60594c2db46f1013e0",
+    "dependency_errors": [],
+    "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_benchmark run --config configs/paper_practical_after_panel_v3.json --stage local-core",
+    "python_executable": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+    "ram": {
+      "total_bytes": 34107146240,
+      "available_bytes": 18376806400
+    },
+    "python": "3.14.6",
+    "packages": {
+      "torch": "2.13.0+cu132",
+      "transformers": "5.14.1",
+      "datasets": "5.0.1",
+      "huggingface-hub": "1.27.0",
+      "pytest": "9.0.2"
+    },
+    "package_inventory": {
+      "accelerate": "1.14.0",
+      "aiohappyeyeballs": "2.7.1",
+      "aiohttp": "3.14.3",
+      "aiosignal": "1.4.0",
+      "annotated-doc": "0.0.5",
+      "anyio": "4.14.2",
+      "attrs": "26.1.0",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.4.9",
+      "click": "8.4.2",
+      "colorama": "0.4.6",
+      "datasets": "5.0.1",
+      "dill": "0.4.1",
+      "filelock": "3.29.0",
+      "frozenlist": "1.8.0",
+      "fsspec": "2026.4.0",
+      "h11": "0.16.0",
+      "hf-xet": "1.6.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "huggingface_hub": "1.27.0",
+      "idna": "3.18",
+      "iniconfig": "2.3.1",
+      "Jinja2": "3.1.6",
+      "markdown-it-py": "4.2.0",
+      "MarkupSafe": "3.0.3",
+      "mdurl": "0.1.2",
+      "mpmath": "1.3.0",
+      "multidict": "6.7.1",
+      "multiprocess": "0.70.19",
+      "networkx": "3.6.1",
+      "numpy": "2.4.4",
+      "packaging": "26.3",
+      "pandas": "3.0.5",
+      "pillow": "12.2.0",
+      "pip": "26.2.1",
+      "pluggy": "1.6.0",
+      "propcache": "0.5.2",
+      "psutil": "7.2.2",
+      "pyarrow": "25.0.0",
+      "Pygments": "2.20.0",
+      "pytest": "9.0.2",
+      "python-dateutil": "2.9.0.post0",
+      "PyYAML": "6.0.3",
+      "regex": "2026.7.19",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "safetensors": "0.8.0",
+      "scipy": "1.18.0",
+      "setuptools": "78.1.0",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0+cu132",
+      "torchvision": "0.28.0+cu132",
+      "tqdm": "4.70.0",
+      "transformers": "5.14.1",
+      "typer": "0.27.1",
+      "typing_extensions": "4.15.0",
+      "tzdata": "2026.3",
+      "urllib3": "2.7.0",
+      "xxhash": "3.8.1",
+      "yarl": "1.24.5"
+    },
+    "numerics": {
+      "float32_matmul_precision": "highest",
+      "cuda_matmul_allow_tf32": false,
+      "fp16_reduced_precision_reduction": true,
+      "deterministic_algorithms": false
+    },
+    "cuda": "13.2",
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "vram_bytes": 12878086144,
+    "disk_free_bytes": 136616214528,
+    "source_hashes": {
+      "src\\activation_vs_weight.py": "d39ec5d410bd3197825aec8f6092fa8db870d9bc30757f77ae95665f215e1978",
+      "src\\aggressive_compression.py": "80af0c6629b6615185ec328f758bbf0caa22318d417be9d137d41743c118ac81",
+      "src\\baseline_eval.py": "ad67d05440c54ca7174aec9cd96f69a7a0475ba5cc7f0b1db5c6db680d1a316f",
+      "src\\causality_test.py": "04cc78250bda0111902ef6de56adce385f6e96f0dea7b57a95a44e39725a59bd",
+      "src\\compare_gemma_output.py": "4fa95207dc1b5d12120c8626f3277b6cc7cd01ad0592acdd94c71794ea80fbf3",
+      "src\\compare_output.py": "a7d5ddf20a0da7e6a4181849df9b292d9c12ff2638c72c383e82e36580ad2da4",
+      "src\\compare_qwen7b_output.py": "791f6f49f74c87851338cf9cd693e1bc3a69b4576571cef84806899108988450",
+      "src\\compression_core.py": "4114ca98a263e159c4e398565f06e1c7fb0cd8335f19dc39db66e4a4cb0476bb",
+      "src\\compression_sensitivity.py": "51c6b3f504f34942cc5be1c726494985b1792b3718e2e9776462a5f78285960c",
+      "src\\compression_tradeoff.py": "1dbe01c795ca7d2bc0a6f1e9d6bc53062b1bbdcf4d7d64ad8259abb5391cfd83",
+      "src\\cuda_check.py": "4303159b6fbc8673a17ad41eaa3a2b20ca1605a420583f25efdfbc5e3b524d79",
+      "src\\drift_aware_extended.py": "fd5523aeb48f8c688a0d4bbf0d1551d84b9f0ba15570514fe15efe96210a36c2",
+      "src\\drift_aware_robustness.py": "1dfc2e8512d2c347c482ae495fbce4aa50c081a14712f2bd79290dc0a3dfad9c",
+      "src\\drift_aware_svd.py": "26141931f283ebff0e844caab3077dac19506f5d3cc1f9bb5dcdcd63c7590913",
+      "src\\drift_profiler.py": "bb16139345fee53d0269c2cedd6fdbeb61698d3d5308215c7f74673d10747f94",
+      "src\\error_propagation_model.py": "b13843e66080510bdf2a5e84608a1ce2286a50b63f1b93de3bfc253889ab1b58",
+      "src\\fast_profile.py": "9073f748214c8eaef4c6037ee2460100d2b535528ba47d8d7066e4c6cb929cd2",
+      "src\\find_invariant.py": "60d07592198c9233a85dde00826442ea2141b4ef4a1fd6aebd77cc7a1b8d5e67",
+      "src\\gpu_bench.py": "f4f1898e8a1e69f1207296561bb63090d2cf24e11a9d4902d8d5461d476609f6",
+      "src\\gpu_test.py": "78af647af3b3335c896385a7a660d632272355b98ffdc51c73c135b0770365f5",
+      "src\\hybrid_residual_split.py": "657305c43a044f6aabbb5cf95a6e0fd7b63574ffcc6261795ba85e73d658bdea",
+      "src\\inference_comparison.py": "9e45eff1f47f515f70a6ba4bd0c6f562542f459e2a6051b0000705960c9b1bc4",
+      "src\\investigate_architecture.py": "c6ed65de30e24866e3d843b0e729f4cbd8d07dc05f48c68bc3ef2e22ca24fbf6",
+      "src\\investigate_output.py": "a05dc7d23797fc76a05c504e7fe1ce93af94739fb44ec243002b5c0fa1f63624",
+      "src\\joint_group_compress.py": "3838915887c5a08a7a268a17262f98af91782d8ec5f1edb11981cf030f14d733",
+      "src\\layer0_fix.py": "cd062c3da212690519b08d1a8f01072e9c1d623829047bfdcd08f8dcea6eed40",
+      "src\\layer0_investigation.py": "08d4535967efd93e012955696db86b48d0c63dcb4d67319692683d1e40ac3c07",
+      "src\\layer_extraction.py": "43e833a531830491abc132cb7e085f3bd465c92799941970eb8e276d9d208be1",
+      "src\\null_space.py": "182e6d90996ec263c9935bc90b59905882597c365a6aa82698c58914dd419ace",
+      "src\\optimal_budget.py": "85302c0d0435d502dad6bbc4b54d7d78dab29234addb38d9238428eb0fb80222",
+      "src\\paper_architecture_panel.py": "47d891723366eea0899c978832022b557ab4b09787fa2a363ecd8b7fc596ed14",
+      "src\\paper_architecture_recovery.py": "d1f429906b4f081504593a14c7698c6bf527b00d2070b67aeaf6821e967b863b",
+      "src\\paper_benchmark.py": "47cef9dbdbd67de2d2561467016be7108ca83e587e1b84756c776eb84f73b1a7",
+      "src\\paper_comparisons.py": "a49af5f7dbb1cb961266e2715b2d46f933577dfd0219b5e856d6bb95b4c76787",
+      "src\\paper_followups.py": "e56ca11b1bf791cf2fe1d90aad4ef7a2ebe5409ddab7f982cc30c52dd1befb5a",
+      "src\\paper_math.py": "462fef7da621573324844e0e848821a299d6ff1e9dc7f3558306ad040160ea29",
+      "src\\paper_precision.py": "f6eee373f1e63bfb42ac2e399656d2a1835c371c5a5451da8a6c4abe507ae9ed",
+      "src\\paper_protocol.py": "95cd7ef5fb0420cd5f27a9cb6fdf7fe032d51cb0eae9cc4906afb992b7c7fa27",
+      "src\\paper_reporting.py": "d905ebdc19b119d3d7e6be418a2c65e2cdc0b547925a43b4baa137e181374520",
+      "src\\paper_study.py": "0971d4c78e5440281f47db0ceccac62952e6a225f9c6a31306f76a44a09e3a18",
+      "src\\paper_svd_diagnosis.py": "8d09c4ff9336ac7c58919a18a584f5c5a9ef5cdeb3fd5fa20a06a9211ed57ecc",
+      "src\\phase2_pipeline.py": "5b775e4b861f0b7b05b195fbdf53799489ae0ded94bd93cd96381c7e4783970d",
+      "src\\phase2_run.py": "6eee3126dc42a50131028366ec04e15ba56488eb956e3e2c5c0154c7a36e7d86",
+      "src\\phase3_cumulative.py": "d1a360dbba5301734529a0404c6bd50abe86842fa69e4209bba7826b6477aa13",
+      "src\\phase4_healing.py": "223e114f1d2cfc5b797ee0575b83a6fbf08918f314d9a6f3fc5bf9ea0ed4e5db",
+      "src\\phase5_activation_preserving.py": "3dcfb71951725cc9190ea10985f6f2e9f90ea7d2be128e92cb84098c234c6d1c",
+      "src\\phase6_cross_architecture.py": "f099077d60a2a210c0af4ec316e24c434218d6b83a0eccad2a1baba5af2ca398",
+      "src\\phase_b_summary.py": "7c43764331862c62c3b3571c1162ec1279f6fd770ec5c3fa6a47ee499fccc06b",
+      "src\\phase_c_large.py": "21b375e8b25fee684d66eff6e2480e6722637462c45d6182a556a20ef30c257d",
+      "src\\phase_c_medium.py": "5be3c655fe4af76d8e7bc7b60084c94ff41a4c4d8997e71f84c75846ebfa92e9",
+      "src\\phase_c_medium_ratios.py": "a63047ab30174df2a2aba73c46a9aa89f4942c391d8e9785054983370f773c47",
+      "src\\phase_d_gemma3.py": "a703e7c6687e89c8168e1508d2e9555ca0df470f6a7d20c72a3e75e2f6e69da6",
+      "src\\practical_compression.py": "40221625ee4aafd38bd84a7e2c530f54d6f091d3209444fd5a40631b2c6d2680",
+      "src\\prepare_paper_assets.py": "9357a49f82284d1aca47e62012781c288006ceae85c29e26dd9f0c9064784436",
+      "src\\profile_pipeline.py": "64ec4de01221d2f2470c10b526ac4cae14f1a1c5875cf6793f26640a2d51d0fb",
+      "src\\progressive_replacement.py": "2d83ef4993a793f18cb865db16f272922166c09a86aab34b3b5586aeecae6b29",
+      "src\\quick_test.py": "927545b3defff17904f0c8c81683e93bf4994bf482a9621087264b8139451ba1",
+      "src\\reference_neuron_probe.py": "60c7f4a47a5e930dee373a989c07222a0bd0a7869571e4714acf16c9550da56c",
+      "src\\representations.py": "c32b06f86ba430daabeef6817d737d7483582a28a18d5de15e9b8424bdfffee9",
+      "src\\representation_search.py": "787702d83a362aa684dc176618dbce327e67738701535b5eb156a64898983032",
+      "src\\rollout_stability.py": "5b3a7c80fade5e42cad895b594cd020c8c5cd1c905a41395798f14dcbe331f85",
+      "src\\run_gpt2_pruning90.py": "388264b9c01b97b065bf6bba37587657fe74d3d981a3c539284773529bf62c65",
+      "src\\run_track_a_gemma.py": "cb859009ebc19cb9cfe117b1c0a30652431e17175f1dc0809e058bbf783da1df",
+      "src\\sensitivity.py": "9aaa69b86c1f26920b1386e646009ff03663a9eb58a29d947d96a4469efc15ee",
+      "src\\spectral_profiling.py": "c221bba0c86e77bd653118eac9b206a64fb23101a5077f990a449f4010a7b898",
+      "src\\statistical_profiling.py": "46cd2f40e25e6081d70e68e44d40c61aba97587850af614503e78d714559a33d",
+      "src\\storage_vs_quantization.py": "e472f4574cb194e99005028c9236b2838c829eb82d93f3784b6054dacbffa59e",
+      "src\\substitution.py": "cacf48f2133bb47fa9b172b68dfe02b81b5898ce133508ed2a11a1f42a03605d",
+      "src\\test_activation_scale.py": "8be0325bd459a2f481f4b0d358038b901f094fc8781e75fa4c7d8f9cbd1b129c",
+      "src\\test_mlp_vs_attention.py": "b2c44102aab10a9e99b5d1f081c63bfe51d5647ce17a62faa11100f4c8afc398",
+      "src\\weighted_gemma_oproj.py": "18715b4a7a0bb481aa4c86f6cea2124cea4bc6ea7aaead6293e7056484e1b148",
+      "src\\weighted_gemma_oproj_200.py": "a128383d9c0e0d26f191995ab3b0e259e86cb477a03bbcc0ed53bdefa3842c6e",
+      "src\\weighted_one_family.py": "5e876bfd9075f13fb65f030303cf64ed414e22e72d9c49bfd4cd1f36429789f7",
+      "src\\weighted_qwen7b_factor_quant.py": "1da4a9e773de3a9efede9768d43e53d83dfa1eaace7c173bb4c81340775914f2",
+      "src\\weighted_qwen7b_oproj.py": "8407c417f0fa4e20142a927927a2f8776b70047b95034cbf43ea2dc64e7ec058",
+      "src\\weighted_ratio_frontier.py": "5895bb8a32dcfb6315da4228a9305c7afc49424f2751bc9906117f30ef6b4070",
+      "src\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "configuration": {
+    "protocol": "paper-v2",
+    "study": "local-core",
+    "output_root": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2",
+    "model": "google/gemma-3-1b-it",
+    "model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+    "model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--google--gemma-3-1b-it\\snapshots\\dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1",
+    "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+    "dataset_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\paper-assets\\wikitext-b08601e04326c79dfdd32d625aee71d232d685c3",
+    "device": "cuda",
+    "precision": "float16",
+    "seeds": [
+      11,
+      23,
+      37
+    ],
+    "calibration": {
+      "split": "train",
+      "chunks": 16,
+      "chunk_tokens": 512
+    },
+    "selection_split": "validation",
+    "evaluation_split": "test",
+    "context": 512,
+    "stride": 256,
+    "rank": 384,
+    "beta": 0.1,
+    "ridge_fraction": 0.01,
+    "pseudoinverse_rcond": 1e-07,
+    "methods": [
+      "svd",
+      "asvd",
+      "whitening",
+      "anchored",
+      "legacy_ridge"
+    ],
+    "target_family": "attention-output",
+    "stage_gpu_hours": {
+      "readiness": 1,
+      "regularization": 4,
+      "baselines": 7,
+      "composition": 4,
+      "replication": 4,
+      "practical": 4
+    },
+    "identity_tolerance": {
+      "atol": 0.1,
+      "rtol": 0.01
+    },
+    "hardware_regression_limit": 0.05,
+    "readiness_passed": false,
+    "readiness_evidence": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\svd-diagnosis-20261013-165146-c3671715",
+    "readiness_interpretation": "FP16 factor rounding fails unchanged logit gate; downstream measurements exploratory, promotion disabled",
+    "factor_convention": "unbalanced",
+    "fitting_numerics": {
+      "svd": "float32 SVD",
+      "asvd": "float32 scaled SVD",
+      "weighted_methods": "float64 covariance eigendecomposition and SVD; factors returned float32 then stored FP16",
+      "legacy_solver_scope": "audited algebraic reproduction with measured teacher outputs, not bitwise historical FP32 execution"
+    },
+    "tokenizer_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+    "temperature_grid": [
+      0.25,
+      0.2726269331663144,
+      0.2973017787506803,
+      0.32420988866275247,
+      0.3535533905932738,
+      0.38555270635198524,
+      0.42044820762685725,
+      0.4585020216023356,
+      0.5,
+      0.5452538663326288,
+      0.5946035575013605,
+      0.6484197773255048,
+      0.7071067811865475,
+      0.7711054127039704,
+      0.8408964152537145,
+      0.9170040432046712,
+      1.0,
+      1.0905077326652577,
+      1.189207115002721,
+      1.2968395546510096,
+      1.4142135623730951,
+      1.542210825407941,
+      1.6817928305074292,
+      1.8340080864093427,
+      1.9999999999999998,
+      2.1810154653305154,
+      2.378414230005442,
+      2.5936791093020197,
+      2.82842712474619,
+      3.084421650815882,
+      3.363585661014858,
+      3.6680161728186857,
+      4.0
+    ],
+    "gpt2_model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--openai-community--gpt2\\snapshots\\607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "selection_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\selection.json",
+    "start_stage": "practical",
+    "prior_study": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\study-20261014-032120-72463b92",
+    "metric_repair": "exact observed equality shortcut; preserved complete D records and identical C full-stack reuse",
+    "baseline_run_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+    "excluded_models": [
+      "openai-community/gpt2"
+    ],
+    "architecture_amendment": "docs/EXPERIMENT_PLAN_20261014_AMENDMENT.md",
+    "runtime_remaining_seconds": {
+      "practical": 14400.0
+    }
+  },
+  "splits": {
+    "test": {
+      "tokens": 292282,
+      "hash": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc"
+    },
+    "train": {
+      "tokens": 2459302,
+      "hash": "950ace441dd12b00ed9aec525a4d07d6a8f70ba2cf6cf9cc7cc39bc379accbca"
+    },
+    "validation": {
+      "tokens": 257290,
+      "hash": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc"
+    },
+    "calibration_positions": {
+      "11": [
+        2067456,
+        1173504,
+        1280000,
+        1653760,
+        718848,
+        296960,
+        1383424,
+        556544,
+        2181120,
+        2258944,
+        430592,
+        1218048,
+        1377280,
+        1268224,
+        999424,
+        811008
+      ],
+      "23": [
+        485376,
+        1510912,
+        751104,
+        2201600,
+        1278976,
+        1315328,
+        1359872,
+        2025472,
+        707584,
+        1386496,
+        2172928,
+        2271744,
+        1408512,
+        2452480,
+        363520,
+        1049600
+      ],
+      "37": [
+        948224,
+        1156096,
+        1278464,
+        2063360,
+        50176,
+        690176,
+        856064,
+        379392,
+        1273344,
+        933888,
+        1067520,
+        1212416,
+        558592,
+        1032704,
+        1404416,
+        257024
+      ]
+    },
+    "calibration_hashes": {
+      "11": "2aec1708bf8abe8477ce67b750ccfaa3763bc0ef638f2a163ea67c7312581d44",
+      "23": "f0937fdb8e95193472763ff82868157526e2e00f1d2b95ec95391f2d92219cdf",
+      "37": "69d32de99818f4afb3e4a0d96f83a185f852bc3db538ea58285edca7b2bca8d0"
+    }
+  },
+  "targets": [
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.24.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    },
+    {
+      "name": "model.layers.25.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584
+    }
+  ],
+  "representation_family": "packed low-rank factors",
+  "group_size": "all attention outputs",
+  "teacher_hash": "d0f1446aef71c7e658eb10e96080d01e03413397a2887bb990aa4da8812a3848",
+  "selection_hash": "822ba5a6708124dd84a1e607b616641c7d9ae665b8e9f92935f7ce5b1d833e50",
+  "dataset_content_hash": "8794af3e5d444d833a58b8ee53a4ae8add21a8052865bbb87706a79721b5ca84",
+  "baseline": {
+    "method": "whitening",
+    "beta": 0.0,
+    "ridge_fraction": 0.0
+  },
+  "selection_model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "temperature_fit": {
+    "split": "validation",
+    "method": "bounded_grid",
+    "grid": [
+      0.25,
+      0.2726269331663144,
+      0.2973017787506803,
+      0.32420988866275247,
+      0.3535533905932738,
+      0.38555270635198524,
+      0.42044820762685725,
+      0.4585020216023356,
+      0.5,
+      0.5452538663326288,
+      0.5946035575013605,
+      0.6484197773255048,
+      0.7071067811865475,
+      0.7711054127039704,
+      0.8408964152537145,
+      0.9170040432046712,
+      1.0,
+      1.0905077326652577,
+      1.189207115002721,
+      1.2968395546510096,
+      1.4142135623730951,
+      1.542210825407941,
+      1.6817928305074292,
+      1.8340080864093427,
+      1.9999999999999998,
+      2.1810154653305154,
+      2.378414230005442,
+      2.5936791093020197,
+      2.82842712474619,
+      3.084421650815882,
+      3.363585661014858,
+      3.6680161728186857,
+      4.0
+    ],
+    "boundary_flag": true,
+    "freeze_before_test": true
+  },
+  "expected_artifacts": [
+    "config.json",
+    "contract.json",
+    "stdout.log",
+    "stderr.log",
+    "metrics.json",
+    "report.md",
+    "status.json"
+  ]
+}

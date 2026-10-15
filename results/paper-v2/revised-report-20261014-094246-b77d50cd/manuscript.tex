@@ -1,0 +1,1762 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,longtable}
+\setlength{\emergencystretch}{3em}
+\sloppy
+\title{Weight-count compression by activation-weighted anchoring: an exploratory empirical study}
+\author{ResearchCompression --- review draft}
+\date{Draft generated 2026-10-14T09:42:46.937266+00:00}
+\begin{document}\maketitle
+\noindent\textbf{Preprint review draft. No venue assumed. No established global-preservation or practical-compression claim.}
+Original FP16 readiness remains failed; separate numerical controls do not repair that cohort. Native-tokenizer perplexities must not rank different models. Incomplete attempts and declared omissions remain visible.
+
+
+Version: 2026-10-14T09:42:46.937266+00:00
+
+\section{Abstract}
+
+This report examines whether matched activation-weighted low-rank approximations preserve global transformer behavior. It retains weighting/anchoring controls, full-stack and composition measurements, separate BF16/FP8 numerical controls, and the user-amended hybrid-architecture panel. Tables below are generated from retained artifacts; failed/incomplete attempts remain visible. The current scientific conclusion is inconclusive, promotion is disabled, and no universal or practical compression advantage is established. A terminal dispatcher does not imply every scientific cohort completed.
+
+\section{Study status and scope}
+
+Dispatcher: \textbf{running architecture-panel}. Report mode: interim snapshot.
+
+The amended panel uses Gemma, Qwen3.5-0.8B and LFM2.5-1.2B-Instruct; GPT-2 is excluded. Only full-attention output projections are targeted in the hybrids. Native-tokenizer PPL is compared within each model. Validation frontier ranks and primary test ranks remain separate; no selection is made using confirmation outcomes.
+
+\subsection{Declared numerical-control omissions}
+
+The continuation formally omits unfinished dense\_fp8\_e4m3 and dense\_fp8\_e5m2 controls. All seven saved controls, including failed gates, and the cancelled attempt remain preserved. This scope closure does not claim that the original nine-control cohort completed or that native FP8 model inference was tested.
+
+\section{Mathematical methods and frozen constants}
+
+Let $W\in\mathbb{R}^{o\times i}$ and $X\in\mathbb{R}^{i\times n}$. Write $A=UV$ with rank at most $r$. The anchored objective is $\|(W-A)X\|_F^2+\beta n\|W-A\|_F^2$.
+
+Set $H=XX^T+\beta nI$ and $C=WH$ for exact teacher outputs. For measured outputs subtract the teacher bias first: $Y_b=Y-b\mathbf{1}^T$, then $C=Y_bX^T+\beta nW$. The extra-ridge solver adds $\lambda I$ to the geometry, with $\lambda=\rho\,\operatorname{mean}(\operatorname{eig}(H))$. For $G=H+\lambda I$, form $A_\mathrm{full}=CG^\dagger$ and truncate $A_\mathrm{full}G^{1/2}$ to rank $r$; multiply back by $G^{\dagger/2}$. Thus ridge-free full-rank anchored recovery gives $W$ on retained spectral directions, while positive extra ridge generally shrinks it.
+
+The implementation computes weighted covariance, eigendecomposition and weighted truncation in FP64, then returns FP32 factors for the declared storage cast. It clamps negative numerical eigenvalues to zero and retains regularized eigenvalues strictly above $\mathrm{rcond}\,\lambda_{\max}(G)$. Plain SVD uses FP32. Fixed-rank diagonal ASVD uses $s_j=\max(\operatorname{mean}_t|X_{jt}|,10^{-8})^{0.5}$, truncates $W\operatorname{diag}(s)$, and scales back. Factors use the recorded unbalanced convention unless a run contract explicitly declares a separate convention.
+
+The predeclared validation anchor sweep is beta=\{0,0.03,0.1,0.3,1\}; the extra-ridge fractions are rho=\{0,0.001,0.01\} at beta=0.1. Validation NLL ties within 1e-6 prefer less regularization. Native evaluation uses context/stride 512/256, full shifted targets including the tail, and 16 disjoint 512-token calibration chunks for seeds 11/23/37. The primary Gemma attention-output rank is 384. The amended hybrid rank is floor((17/24)*out*in/(out+in)); frontier ranks are floor(min(out,in)/divisor) for validation-only divisors2/3/4. Exact observed run constants and factor precisions follow below; missing fields remain unrecorded.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Precision & Main rank & Pseudoinverse rcond \\
+\hline\endhead
+R001 & architecture-replication-20261014-082807-5c73f669 & bfloat16 & shape-derived by 17/24 factor/dense fraction & 1e-07 \\
+R002 & architecture-replication-20261014-093845-97378b5e & bfloat16 & shape-derived by 17/24 factor/dense fraction & 1e-07 \\
+R003 & baselines-20261013-175255-6a00d4e8 & float16 & 384 & 1e-07 \\
+R004 & composition-20261013-185512-2bffd477 & float16 & 384 & 1e-07 \\
+R005 & composition-20261014-032120-486d799f & float16 & 384 & 1e-07 \\
+R006 & composition-20261014-054423-dbd821ff & float16 & 384 & 1e-07 \\
+R007 & precision-readiness-20261014-060840-6db37daf & float16 & 384 & 1e-07 \\
+R008 & regularization-20261013-171941-804f4c2e & float16 & 384 & 1e-07 \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Config beta & Config ridge fraction & Selected solver / baseline \\
+\hline\endhead
+R001 & architecture-replication-20261014-082807-5c73f669 & unmeasured & unmeasured & \{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "solver": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}\} \\
+R002 & architecture-replication-20261014-093845-97378b5e & unmeasured & unmeasured & \{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "solver": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}\} \\
+R003 & baselines-20261013-175255-6a00d4e8 & 0.1 & 0.01 & \{"baseline": "SVD and fixed-rank ASVD / whitening-only components, same FP16/rank", "solver": null\} \\
+R004 & composition-20261013-185512-2bffd477 & 0.1 & 0.01 & \{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "solver": null\} \\
+R005 & composition-20261014-032120-486d799f & 0.1 & 0.01 & \{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "solver": null\} \\
+R006 & composition-20261014-054423-dbd821ff & 0.1 & 0.01 & \{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "solver": null\} \\
+R007 & precision-readiness-20261014-060840-6db37daf & 0.1 & 0.01 & \{"baseline": "untouched dense BF16 teacher and copied BF16 control", "solver": null\} \\
+R008 & regularization-20261013-171941-804f4c2e & 0.1 & 0.01 & \{"baseline": "SVD and fixed-rank ASVD / whitening-only components, same FP16/rank", "solver": null\} \\
+\end{longtable}}
+\section{Related work and scope of the planned evidence}
+
+Data-aware low-rank compression predates this study. DRONE (https://proceedings.neurips.cc/paper/2021/hash/f56de5ef149cf0aedcc8f4797031e229-Abstract.html)
+derives a closed-form approximation informed by layer representations in BERT
+\cite{chen2021drone}. Fisher-weighted factorization (https://arxiv.org/abs/2207.00112)
+uses parameter importance to address disagreement between matrix reconstruction
+and task accuracy \cite{hsu2022weighted}. These are context for the present question:
+low local weight error alone cannot establish preserved global computation.
+
+ASVD (https://arxiv.org/abs/2312.05821) adapts decomposition to activation
+distributions and layer sensitivity \cite{yuan2023asvd}.
+SVD-LLM (https://arxiv.org/abs/2403.07378) combines truncation-aware whitening
+with sequential updates after compression \cite{wang2024svdllm}. Our fixed-rank
+diagonal ASVD and whitening-only SVD-LLM isolate their weighting components
+under a matched factor budget. They are not full-pipeline reproductions.
+SVD-LLM V2 (https://aclanthology.org/2025.naacl-long.217/) changes rank allocation
+and singular-value truncation \cite{wang2025svdllmv2}, so it belongs in a later
+adaptive-budget study rather than a claim that fixed per-matrix ranks reproduce
+its complete procedure.
+
+Global composition is already an explicit target of related work.
+SAES-SVD (https://arxiv.org/abs/2602.03051) addresses accumulated and local
+errors \cite{hu2026saessvd}; LACE-SVD (https://arxiv.org/abs/2607.03057) combines
+loss-aware allocation with residual-stream correction \cite{liu2026lacesvd}.
+Our smaller-group and downstream-drift comparisons test the location and extent
+of composition damage, without claiming to resolve it. The next comparator is
+SAES-SVD if cumulative drift remains the decisive failure.
+Quantization Error Propagation (https://arxiv.org/abs/2504.09629) demonstrates
+why accumulated errors also matter in layer-wise quantization \cite{arai2025qep}.
+That connection motivates measuring downstream behavior, but does not equate
+low-rank truncation with quantization or transfer an existing method's results.
+
+Loss-aware global allocation provides further distinctions from this study's
+fixed-rank setup. Zero Sum SVD (https://arxiv.org/abs/2602.02848) uses whitened
+component sensitivities under a global pruning rule \cite{abbasi2026zerosum}.
+IO-SVD (https://arxiv.org/abs/2605.15626) adds an output-side predictive metric
+and heterogeneous rank selection \cite{abbasi2026iosvd}. These motivate future
+equal-total-budget comparisons. They do not establish novelty for an anchored
+input-covariance truncation or for the current extra-ridge solver.
+
+The practical comparison distinguishes storage, accuracy, and execution cost.
+GPTQ (https://arxiv.org/abs/2210.17323) uses approximate second-order information
+for post-training quantization \cite{frantar2022gptq}.
+AWQ (https://arxiv.org/abs/2306.00978) uses activation-informed channel protection
+and an inference implementation \cite{lin2023awq}.
+SparseGPT (https://arxiv.org/abs/2301.00774) studies one-shot pruning
+\cite{frantar2023sparsegpt}. These are different representations, not matched
+fixed-rank baselines in the first wave. Their practical emphasis motivates
+recording actual checkpoint bytes and warmed end-to-end timings.
+
+EoRA (https://arxiv.org/abs/2410.21271) compensates compressed models with
+eigenspace-informed low-rank branches \cite{liu2024eora}.
+SVDQuant (https://arxiv.org/abs/2411.05007) absorbs outliers in a high-precision
+low-rank branch while quantizing a residual branch, and identifies the runtime
+overhead of naive separate branch execution \cite{li2024svdquant}. SVDQuant's
+published scope is diffusion models. It supplies a system-design warning for
+future hybrid experiments here, not evidence of LLM quality or speedups.
+
+CKA (https://proceedings.mlr.press/v97/kornblith19a.html) measures alignment
+between representation similarities \cite{kornblith2019cka}. We use it as a
+secondary diagnostic beside the predeclared normalized residual squared error;
+neither representation similarity nor norm preservation substitutes for held-out
+NLL or logit KL. Temperature scaling (https://proceedings.mlr.press/v70/guo17a.html)
+is a validation-fitted calibration control \cite{guo2017calibration}, adapted here
+to next-token probabilities. Improvement after temperature fitting would not
+by itself identify an LLM denoising mechanism.
+
+Evaluation conventions can change apparent model rankings; the reproducibility
+guidance in Biderman et al. (https://arxiv.org/abs/2405.14782) motivates pinned
+assets, task formats and declared target masking \cite{biderman2024evaluation}.
+Pointer Sentinel Mixture Models (https://arxiv.org/abs/1609.07843) introduced
+WikiText \cite{merity2016wikitext}. Because WikiText has already informed this
+project, its present test evaluation is regression evidence. The later fresh
+confirmation samples a locked C4 shard, whose provenance is the
+T5 study (https://jmlr.org/papers/v21/20-074.html) \cite{raffel2020t5}. Neither its
+sampled confirmation nor the initial WikiText wave represents all text domains.
+HellaSwag (https://aclanthology.org/P19-1472/) supplies a commonsense completion
+benchmark \cite{zellers2019hellaswag}, and ARC (https://arxiv.org/abs/1803.05457)
+supplies science-question reasoning with an explicit Challenge subset
+\cite{clark2018arc}. Those downstream evaluations remain pending; no downstream
+accuracy claim follows from the readiness controls.
+
+\section{Verified bibliography and dates}
+
+The additive BibTeX file (paper\_protocol\_v2.bib) contains the 22 plan references,
+verified from primary metadata on 2026-10-13. Preprint entries use the first
+submission year, record the checked revision, and separately note a venue when
+the primary page identifies one. In particular SVD-LLM is a 2024 preprint with
+ICLR 2025 metadata, GPTQ is a 2022 preprint with ICLR 2023 metadata, AWQ is a
+2023 preprint with MLSys 2024 metadata, and SVDQuant is a 2024 preprint with ICLR
+2025 metadata. EoRA's current primary metadata identifies \textbf{ICLR 2026 workshops},
+not main-conference publication. T5 is cited as its 2020 JMLR article, with its
+2019 preprint date recorded separately. Unverified venues are omitted.
+
+Author lists reflect the verified source version. The ASVD v5 author list and
+the EoRA v6 list differ from some earlier bibliographies; this file does not
+silently mix versions. Hsu et al.'s author spelling follows the conference PDF
+(Sung-En Chang); the arXiv metadata spells that name Sungen Chang. The direct
+OpenReview page returned a browser challenge, so metadata was cross-checked
+with the primary paper's indexed PDF and its arXiv record.
+
+\section{Recorded numerical controls}
+
+FP16 SVD readiness remains failed. Later BF16/FP8 variants are separate numerical cohorts, not repaired FP16 evidence. FP8 codes are decoded before BF16 multiplication; native tiny-GEMM support does not establish native model speed.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Variant & NLL & PPL \\
+\hline\endhead
+R001 & precision-readiness-20261014-060840-6db37daf / cancelled & teacher\_bf16 & 3.4515495 & 31.5492399 \\
+R002 & precision-readiness-20261014-060840-6db37daf / cancelled & copy\_bf16 & 3.4515495 & 31.5492399 \\
+R003 & precision-readiness-20261014-060840-6db37daf / cancelled & identity\_bf16 & 3.4515495 & 31.5492399 \\
+R004 & precision-readiness-20261014-060840-6db37daf / cancelled & svd\_bf16 & 3.45265812 & 31.5842357 \\
+R005 & precision-readiness-20261014-060840-6db37daf / cancelled & svd\_fp32\_compute & 3.45158372 & 31.5503197 \\
+R006 & precision-readiness-20261014-060840-6db37daf / cancelled & svd\_fp8\_e4m3 & 3.45542964 & 31.6718934 \\
+R007 & precision-readiness-20261014-060840-6db37daf / cancelled & svd\_fp8\_e5m2 & 3.47055948 & 32.1547273 \\
+R008 & readiness-20261013-164122-cdc919e9 / failed & teacher & 3.45156254 & 31.5496515 \\
+R009 & readiness-20261013-164122-cdc919e9 / failed & copied\_teacher & 3.45156254 & 31.5496515 \\
+R010 & readiness-20261013-164407-bda5b4d9 / completed & teacher & 3.45156254 & 31.5496515 \\
+R011 & readiness-20261013-164407-bda5b4d9 / completed & copied\_teacher & 3.45156254 & 31.5496515 \\
+R012 & readiness-20261013-164407-bda5b4d9 / completed & full\_rank\_factorized & 3.45156254 & 31.5496515 \\
+R013 & svd-diagnosis-20261013-165146-c3671715 / completed & teacher & 3.45156254 & 31.5496515 \\
+R014 & svd-diagnosis-20261013-165146-c3671715 / completed & dense\_svd\_fp32 & 3.4516607 & 31.5527485 \\
+R015 & svd-diagnosis-20261013-165146-c3671715 / completed & dense\_svd\_fp16 & 3.45170481 & 31.5541402 \\
+R016 & svd-diagnosis-20261013-165146-c3671715 / completed & unbalanced\_fp16 & 3.45186016 & 31.5590426 \\
+R017 & svd-diagnosis-20261013-165146-c3671715 / completed & balanced\_fp16 & 3.45184835 & 31.5586697 \\
+R018 & svd-diagnosis-20261013-165146-c3671715 / completed & float32\_execution & 3.4517713 & 31.5562382 \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Maximum probe error & Probe gate & NLL gate \\
+\hline\endhead
+R001 & precision-readiness-20261014-060840-6db37daf / cancelled & 0 & True & True \\
+R002 & precision-readiness-20261014-060840-6db37daf / cancelled & 0 & True & True \\
+R003 & precision-readiness-20261014-060840-6db37daf / cancelled & 0 & True & True \\
+R004 & precision-readiness-20261014-060840-6db37daf / cancelled & 1.0625 & False & False \\
+R005 & precision-readiness-20261014-060840-6db37daf / cancelled & 1.15625 & False & True \\
+R006 & precision-readiness-20261014-060840-6db37daf / cancelled & 9.73046875 & False & False \\
+R007 & precision-readiness-20261014-060840-6db37daf / cancelled & 7.8671875 & False & False \\
+R008 & readiness-20261013-164122-cdc919e9 / failed & 0 & True & unrecorded \\
+R009 & readiness-20261013-164122-cdc919e9 / failed & 0 & True & unrecorded \\
+R010 & readiness-20261013-164407-bda5b4d9 / completed & 0 & True & unrecorded \\
+R011 & readiness-20261013-164407-bda5b4d9 / completed & 0 & True & unrecorded \\
+R012 & readiness-20261013-164407-bda5b4d9 / completed & 0 & True & unrecorded \\
+R013 & svd-diagnosis-20261013-165146-c3671715 / completed & unmeasured & unrecorded & unrecorded \\
+R014 & svd-diagnosis-20261013-165146-c3671715 / completed & 0.1171875 & True & True \\
+R015 & svd-diagnosis-20261013-165146-c3671715 / completed & 0.140625 & False & True \\
+R016 & svd-diagnosis-20261013-165146-c3671715 / completed & 0.15234375 & False & True \\
+R017 & svd-diagnosis-20261013-165146-c3671715 / completed & 0.181640625 & False & True \\
+R018 & svd-diagnosis-20261013-165146-c3671715 / completed & 0.1171875 & True & True \\
+\end{longtable}}
+
+\section{Validation regularization controls}
+
+Every row identifies its attempt and scope. Mean \(\pm\) sample standard deviation is across available calibration seeds; a single seed has no estimated seed standard deviation. Incomplete attempts and partial seed coverage do not constitute a full cohort.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Specification & Split / group / rank scope & Seeds \\
+\hline\endhead
+R001 & regularization-20261013-171941-804f4c2e / completed & \{"method": "svd"\} & \{\} & [11] \\
+R002 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.1, "method": "fullrank\_ridge", "ridge\_fraction": 0.01\} & \{\} & [11] \\
+R003 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R004 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R005 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.1, "method": "anchored", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R006 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.3, "method": "anchored", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R007 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 1.0, "method": "anchored", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R008 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.0\} & \{\} & [11] \\
+R009 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.001\} & \{\} & [11] \\
+R010 & regularization-20261013-171941-804f4c2e / completed & \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.01\} & \{\} & [11] \\
+R011 & regularization-20261013-171941-804f4c2e / completed & \{"method": "asvd"\} & \{\} & [11] \\
+\end{longtable}}
+\par\noindent Panel 2 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & NLL mean & NLL seed SD & Drift mean \\
+\hline\endhead
+R001 & regularization-20261013-171941-804f4c2e / completed & 5.14486078 & unmeasured & unmeasured \\
+R002 & regularization-20261013-171941-804f4c2e / completed & 3.49923448 & unmeasured & unmeasured \\
+R003 & regularization-20261013-171941-804f4c2e / completed & 3.60078899 & unmeasured & unmeasured \\
+R004 & regularization-20261013-171941-804f4c2e / completed & 3.59662239 & unmeasured & unmeasured \\
+R005 & regularization-20261013-171941-804f4c2e / completed & 3.59675176 & unmeasured & unmeasured \\
+R006 & regularization-20261013-171941-804f4c2e / completed & 3.607465 & unmeasured & unmeasured \\
+R007 & regularization-20261013-171941-804f4c2e / completed & 3.61579886 & unmeasured & unmeasured \\
+R008 & regularization-20261013-171941-804f4c2e / completed & 3.59685438 & unmeasured & unmeasured \\
+R009 & regularization-20261013-171941-804f4c2e / completed & 3.59727845 & unmeasured & unmeasured \\
+R010 & regularization-20261013-171941-804f4c2e / completed & 3.60682971 & unmeasured & unmeasured \\
+R011 & regularization-20261013-171941-804f4c2e / completed & 3.73607467 & unmeasured & unmeasured \\
+\end{longtable}}
+\par\noindent Panel 3 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.3133\textwidth}p{0.3133\textwidth}p{0.3133\textwidth}}
+Row ID & Run / state & Drift seed SD \\
+\hline\endhead
+R001 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R002 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R003 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R004 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R005 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R006 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R007 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R008 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R009 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R010 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+R011 & regularization-20261013-171941-804f4c2e / completed & unmeasured \\
+\end{longtable}}
+
+\section{Gemma full-stack component comparisons}
+
+Every row identifies its attempt and scope. Mean \(\pm\) sample standard deviation is across available calibration seeds; a single seed has no estimated seed standard deviation. Incomplete attempts and partial seed coverage do not constitute a full cohort.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Specification & Split / group / rank scope & Seeds \\
+\hline\endhead
+R001 & baselines-20261013-175255-6a00d4e8 / completed & \{"method": "svd"\} & \{\} & [11] \\
+R002 & baselines-20261013-175255-6a00d4e8 / completed & \{"method": "asvd"\} & \{\} & [11, 23, 37] \\
+R003 & baselines-20261013-175255-6a00d4e8 / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{\} & [11, 23, 37] \\
+R004 & baselines-20261013-175255-6a00d4e8 / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{\} & [11, 23, 37] \\
+R005 & baselines-20261013-175255-6a00d4e8 / completed & \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.01\} & \{\} & [11, 23, 37] \\
+\end{longtable}}
+\par\noindent Panel 2 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & NLL mean & NLL seed SD & Drift mean \\
+\hline\endhead
+R001 & baselines-20261013-175255-6a00d4e8 / completed & 5.08868112 & unmeasured & 0.0742475831 \\
+R002 & baselines-20261013-175255-6a00d4e8 / completed & 3.69446606 & 0.00241956806 & 0.0309717453 \\
+R003 & baselines-20261013-175255-6a00d4e8 / completed & 3.57281383 & 0.0118191598 & 0.0106375166 \\
+R004 & baselines-20261013-175255-6a00d4e8 / completed & 3.56592113 & 0.00957592299 & 0.0105470011 \\
+R005 & baselines-20261013-175255-6a00d4e8 / completed & 3.57903427 & 0.00852077408 & 0.0118359709 \\
+\end{longtable}}
+\par\noindent Panel 3 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.3133\textwidth}p{0.3133\textwidth}p{0.3133\textwidth}}
+Row ID & Run / state & Drift seed SD \\
+\hline\endhead
+R001 & baselines-20261013-175255-6a00d4e8 / completed & unmeasured \\
+R002 & baselines-20261013-175255-6a00d4e8 / completed & 0.00019731531 \\
+R003 & baselines-20261013-175255-6a00d4e8 / completed & 0.000382136395 \\
+R004 & baselines-20261013-175255-6a00d4e8 / completed & 0.000492296849 \\
+R005 & baselines-20261013-175255-6a00d4e8 / completed & 0.000138552104 \\
+\end{longtable}}
+
+\section{Composition and group heterogeneity}
+
+Every row identifies its attempt and scope. Mean \(\pm\) sample standard deviation is across available calibration seeds; a single seed has no estimated seed standard deviation. Incomplete attempts and partial seed coverage do not constitute a full cohort.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Specification & Split / group / rank scope & Seeds \\
+\hline\endhead
+R001 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R002 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R003 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R004 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R005 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R006 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R007 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R008 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R009 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R010 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R011 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R012 & composition-20261013-185512-2bffd477 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11] \\
+R013 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R014 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R015 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R016 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R017 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R018 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R019 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R020 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R021 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R022 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R023 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R024 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R025 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R026 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R027 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R028 & composition-20261014-032120-486d799f / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\} & [11, 23] \\
+R029 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R030 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R031 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R032 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R033 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R034 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R035 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R036 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R037 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R038 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [12, 13], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R039 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R040 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R041 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R042 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R043 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R044 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R045 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [22, 23, 24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R046 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [22, 23, 24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R047 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+R048 & composition-20261014-054423-dbd821ff / completed & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"group": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25], "rank": 384, "split": "test"\} & [11, 23, 37] \\
+\end{longtable}}
+\par\noindent Panel 2 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & NLL mean & NLL seed SD & Drift mean \\
+\hline\endhead
+R001 & composition-20261013-185512-2bffd477 / interrupted & 3.45206785 & 0.000410778252 & 0.00207792164 \\
+R002 & composition-20261013-185512-2bffd477 / interrupted & 3.45201942 & 0.000409256997 & 0.00207452887 \\
+R003 & composition-20261013-185512-2bffd477 / interrupted & 3.45825421 & 0.00132397251 & 8.76745161e-05 \\
+R004 & composition-20261013-185512-2bffd477 / interrupted & 3.4579111 & 0.00143757277 & 8.91802058e-05 \\
+R005 & composition-20261013-185512-2bffd477 / interrupted & 3.45142891 & 0.000329325004 & 1.69831209e-06 \\
+R006 & composition-20261013-185512-2bffd477 / interrupted & 3.45122641 & 0.000131137763 & 2.023157e-06 \\
+R007 & composition-20261013-185512-2bffd477 / interrupted & 3.45442908 & 0.00205462111 & 0.00365644585 \\
+R008 & composition-20261013-185512-2bffd477 / interrupted & 3.45438131 & 0.00214728679 & 0.00356760921 \\
+R009 & composition-20261013-185512-2bffd477 / interrupted & 3.46353003 & 0.00115146509 & 0.000141608504 \\
+R010 & composition-20261013-185512-2bffd477 / interrupted & 3.46353582 & 0.00129669463 & 0.000144554107 \\
+R011 & composition-20261013-185512-2bffd477 / interrupted & 3.45212529 & 0.000451146203 & 1.23266207e-05 \\
+R012 & composition-20261013-185512-2bffd477 / interrupted & 3.45195513 & unmeasured & 1.21042136e-05 \\
+R013 & composition-20261014-032120-486d799f / interrupted & 3.45206785 & 0.000410778252 & 0.00207792164 \\
+R014 & composition-20261014-032120-486d799f / interrupted & 3.45201942 & 0.000409256997 & 0.00207452887 \\
+R015 & composition-20261014-032120-486d799f / interrupted & 3.45825421 & 0.00132397251 & 8.76745161e-05 \\
+R016 & composition-20261014-032120-486d799f / interrupted & 3.4579111 & 0.00143757277 & 8.91802058e-05 \\
+R017 & composition-20261014-032120-486d799f / interrupted & 3.45142891 & 0.000329325004 & 1.69831209e-06 \\
+R018 & composition-20261014-032120-486d799f / interrupted & 3.45122641 & 0.000131137763 & 2.023157e-06 \\
+R019 & composition-20261014-032120-486d799f / interrupted & 3.45442908 & 0.00205462111 & 0.00365644585 \\
+R020 & composition-20261014-032120-486d799f / interrupted & 3.45438131 & 0.00214728679 & 0.00356760921 \\
+R021 & composition-20261014-032120-486d799f / interrupted & 3.46353003 & 0.00115146509 & 0.000141608504 \\
+R022 & composition-20261014-032120-486d799f / interrupted & 3.46353582 & 0.00129669463 & 0.000144554107 \\
+R023 & composition-20261014-032120-486d799f / interrupted & 3.45212529 & 0.000451146203 & 1.23266207e-05 \\
+R024 & composition-20261014-032120-486d799f / interrupted & 3.45194198 & 0.000101102007 & 1.22970593e-05 \\
+R025 & composition-20261014-032120-486d799f / interrupted & 3.46224947 & 0.000734496385 & 0.0061389891 \\
+R026 & composition-20261014-032120-486d799f / interrupted & 3.4619553 & 0.00102918121 & 0.00600512161 \\
+R027 & composition-20261014-032120-486d799f / interrupted & 3.47310172 & 0.000470679639 & 0.00038058521 \\
+R028 & composition-20261014-032120-486d799f / interrupted & 3.4765793 & 1.58332576e-05 & 0.000438405635 \\
+R029 & composition-20261014-054423-dbd821ff / completed & 3.45206785 & 0.000410778252 & 0.00207792164 \\
+R030 & composition-20261014-054423-dbd821ff / completed & 3.45201942 & 0.000409256997 & 0.00207452887 \\
+R031 & composition-20261014-054423-dbd821ff / completed & 3.45825421 & 0.00132397251 & 8.76745161e-05 \\
+R032 & composition-20261014-054423-dbd821ff / completed & 3.4579111 & 0.00143757277 & 8.91802058e-05 \\
+R033 & composition-20261014-054423-dbd821ff / completed & 3.45142891 & 0.000329325004 & 1.69831209e-06 \\
+R034 & composition-20261014-054423-dbd821ff / completed & 3.45122641 & 0.000131137763 & 2.023157e-06 \\
+R035 & composition-20261014-054423-dbd821ff / completed & 3.45442908 & 0.00205462111 & 0.00365644585 \\
+R036 & composition-20261014-054423-dbd821ff / completed & 3.45438131 & 0.00214728679 & 0.00356760921 \\
+R037 & composition-20261014-054423-dbd821ff / completed & 3.46353003 & 0.00115146509 & 0.000141608504 \\
+R038 & composition-20261014-054423-dbd821ff / completed & 3.46353582 & 0.00129669463 & 0.000144554107 \\
+R039 & composition-20261014-054423-dbd821ff / completed & 3.45212529 & 0.000451146203 & 1.23266207e-05 \\
+R040 & composition-20261014-054423-dbd821ff / completed & 3.45194198 & 0.000101102007 & 1.22970593e-05 \\
+R041 & composition-20261014-054423-dbd821ff / completed & 3.46224947 & 0.000734496385 & 0.0061389891 \\
+R042 & composition-20261014-054423-dbd821ff / completed & 3.4619553 & 0.00102918121 & 0.00600512161 \\
+R043 & composition-20261014-054423-dbd821ff / completed & 3.47310172 & 0.000470679639 & 0.00038058521 \\
+R044 & composition-20261014-054423-dbd821ff / completed & 3.47582544 & 0.00130576482 & 0.000449140822 \\
+R045 & composition-20261014-054423-dbd821ff / completed & 3.45396348 & 0.00136122732 & 0.000123680895 \\
+R046 & composition-20261014-054423-dbd821ff / completed & 3.4529696 & 0.000385430754 & 0.00011315281 \\
+R047 & composition-20261014-054423-dbd821ff / completed & 3.57281383 & 0.0118191598 & 0.0106375166 \\
+R048 & composition-20261014-054423-dbd821ff / completed & 3.56592113 & 0.00957592299 & 0.0105470011 \\
+\end{longtable}}
+\par\noindent Panel 3 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.3133\textwidth}p{0.3133\textwidth}p{0.3133\textwidth}}
+Row ID & Run / state & Drift seed SD \\
+\hline\endhead
+R001 & composition-20261013-185512-2bffd477 / interrupted & 0.00017472334 \\
+R002 & composition-20261013-185512-2bffd477 / interrupted & 0.000178507413 \\
+R003 & composition-20261013-185512-2bffd477 / interrupted & 2.4463997e-06 \\
+R004 & composition-20261013-185512-2bffd477 / interrupted & 2.24916162e-06 \\
+R005 & composition-20261013-185512-2bffd477 / interrupted & 9.05406025e-08 \\
+R006 & composition-20261013-185512-2bffd477 / interrupted & 9.42299447e-08 \\
+R007 & composition-20261013-185512-2bffd477 / interrupted & 0.000137627131 \\
+R008 & composition-20261013-185512-2bffd477 / interrupted & 0.000238304358 \\
+R009 & composition-20261013-185512-2bffd477 / interrupted & 4.06719991e-06 \\
+R010 & composition-20261013-185512-2bffd477 / interrupted & 4.09979657e-06 \\
+R011 & composition-20261013-185512-2bffd477 / interrupted & 3.68456941e-07 \\
+R012 & composition-20261013-185512-2bffd477 / interrupted & unmeasured \\
+R013 & composition-20261014-032120-486d799f / interrupted & 0.00017472334 \\
+R014 & composition-20261014-032120-486d799f / interrupted & 0.000178507413 \\
+R015 & composition-20261014-032120-486d799f / interrupted & 2.4463997e-06 \\
+R016 & composition-20261014-032120-486d799f / interrupted & 2.24916162e-06 \\
+R017 & composition-20261014-032120-486d799f / interrupted & 9.05406025e-08 \\
+R018 & composition-20261014-032120-486d799f / interrupted & 9.42299447e-08 \\
+R019 & composition-20261014-032120-486d799f / interrupted & 0.000137627131 \\
+R020 & composition-20261014-032120-486d799f / interrupted & 0.000238304358 \\
+R021 & composition-20261014-032120-486d799f / interrupted & 4.06719991e-06 \\
+R022 & composition-20261014-032120-486d799f / interrupted & 4.09979657e-06 \\
+R023 & composition-20261014-032120-486d799f / interrupted & 3.68456941e-07 \\
+R024 & composition-20261014-032120-486d799f / interrupted & 3.91576035e-07 \\
+R025 & composition-20261014-032120-486d799f / interrupted & 0.000142663396 \\
+R026 & composition-20261014-032120-486d799f / interrupted & 0.000161076046 \\
+R027 & composition-20261014-032120-486d799f / interrupted & 1.72440575e-05 \\
+R028 & composition-20261014-032120-486d799f / interrupted & 3.31525237e-07 \\
+R029 & composition-20261014-054423-dbd821ff / completed & 0.00017472334 \\
+R030 & composition-20261014-054423-dbd821ff / completed & 0.000178507413 \\
+R031 & composition-20261014-054423-dbd821ff / completed & 2.4463997e-06 \\
+R032 & composition-20261014-054423-dbd821ff / completed & 2.24916162e-06 \\
+R033 & composition-20261014-054423-dbd821ff / completed & 9.05406025e-08 \\
+R034 & composition-20261014-054423-dbd821ff / completed & 9.42299447e-08 \\
+R035 & composition-20261014-054423-dbd821ff / completed & 0.000137627131 \\
+R036 & composition-20261014-054423-dbd821ff / completed & 0.000238304358 \\
+R037 & composition-20261014-054423-dbd821ff / completed & 4.06719991e-06 \\
+R038 & composition-20261014-054423-dbd821ff / completed & 4.09979657e-06 \\
+R039 & composition-20261014-054423-dbd821ff / completed & 3.68456941e-07 \\
+R040 & composition-20261014-054423-dbd821ff / completed & 3.91576035e-07 \\
+R041 & composition-20261014-054423-dbd821ff / completed & 0.000142663396 \\
+R042 & composition-20261014-054423-dbd821ff / completed & 0.000161076046 \\
+R043 & composition-20261014-054423-dbd821ff / completed & 1.72440575e-05 \\
+R044 & composition-20261014-054423-dbd821ff / completed & 1.85953677e-05 \\
+R045 & composition-20261014-054423-dbd821ff / completed & 1.21816693e-06 \\
+R046 & composition-20261014-054423-dbd821ff / completed & 2.34008283e-06 \\
+R047 & composition-20261014-054423-dbd821ff / completed & 0.000382136395 \\
+R048 & composition-20261014-054423-dbd821ff / completed & 0.000492296849 \\
+\end{longtable}}
+
+Group-dependent outcomes must not be pooled into a universal-improvement claim. A lower full-stack NLL with unchanged/worse residual drift does not satisfy the predeclared joint gate. Three paired seeds with both higher NLL and higher drift weaken the candidate only at that measured scope.
+
+\section{Amended hybrid architecture and rank-frontier comparisons}
+
+Every row identifies its attempt and scope. Mean \(\pm\) sample standard deviation is across available calibration seeds; a single seed has no estimated seed standard deviation. Incomplete attempts and partial seed coverage do not constitute a full cohort.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Specification & Split / group / rank scope & Seeds \\
+\hline\endhead
+R001 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"method": "teacher"\} & \{"rank": null, "rank\_divisor": null, "recipe\_ranks": [null, null, null, null, null, null], "split": "test"\} & [11] \\
+R002 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"method": "svd"\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11] \\
+R003 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11, 23, 37] \\
+R004 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11, 23, 37] \\
+R005 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"rank": 512, "rank\_divisor": 2, "recipe\_ranks": [512, 512, 512, 512, 512, 512], "split": "validation"\} & [11] \\
+R006 & architecture-replication-20261014-082807-5c73f669 / interrupted & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"rank": 512, "rank\_divisor": 2, "recipe\_ranks": [512, 512, 512, 512, 512, 512], "split": "validation"\} & [11] \\
+R007 & architecture-replication-20261014-093845-97378b5e / running & \{"method": "teacher"\} & \{"rank": null, "rank\_divisor": null, "recipe\_ranks": [null, null, null, null, null, null], "split": "test"\} & [11] \\
+R008 & architecture-replication-20261014-093845-97378b5e / running & \{"method": "svd"\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11] \\
+R009 & architecture-replication-20261014-093845-97378b5e / running & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11, 23, 37] \\
+R010 & architecture-replication-20261014-093845-97378b5e / running & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"rank": 483, "rank\_divisor": null, "recipe\_ranks": [483, 483, 483, 483, 483, 483], "split": "test"\} & [11, 23, 37] \\
+R011 & architecture-replication-20261014-093845-97378b5e / running & \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\} & \{"rank": 512, "rank\_divisor": 2, "recipe\_ranks": [512, 512, 512, 512, 512, 512], "split": "validation"\} & [11] \\
+R012 & architecture-replication-20261014-093845-97378b5e / running & \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\} & \{"rank": 512, "rank\_divisor": 2, "recipe\_ranks": [512, 512, 512, 512, 512, 512], "split": "validation"\} & [11] \\
+\end{longtable}}
+\par\noindent Panel 2 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & NLL mean & NLL seed SD & Drift mean \\
+\hline\endhead
+R001 & architecture-replication-20261014-082807-5c73f669 / interrupted & 2.91722043 & unmeasured & 0 \\
+R002 & architecture-replication-20261014-082807-5c73f669 / interrupted & 3.18099289 & unmeasured & 0.0616629847 \\
+R003 & architecture-replication-20261014-082807-5c73f669 / interrupted & 2.93443868 & 0.00145544439 & 0.00615478758 \\
+R004 & architecture-replication-20261014-082807-5c73f669 / interrupted & 2.94332386 & 0.00227178531 & 0.0127619533 \\
+R005 & architecture-replication-20261014-082807-5c73f669 / interrupted & 2.98414014 & unmeasured & 0.00510808896 \\
+R006 & architecture-replication-20261014-082807-5c73f669 / interrupted & 2.99539651 & unmeasured & 0.0109786805 \\
+R007 & architecture-replication-20261014-093845-97378b5e / running & 2.91722043 & unmeasured & 0 \\
+R008 & architecture-replication-20261014-093845-97378b5e / running & 3.18099289 & unmeasured & 0.0616629847 \\
+R009 & architecture-replication-20261014-093845-97378b5e / running & 2.93443868 & 0.00145544439 & 0.00615478758 \\
+R010 & architecture-replication-20261014-093845-97378b5e / running & 2.94332386 & 0.00227178531 & 0.0127619533 \\
+R011 & architecture-replication-20261014-093845-97378b5e / running & 2.98414014 & unmeasured & 0.00510808896 \\
+R012 & architecture-replication-20261014-093845-97378b5e / running & 2.99539651 & unmeasured & 0.0109786805 \\
+\end{longtable}}
+\par\noindent Panel 3 of 3; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.3133\textwidth}p{0.3133\textwidth}p{0.3133\textwidth}}
+Row ID & Run / state & Drift seed SD \\
+\hline\endhead
+R001 & architecture-replication-20261014-082807-5c73f669 / interrupted & unmeasured \\
+R002 & architecture-replication-20261014-082807-5c73f669 / interrupted & unmeasured \\
+R003 & architecture-replication-20261014-082807-5c73f669 / interrupted & 9.06818768e-05 \\
+R004 & architecture-replication-20261014-082807-5c73f669 / interrupted & 0.000160025705 \\
+R005 & architecture-replication-20261014-082807-5c73f669 / interrupted & unmeasured \\
+R006 & architecture-replication-20261014-082807-5c73f669 / interrupted & unmeasured \\
+R007 & architecture-replication-20261014-093845-97378b5e / running & unmeasured \\
+R008 & architecture-replication-20261014-093845-97378b5e / running & unmeasured \\
+R009 & architecture-replication-20261014-093845-97378b5e / running & 9.06818768e-05 \\
+R010 & architecture-replication-20261014-093845-97378b5e / running & 0.000160025705 \\
+R011 & architecture-replication-20261014-093845-97378b5e / running & unmeasured \\
+R012 & architecture-replication-20261014-093845-97378b5e / running & unmeasured \\
+\end{longtable}}
+
+Recovery provenance: \{"independent\_replication": false, "interrupted\_cost": \{"basis": "Conservative actual Python process launch-to-next-system-boot wall interval; includes reboot gap; original status retained unchanged.", "charged\_seconds": 3647.1586377620697, "independent\_replication": false, "model": "Qwen/Qwen3.5-0.8B", "new\_boot\_epoch": 1791970132.8027894, "records\_saved": 10, "run": "C:\textbackslash{}\textbackslash{}Users\textbackslash{}\textbackslash{}NPC\textbackslash{}\textbackslash{}Desktop\textbackslash{}\textbackslash{}ResearchCompression\textbackslash{}\textbackslash{}results\textbackslash{}\textbackslash{}paper-v2\textbackslash{}\textbackslash{}architecture-replication-20261014-082807-5c73f669", "run\_id": "architecture-replication-20261014-082807-5c73f669", "source\_artifacts": \{"config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898", "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9", "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621", "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3", "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd", "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8"\}, "stage": "replication", "started\_epoch": 1791966485.6441517, "state": "interrupted by reboot"\}, "reused\_records": 10, "source\_artifacts": \{"config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898", "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9", "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621", "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3", "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd", "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8"\}, "source\_run": "C:\textbackslash{}\textbackslash{}Users\textbackslash{}\textbackslash{}NPC\textbackslash{}\textbackslash{}Desktop\textbackslash{}\textbackslash{}ResearchCompression\textbackslash{}\textbackslash{}results\textbackslash{}\textbackslash{}paper-v2\textbackslash{}\textbackslash{}architecture-replication-20261014-082807-5c73f669"\}. Successor includes preserved source observations; attempts remain separate and are not independent replications.
+
+
+Scoped finding (architecture-replication-20261014-082807-5c73f669, Qwen/Qwen3.5-0.8B): at the primary test rank, anchoring has higher NLL and higher primary drift than matched whitening in all three calibration seeds. This weakens the anchor hypothesis at this measured scope; it does not establish a universal failure or count reused observations as new replications.
+
+Scoped finding (architecture-replication-20261014-093845-97378b5e, Qwen/Qwen3.5-0.8B): at the primary test rank, anchoring has higher NLL and higher primary drift than matched whitening in all three calibration seeds. This weakens the anchor hypothesis at this measured scope; it does not establish a universal failure or count reused observations as new replications.
+
+\section{Practical costs and calibration}
+
+Whole-model checkpoint bytes include archive overhead; factor payload size and whole-model savings are separate quantities. Placements and precision must agree before comparing timings. Below are measured records only; missing conditions remain unmeasured.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 5; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Label & Seed & Bits \\
+\hline\endhead
+R001 & Unmeasured & pending & pending & pending \\
+\end{longtable}}
+\par\noindent Panel 2 of 5; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Whole bytes & Factor bytes & Raw NLL \\
+\hline\endhead
+R001 & Unmeasured & unmeasured & unmeasured & unmeasured \\
+\end{longtable}}
+\par\noindent Panel 3 of 5; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Scaled NLL & Temperature & Mode \\
+\hline\endhead
+R001 & Unmeasured & unmeasured & unmeasured & pending \\
+\end{longtable}}
+\par\noindent Panel 4 of 5; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run / state & Prefill & Median s & p95 s \\
+\hline\endhead
+R001 & Unmeasured & pending & unmeasured & unmeasured \\
+\end{longtable}}
+\par\noindent Panel 5 of 5; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Run / state & Allocated bytes & Reserved bytes \\
+\hline\endhead
+R001 & Unmeasured & unmeasured & unmeasured \\
+\end{longtable}}
+
+\subsection{Practical measurement scope}
+
+The saved hardware-gates.json uses the same seed's FP16 whitening reference for both FP16 and INT8 solver factors. Its threshold concerns median latency and peak allocated memory only; it is not a same-bit INT8 gate and does not test p95, reserved memory, serialized bytes or quality. The separate descriptive ratios below use same-run, same-seed, same-bit whitening/anchor records with matching device, declared placement, compute precision and workload. Missing or ambiguous pairs remain excluded in report.json. No original hardware gate is relabeled.
+
+Timings use batch size 1, 10 warmups and 30 synchronized samples. Cached 128-token decode timing excludes the initial prompt pass; prefill is measured separately at 128 and 512 tokens. Peak allocated/reserved bytes are CUDA allocator statistics including resident model and cache, not total driver GPU memory or system RAM. INT8 factors are dequantized for floating-point multiplication, so these timings do not establish native INT8-kernel acceleration.
+
+Compressed whole-model reload parity covers a 128-token prompt and one cached next-token forward, not the complete evaluation corpus or arbitrary generation. Dense-teacher serialized bytes are measured without that whole-model reload probe. Factor probes and whole-model probes are distinct. The practical stage cap is cooperative; terminal elapsed wall time remains the charged cost.
+
+\subsection{Same-bit descriptive cost ratios}
+
+Each ratio is anchor divided by matched whitening; below 1 is lower cost. Placement is explicit row metadata where available, otherwise the full-model resident device declared in the same-run configuration. These are exploratory measured workload comparisons, not new promotion gates.
+
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 4; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Seed & Factor bits & Device / placement \\
+\hline\endhead
+R001 & Unmeasured & pending & pending & pending \\
+\end{longtable}}
+\par\noindent Panel 2 of 4; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Mode & Prefill & Decode \\
+\hline\endhead
+R001 & Unmeasured & pending & pending & pending \\
+\end{longtable}}
+\par\noindent Panel 3 of 4; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Median ratio & p95 ratio & Allocated ratio \\
+\hline\endhead
+R001 & Unmeasured & unmeasured & unmeasured & unmeasured \\
+\end{longtable}}
+\par\noindent Panel 4 of 4; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Run & Reserved ratio & Factor-byte ratio & Whole-byte ratio \\
+\hline\endhead
+R001 & Unmeasured & unmeasured & unmeasured & unmeasured \\
+\end{longtable}}
+
+\section{Statistical interpretation}
+
+NLL differences use 2,000 paired bootstrap resamples of fixed contiguous 4,096-target blocks. The final partial block remains in full-test NLL but is excluded from fixed-block resampling. Individual dependent tokens are not bootstrapped. Per-seed confidence intervals, exact excluded counts, matched target checks and all scoped candidate-minus-baseline differences are in report.json and report.md. These are evaluation-block intervals, not seed intervals.
+
+\section{Reproducibility and incomplete-run appendix}
+
+The accompanying report.json embeds each retained contract, source hashes, package/device versions, asset revisions, calibration/split hashes, target recipes, run-specific command, raw per-seed metrics, integrity checks, artifact paths and all failed/interrupted attempts. Read errors are retained explicitly; promotion is disabled.
+
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Stage & Recorded charged wall seconds & Declared cap seconds & Unknown-cost attempts \\
+\hline\endhead
+readiness & 1381.392 & 3600 & [] \\
+regularization & 1589.148 & 14400 & [] \\
+baselines & 3736.553 & 25200 & [] \\
+composition & 12825.574 & 14400 & [] \\
+architecture & 3647.159 & 14400 & ['architecture-replication-20261014-093845-97378b5e'] \\
+practical & 0.000 & 14400 & [] \\
+\end{longtable}}
+
+Elapsed-wall-time charges include failed/retried work and may include reboot downtime. The first reboot has an unbounded unlogged tail; no exact GPU-hour compliance claim.
+
+\section{Conclusion}
+
+No established practical or universal compression advantage; retained within-model findings remain exploratory.
+
+Complete negative or mixed comparisons are retained as bounded evidence. Unmeasured downstream tasks, fresh-corpus confirmation, absent seeds or hardware conditions are not implied by dispatcher completion.
+
+\section{Measured scientific figures}
+
+
+
+
+
+
+
+Figure inputs, scope, source hashes and unavailable measurements are recorded in figures/provenance.json.
+
+\section{Review export formats}
+
+Standalone LaTeX source and a separately generated ReportLab PDF are review artifacts. Their preparation status and source hashes are recorded in export-status.json. The ReportLab PDF is not compiled from LaTeX; successful TeX compilation requires a separate compiler diagnostic.
+\section{Embedded measured figures}
+Coordinates below come from the figure provenance associated with this report. Lines connect recorded measurements; no fitted curve or fabricated points are added. Each attempt, model and split remains separate. Sample means are not confidence intervals.
+\subsection{Qwen/Qwen3.5-0.8B: Primary test / architecture-replication-20261014-082807-5c73f669}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\put(180.000,165.000){\circle*{2}}
+\put(183.000,168.000){\makebox(0,0)[l]{\tiny 1}}
+\put(180.000,25.000){\circle*{2}}
+\put(183.000,28.000){\makebox(0,0)[l]{\tiny 2}}
+\put(180.000,30.045){\circle*{2}}
+\put(183.000,33.045){\makebox(0,0)[l]{\tiny 3}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0.20752}}
+\put(305,12){\makebox(0,0)[l]{\tiny 1.2075}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.017218}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.26377}}
+\put(170,0){\makebox(0,0){\scriptsize Target factor parameter fraction}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Same-split teacher-relative NLL}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: \{"method": "svd"\}; 1 measured points.\par
+\noindent\footnotesize Series 2: \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\noindent\footnotesize Series 3: \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\subsection{Qwen/Qwen3.5-0.8B: Validation frontier (not confirmation) / architecture-replication-20261014-082807-5c73f669}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\put(180.000,25.000){\circle*{2}}
+\put(183.000,28.000){\makebox(0,0)[l]{\tiny 1}}
+\put(180.000,165.000){\circle*{2}}
+\put(183.000,168.000){\makebox(0,0)[l]{\tiny 2}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0.25}}
+\put(305,12){\makebox(0,0)[l]{\tiny 1.25}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.013286}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.024542}}
+\put(170,0){\makebox(0,0){\scriptsize Target factor parameter fraction}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Same-split teacher-relative NLL}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\noindent\footnotesize Series 2: \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\subsection{Qwen/Qwen3.5-0.8B: Primary test / architecture-replication-20261014-093845-97378b5e}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\put(180.000,165.000){\circle*{2}}
+\put(183.000,168.000){\makebox(0,0)[l]{\tiny 1}}
+\put(180.000,25.000){\circle*{2}}
+\put(183.000,28.000){\makebox(0,0)[l]{\tiny 2}}
+\put(180.000,30.045){\circle*{2}}
+\put(183.000,33.045){\makebox(0,0)[l]{\tiny 3}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0.20752}}
+\put(305,12){\makebox(0,0)[l]{\tiny 1.2075}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.017218}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.26377}}
+\put(170,0){\makebox(0,0){\scriptsize Target factor parameter fraction}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Same-split teacher-relative NLL}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: \{"method": "svd"\}; 1 measured points.\par
+\noindent\footnotesize Series 2: \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\noindent\footnotesize Series 3: \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\subsection{Qwen/Qwen3.5-0.8B: Validation frontier (not confirmation) / architecture-replication-20261014-093845-97378b5e}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\put(180.000,25.000){\circle*{2}}
+\put(183.000,28.000){\makebox(0,0)[l]{\tiny 1}}
+\put(180.000,165.000){\circle*{2}}
+\put(183.000,168.000){\makebox(0,0)[l]{\tiny 2}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0.25}}
+\put(305,12){\makebox(0,0)[l]{\tiny 1.25}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.013286}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.024542}}
+\put(170,0){\makebox(0,0){\scriptsize Target factor parameter fraction}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Same-split teacher-relative NLL}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\noindent\footnotesize Series 2: \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}; 1 measured points.\par
+\subsection{Gemma residual drift: baselines-20261013-175255-6a00d4e8}
+\begin{center}\setlength{\unitlength}{1pt}
+\begin{picture}(350,195)
+\put(35,25){\line(1,0){290}}
+\put(35,25){\line(0,1){140}}
+\qbezier(35.000,32.473)(40.800,32.977)(46.600,33.480)
+\qbezier(46.600,33.480)(52.400,37.191)(58.200,40.902)
+\qbezier(58.200,40.902)(64.000,38.694)(69.800,36.487)
+\qbezier(69.800,36.487)(75.600,38.982)(81.400,41.477)
+\qbezier(81.400,41.477)(87.200,43.612)(93.000,45.746)
+\qbezier(93.000,45.746)(98.800,55.266)(104.600,64.786)
+\qbezier(104.600,64.786)(110.400,95.497)(116.200,126.207)
+\qbezier(116.200,126.207)(122.000,118.480)(127.800,110.753)
+\qbezier(127.800,110.753)(133.600,126.483)(139.400,142.213)
+\qbezier(139.400,142.213)(145.200,135.669)(151.000,129.125)
+\qbezier(151.000,129.125)(156.800,131.750)(162.600,134.375)
+\qbezier(162.600,134.375)(168.400,140.894)(174.200,147.413)
+\qbezier(174.200,147.413)(180.000,147.874)(185.800,148.335)
+\qbezier(185.800,148.335)(191.600,147.719)(197.400,147.104)
+\qbezier(197.400,147.104)(203.200,142.011)(209.000,136.918)
+\qbezier(209.000,136.918)(214.800,135.181)(220.600,133.443)
+\qbezier(220.600,133.443)(226.400,142.391)(232.200,151.339)
+\qbezier(232.200,151.339)(238.000,155.094)(243.800,158.849)
+\qbezier(243.800,158.849)(249.600,151.859)(255.400,144.869)
+\qbezier(255.400,144.869)(261.200,136.835)(267.000,128.801)
+\qbezier(267.000,128.801)(272.800,123.086)(278.600,117.371)
+\qbezier(278.600,117.371)(284.400,110.409)(290.200,103.446)
+\qbezier(290.200,103.446)(296.000,104.520)(301.800,105.593)
+\qbezier(301.800,105.593)(307.600,104.787)(313.400,103.981)
+\qbezier(313.400,103.981)(319.200,134.491)(325.000,165.000)
+\put(35.000,32.473){\circle*{2}}
+\put(46.600,33.480){\circle*{2}}
+\put(58.200,40.902){\circle*{2}}
+\put(69.800,36.487){\circle*{2}}
+\put(81.400,41.477){\circle*{2}}
+\put(93.000,45.746){\circle*{2}}
+\put(104.600,64.786){\circle*{2}}
+\put(116.200,126.207){\circle*{2}}
+\put(127.800,110.753){\circle*{2}}
+\put(139.400,142.213){\circle*{2}}
+\put(151.000,129.125){\circle*{2}}
+\put(162.600,134.375){\circle*{2}}
+\put(174.200,147.413){\circle*{2}}
+\put(185.800,148.335){\circle*{2}}
+\put(197.400,147.104){\circle*{2}}
+\put(209.000,136.918){\circle*{2}}
+\put(220.600,133.443){\circle*{2}}
+\put(232.200,151.339){\circle*{2}}
+\put(243.800,158.849){\circle*{2}}
+\put(255.400,144.869){\circle*{2}}
+\put(267.000,128.801){\circle*{2}}
+\put(278.600,117.371){\circle*{2}}
+\put(290.200,103.446){\circle*{2}}
+\put(301.800,105.593){\circle*{2}}
+\put(313.400,103.981){\circle*{2}}
+\put(325.000,165.000){\circle*{2}}
+\put(328.000,168.000){\makebox(0,0)[l]{\tiny 1}}
+\qbezier(35.000,25.287)(40.800,25.716)(46.600,26.144)
+\qbezier(46.600,26.144)(52.400,26.801)(58.200,27.458)
+\qbezier(58.200,27.458)(64.000,27.288)(69.800,27.118)
+\qbezier(69.800,27.118)(75.600,27.863)(81.400,28.608)
+\qbezier(81.400,28.608)(87.200,29.345)(93.000,30.082)
+\qbezier(93.000,30.082)(98.800,32.374)(104.600,34.667)
+\qbezier(104.600,34.667)(110.400,47.485)(116.200,60.303)
+\qbezier(116.200,60.303)(122.000,60.337)(127.800,60.372)
+\qbezier(127.800,60.372)(133.600,68.640)(139.400,76.909)
+\qbezier(139.400,76.909)(145.200,77.315)(151.000,77.720)
+\qbezier(151.000,77.720)(156.800,78.678)(162.600,79.637)
+\qbezier(162.600,79.637)(168.400,83.214)(174.200,86.792)
+\qbezier(174.200,86.792)(180.000,87.785)(185.800,88.777)
+\qbezier(185.800,88.777)(191.600,88.368)(197.400,87.958)
+\qbezier(197.400,87.958)(203.200,84.652)(209.000,81.346)
+\qbezier(209.000,81.346)(214.800,79.995)(220.600,78.645)
+\qbezier(220.600,78.645)(226.400,81.055)(232.200,83.466)
+\qbezier(232.200,83.466)(238.000,82.848)(243.800,82.229)
+\qbezier(243.800,82.229)(249.600,77.823)(255.400,73.417)
+\qbezier(255.400,73.417)(261.200,69.024)(267.000,64.632)
+\qbezier(267.000,64.632)(272.800,62.179)(278.600,59.726)
+\qbezier(278.600,59.726)(284.400,56.578)(290.200,53.431)
+\qbezier(290.200,53.431)(296.000,53.017)(301.800,52.603)
+\qbezier(301.800,52.603)(307.600,50.439)(313.400,48.276)
+\qbezier(313.400,48.276)(319.200,54.372)(325.000,60.469)
+\put(35.000,25.287){\circle*{2}}
+\put(46.600,26.144){\circle*{2}}
+\put(58.200,27.458){\circle*{2}}
+\put(69.800,27.118){\circle*{2}}
+\put(81.400,28.608){\circle*{2}}
+\put(93.000,30.082){\circle*{2}}
+\put(104.600,34.667){\circle*{2}}
+\put(116.200,60.303){\circle*{2}}
+\put(127.800,60.372){\circle*{2}}
+\put(139.400,76.909){\circle*{2}}
+\put(151.000,77.720){\circle*{2}}
+\put(162.600,79.637){\circle*{2}}
+\put(174.200,86.792){\circle*{2}}
+\put(185.800,88.777){\circle*{2}}
+\put(197.400,87.958){\circle*{2}}
+\put(209.000,81.346){\circle*{2}}
+\put(220.600,78.645){\circle*{2}}
+\put(232.200,83.466){\circle*{2}}
+\put(243.800,82.229){\circle*{2}}
+\put(255.400,73.417){\circle*{2}}
+\put(267.000,64.632){\circle*{2}}
+\put(278.600,59.726){\circle*{2}}
+\put(290.200,53.431){\circle*{2}}
+\put(301.800,52.603){\circle*{2}}
+\put(313.400,48.276){\circle*{2}}
+\put(325.000,60.469){\circle*{2}}
+\put(328.000,63.469){\makebox(0,0)[l]{\tiny 2}}
+\qbezier(35.000,25.002)(40.800,25.147)(46.600,25.292)
+\qbezier(46.600,25.292)(52.400,25.439)(58.200,25.585)
+\qbezier(58.200,25.585)(64.000,25.504)(69.800,25.422)
+\qbezier(69.800,25.422)(75.600,25.621)(81.400,25.820)
+\qbezier(81.400,25.820)(87.200,25.905)(93.000,25.991)
+\qbezier(93.000,25.991)(98.800,26.570)(104.600,27.149)
+\qbezier(104.600,27.149)(110.400,30.837)(116.200,34.525)
+\qbezier(116.200,34.525)(122.000,34.660)(127.800,34.796)
+\qbezier(127.800,34.796)(133.600,38.179)(139.400,41.562)
+\qbezier(139.400,41.562)(145.200,41.748)(151.000,41.933)
+\qbezier(151.000,41.933)(156.800,42.806)(162.600,43.679)
+\qbezier(162.600,43.679)(168.400,45.194)(174.200,46.710)
+\qbezier(174.200,46.710)(180.000,47.163)(185.800,47.616)
+\qbezier(185.800,47.616)(191.600,47.543)(197.400,47.470)
+\qbezier(197.400,47.470)(203.200,46.166)(209.000,44.862)
+\qbezier(209.000,44.862)(214.800,44.316)(220.600,43.769)
+\qbezier(220.600,43.769)(226.400,44.747)(232.200,45.725)
+\qbezier(232.200,45.725)(238.000,45.495)(243.800,45.264)
+\qbezier(243.800,45.264)(249.600,43.581)(255.400,41.897)
+\qbezier(255.400,41.897)(261.200,40.299)(267.000,38.700)
+\qbezier(267.000,38.700)(272.800,37.942)(278.600,37.183)
+\qbezier(278.600,37.183)(284.400,36.189)(290.200,35.194)
+\qbezier(290.200,35.194)(296.000,35.232)(301.800,35.270)
+\qbezier(301.800,35.270)(307.600,34.333)(313.400,33.396)
+\qbezier(313.400,33.396)(319.200,35.418)(325.000,37.439)
+\put(35.000,25.002){\circle*{2}}
+\put(46.600,25.292){\circle*{2}}
+\put(58.200,25.585){\circle*{2}}
+\put(69.800,25.422){\circle*{2}}
+\put(81.400,25.820){\circle*{2}}
+\put(93.000,25.991){\circle*{2}}
+\put(104.600,27.149){\circle*{2}}
+\put(116.200,34.525){\circle*{2}}
+\put(127.800,34.796){\circle*{2}}
+\put(139.400,41.562){\circle*{2}}
+\put(151.000,41.933){\circle*{2}}
+\put(162.600,43.679){\circle*{2}}
+\put(174.200,46.710){\circle*{2}}
+\put(185.800,47.616){\circle*{2}}
+\put(197.400,47.470){\circle*{2}}
+\put(209.000,44.862){\circle*{2}}
+\put(220.600,43.769){\circle*{2}}
+\put(232.200,45.725){\circle*{2}}
+\put(243.800,45.264){\circle*{2}}
+\put(255.400,41.897){\circle*{2}}
+\put(267.000,38.700){\circle*{2}}
+\put(278.600,37.183){\circle*{2}}
+\put(290.200,35.194){\circle*{2}}
+\put(301.800,35.270){\circle*{2}}
+\put(313.400,33.396){\circle*{2}}
+\put(325.000,37.439){\circle*{2}}
+\put(328.000,40.439){\makebox(0,0)[l]{\tiny 3}}
+\qbezier(35.000,25.000)(40.800,25.140)(46.600,25.280)
+\qbezier(46.600,25.280)(52.400,25.423)(58.200,25.566)
+\qbezier(58.200,25.566)(64.000,25.487)(69.800,25.409)
+\qbezier(69.800,25.409)(75.600,25.591)(81.400,25.773)
+\qbezier(81.400,25.773)(87.200,25.866)(93.000,25.959)
+\qbezier(93.000,25.959)(98.800,26.537)(104.600,27.115)
+\qbezier(104.600,27.115)(110.400,30.734)(116.200,34.353)
+\qbezier(116.200,34.353)(122.000,34.423)(127.800,34.492)
+\qbezier(127.800,34.492)(133.600,37.823)(139.400,41.154)
+\qbezier(139.400,41.154)(145.200,41.360)(151.000,41.565)
+\qbezier(151.000,41.565)(156.800,42.502)(162.600,43.439)
+\qbezier(162.600,43.439)(168.400,44.956)(174.200,46.473)
+\qbezier(174.200,46.473)(180.000,46.936)(185.800,47.399)
+\qbezier(185.800,47.399)(191.600,47.341)(197.400,47.283)
+\qbezier(197.400,47.283)(203.200,45.983)(209.000,44.683)
+\qbezier(209.000,44.683)(214.800,44.134)(220.600,43.585)
+\qbezier(220.600,43.585)(226.400,44.631)(232.200,45.678)
+\qbezier(232.200,45.678)(238.000,45.458)(243.800,45.238)
+\qbezier(243.800,45.238)(249.600,43.577)(255.400,41.916)
+\qbezier(255.400,41.916)(261.200,40.302)(267.000,38.688)
+\qbezier(267.000,38.688)(272.800,37.936)(278.600,37.185)
+\qbezier(278.600,37.185)(284.400,36.206)(290.200,35.226)
+\qbezier(290.200,35.226)(296.000,35.233)(301.800,35.240)
+\qbezier(301.800,35.240)(307.600,34.323)(313.400,33.406)
+\qbezier(313.400,33.406)(319.200,35.443)(325.000,37.481)
+\put(35.000,25.000){\circle*{2}}
+\put(46.600,25.280){\circle*{2}}
+\put(58.200,25.566){\circle*{2}}
+\put(69.800,25.409){\circle*{2}}
+\put(81.400,25.773){\circle*{2}}
+\put(93.000,25.959){\circle*{2}}
+\put(104.600,27.115){\circle*{2}}
+\put(116.200,34.353){\circle*{2}}
+\put(127.800,34.492){\circle*{2}}
+\put(139.400,41.154){\circle*{2}}
+\put(151.000,41.565){\circle*{2}}
+\put(162.600,43.439){\circle*{2}}
+\put(174.200,46.473){\circle*{2}}
+\put(185.800,47.399){\circle*{2}}
+\put(197.400,47.283){\circle*{2}}
+\put(209.000,44.683){\circle*{2}}
+\put(220.600,43.585){\circle*{2}}
+\put(232.200,45.678){\circle*{2}}
+\put(243.800,45.238){\circle*{2}}
+\put(255.400,41.916){\circle*{2}}
+\put(267.000,38.688){\circle*{2}}
+\put(278.600,37.185){\circle*{2}}
+\put(290.200,35.226){\circle*{2}}
+\put(301.800,35.240){\circle*{2}}
+\put(313.400,33.406){\circle*{2}}
+\put(325.000,37.481){\circle*{2}}
+\put(328.000,40.481){\makebox(0,0)[l]{\tiny 4}}
+\qbezier(35.000,25.121)(40.800,25.270)(46.600,25.419)
+\qbezier(46.600,25.419)(52.400,25.600)(58.200,25.782)
+\qbezier(58.200,25.782)(64.000,25.682)(69.800,25.582)
+\qbezier(69.800,25.582)(75.600,25.855)(81.400,26.128)
+\qbezier(81.400,26.128)(87.200,26.227)(93.000,26.326)
+\qbezier(93.000,26.326)(98.800,27.009)(104.600,27.693)
+\qbezier(104.600,27.693)(110.400,32.072)(116.200,36.452)
+\qbezier(116.200,36.452)(122.000,36.278)(127.800,36.105)
+\qbezier(127.800,36.105)(133.600,39.591)(139.400,43.078)
+\qbezier(139.400,43.078)(145.200,43.217)(151.000,43.355)
+\qbezier(151.000,43.355)(156.800,44.398)(162.600,45.440)
+\qbezier(162.600,45.440)(168.400,47.072)(174.200,48.705)
+\qbezier(174.200,48.705)(180.000,49.212)(185.800,49.720)
+\qbezier(185.800,49.720)(191.600,49.662)(197.400,49.603)
+\qbezier(197.400,49.603)(203.200,48.172)(209.000,46.742)
+\qbezier(209.000,46.742)(214.800,46.135)(220.600,45.529)
+\qbezier(220.600,45.529)(226.400,46.789)(232.200,48.048)
+\qbezier(232.200,48.048)(238.000,47.817)(243.800,47.585)
+\qbezier(243.800,47.585)(249.600,45.768)(255.400,43.950)
+\qbezier(255.400,43.950)(261.200,42.176)(267.000,40.402)
+\qbezier(267.000,40.402)(272.800,39.572)(278.600,38.742)
+\qbezier(278.600,38.742)(284.400,37.661)(290.200,36.580)
+\qbezier(290.200,36.580)(296.000,36.596)(301.800,36.612)
+\qbezier(301.800,36.612)(307.600,35.593)(313.400,34.574)
+\qbezier(313.400,34.574)(319.200,36.924)(325.000,39.274)
+\put(35.000,25.121){\circle*{2}}
+\put(46.600,25.419){\circle*{2}}
+\put(58.200,25.782){\circle*{2}}
+\put(69.800,25.582){\circle*{2}}
+\put(81.400,26.128){\circle*{2}}
+\put(93.000,26.326){\circle*{2}}
+\put(104.600,27.693){\circle*{2}}
+\put(116.200,36.452){\circle*{2}}
+\put(127.800,36.105){\circle*{2}}
+\put(139.400,43.078){\circle*{2}}
+\put(151.000,43.355){\circle*{2}}
+\put(162.600,45.440){\circle*{2}}
+\put(174.200,48.705){\circle*{2}}
+\put(185.800,49.720){\circle*{2}}
+\put(197.400,49.603){\circle*{2}}
+\put(209.000,46.742){\circle*{2}}
+\put(220.600,45.529){\circle*{2}}
+\put(232.200,48.048){\circle*{2}}
+\put(243.800,47.585){\circle*{2}}
+\put(255.400,43.950){\circle*{2}}
+\put(267.000,40.402){\circle*{2}}
+\put(278.600,38.742){\circle*{2}}
+\put(290.200,36.580){\circle*{2}}
+\put(301.800,36.612){\circle*{2}}
+\put(313.400,34.574){\circle*{2}}
+\put(325.000,39.274){\circle*{2}}
+\put(328.000,42.274){\makebox(0,0)[l]{\tiny 5}}
+\put(35,12){\makebox(0,0)[l]{\tiny 0}}
+\put(305,12){\makebox(0,0)[l]{\tiny 25}}
+\put(0,25){\makebox(0,0)[l]{\tiny 0.00020401}}
+\put(0,165){\makebox(0,0)[l]{\tiny 0.12381}}
+\put(170,0){\makebox(0,0){\scriptsize Block index}}
+\put(35,185){\makebox(0,0)[l]{\scriptsize Normalized residual squared error}}
+\end{picture}\end{center}
+\noindent\footnotesize Series 1: \{"method": "svd"\}; 26 measured points.\par
+\noindent\footnotesize Series 2: \{"method": "asvd"\}; 26 measured points.\par
+\noindent\footnotesize Series 3: \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}; 26 measured points.\par
+\noindent\footnotesize Series 4: \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}; 26 measured points.\par
+\noindent\footnotesize Series 5: \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.01\}; 26 measured points.\par
+\par\textbf{Unmeasured/unavailable: storage.} No substitute graph is invented.
+\par\small \{"kind": "storage", "reason": "no complete Stage F with actual whole-model bytes and raw native-test NLL"\}
+\appendix\section{Paired block uncertainty by attempt and scope}
+Each interval is candidate minus the same-split baseline. Evaluation-block uncertainty does not measure calibration-seed uncertainty. Full-test NLL includes the partial tail; fixed-block intervals exclude it. Missing intervals remain unavailable.
+\subsection{architecture-replication-20261014-082807-5c73f669}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"method": "svd"\}, "scope": \{"rank": 483, "rank\_divisor": null, "split": "test", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.24604289213573946 & 0.24615020975613225 & [0.24006466116265526, 0.25237916880828776] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 72 / 2000 & 2280 \\
+\end{longtable}}
+\subsection{architecture-replication-20261014-082807-5c73f669}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"rank": 483, "rank\_divisor": null, "split": "test", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.009941660681098283 & 0.010034525719555844 & [0.00827384469021905, 0.01189700522595723] \\
+R002 & 23 & 0.008791898301914979 & 0.008937712051082021 & [0.0072091521283551875, 0.010677830953140406] \\
+R003 & 37 & 0.007921984778739719 & 0.007972056491898503 & [0.006199138578762092, 0.009875832550118127] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 72 / 2000 & 2280 \\
+R002 & 23 & 72 / 2000 & 2280 \\
+R003 & 37 & 72 / 2000 & 2280 \\
+\end{longtable}}
+\subsection{architecture-replication-20261014-082807-5c73f669}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"rank": 512, "rank\_divisor": 2, "split": "validation", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.011256371692945919 & 0.011285927374891085 & [0.00961544286242256, 0.013039805029695348] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 63 / 2000 & 3362 \\
+\end{longtable}}
+\subsection{architecture-replication-20261014-093845-97378b5e}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"method": "svd"\}, "scope": \{"rank": 483, "rank\_divisor": null, "split": "test", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.24604289213573946 & 0.24615020975613225 & [0.24006466116265526, 0.25237916880828776] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 72 / 2000 & 2280 \\
+\end{longtable}}
+\subsection{architecture-replication-20261014-093845-97378b5e}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"rank": 483, "rank\_divisor": null, "split": "test", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1483776, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 483, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.009941660681098283 & 0.010034525719555844 & [0.00827384469021905, 0.01189700522595723] \\
+R002 & 23 & 0.008791898301914979 & 0.008937712051082021 & [0.0072091521283551875, 0.010677830953140406] \\
+R003 & 37 & 0.007921984778739719 & 0.007972056491898503 & [0.006199138578762092, 0.009875832550118127] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 72 / 2000 & 2280 \\
+R002 & 23 & 72 / 2000 & 2280 \\
+R003 & 37 & 72 / 2000 & 2280 \\
+\end{longtable}}
+\subsection{architecture-replication-20261014-093845-97378b5e}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"rank": 512, "rank\_divisor": 2, "split": "validation", "target\_recipes": [\{"block\_index": 3, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.3.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 7, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.7.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 11, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.11.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 15, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.15.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 19, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.19.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}, \{"block\_index": 23, "dense\_parameters": 2097152, "factor\_parameters": 1572864, "name": "model.layers.23.self\_attn.o\_proj", "precision": "bfloat16", "rank": 512, "shape": [1024, 2048]\}]\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.011256371692945919 & 0.011285927374891085 & [0.00961544286242256, 0.013039805029695348] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 63 / 2000 & 3362 \\
+\end{longtable}}
+\subsection{baselines-20261013-175255-6a00d4e8}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"method": "svd"\}, "scope": \{\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 1.5259270359038637 & 1.526963313415228 & [1.4943535833878134, 1.5596674649359294] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{baselines-20261013-175255-6a00d4e8}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"method": "asvd"\}, "scope": \{\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.13435744983933437 & 0.13448046045923576 & [0.12208941117886445, 0.14684303527631282] \\
+R002 & 23 & 0.12406477628810314 & 0.12440374314135588 & [0.1140738804768457, 0.13439828040507174] \\
+R003 & 37 & 0.10653445125745864 & 0.10667353359540374 & [0.09858797073867313, 0.11492986771691276] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{baselines-20261013-175255-6a00d4e8}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0031192516557841613 & -0.003069222128221489 & [-0.005598433325437209, -0.0005771062229211223] \\
+R002 & 23 & -0.00867016563638367 & -0.008560964606249673 & [-0.01236161516313488, -0.004879390368432393] \\
+R003 & 37 & -0.008888696495308254 & -0.008889474302069626 & [-0.011564302129920533, -0.006193025270745394] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{baselines-20261013-175255-6a00d4e8}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.1, "method": "legacy\_ridge", "ridge\_fraction": 0.01\}, "scope": \{\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.007341743295384272 & 0.007358043732914079 & [0.003578168563012017, 0.011322591469446464] \\
+R002 & 23 & 0.010085729923213327 & 0.010195171973247596 & [0.005499654363179419, 0.01504279117529553] \\
+R003 & 37 & 0.0012338436455246004 & 0.0012706044011388724 & [-0.002438464246056019, 0.00520269695332208] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -4.60899341388781e-05 & -4.0872599009493115e-05 & [-0.00021773423333858093, 0.00016858181205444938] \\
+R002 & 23 & -3.271375526325137e-05 & -3.199588131774163e-05 & [-0.00017418793593221199, 0.0001136384687997568] \\
+R003 & 37 & -6.647979225569334e-05 & -7.095429546745745e-05 & [-0.0002918852072208844, 9.73636943746164e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0008545763004039009 & -0.0008561104717573092 & [-0.0011502571721836558, -0.0005639493857446014] \\
+R002 & 23 & -9.84808364817539e-05 & -9.306537422449584e-05 & [-0.0003758050620108826, 0.00017279865033056432] \\
+R003 & 37 & -7.626569138096745e-05 & -7.009637664775361e-05 & [-0.00036090094182114016, 0.00023415362379323] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.00017293049948457248 & 0.00017199932360958685 & [4.463885584017398e-05, 0.0002936832496752188] \\
+R002 & 23 & -0.0007079791885041549 & -0.000699445138327318 & [-0.0008897616397649394, -0.000521697610992854] \\
+R003 & 37 & -7.243953146688717e-05 & -6.619463365792254e-05 & [-0.0002124016846060838, 7.996392602977384e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0002764577707105269 & -0.000305017713926657 & [-0.0008016745961755751, 0.00016777266329458292] \\
+R002 & 23 & 0.00027483132344665635 & 0.0002560327026930727 & [-0.0003286626427606052, 0.0008294795855742868] \\
+R003 & 37 & -0.00014167613462679152 & -0.00015263838873164775 & [-0.0006433289253560787, 0.0003204156261228786] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12, 13], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0005983137392528166 & -0.0005957751251080846 & [-0.0009677709087440493, -0.00022507084570211577] \\
+R002 & 23 & 0.0004492915974461228 & 0.00046492813075667055 & [5.583698743252717e-05, 0.0008733775102226093] \\
+R003 & 37 & 0.00016641247677054086 & 0.00018221593299534182 & [-0.0002607224132318948, 0.000609754279693661] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261013-185512-2bffd477}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [24, 25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 8.042555401250508e-05 & 8.104170434346619e-05 & [-7.955390526647082e-05, 0.00023594919116786298] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -4.60899341388781e-05 & -4.0872599009493115e-05 & [-0.00021773423333858093, 0.00016858181205444938] \\
+R002 & 23 & -3.271375526325137e-05 & -3.199588131774163e-05 & [-0.00017418793593221199, 0.0001136384687997568] \\
+R003 & 37 & -6.647979225569334e-05 & -7.095429546745745e-05 & [-0.0002918852072208844, 9.73636943746164e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0008545763004039009 & -0.0008561104717573092 & [-0.0011502571721836558, -0.0005639493857446014] \\
+R002 & 23 & -9.84808364817539e-05 & -9.306537422449584e-05 & [-0.0003758050620108826, 0.00017279865033056432] \\
+R003 & 37 & -7.626569138096745e-05 & -7.009637664775361e-05 & [-0.00036090094182114016, 0.00023415362379323] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.00017293049948457248 & 0.00017199932360958685 & [4.463885584017398e-05, 0.0002936832496752188] \\
+R002 & 23 & -0.0007079791885041549 & -0.000699445138327318 & [-0.0008897616397649394, -0.000521697610992854] \\
+R003 & 37 & -7.243953146688717e-05 & -6.619463365792254e-05 & [-0.0002124016846060838, 7.996392602977384e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0002764577707105269 & -0.000305017713926657 & [-0.0008016745961755751, 0.00016777266329458292] \\
+R002 & 23 & 0.00027483132344665635 & 0.0002560327026930727 & [-0.0003286626427606052, 0.0008294795855742868] \\
+R003 & 37 & -0.00014167613462679152 & -0.00015263838873164775 & [-0.0006433289253560787, 0.0003204156261228786] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12, 13], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0005983137392528166 & -0.0005957751251080846 & [-0.0009677709087440493, -0.00022507084570211577] \\
+R002 & 23 & 0.0004492915974461228 & 0.00046492813075667055 & [5.583698743252717e-05, 0.0008733775102226093] \\
+R003 & 37 & 0.00016641247677054086 & 0.00018221593299534182 & [-0.0002607224132318948, 0.000609754279693661] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [24, 25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 8.042555401250508e-05 & 8.104170434346619e-05 & [-7.955390526647082e-05, 0.00023594919116786298] \\
+R002 & 23 & -0.0008111692747406037 & -0.0008061970833859053 & [-0.0010295443444143198, -0.0005898168066478252] \\
+R003 & 37 & 0.00018079164125917244 & 0.00018314376523535068 & [-9.780179775247661e-06, 0.0003823935562813924] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0006571169305328121 & -0.0006716296099761055 & [-0.00164636577805492, 0.00019381527657309894] \\
+R002 & 23 & 7.183583249946473e-05 & 6.899960868660811e-05 & [-0.0006820064909050956, 0.0007963317650939533] \\
+R003 & 37 & -0.00029724108693617853 & -0.00031285002723754543 & [-0.0009339352805978615, 0.0002562151766575395] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-032120-486d799f}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.003885308129297546 & 0.0039059187090884325 & [0.0026608101493276353, 0.0051295292904874204] \\
+R002 & 23 & 0.003589996487403734 & 0.003661064528190402 & [0.002338269696115027, 0.004953754396441149] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -4.60899341388781e-05 & -4.0872599009493115e-05 & [-0.00021773423333858093, 0.00016858181205444938] \\
+R002 & 23 & -3.271375526325137e-05 & -3.199588131774163e-05 & [-0.00017418793593221199, 0.0001136384687997568] \\
+R003 & 37 & -6.647979225569334e-05 & -7.095429546745745e-05 & [-0.0002918852072208844, 9.73636943746164e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0008545763004039009 & -0.0008561104717573092 & [-0.0011502571721836558, -0.0005639493857446014] \\
+R002 & 23 & -9.84808364817539e-05 & -9.306537422449584e-05 & [-0.0003758050620108826, 0.00017279865033056432] \\
+R003 & 37 & -7.626569138096745e-05 & -7.009637664775361e-05 & [-0.00036090094182114016, 0.00023415362379323] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.00017293049948457248 & 0.00017199932360958685 & [4.463885584017398e-05, 0.0002936832496752188] \\
+R002 & 23 & -0.0007079791885041549 & -0.000699445138327318 & [-0.0008897616397649394, -0.000521697610992854] \\
+R003 & 37 & -7.243953146688717e-05 & -6.619463365792254e-05 & [-0.0002124016846060838, 7.996392602977384e-05] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0002764577707105269 & -0.000305017713926657 & [-0.0008016745961755751, 0.00016777266329458292] \\
+R002 & 23 & 0.00027483132344665635 & 0.0002560327026930727 & [-0.0003286626427606052, 0.0008294795855742868] \\
+R003 & 37 & -0.00014167613462679152 & -0.00015263838873164775 & [-0.0006433289253560787, 0.0003204156261228786] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [12, 13], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0005983137392528166 & -0.0005957751251080846 & [-0.0009677709087440493, -0.00022507084570211577] \\
+R002 & 23 & 0.0004492915974461228 & 0.00046492813075667055 & [5.583698743252717e-05, 0.0008733775102226093] \\
+R003 & 37 & 0.00016641247677054086 & 0.00018221593299534182 & [-0.0002607224132318948, 0.000609754279693661] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [24, 25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 8.042555401250508e-05 & 8.104170434346619e-05 & [-7.955390526647082e-05, 0.00023594919116786298] \\
+R002 & 23 & -0.0008111692747406037 & -0.0008061970833859053 & [-0.0010295443444143198, -0.0005898168066478252] \\
+R003 & 37 & 0.00018079164125917244 & 0.00018314376523535068 & [-9.780179775247661e-06, 0.0003823935562813924] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1, 2, 3], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0006571169305328121 & -0.0006716296099761055 & [-0.00164636577805492, 0.00019381527657309894] \\
+R002 & 23 & 7.183583249946473e-05 & 6.899960868660811e-05 & [-0.0006820064909050956, 0.0007963317650939533] \\
+R003 & 37 & -0.00029724108693617853 & -0.00031285002723754543 & [-0.0009339352805978615, 0.0002562151766575395] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [11, 12, 13, 14], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & 0.003885308129297546 & 0.0039059187090884325 & [0.0026608101493276353, 0.0051295292904874204] \\
+R002 & 23 & 0.003589996487403734 & 0.003661064528190402 & [0.002338269696115027, 0.004953754396441149] \\
+R003 & 37 & 0.0006958575765264769 & 0.000706815205475545 & [-0.00048574748908978936, 0.0019332813322892252] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [22, 23, 24, 25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0004223128795064941 & -0.00041862580332443627 & [-0.0009053421815761564, 8.412072718029896e-05] \\
+R002 & 23 & -0.00290206343154077 & -0.0029018436309528315 & [-0.003464295129582087, -0.0023463511594901273] \\
+R003 & 37 & 0.0003427221577525009 & 0.0003274063402903456 & [-0.00017479625436563924, 0.000831103017138969] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\subsection{composition-20261014-054423-dbd821ff}
+\{"baseline": \{"beta": 0.0, "method": "whitening", "ridge\_fraction": 0.0\}, "candidate": \{"beta": 0.03, "method": "anchored", "ridge\_fraction": 0.0\}, "scope": \{"group": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25], "rank": 384, "split": "test"\}\}
+Wide-table continuation: identical row IDs identify the same original record across every panel; IDs restart for each source table.
+\par\noindent Panel 1 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}p{0.1880\textwidth}}
+Row ID & Seed & Full NLL delta & Block-subset delta & 95 percent interval \\
+\hline\endhead
+R001 & 11 & -0.0031192516557841613 & -0.003069222128221489 & [-0.005598433325437209, -0.0005771062229211223] \\
+R002 & 23 & -0.00867016563638367 & -0.008560964606249673 & [-0.01236161516313488, -0.004879390368432393] \\
+R003 & 37 & -0.008888696495308254 & -0.008889474302069626 & [-0.011564302129920533, -0.006193025270745394] \\
+\end{longtable}}
+\par\noindent Panel 2 of 2; match by Row ID.
+{\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}p{0.2350\textwidth}}
+Row ID & Seed & Blocks / resamples & Excluded targets \\
+\hline\endhead
+R001 & 11 & 71 / 2000 & 1465 \\
+R002 & 23 & 71 / 2000 & 1465 \\
+R003 & 37 & 71 / 2000 & 1465 \\
+\end{longtable}}
+\section{Export provenance}
+\par\noindent\small report.json SHA256 90562c1ca32b61fddf030e69e7a96b2e5cdbdc4a3b3ca814616456c2c8104235
+\par\noindent\small manuscript.md SHA256 1319afb7ae685510252ffaad0392f3e7ed7628e3fbbf2dcc72a311e9bddfeeac
+\par\noindent\small paper\_protocol\_v2.bib SHA256 e29efabec9975352119f60aafa5da509eaa2060ce7ba74ff7d0f7071afc49261
+\par\noindent\small provenance.json SHA256 625a2f617c3e1ea98a39b7f05319b462d9620cfd85e8cddb8e194994b2b3b470
+\par\noindent\small export\_paper\_latex\_20261014.py SHA256 0c255d66d2f8b753b76239453c8327bc4f6def29d1e8cffc98f53fd06e409398
+\section{Verified references}
+\begin{thebibliography}{99}
+\bibitem{chen2021drone} Patrick Chen and Hsiang-Fu Yu and Inderjit S. Dhillon and Cho-Jui Hsieh. DRONE: Data-aware Low-rank Compression for Large NLP Models. Advances in Neural Information Processing Systems. 2021. https://proceedings.neurips.cc/paper/2021/hash/f56de5ef149cf0aedcc8f4797031e229-Abstract.html
+\bibitem{hsu2022weighted} Yen-Chang Hsu and Ting Hua and Sung-En Chang and Qian Lou and Yilin Shen and Hongxia Jin. Language Model Compression with Weighted Low-Rank Factorization. International Conference on Learning Representations. 2022. Author spelling from conference PDF; arXiv:2207.00112 first submitted 2022. https://openreview.net/pdf?id=uPv9Y3gmAI5
+\bibitem{yuan2023asvd} Zhihang Yuan and Yuzhang Shang and Yue Song and Dawei Yang and Qiang Wu and Yan Yan and Guangyu Sun. ASVD: Activation-aware Singular Value Decomposition for Compressing Large Language Models. 2023. First submitted 10 December 2023; verified revision v5 dated 28 August 2025. https://arxiv.org/abs/2312.05821
+\bibitem{wang2024svdllm} Xin Wang and Yu Zheng and Zhongwei Wan and Mi Zhang. SVD-LLM: Truncation-aware Singular Value Decomposition for Large Language Model Compression. 2024. First submitted 12 March 2024; arXiv metadata identifies ICLR 2025; verified revision v5. https://arxiv.org/abs/2403.07378
+\bibitem{wang2025svdllmv2} Xin Wang and Samiul Alam and Zhongwei Wan and Hui Shen and Mi Zhang. SVD-LLM V2: Optimizing Singular Value Truncation for Large Language Model Compression. Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2025. https://aclanthology.org/2025.naacl-long.217/
+\bibitem{liu2024eora} Shih-Yang Liu and Maksim Khadkevich and Nai Chit Fung and Charbel Sakr and Chao-Han Huck Yang and Chien-Yi Wang and Saurav Muralidharan and Hongxu Yin and Kwang-Ting Cheng and Jan Kautz and Yu-Chiang Frank Wang and Pavlo Molchanov and Min-Hung Chen. EoRA: Fine-tuning-free Compensation for Compressed LLM with Eigenspace Low-Rank Approximation. 2024. First submitted 28 October 2024; verified v6 dated 17 March 2026; arXiv metadata says ICLR 2026 workshops, not main conference. https://arxiv.org/abs/2410.21271
+\bibitem{hu2026saessvd} Xing Hu and Dawei Yang and Yuan Cheng and Zhixuan Chen and Zukang Xu. SAES-SVD: Self-Adaptive Suppression of Accumulated and Local Errors for SVD-based LLM Compression. 2026. First submitted 3 February 2026; preprint, venue not verified. https://arxiv.org/abs/2602.03051
+\bibitem{liu2026lacesvd} Zhuowen Liu and Longkun Hao and Shiyu Feng and Xiaowen Chang and Ruiqun Li and Changqun Li. LACE-SVD: Loss-Aware SVD with Cumulative Error Correction for LLM Compression. 2026. First submitted 3 July 2026; verified v2 dated 15 August 2026; preprint, venue not verified. https://arxiv.org/abs/2607.03057
+\bibitem{abbasi2026zerosum} Ali Abbasi and Chayne Thrash and Haoran Qin and Shansita Sharma and Sepehr Seifi and Soheil Kolouri. Zero Sum SVD: Balancing Loss Sensitivity for Low Rank LLM Compression. 2026. First submitted 2 February 2026; verified v2 dated 28 September 2026; preprint, venue not verified. https://arxiv.org/abs/2602.02848
+\bibitem{abbasi2026iosvd} Ali Abbasi and Chayne Thrash and Haoran Qin and Hamed Pirsiavash and Soheil Kolouri. IO-SVD: Input-Output Whitened SVD for Adaptive-Rank LLM Compression. 2026. First submitted 15 May 2026; preprint, venue not verified. https://arxiv.org/abs/2605.15626
+\bibitem{arai2025qep} Yamato Arai and Yuma Ichikawa. Quantization Error Propagation: Revisiting Layer-Wise Post-Training Quantization. 2025. First submitted 13 April 2025; arXiv metadata says accepted at NeurIPS 2025; verified v3 dated 13 January 2026. https://arxiv.org/abs/2504.09629
+\bibitem{frantar2022gptq} Elias Frantar and Saleh Ashkboos and Torsten Hoefler and Dan Alistarh. GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers. 2022. First submitted 31 October 2022; arXiv metadata identifies ICLR 2023; verified v2. https://arxiv.org/abs/2210.17323
+\bibitem{lin2023awq} Ji Lin and Jiaming Tang and Haotian Tang and Shang Yang and Wei-Ming Chen and Wei-Chen Wang and Guangxuan Xiao and Xingyu Dang and Chuang Gan and Song Han. AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration. 2023. First submitted 1 June 2023; arXiv metadata identifies MLSys 2024; verified v6 dated 25 April 2026. https://arxiv.org/abs/2306.00978
+\bibitem{frantar2023sparsegpt} Elias Frantar and Dan Alistarh. SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot. 2023. First submitted 2 January 2023; verified v3; this entry cites the preprint. https://arxiv.org/abs/2301.00774
+\bibitem{li2024svdquant} Muyang Li and Yujun Lin and Zhekai Zhang and Tianle Cai and Xiuyu Li and Junxian Guo and Enze Xie and Chenlin Meng and Jun-Yan Zhu and Song Han. SVDQuant: Absorbing Outliers by Low-Rank Components for 4-Bit Diffusion Models. 2024. First submitted 7 November 2024; arXiv metadata identifies ICLR 2025 Spotlight; verified v4; diffusion-model scope. https://arxiv.org/abs/2411.05007
+\bibitem{kornblith2019cka} Simon Kornblith and Mohammad Norouzi and Honglak Lee and Geoffrey Hinton. Similarity of Neural Network Representations Revisited. Proceedings of the 36th International Conference on Machine Learning. 2019. https://proceedings.mlr.press/v97/kornblith19a.html
+\bibitem{guo2017calibration} Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger. On Calibration of Modern Neural Networks. Proceedings of the 34th International Conference on Machine Learning. 2017. https://proceedings.mlr.press/v70/guo17a.html
+\bibitem{biderman2024evaluation} Stella Biderman and Hailey Schoelkopf and Lintang Sutawika and Leo Gao and Jonathan Tow and Baber Abbasi and Alham Fikri Aji and Pawan Sasanka Ammanamanchi and Sidney Black and Jordan Clive and Anthony DiPofi and Julen Etxaniz and Benjamin Fattori and Jessica Zosa Forde and Charles Foster and Jeffrey Hsu and Mimansa Jaiswal and Wilson Y. Lee and Haonan Li and Charles Lovering and Niklas Muennighoff and Ellie Pavlick and Jason Phang and Aviya Skowron and Samson Tan and Xiangru Tang and Kevin A. Wang and Genta Indra Winata and Fran\textbackslash{}c cois Yvon and Andy Zou. Lessons from the Trenches on Reproducible Evaluation of Language Models. 2024. First submitted 23 May 2024; author list verified against v3 dated 31 May 2026; this entry cites the preprint. https://arxiv.org/abs/2405.14782
+\bibitem{merity2016wikitext} Stephen Merity and Caiming Xiong and James Bradbury and Richard Socher. Pointer Sentinel Mixture Models. 2016. First submitted 26 September 2016; this entry cites the WikiText-introducing preprint. https://arxiv.org/abs/1609.07843
+\bibitem{raffel2020t5} Colin Raffel and Noam Shazeer and Adam Roberts and Katherine Lee and Sharan Narang and Michael Matena and Yanqi Zhou and Wei Li and Peter J. Liu. Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer. Journal of Machine Learning Research. 2020. Journal publication 2020; original arXiv:1910.10683 first submitted 23 October 2019. https://jmlr.org/papers/v21/20-074.html
+\bibitem{zellers2019hellaswag} Rowan Zellers and Ari Holtzman and Yonatan Bisk and Ali Farhadi and Yejin Choi. HellaSwag: Can a Machine Really Finish Your Sentence?. Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics. 2019. https://aclanthology.org/P19-1472/
+\bibitem{clark2018arc} Peter Clark and Isaac Cowhey and Oren Etzioni and Tushar Khot and Ashish Sabharwal and Carissa Schoenick and Oyvind Tafjord. Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge. 2018. First submitted 14 March 2018; this entry cites the preprint. https://arxiv.org/abs/1803.05457
+\end{thebibliography}
+\end{document}

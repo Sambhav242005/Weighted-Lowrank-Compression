@@ -1,0 +1,14 @@
+{
+  "exact": true,
+  "before": {
+    "prompt_tokens": 128,
+    "prompt_logits_sha256": "437be084e6dc0760bd2b65f5f577c5cf5c4314a92d5d0c229535ef70afaab44b",
+    "cached_next_logits_sha256": "d1398e49df5311d2e6e8e8d1270db4a007614ec1c83da6d6104363329f02f1b5"
+  },
+  "after": {
+    "prompt_tokens": 128,
+    "prompt_logits_sha256": "437be084e6dc0760bd2b65f5f577c5cf5c4314a92d5d0c229535ef70afaab44b",
+    "cached_next_logits_sha256": "d1398e49df5311d2e6e8e8d1270db4a007614ec1c83da6d6104363329f02f1b5"
+  },
+  "scope": "128-token prompt logits and one cached next-token forward"
+}

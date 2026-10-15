@@ -1,0 +1,7 @@
+{
+  "checks": "21 CPU tests passed; root independently repeated",
+  "artifacts": {
+    "src/paper_precision.py": "f6eee373f1e63bfb42ac2e399656d2a1835c371c5a5451da8a6c4abe507ae9ed",
+    "tests/unit/test_paper_precision.py": "022d8a995015648f0f487f136d5af6d267cc28f8a447b438e4161982e181a216"
+  }
+}

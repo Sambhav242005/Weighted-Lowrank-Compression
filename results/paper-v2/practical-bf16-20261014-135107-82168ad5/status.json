@@ -1,0 +1,11 @@
+{
+  "state": "completed",
+  "elapsed_seconds": 4688.669323500002,
+  "records": 5,
+  "precision": "bfloat16",
+  "seeds": [
+    11,
+    23
+  ],
+  "exploratory": true
+}

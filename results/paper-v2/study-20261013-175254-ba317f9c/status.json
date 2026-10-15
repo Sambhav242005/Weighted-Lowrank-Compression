@@ -1,0 +1,7 @@
+{
+  "state": "interrupted",
+  "reason": "No experiment process exists; stdout stops mid-window with no traceback. Complete metrics retained; cause unknown.",
+  "elapsed_seconds": 8972.373,
+  "cost_accounting": "last logged elapsed plus conservative 60 seconds for startup and unlogged work",
+  "completed_records": 34
+}

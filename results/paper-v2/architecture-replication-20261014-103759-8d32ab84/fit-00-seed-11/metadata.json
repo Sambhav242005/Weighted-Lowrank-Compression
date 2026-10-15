@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 17817600,
+  "serialized_bytes": 35639807,
+  "sha256": "ef9c90c924dc4a20f469076e76a1df203f208cdc11ef21e68866a03f7ffb14d1",
+  "factor_tensor_bytes": 35635200,
+  "fit_seconds": 2.0624495000001843,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.2.self_attn.out_proj",
+      "block_index": 2,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.5.self_attn.out_proj",
+      "block_index": 5,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.8.self_attn.out_proj",
+      "block_index": 8,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.10.self_attn.out_proj",
+      "block_index": 10,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.12.self_attn.out_proj",
+      "block_index": 12,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.14.self_attn.out_proj",
+      "block_index": 14,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 725,
+      "factor_parameters": 2969600,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 2450481152,
+  "peak_fitting_reserved_bytes": 3219128320
+}

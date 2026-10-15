@@ -1,0 +1,14 @@
+{
+  "reason": "Explicit human stop; future tests BF16 only, no new run authorized",
+  "epoch": 1791984636.414916,
+  "stopped_pids": [
+    37908,
+    4728,
+    20224,
+    39920,
+    15872,
+    12504,
+    10104
+  ],
+  "remaining_pids": []
+}

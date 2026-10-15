@@ -1,0 +1,9 @@
+{
+  "state": "incomplete",
+  "model": "Qwen/Qwen3.5-0.8B",
+  "error": "shared Stage-E/per-model cumulative cap exhausted",
+  "elapsed_seconds": 3553.0147549999997,
+  "records": 18,
+  "exploratory": true,
+  "budget_limited": true
+}

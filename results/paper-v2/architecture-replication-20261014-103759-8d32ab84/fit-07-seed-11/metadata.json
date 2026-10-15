@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 25165824,
+  "serialized_bytes": 50336319,
+  "sha256": "bd282c10951d4faf1dcc1e5e4f5132ec5dd07e1fbe9646c3404eb54ea042fe43",
+  "factor_tensor_bytes": 50331648,
+  "fit_seconds": 39.461535400000685,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.2.self_attn.out_proj",
+      "block_index": 2,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.5.self_attn.out_proj",
+      "block_index": 5,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.8.self_attn.out_proj",
+      "block_index": 8,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.10.self_attn.out_proj",
+      "block_index": 10,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.12.self_attn.out_proj",
+      "block_index": 12,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.14.self_attn.out_proj",
+      "block_index": 14,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 1024,
+      "factor_parameters": 4194304,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 2905036288,
+  "peak_fitting_reserved_bytes": 2994733056
+}

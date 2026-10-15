@@ -1,0 +1,53 @@
+{
+  "protocol": "paper-v2",
+  "study": "local-core",
+  "output_root": "results/paper-v2",
+  "model": "google/gemma-3-1b-it",
+  "model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "model_path": "~/.cache/huggingface/hub/models--google--gemma-3-1b-it/snapshots/dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dataset_path": "paper-assets/wikitext-b08601e04326c79dfdd32d625aee71d232d685c3",
+  "device": "cuda",
+  "precision": "float16",
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "calibration": {
+    "split": "train",
+    "chunks": 16,
+    "chunk_tokens": 512
+  },
+  "selection_split": "validation",
+  "evaluation_split": "test",
+  "context": 512,
+  "stride": 256,
+  "rank": 384,
+  "beta": 0.1,
+  "ridge_fraction": 0.01,
+  "pseudoinverse_rcond": 1e-07,
+  "methods": [
+    "svd",
+    "asvd",
+    "whitening",
+    "anchored",
+    "legacy_ridge"
+  ],
+  "target_family": "attention-output",
+  "stage_gpu_hours": {
+    "readiness": 1,
+    "regularization": 4,
+    "baselines": 7,
+    "composition": 4,
+    "replication": 4,
+    "practical": 4
+  },
+  "identity_tolerance": {
+    "atol": 0.1,
+    "rtol": 0.01
+  },
+  "hardware_regression_limit": 0.05,
+  "readiness_factorization": "identity"
+}

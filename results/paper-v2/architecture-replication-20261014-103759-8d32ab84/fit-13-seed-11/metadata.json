@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 16760832,
+  "serialized_bytes": 33526335,
+  "sha256": "2d97ff9a826ab9f6c069fc2f4a577b40b8114742278c38c30472558a955c4243",
+  "factor_tensor_bytes": 33521664,
+  "fit_seconds": 38.45617680000032,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.2.self_attn.out_proj",
+      "block_index": 2,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.5.self_attn.out_proj",
+      "block_index": 5,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.8.self_attn.out_proj",
+      "block_index": 8,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.10.self_attn.out_proj",
+      "block_index": 10,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.12.self_attn.out_proj",
+      "block_index": 12,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.14.self_attn.out_proj",
+      "block_index": 14,
+      "shape": [
+        2048,
+        2048
+      ],
+      "rank": 682,
+      "factor_parameters": 2793472,
+      "dense_parameters": 4194304,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 2905036288,
+  "peak_fitting_reserved_bytes": 2994733056
+}

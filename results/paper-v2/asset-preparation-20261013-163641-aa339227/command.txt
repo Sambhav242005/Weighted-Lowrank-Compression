@@ -1,0 +1,1 @@
+rtk C:\Users\NPC\Desktop\ResearchCompression\src\prepare_paper_assets.py --asset gemma

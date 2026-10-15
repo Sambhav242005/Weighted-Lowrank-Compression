@@ -1,0 +1,20 @@
+{
+  "state": "completed",
+  "device": "cpu",
+  "synthetic": true,
+  "gpt2_conv1d_transpose_and_bias": true,
+  "rows": [
+    {
+      "bits": 16,
+      "exact_prompt_and_cached_parity": true,
+      "tied_embedding_storage_preserved": true,
+      "bytes": 33185
+    },
+    {
+      "bits": 8,
+      "exact_prompt_and_cached_parity": true,
+      "tied_embedding_storage_preserved": true,
+      "bytes": 34309
+    }
+  ]
+}

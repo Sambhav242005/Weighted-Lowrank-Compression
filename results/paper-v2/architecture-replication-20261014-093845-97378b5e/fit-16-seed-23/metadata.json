@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 6285312,
+  "serialized_bytes": 12575231,
+  "sha256": "1ea66779a91ef9a84d381305a5263d0a941d3244021bdcd387ab7b2b1b59fdc3",
+  "factor_tensor_bytes": 12570624,
+  "fit_seconds": 7.378971399999955,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "block_index": 3,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "block_index": 7,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "block_index": 11,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "block_index": 15,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "block_index": 19,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "block_index": 23,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 341,
+      "factor_parameters": 1047552,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 2310331392,
+  "peak_fitting_reserved_bytes": 2506096640
+}

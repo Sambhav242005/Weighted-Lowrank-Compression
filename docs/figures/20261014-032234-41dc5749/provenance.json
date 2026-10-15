@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "baselines": {
+      "directory": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+      "metrics_sha256": "75b5c39e40325852101a05376019937bccd02c2e039b09b282b656da6850cad4",
+      "contract_sha256": "1e007cea0630a72b47e6ea59ebbffd86977c09120f61fbf23446f93085a8be18"
+    }
+  },
+  "interpretation": "Measured results only; shaded bands are sample seed standard deviations, not confidence intervals.",
+  "scope": "Whole-model serialized bytes include archive overhead; no compression-success claim follows from a plot."
+}

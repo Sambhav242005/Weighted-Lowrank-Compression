@@ -1,0 +1,184 @@
+{
+  "state": "completed",
+  "transformers": "5.14.1",
+  "device": "cpu/meta",
+  "network": false,
+  "real_checkpoint_weights_loaded": false,
+  "models": [
+    {
+      "model": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "decoder_blocks": 24,
+      "attention_block_indices": [
+        3,
+        7,
+        11,
+        15,
+        19,
+        23
+      ],
+      "target_recipes": [
+        {
+          "name": "model.layers.3.self_attn.o_proj",
+          "block_index": 3,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        },
+        {
+          "name": "model.layers.7.self_attn.o_proj",
+          "block_index": 7,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        },
+        {
+          "name": "model.layers.11.self_attn.o_proj",
+          "block_index": 11,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        },
+        {
+          "name": "model.layers.15.self_attn.o_proj",
+          "block_index": 15,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        },
+        {
+          "name": "model.layers.19.self_attn.o_proj",
+          "block_index": 19,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        },
+        {
+          "name": "model.layers.23.self_attn.o_proj",
+          "block_index": 23,
+          "shape": [
+            1024,
+            2048
+          ],
+          "rank": 483,
+          "factor_parameters": 1483776,
+          "factor_to_dense_parameter_fraction": 0.70751953125
+        }
+      ],
+      "current_adapter": {
+        "count": 6
+      }
+    },
+    {
+      "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+      "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+      "decoder_blocks": 16,
+      "attention_block_indices": [
+        2,
+        5,
+        8,
+        10,
+        12,
+        14
+      ],
+      "target_recipes": [
+        {
+          "name": "model.layers.2.self_attn.out_proj",
+          "block_index": 2,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        },
+        {
+          "name": "model.layers.5.self_attn.out_proj",
+          "block_index": 5,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        },
+        {
+          "name": "model.layers.8.self_attn.out_proj",
+          "block_index": 8,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        },
+        {
+          "name": "model.layers.10.self_attn.out_proj",
+          "block_index": 10,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        },
+        {
+          "name": "model.layers.12.self_attn.out_proj",
+          "block_index": 12,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        },
+        {
+          "name": "model.layers.14.self_attn.out_proj",
+          "block_index": 14,
+          "shape": [
+            2048,
+            2048
+          ],
+          "rank": 725,
+          "factor_parameters": 2969600,
+          "factor_to_dense_parameter_fraction": 0.7080078125
+        }
+      ],
+      "current_adapter": {
+        "error": "attention output targets missing"
+      }
+    }
+  ],
+  "qwen_tiny_multimodal_to_text": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "all_text_weights_equal": true,
+    "text_logits_equal": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "artifacts": {
+    "metrics.json": "68ea26fb62b44bd046a20a18755f600b33f039963db206eabffb49ed3b571b56",
+    "contract.json": "925a61b4de961932118bdc101749fc9acf549235f2873f1b0132441730acdf27",
+    "config.json": "2ef902222a6f0b49c8d70c9234bdadfb009edc9ed1000a0a9634d66b9f2de878",
+    "token-manifests.json": "c3fcd329637e8f6d2134a0f067a5482879f95fa7f4f2c98ce9f2ce70ba0788dc",
+    "frozen-selection.json": "822ba5a6708124dd84a1e607b616641c7d9ae665b8e9f92935f7ce5b1d833e50",
+    "teacher.json": "b463590080c51088f0d14b41dd8b9303037b03ba2290e02c293479d6ec5fbe93"
+  }
+}

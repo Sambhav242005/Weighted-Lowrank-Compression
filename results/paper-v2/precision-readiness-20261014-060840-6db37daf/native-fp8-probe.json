@@ -1,0 +1,20 @@
+{
+  "scope": "32x32 standalone GEMM, not model execution",
+  "formats": {
+    "e4m3": {
+      "dtype": "torch.float8_e4m3fn",
+      "api": "torch.nn.functional.scaled_mm",
+      "signature": "(mat_a: torch.Tensor, mat_b: torch.Tensor, scale_a: torch.Tensor | list[torch.Tensor], scale_recipe_a: torch.nn.functional._ScalingType | list[torch.nn.functional._ScalingType], scale_b: torch.Tensor | list[torch.Tensor], scale_recipe_b: torch.nn.functional._ScalingType | list[torch.nn.functional._ScalingType], swizzle_a: torch.nn.functional._SwizzleType | list[torch.nn.functional._SwizzleType] | None = None, swizzle_b: torch.nn.functional._SwizzleType | list[torch.nn.functional._SwizzleType] | None = None, bias: torch.Tensor | None = None, output_dtype: torch.dtype | None = torch.bfloat16, contraction_dim: list[int] | tuple[int, ...] = (), use_fast_accum: bool = False) -> torch.Tensor",
+      "supported": true,
+      "max_identity_error": 0.0
+    },
+    "e5m2": {
+      "dtype": "torch.float8_e5m2",
+      "api": "torch.nn.functional.scaled_mm",
+      "signature": "(mat_a: torch.Tensor, mat_b: torch.Tensor, scale_a: torch.Tensor | list[torch.Tensor], scale_recipe_a: torch.nn.functional._ScalingType | list[torch.nn.functional._ScalingType], scale_b: torch.Tensor | list[torch.Tensor], scale_recipe_b: torch.nn.functional._ScalingType | list[torch.nn.functional._ScalingType], swizzle_a: torch.nn.functional._SwizzleType | list[torch.nn.functional._SwizzleType] | None = None, swizzle_b: torch.nn.functional._SwizzleType | list[torch.nn.functional._SwizzleType] | None = None, bias: torch.Tensor | None = None, output_dtype: torch.dtype | None = torch.bfloat16, contraction_dim: list[int] | tuple[int, ...] = (), use_fast_accum: bool = False) -> torch.Tensor",
+      "supported": false,
+      "error_type": "ValueError",
+      "error": "Multiplication of two Float8_e5m2 matrices is not supported"
+    }
+  }
+}

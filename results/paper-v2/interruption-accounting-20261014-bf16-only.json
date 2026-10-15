@@ -1,0 +1,52 @@
+{
+  "schema": "researchcompression-interruption-accounting-v1",
+  "runs": [
+    {
+      "run_id": "architecture-replication-20261014-082807-5c73f669",
+      "run": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669",
+      "stage": "replication",
+      "model": "Qwen/Qwen3.5-0.8B",
+      "state": "interrupted by reboot",
+      "started_epoch": 1791966485.6441517,
+      "new_boot_epoch": 1791970132.8027894,
+      "charged_seconds": 3647.1586377620697,
+      "basis": "Conservative actual Python process launch-to-next-system-boot wall interval; includes reboot gap; original status retained unchanged.",
+      "source_artifacts": {
+        "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+        "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+        "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3",
+        "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+        "config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898",
+        "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd"
+      },
+      "records_saved": 10,
+      "independent_replication": false
+    },
+    {
+      "run_id": "practical-20261014-113642-0fe078b5",
+      "run": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-20261014-113642-0fe078b5",
+      "stage": "practical",
+      "model": "google/gemma-3-1b-it",
+      "state": "cancelled by user",
+      "started_epoch": 1791977800.5691855,
+      "ended_epoch": 1791984636.414916,
+      "charged_seconds": 6835.845730543137,
+      "basis": "Conservative captured practical launcher creation to explicit user-stop completion; includes interrupted work; old artifacts unchanged.",
+      "source_artifacts": {
+        "status.json": "4a78b9ce3413ff620bedac4f6b5a568a6ae0d9d60481ef24ce0218358690ba88",
+        "metrics.json": "8dc8a4a1479c30e3acedd290ef3729bd9cb9bcc2ca8ef240e7b8d7a8d6b34f98",
+        "contract.json": "4339332d15733e7722061120243a05d1b42f8129001f8ea6a47b3d3265f86d8c",
+        "config.json": "b7ebc35a175dcba5185481c69e4cca8eff649237eead65b8e0fb0755602552c4"
+      },
+      "independent_replication": false,
+      "stop_evidence": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\user-stop-1791984635\\stop.json",
+      "stop_evidence_sha256": "e4d3f60acdfaa8fe1fc40af8e23d2108223679ec3ba07742a516dbe1d0f32c9a"
+    }
+  ],
+  "prior_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-3",
+  "recovery_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-4",
+  "recovery_sources": {
+    "Qwen/Qwen3.5-0.8B": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669"
+  },
+  "note": "Preserved source rows are reused verbatim in successor metrics; never sum both copies as independent observations."
+}

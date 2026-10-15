@@ -1,0 +1,106 @@
+{
+  "protocol": "paper-v2",
+  "study": "bf16-practical-two-seeds",
+  "output_root": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2",
+  "model": "google/gemma-3-1b-it",
+  "model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--google--gemma-3-1b-it\\snapshots\\dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dataset_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\paper-assets\\wikitext-b08601e04326c79dfdd32d625aee71d232d685c3",
+  "device": "cuda",
+  "precision": "bfloat16",
+  "seeds": [
+    11,
+    23
+  ],
+  "calibration": {
+    "split": "train",
+    "chunks": 16,
+    "chunk_tokens": 512
+  },
+  "selection_split": "validation",
+  "evaluation_split": "test",
+  "context": 512,
+  "stride": 256,
+  "rank": 384,
+  "beta": 0.03,
+  "ridge_fraction": 0.0,
+  "pseudoinverse_rcond": 1e-07,
+  "methods": [
+    "whitening",
+    "anchored"
+  ],
+  "target_family": "attention-output",
+  "stage_gpu_hours": {
+    "readiness": 1,
+    "regularization": 4,
+    "baselines": 7,
+    "composition": 4,
+    "replication": 4,
+    "practical": 4
+  },
+  "identity_tolerance": {
+    "atol": 0.1,
+    "rtol": 0.01
+  },
+  "hardware_regression_limit": 0.05,
+  "readiness_passed": false,
+  "readiness_evidence": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\svd-diagnosis-20261013-165146-c3671715",
+  "readiness_interpretation": "FP16 factor rounding fails unchanged logit gate; downstream measurements exploratory, promotion disabled",
+  "factor_convention": "unbalanced",
+  "fitting_numerics": {
+    "weighted_methods": "Existing FP64 covariance and SVD; FP32 returned factors cast once to BF16; no FP16 storage or evaluated model",
+    "model_and_factor_storage": "bfloat16",
+    "model_forward": "bfloat16",
+    "metric_accumulation": "Existing FP32/FP64 stable reductions, not another model-format test"
+  },
+  "tokenizer_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "temperature_grid": [
+    0.25,
+    0.2726269331663144,
+    0.2973017787506803,
+    0.32420988866275247,
+    0.3535533905932738,
+    0.38555270635198524,
+    0.42044820762685725,
+    0.4585020216023356,
+    0.5,
+    0.5452538663326288,
+    0.5946035575013605,
+    0.6484197773255048,
+    0.7071067811865475,
+    0.7711054127039704,
+    0.8408964152537145,
+    0.9170040432046712,
+    1.0,
+    1.0905077326652577,
+    1.189207115002721,
+    1.2968395546510096,
+    1.4142135623730951,
+    1.542210825407941,
+    1.6817928305074292,
+    1.8340080864093427,
+    1.9999999999999998,
+    2.1810154653305154,
+    2.378414230005442,
+    2.5936791093020197,
+    2.82842712474619,
+    3.084421650815882,
+    3.363585661014858,
+    3.6680161728186857,
+    4.0
+  ],
+  "selection_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\selection.json",
+  "excluded_models": [
+    "openai-community/gpt2"
+  ],
+  "architecture_amendment": "docs/EXPERIMENT_PLAN_20261014_AMENDMENT.md",
+  "factor_formats": [
+    "bfloat16"
+  ],
+  "prior_practical_charged_seconds": 6835.845730543137,
+  "interruption_accounting_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\interruption-accounting-20261014-bf16-only.json",
+  "seed_amendment": "User authorized remaining tests in BF16 only with maximum two seeds; first fixed seeds 11/23 retained without outcome selection",
+  "expected_records": 5
+}

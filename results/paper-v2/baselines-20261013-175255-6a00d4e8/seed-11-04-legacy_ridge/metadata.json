@@ -1,0 +1,305 @@
+{
+  "specification": {
+    "method": "legacy_ridge",
+    "beta": 0.1,
+    "ridge_fraction": 0.01
+  },
+  "precision": "float16",
+  "targets": [
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.24.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    },
+    {
+      "name": "model.layers.25.self_attn.o_proj",
+      "shape": [
+        1152,
+        1024
+      ],
+      "rank": 384,
+      "factor_parameters": 835584,
+      "factor_tensor_bytes": 1671168,
+      "bias_parameters": 0
+    }
+  ],
+  "factor_convention": "unbalanced",
+  "output_source": "measured_teacher_bias_subtracted",
+  "budget_role": "matched fixed-rank comparison",
+  "factor_parameters": 21725184,
+  "serialized_bytes": 43465927,
+  "sha256": "1c013e5ff5457c18412c9f511acb2d308f14830f332e5bc581c1cf151ea0d064",
+  "fit_seconds": 26.53941659999964,
+  "peak_fitting_allocated_bytes": 2729661440,
+  "peak_fitting_reserved_bytes": 2761949184
+}

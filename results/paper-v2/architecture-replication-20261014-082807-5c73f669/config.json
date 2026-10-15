@@ -1,0 +1,116 @@
+{
+  "protocol": "paper-v3-architecture-panel",
+  "study": "architecture-panel",
+  "output_root": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dataset_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\paper-assets\\wikitext-b08601e04326c79dfdd32d625aee71d232d685c3",
+  "device": "cuda",
+  "precision": "bfloat16",
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "calibration": {
+    "split": "train",
+    "chunks": 16,
+    "chunk_tokens": 512
+  },
+  "selection_split": "validation",
+  "evaluation_split": "test",
+  "context": 512,
+  "stride": 256,
+  "pseudoinverse_rcond": 1e-07,
+  "methods": [
+    "svd",
+    "whitening",
+    "anchored"
+  ],
+  "target_family": "full-attention-output-only",
+  "stage_gpu_hours": {
+    "readiness": 1,
+    "regularization": 4,
+    "baselines": 7,
+    "composition": 4,
+    "replication": 4,
+    "practical": 4
+  },
+  "identity_tolerance": {
+    "atol": 0.1,
+    "rtol": 0.01
+  },
+  "hardware_regression_limit": 0.05,
+  "readiness_passed": false,
+  "fitting_numerics": {
+    "svd": "float32 SVD of native BF16 reference weights",
+    "weighted_methods": "float64 covariance eigendecomposition and SVD; factors returned FP32 then stored BF16",
+    "calibration": "native BF16 inputs without intermediate FP16 conversion"
+  },
+  "selection_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\selection.json",
+  "baseline_run_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+  "max_models": 4,
+  "models": [
+    {
+      "model": "Qwen/Qwen3.5-0.8B",
+      "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--Qwen--Qwen3.5-0.8B\\snapshots\\2fc06364715b967f1860aea9cf38778875588b17",
+      "architecture": "qwen3_5_text",
+      "model_gpu_hours": 2
+    },
+    {
+      "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+      "model_revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+      "model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--LiquidAI--LFM2.5-1.2B-Instruct\\snapshots\\0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+      "architecture": "lfm2",
+      "model_gpu_hours": 2
+    }
+  ],
+  "existing_gemma_reference": {
+    "model": "google/gemma-3-1b-it",
+    "model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+    "baseline_run_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+    "precision": "float16",
+    "classification": "historical matched Gemma comparator; BF16 precision diagnosis is separate"
+  },
+  "excluded_models": [
+    "openai-community/gpt2"
+  ],
+  "model_gpu_hours": 2,
+  "target_parameter_fraction": {
+    "numerator": 17,
+    "denominator": 24,
+    "rounding": "floor rank individually by matrix shape"
+  },
+  "offload": "gpu",
+  "cpu_offload_allowed": true,
+  "architecture_amendment": "docs/EXPERIMENT_PLAN_20261014_AMENDMENT.md",
+  "placement": "paired_gpu",
+  "factor_convention": "unbalanced",
+  "readiness_scope": "hybrid validation probes only; original Gemma FP16 readiness remains false",
+  "validation_frontier": {
+    "split": "validation",
+    "rank_rule": "min(out,in)//divisor",
+    "divisors": [
+      2,
+      3,
+      4
+    ],
+    "seeds": [
+      11,
+      23,
+      37
+    ],
+    "methods": [
+      "whitening",
+      "anchored"
+    ],
+    "select_on_test": false
+  },
+  "model": "Qwen/Qwen3.5-0.8B",
+  "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "model_path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--Qwen--Qwen3.5-0.8B\\snapshots\\2fc06364715b967f1860aea9cf38778875588b17",
+  "architecture": "qwen3_5_text",
+  "tokenizer_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "rank": "shape-derived by 17/24 factor/dense fraction"
+}

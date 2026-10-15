@@ -1,0 +1,16 @@
+{
+  "launcher_pid": 12180,
+  "created": 1791985866.2584555,
+  "command": [
+    "rtk",
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+    "-u",
+    "docs/run_bf16_practical_20261014.py"
+  ],
+  "source_hashes": {
+    "src\\paper_bf16_practical.py": "75261eb1291f11ac6f16da9647df30cd7db388928727266c3d68c6db5a514256",
+    "configs\\paper_bf16_practical_two_seeds_20261014.json": "6b16fa5c6929e2e5a7957ed267f3c645f069f54e385e0ea7a996e12de40ddcdf",
+    "docs\\run_bf16_practical_20261014.py": "f06dbb2dcb41f5c06f54df000bd53ce2a14177efc7b8016cc7e0f5312ed58321"
+  },
+  "authorization": "BF16 only, seeds11/23, max2; no other stages or formats"
+}

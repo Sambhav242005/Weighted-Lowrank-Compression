@@ -1,0 +1,2144 @@
+{
+  "teacher_bf16": {
+    "nll_sum": 1008822.3388007194,
+    "targets": 292281,
+    "nll": 3.451549497917139,
+    "ppl": 31.549239935894292,
+    "nll_blocks": [
+      {
+        "nll_sum": 14870.52711529664,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15575.646178928146,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13140.757247316724,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12774.35817704926,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15029.6888622845,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13425.129895185273,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14260.228717876309,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15398.372409568969,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15082.041899236036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12805.944920408963,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14728.978963578069,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14370.337161538797,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14614.044722007355,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16080.220943522261,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14448.383232667333,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13180.299796951498,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13151.467312694349,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13301.432764518062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11350.317287103062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11888.383167004087,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14911.297460559552,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17147.753754576726,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15911.088282796354,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15381.534194388674,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14008.584157032776,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12846.764882129859,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12891.193180315022,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12689.850614324883,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12741.58017132193,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14305.164002392794,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16046.840159168816,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13481.787810830478,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13793.920403184347,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12887.25151962166,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12758.783377370897,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15308.724202809091,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13856.956888541361,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14017.51981859676,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14033.499781739236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14278.820392538946,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12557.818924112893,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12976.579667544822,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13234.237802634496,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14145.25122361802,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16550.052937995097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17310.42473011608,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17587.56366860195,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15547.607342647854,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14171.461291698955,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13986.635436497072,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14730.18926785068,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14563.113138462975,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14378.75461796179,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13371.421934540638,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12798.148146593814,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14356.329557620258,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15159.78327515096,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14347.138769169236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14152.029731328646,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12491.298119473886,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12737.303537878528,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14525.35051456036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13588.5877891657,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12806.277934447573,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13813.669079794097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14669.146240187023,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13071.159274740086,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11832.644877586557,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15418.849049246637,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14391.633117721798,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15283.505448116754,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5492.896524678252,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 0.0,
+    "identity_passed": true,
+    "nll_passed": true,
+    "target_tensor_bytes": 61341696,
+    "target_checkpoint_bytes": 61350901,
+    "checkpoint_sha256": "8d08e51349d591df3fb402d663af8ba01c2bfbb32cfd1cc36f84d6d29d6b7d06",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\teacher_bf16.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": false
+  },
+  "copy_bf16": {
+    "nll_sum": 1008822.3388007194,
+    "targets": 292281,
+    "nll": 3.451549497917139,
+    "ppl": 31.549239935894292,
+    "nll_blocks": [
+      {
+        "nll_sum": 14870.52711529664,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15575.646178928146,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13140.757247316724,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12774.35817704926,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15029.6888622845,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13425.129895185273,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14260.228717876309,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15398.372409568969,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15082.041899236036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12805.944920408963,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14728.978963578069,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14370.337161538797,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14614.044722007355,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16080.220943522261,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14448.383232667333,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13180.299796951498,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13151.467312694349,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13301.432764518062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11350.317287103062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11888.383167004087,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14911.297460559552,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17147.753754576726,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15911.088282796354,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15381.534194388674,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14008.584157032776,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12846.764882129859,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12891.193180315022,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12689.850614324883,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12741.58017132193,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14305.164002392794,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16046.840159168816,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13481.787810830478,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13793.920403184347,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12887.25151962166,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12758.783377370897,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15308.724202809091,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13856.956888541361,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14017.51981859676,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14033.499781739236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14278.820392538946,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12557.818924112893,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12976.579667544822,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13234.237802634496,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14145.25122361802,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16550.052937995097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17310.42473011608,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17587.56366860195,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15547.607342647854,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14171.461291698955,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13986.635436497072,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14730.18926785068,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14563.113138462975,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14378.75461796179,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13371.421934540638,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12798.148146593814,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14356.329557620258,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15159.78327515096,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14347.138769169236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14152.029731328646,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12491.298119473886,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12737.303537878528,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14525.35051456036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13588.5877891657,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12806.277934447573,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13813.669079794097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14669.146240187023,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13071.159274740086,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11832.644877586557,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15418.849049246637,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14391.633117721798,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15283.505448116754,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5492.896524678252,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 0.0,
+    "identity_passed": true,
+    "nll_passed": true,
+    "target_tensor_bytes": 61341696,
+    "target_checkpoint_bytes": 61350805,
+    "checkpoint_sha256": "44b5d54d99d0c1f8934f334b5d469de5e4d8c8be05c623e9a9bf2106c02c3785",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\copy_bf16.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": false
+  },
+  "identity_bf16": {
+    "nll_sum": 1008822.3388007194,
+    "targets": 292281,
+    "nll": 3.451549497917139,
+    "ppl": 31.549239935894292,
+    "nll_blocks": [
+      {
+        "nll_sum": 14870.52711529664,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15575.646178928146,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13140.757247316724,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12774.35817704926,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15029.6888622845,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13425.129895185273,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14260.228717876309,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15398.372409568969,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15082.041899236036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12805.944920408963,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14728.978963578069,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14370.337161538797,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14614.044722007355,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16080.220943522261,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14448.383232667333,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13180.299796951498,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13151.467312694349,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13301.432764518062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11350.317287103062,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11888.383167004087,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14911.297460559552,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17147.753754576726,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15911.088282796354,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15381.534194388674,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14008.584157032776,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12846.764882129859,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12891.193180315022,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12689.850614324883,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12741.58017132193,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14305.164002392794,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16046.840159168816,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13481.787810830478,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13793.920403184347,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12887.25151962166,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12758.783377370897,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15308.724202809091,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13856.956888541361,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14017.51981859676,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14033.499781739236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14278.820392538946,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12557.818924112893,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12976.579667544822,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13234.237802634496,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14145.25122361802,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16550.052937995097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17310.42473011608,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17587.56366860195,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15547.607342647854,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14171.461291698955,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13986.635436497072,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14730.18926785068,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14563.113138462975,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14378.75461796179,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13371.421934540638,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12798.148146593814,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14356.329557620258,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15159.78327515096,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14347.138769169236,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14152.029731328646,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12491.298119473886,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12737.303537878528,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14525.35051456036,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13588.5877891657,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12806.277934447573,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13813.669079794097,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14669.146240187023,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13071.159274740086,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11832.644877586557,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15418.849049246637,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14391.633117721798,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15283.505448116754,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5492.896524678252,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 0.0,
+    "identity_passed": true,
+    "nll_passed": true,
+    "target_tensor_bytes": 115867648,
+    "target_checkpoint_bytes": 115884131,
+    "checkpoint_sha256": "40aaa9d7484c351f8aa68cc098f574d2900ed726fd9c8e71a2ba7c18394f76ca",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\identity_bf16.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": false
+  },
+  "svd_bf16": {
+    "nll_sum": 1009146.3693311329,
+    "targets": 292281,
+    "nll": 3.4526581246510477,
+    "ppl": 31.584235661736045,
+    "nll_blocks": [
+      {
+        "nll_sum": 14855.22717420798,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15566.10491125178,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13137.694346568378,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12800.177369665878,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15029.022476921986,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13427.466683706985,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14242.935399906475,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15403.71125382671,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15107.697292443132,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12808.554427138763,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14751.228615398188,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14368.45147371886,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14593.942697320652,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16119.303883244604,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14457.438537133274,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13171.93544023842,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13149.307770415584,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13288.959178759944,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11362.766266796672,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11878.517279426545,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14920.51607619661,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17180.288767509803,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15914.792470307282,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15393.645947035286,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13989.649582384553,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12852.579576592972,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12902.31622824038,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12686.65336176989,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12746.227211104848,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14313.61865823875,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16048.420956370886,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13490.745089451031,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13837.563784621583,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12881.220894327693,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12752.147987231056,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15307.908255462753,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13879.114654839155,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14013.972880994887,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14042.743860107494,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14270.794468535241,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12574.092786158566,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12970.40005178772,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13245.099491660796,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14165.553153306384,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16595.947025182235,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17270.799132305052,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17593.11827646743,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15574.772297620133,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14186.445445102352,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13993.561761926438,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14718.476516791501,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14574.232561487202,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14380.403711953611,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13367.804121802348,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12811.407728559594,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14361.487348508897,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15146.24880137517,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14365.781670137698,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14158.522066586298,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12496.138398784846,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12741.999825330935,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14541.603723347398,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13596.902252269989,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12809.410935820513,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13820.573300442382,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14673.052461626387,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13069.996783308481,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11821.37814475961,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15406.114275419735,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14406.410064740718,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15263.5281540168,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5499.743873134303,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 1.0625,
+    "identity_passed": false,
+    "nll_passed": false,
+    "target_tensor_bytes": 115867648,
+    "target_checkpoint_bytes": 115883777,
+    "checkpoint_sha256": "498159cb01753e908c7c131ef2bfafcdeb3336b9c3a33492f91f80abbf53ae85",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\svd_bf16.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": false
+  },
+  "svd_fp32_compute": {
+    "nll_sum": 1008832.3422718886,
+    "targets": 292281,
+    "nll": 3.451583723443839,
+    "ppl": 31.55031974372647,
+    "nll_blocks": [
+      {
+        "nll_sum": 14866.318998068842,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15568.522919845876,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13140.403060010727,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12775.984812462993,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15011.361595071103,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13426.472485049551,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14254.627829241766,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15402.617419378337,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15116.770832664974,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12807.918882997583,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14731.792227973063,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14372.751779455337,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14597.560429564299,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16104.741052118043,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14445.655553234421,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13175.628920922725,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13158.867245816877,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13298.704883025628,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11343.782582893436,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11880.91742516811,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14920.27920860934,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17150.227921254933,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15920.68064230475,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15373.523597413834,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14013.731110608702,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12822.976494136532,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12896.835101357545,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12688.83359608012,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12744.843448876352,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14298.620379567159,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16040.941235816921,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13475.563737806991,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13810.78581448568,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12878.383258027987,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12740.757063361254,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15311.679575553317,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13867.330067895698,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14029.265047642897,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14022.625005194617,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14286.432739073884,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12562.326776959104,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12988.743238486873,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13236.300640474481,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14146.911249392531,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16564.59909923462,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17283.913723253558,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17591.463413042016,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15541.313861420058,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14176.672822702934,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13983.348657626564,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14714.040646268495,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14567.38741298456,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14376.06045701455,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13363.08080398033,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12808.47683227418,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14353.50779938462,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15159.453939000114,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14348.184705409976,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14157.461079200875,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12501.900017350843,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12750.414837273194,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14529.507852316827,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13611.335591096278,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12813.64563088122,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13816.620985080444,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14663.374208574096,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13071.193316414128,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11816.869358091504,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15380.376005905971,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14403.566865060035,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15277.150509667932,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5497.42395603335,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 1.15625,
+    "identity_passed": false,
+    "nll_passed": true,
+    "target_tensor_bytes": 231735296,
+    "target_checkpoint_bytes": 231751953,
+    "checkpoint_sha256": "07dcc40236d2992b49c43b643d38a89874ba7778e7b127862bda313d3f158bfb",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\svd_fp32_compute.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "float32 factors with BF16 output",
+    "fp8_storage": false
+  },
+  "svd_fp8_e4m3": {
+    "nll_sum": 1009956.4316685282,
+    "targets": 292281,
+    "nll": 3.4554296436255805,
+    "ppl": 31.671893386581935,
+    "nll_blocks": [
+      {
+        "nll_sum": 14932.199904908102,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15572.886120222087,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13163.00414572221,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12795.436747100437,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15041.282778321496,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13418.87251523327,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14310.758268319594,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15451.57867697117,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15146.290944837849,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12824.127027496328,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14744.067721692867,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14451.221956902678,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14619.61637444397,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16101.129660305713,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14447.270357412925,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13187.599082780871,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13165.8504919603,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13298.861464184327,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11351.271591935212,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11903.104452673742,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14929.642690756766,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17188.508219141688,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15977.82510427112,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15413.430258739092,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14006.012272983673,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12805.567404761343,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12852.755085914396,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12656.528288380006,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12727.974834849865,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14291.193678584299,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16045.781780112302,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13505.451795529,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13855.312840494676,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12883.215896286178,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12746.111584388065,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15298.92464524071,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13895.888516072766,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14057.953534496366,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14073.357957121718,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14273.726253642042,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12507.930792408602,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13010.999508464378,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13249.235220003633,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14180.215660182963,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16565.301213013314,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17298.450012406058,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17615.075297133488,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15593.58269068718,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14210.589931559247,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14012.508594134366,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14737.408617288715,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14606.77954956493,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14369.493862763367,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13341.17923636119,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12794.750177562522,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14337.270334379333,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15228.948365748765,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14377.079936137021,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14162.21126179818,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12487.077724264855,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12718.59207596846,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14553.421308795077,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13654.349386648195,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12819.932224451744,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13843.518180890314,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14699.904610643018,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13071.394079879288,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11835.789559066974,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15444.552640578273,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14435.181517605804,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15284.731211678314,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5497.383961269164,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 9.73046875,
+    "identity_passed": false,
+    "nll_passed": false,
+    "target_tensor_bytes": 58160128,
+    "target_checkpoint_bytes": 58191893,
+    "checkpoint_sha256": "1ce3ffef78ea17268903d26d2b01db9a5cfad9f7d305a599827864f1f435f4bd",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\svd_fp8_e4m3.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": true
+  },
+  "svd_fp8_e5m2": {
+    "nll_sum": 1014378.5947874917,
+    "targets": 292281,
+    "nll": 3.4705594779937514,
+    "ppl": 32.15472727553124,
+    "nll_blocks": [
+      {
+        "nll_sum": 14942.214849694275,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15533.817199923535,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13253.292992049724,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12860.923625682743,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15132.78462787447,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13476.32331750989,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14247.917146946536,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15423.396991608199,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15170.826283980045,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12835.607664089375,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14797.617965189898,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14538.660674527328,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14747.4307176737,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16132.492311867289,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14599.09280454,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13360.240833149925,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13288.394875909597,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13343.590950087528,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11505.87172387346,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12041.733006488808,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14929.679468173592,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17182.986873813265,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15876.886359602844,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15499.31288383656,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14038.706952007156,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12822.525129017848,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12947.953033444253,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12753.105013411216,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12799.567695451004,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14413.432986135034,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16060.527753688279,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13668.39701220034,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13896.877556369196,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12935.820002366161,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12746.573753144734,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15297.208421817377,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13958.95910366853,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14130.600047210042,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14160.838407948644,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14332.555401168138,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12669.6282402141,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13015.803223549567,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13305.487647012913,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14181.049107368417,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 16595.481709389922,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17380.046200679964,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 17683.025603528717,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15665.330810804677,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14227.322771484292,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14106.937553461212,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14877.237849245197,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14702.827186391783,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14557.468716888754,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13571.392622926931,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12997.031064535035,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14419.819306984733,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15125.718183792877,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14391.810316984434,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14130.249274169551,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12560.437884114228,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12843.61901905714,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14649.801059884865,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13653.846680654533,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 12881.524766041244,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13894.25206317161,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14751.935565479347,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 13141.48224609618,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 11856.303212716626,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15519.97292037349,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 14491.641917341607,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 15354.718150230205,
+        "targets": 4096
+      },
+      {
+        "nll_sum": 5490.647495776928,
+        "targets": 1465
+      }
+    ],
+    "max_logit_error": 7.8671875,
+    "identity_passed": false,
+    "nll_passed": false,
+    "target_tensor_bytes": 58160128,
+    "target_checkpoint_bytes": 58191893,
+    "checkpoint_sha256": "2c222f5aab06323a321b2c24513909c76953577e0370f1774703d5ea093c439e",
+    "checkpoint": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\precision-readiness-20261014-060840-6db37daf\\checkpoints\\svd_fp8_e5m2.pt",
+    "storage_scope": "attention output targets only; full-rank controls, not whole-model compression",
+    "compute": "bfloat16",
+    "fp8_storage": true
+  }
+}

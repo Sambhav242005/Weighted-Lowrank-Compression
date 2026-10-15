@@ -1,0 +1,14 @@
+[
+  {
+    "model": "Qwen/Qwen3.5-0.8B",
+    "run": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e",
+    "exit_code": 1,
+    "remaining_seconds_at_start": 3552.8413622379303
+  },
+  {
+    "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+    "run": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84",
+    "exit_code": 0,
+    "remaining_seconds_at_start": 7199.82660723793
+  }
+]

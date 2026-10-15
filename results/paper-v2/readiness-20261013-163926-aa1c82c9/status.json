@@ -1,0 +1,7 @@
+{
+  "state": "failed",
+  "phase": "initialization",
+  "observed_process_exit_code": 1,
+  "system_transformers_import_probe": "huggingface-hub>=0.30.0,<1.0 required; found 2.2.0",
+  "note": "No metrics or Python traceback were emitted by the run; dependency error separately confirmed by import probe."
+}

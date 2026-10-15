@@ -1,0 +1,12 @@
+[
+  {
+    "model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--Qwen--Qwen3.5-0.8B\\snapshots\\2fc06364715b967f1860aea9cf38778875588b17"
+  },
+  {
+    "model": "LiquidAI/LFM2.5-1.2B-Instruct",
+    "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+    "path": "C:\\Users\\NPC\\.cache\\huggingface\\hub\\models--LiquidAI--LFM2.5-1.2B-Instruct\\snapshots\\0f604ada3f766f9f257460c4c9f0b5d6f69d431b"
+  }
+]

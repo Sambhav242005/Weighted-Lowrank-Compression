@@ -1,0 +1,7 @@
+{
+  "prior_run": "composition-20261013-185512-2bffd477",
+  "prior_charged_seconds": 8972.373,
+  "basis": "last observed logged elapsed8912.373 plus60-second allowance",
+  "limitation": "Unexpected reboot prevents proving an upper bound on unlogged GPU time. Recorded cumulative accounting is an estimate for the interrupted run; completed resumed run elapsed is measured.",
+  "classification": "exploratory; no precise24GPU-hour compliance claim from estimated interruption charge"
+}

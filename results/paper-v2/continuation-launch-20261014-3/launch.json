@@ -1,0 +1,10 @@
+{
+  "pid": 13904,
+  "command": [
+    "rtk",
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+    "-u",
+    "-m",
+    "docs.continue_after_review_20261014"
+  ]
+}

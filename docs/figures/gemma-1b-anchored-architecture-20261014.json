@@ -1,0 +1,19 @@
+{
+  "purpose": "Educational simplified architecture illustration; not an experimental performance plot",
+  "model": "google/gemma-3-1b-it",
+  "model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "source_contract": "results/paper-v2/baselines-20261013-175255-6a00d4e8/contract.json",
+  "target_family": "attention output projections only",
+  "number_of_targets": 26,
+  "dense_shape": [
+    1152,
+    1024
+  ],
+  "rank": 384,
+  "dense_weights": 1179648,
+  "factor_weights": 835584,
+  "weights_removed_per_target": 344064,
+  "target_weight_reduction_fraction": 0.29166666666666663,
+  "note": "Anchor guides fitting; low-rank factorization provides reduction. Whitening uses the same factor budget. Normalization and residual wiring omitted in simplified architecture. No inference latency or peak-memory claim.",
+  "image_sha256": "30584027bb53e1035839e369730925b175e5bf4b675d6f8313d9e5c26b73c730"
+}

@@ -1,0 +1,35 @@
+{
+  "action": "Relocate historical drafts unchanged; active code, configurations and experimental artifacts untouched",
+  "files": [
+    {
+      "original": "docs/PAPER.md",
+      "destination": "docs/archive/historical-drafts/PAPER.md",
+      "sha256": "59103d88d9ced82763970a6608839f39d88f39c91e5d414ac85f6b0b35b0eb2c",
+      "verified": true
+    },
+    {
+      "original": "docs/paper.tex",
+      "destination": "docs/archive/historical-drafts/paper.tex",
+      "sha256": "504fba7b746ac4af8816e181b21e58f2677aa1bf9bde6db2e2fc0d8634ab9f8a",
+      "verified": true
+    },
+    {
+      "original": "docs/RESEARCH_SUMMARY.md",
+      "destination": "docs/archive/historical-drafts/RESEARCH_SUMMARY.md",
+      "sha256": "eff82d0787b2105dad9dae67fb3a713d51ea9781ee0224070436b92ce4d35b6e",
+      "verified": true
+    },
+    {
+      "original": "docs/Research.md",
+      "destination": "docs/archive/historical-drafts/Research.md",
+      "sha256": "31112f22517d40c29aaf285de35873aeae12bb89969821c36a99cd993686f4ea",
+      "verified": true
+    },
+    {
+      "original": "docs/JOINT_COMPRESSION_PLAN.md",
+      "destination": "docs/archive/historical-drafts/JOINT_COMPRESSION_PLAN.md",
+      "sha256": "f2efd268b854cca8d1a4ee51ba79591217f9f8c6000266e387af811a4ff42e01",
+      "verified": true
+    }
+  ]
+}

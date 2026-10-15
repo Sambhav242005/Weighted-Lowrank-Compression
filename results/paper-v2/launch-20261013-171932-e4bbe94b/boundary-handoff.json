@@ -1,0 +1,20 @@
+{
+  "state": "cancelled",
+  "reason": "planned boundary handoff after complete Stage B to repair scale invariance of secondary CKA metric",
+  "pid": 9932,
+  "command": [
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+    "-u",
+    "-m",
+    "src.paper_benchmark",
+    "run",
+    "--config",
+    "configs/paper_exploratory_v2.json",
+    "--stage",
+    "local-core"
+  ],
+  "stage_B": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e",
+  "selection": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\selection.json",
+  "time_utc_epoch": 1791913571.1523702,
+  "resume_stage": "baselines"
+}

@@ -1,0 +1,155 @@
+{
+  "state": "errors",
+  "scope": "immutable Gemma C/D artifact evidence; CPU only; no tensor deserialization",
+  "cohorts": {
+    "baselines-20261013-175255-6a00d4e8": {
+      "rows": 13,
+      "teacher_targets": 292281,
+      "metrics_sha256": "75b5c39e40325852101a05376019937bccd02c2e039b09b282b656da6850cad4",
+      "methods": {
+        "svd": 1,
+        "asvd": 3,
+        "whitening": 3,
+        "anchored": 3,
+        "legacy_ridge": 3
+      },
+      "origins": {
+        "original Stage C measurement": 13
+      }
+    },
+    "composition-20261014-054423-dbd821ff": {
+      "rows": 60,
+      "teacher_targets": 292281,
+      "metrics_sha256": "f16f75e81bf015c9860acb5d76842f54862f73eb916f1fd8d870da91e476babc",
+      "methods": {
+        "whitening": 30,
+        "anchored": 30
+      },
+      "origins": {
+        "preserved complete composition measurement": 47,
+        "fresh complete native test evaluation": 7,
+        "reused completed Stage C full-stack measurement": 6
+      }
+    }
+  },
+  "unique_files_hashed": {
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-00-svd\\factors.pt": {
+      "sha256": "ecda0776637a6cfabe6eb895c92da85a543e553bf4f60418d67ec7f6bf68cd4e",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-01-asvd\\factors.pt": {
+      "sha256": "c0665e7983b676073ead63e1aea3e8ad2be282bbd780c5ad4c6152d92524d5c3",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-02-whitening\\factors.pt": {
+      "sha256": "129c426aaf740430f901ab328bb713b24a436edd11afd70c5e7fad5212f2191b",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-03-anchored\\factors.pt": {
+      "sha256": "218da1b279b05ee9c68eaa214bc5077f7f2361139cacba812b28780f5db61c60",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-11-04-legacy_ridge\\factors.pt": {
+      "sha256": "1c013e5ff5457c18412c9f511acb2d308f14830f332e5bc581c1cf151ea0d064",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-01-asvd\\factors.pt": {
+      "sha256": "593c468635d2dd59906fee0cd2a47a98c1ff34c188b23215b040720a2556addf",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-02-whitening\\factors.pt": {
+      "sha256": "42a554516b16b2d600e26e1d6e22685a2599e6d578752578061586adf0913731",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-03-anchored\\factors.pt": {
+      "sha256": "34694e918184b362b85d560d7b7375944bdf330511a4f8ed97fe584f929c3ffc",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-23-04-legacy_ridge\\factors.pt": {
+      "sha256": "e64acfde1d62777b00a73506a4e645db2538cfec42a7325a0fb2f8512a045566",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-01-asvd\\factors.pt": {
+      "sha256": "f85cc15bc6a9aa05ed3e3b6ed91fdb850c0a6a0323badd1ff7553699e7bc735d",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-02-whitening\\factors.pt": {
+      "sha256": "3ba3615fe46aa29b024959a32e80fe34144e4f13ce46075da4eedd4aeb6e3ad4",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-03-anchored\\factors.pt": {
+      "sha256": "17f97f476c76a3a694a88d9769a8f1ab34c6b3c0906af7bbc7453a536e4096b4",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\seed-37-04-legacy_ridge\\factors.pt": {
+      "sha256": "d22fe9eecf18b6032697ca4b806214536720dde54e0e4de910634a4807eb2b73",
+      "bytes": 43465927
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8\\metrics.json": {
+      "sha256": "75b5c39e40325852101a05376019937bccd02c2e039b09b282b656da6850cad4",
+      "bytes": 418346
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\composition-20261014-032120-486d799f\\metrics.json": {
+      "sha256": "68ea26fb62b44bd046a20a18755f600b33f039963db206eabffb49ed3b571b56",
+      "bytes": 1320098
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\composition-20261014-054423-dbd821ff\\metrics.json": {
+      "sha256": "f16f75e81bf015c9860acb5d76842f54862f73eb916f1fd8d870da91e476babc",
+      "bytes": 1693095
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\docs\\audit_gemma_evidence_20261014.py": {
+      "sha256": "26f213e4177e54a8d09d592634a5b1e9cebb4910002b56f896047c6bb5ed1361",
+      "bytes": 6265
+    }
+  },
+  "errors": [
+    "composition-20261014-054423-dbd821ff row 0: source metric equality",
+    "composition-20261014-054423-dbd821ff row 1: source metric equality",
+    "composition-20261014-054423-dbd821ff row 2: source metric equality",
+    "composition-20261014-054423-dbd821ff row 3: source metric equality",
+    "composition-20261014-054423-dbd821ff row 4: source metric equality",
+    "composition-20261014-054423-dbd821ff row 5: source metric equality",
+    "composition-20261014-054423-dbd821ff row 6: source metric equality",
+    "composition-20261014-054423-dbd821ff row 7: source metric equality",
+    "composition-20261014-054423-dbd821ff row 8: source metric equality",
+    "composition-20261014-054423-dbd821ff row 9: source metric equality",
+    "composition-20261014-054423-dbd821ff row 10: source metric equality",
+    "composition-20261014-054423-dbd821ff row 11: source metric equality",
+    "composition-20261014-054423-dbd821ff row 12: source metric equality",
+    "composition-20261014-054423-dbd821ff row 13: source metric equality",
+    "composition-20261014-054423-dbd821ff row 14: source metric equality",
+    "composition-20261014-054423-dbd821ff row 15: source metric equality",
+    "composition-20261014-054423-dbd821ff row 16: source metric equality",
+    "composition-20261014-054423-dbd821ff row 17: source metric equality",
+    "composition-20261014-054423-dbd821ff row 18: source metric equality",
+    "composition-20261014-054423-dbd821ff row 19: source metric equality",
+    "composition-20261014-054423-dbd821ff row 20: source metric equality",
+    "composition-20261014-054423-dbd821ff row 21: source metric equality",
+    "composition-20261014-054423-dbd821ff row 22: source metric equality",
+    "composition-20261014-054423-dbd821ff row 23: source metric equality",
+    "composition-20261014-054423-dbd821ff row 24: source metric equality",
+    "composition-20261014-054423-dbd821ff row 25: source metric equality",
+    "composition-20261014-054423-dbd821ff row 26: source metric equality",
+    "composition-20261014-054423-dbd821ff row 27: source metric equality",
+    "composition-20261014-054423-dbd821ff row 28: source metric equality",
+    "composition-20261014-054423-dbd821ff row 29: source metric equality",
+    "composition-20261014-054423-dbd821ff row 30: source metric equality",
+    "composition-20261014-054423-dbd821ff row 31: source metric equality",
+    "composition-20261014-054423-dbd821ff row 32: source metric equality",
+    "composition-20261014-054423-dbd821ff row 33: source metric equality",
+    "composition-20261014-054423-dbd821ff row 34: source metric equality",
+    "composition-20261014-054423-dbd821ff row 35: source metric equality",
+    "composition-20261014-054423-dbd821ff row 36: source metric equality",
+    "composition-20261014-054423-dbd821ff row 37: source metric equality",
+    "composition-20261014-054423-dbd821ff row 38: source metric equality",
+    "composition-20261014-054423-dbd821ff row 39: source metric equality",
+    "composition-20261014-054423-dbd821ff row 40: source metric equality",
+    "composition-20261014-054423-dbd821ff row 41: source metric equality",
+    "composition-20261014-054423-dbd821ff row 42: source metric equality",
+    "composition-20261014-054423-dbd821ff row 43: source metric equality",
+    "composition-20261014-054423-dbd821ff row 44: source metric equality",
+    "composition-20261014-054423-dbd821ff row 45: source metric equality",
+    "composition-20261014-054423-dbd821ff row 46: source metric equality"
+  ],
+  "script_sha256": "26f213e4177e54a8d09d592634a5b1e9cebb4910002b56f896047c6bb5ed1361"
+}

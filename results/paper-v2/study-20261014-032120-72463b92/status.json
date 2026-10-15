@@ -1,0 +1,11 @@
+{
+  "state": "interrupted",
+  "reason": "User-reported PC restart; old process absent",
+  "old_pid": 2588,
+  "new_boot_epoch": 1791950477.8047101,
+  "prior_process_start_epoch": 1791948078.969369,
+  "elapsed_seconds": 2398.8353412151337,
+  "complete_records": 47,
+  "accounting": "Conservative launch-to-new-boot wall interval, including restart downtime",
+  "classification": "exploratory; earlier first-reboot accounting remains estimated"
+}

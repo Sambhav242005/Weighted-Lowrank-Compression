@@ -1,0 +1,14 @@
+{
+  "state": "passed",
+  "source_sha256": "f5b36fe379190e3dbfcc9bc15ab15150f5ed8fcbea8e11d10eb61b96abb8939d",
+  "compiler": "Codex desktop built-in compiler",
+  "diagnostic": "The current source compiled successfully with the desktop editor's compiler.",
+  "pdf_renderer": "Separate ReportLab PDF, not TeX-produced",
+  "pages": 45,
+  "off_page_text": [],
+  "future_scope_pages": [
+    29,
+    30
+  ],
+  "change": "Added proposed offline preparation and BF16 inference optimization, validation criteria and future generalization studies. No new experiments."
+}

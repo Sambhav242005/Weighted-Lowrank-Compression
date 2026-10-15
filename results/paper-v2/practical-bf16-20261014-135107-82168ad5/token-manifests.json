@@ -1,0 +1,180 @@
+{
+  "test": {
+    "tokens": 292282,
+    "hash": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc"
+  },
+  "train": {
+    "tokens": 2459302,
+    "hash": "950ace441dd12b00ed9aec525a4d07d6a8f70ba2cf6cf9cc7cc39bc379accbca"
+  },
+  "validation": {
+    "tokens": 257290,
+    "hash": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc"
+  },
+  "calibration": {
+    "11": [
+      {
+        "start": 2067456,
+        "tokens": 512,
+        "hash": "8d6ab72647725105b1b0af3986aaadc1d8defda440f89e6a83f42e712a7e7a17"
+      },
+      {
+        "start": 1173504,
+        "tokens": 512,
+        "hash": "355663f7815b2e8e41f8024076224b9cdc2cab94ff5d26ee720b1b745bcc5093"
+      },
+      {
+        "start": 1280000,
+        "tokens": 512,
+        "hash": "424687b91d4736a1b93f6eb65dbb135498bfb47e0fccc1ee5d68674b8cbb38fc"
+      },
+      {
+        "start": 1653760,
+        "tokens": 512,
+        "hash": "4b4a685a6e297764a0b4aa3c86ad1e5c865858644f3a5b24151afde7c1631c71"
+      },
+      {
+        "start": 718848,
+        "tokens": 512,
+        "hash": "df1587a7fdbc73b434ca96f38a54e4601873fdadd5d1fc83896335ae04e8bac5"
+      },
+      {
+        "start": 296960,
+        "tokens": 512,
+        "hash": "f9bbcdcc3287ac3d60bcc352a5584f914112efe466922e4a5acbaa78647c6417"
+      },
+      {
+        "start": 1383424,
+        "tokens": 512,
+        "hash": "7e50d2764d07a8c2bb07006512ec1d8044893f6bea06397732cb30cf6a41cff4"
+      },
+      {
+        "start": 556544,
+        "tokens": 512,
+        "hash": "17924f4390c77eabed72a10e8277b02f3b8002dc21c6444cf71e67dcc34e2811"
+      },
+      {
+        "start": 2181120,
+        "tokens": 512,
+        "hash": "8122549fe25c723f8c445f746fc6c83104989c08fd06494e5cfa9b5d891c8cfd"
+      },
+      {
+        "start": 2258944,
+        "tokens": 512,
+        "hash": "3f62008fe38021349fd673e4b944ced730baf71ad38699c8bed404be544b7b1a"
+      },
+      {
+        "start": 430592,
+        "tokens": 512,
+        "hash": "9525634a7183e0efbf30773a1e57071affe5246d4ef7d53d413c82aad9688be3"
+      },
+      {
+        "start": 1218048,
+        "tokens": 512,
+        "hash": "af1dc711128b6ba774f5881f1b6eb71d2b2e0f4ab80d5d0a0ff5a8d976a1b224"
+      },
+      {
+        "start": 1377280,
+        "tokens": 512,
+        "hash": "df1589673da9d28b6c1d129cf55f3c49a05c8ed4dbaac9989d30c806bc2bab4e"
+      },
+      {
+        "start": 1268224,
+        "tokens": 512,
+        "hash": "da4075d860b24b1b76cfd41240fd372b038608d4ec91a0b76ba044e3af70b2ee"
+      },
+      {
+        "start": 999424,
+        "tokens": 512,
+        "hash": "c3f219f8a695f90d4e410c6a4048cc2a61995ccaf87d620de7df88c2bc0c5260"
+      },
+      {
+        "start": 811008,
+        "tokens": 512,
+        "hash": "486b14a0f7f936fdad3c6b90002b241229e4cda3e26af9b9e52349a0a1f1cf7a"
+      }
+    ],
+    "23": [
+      {
+        "start": 485376,
+        "tokens": 512,
+        "hash": "5e87f9a2f65c2328c8cd95ae105156b426c445bbae9c2fe4b435de524e6e573a"
+      },
+      {
+        "start": 1510912,
+        "tokens": 512,
+        "hash": "f226ed2b16b81d4c2e1c9811cd4569e12b0ed1d3f1a9043b2a27483d66b62fc0"
+      },
+      {
+        "start": 751104,
+        "tokens": 512,
+        "hash": "8079bb8f8a13541a21f23078df7cdd33244204ef10c6aa64e26556b35e8cdf59"
+      },
+      {
+        "start": 2201600,
+        "tokens": 512,
+        "hash": "f898471e9f4d1f856e430712c78df9f04af3cf6a98e20dda10843b2d09b5e051"
+      },
+      {
+        "start": 1278976,
+        "tokens": 512,
+        "hash": "1d1f72f3744dc52aeaf8e16726334abebf4789f17d8db9313677688b67fbc4e4"
+      },
+      {
+        "start": 1315328,
+        "tokens": 512,
+        "hash": "ed5d7501785529b64ac10da5b7ba296149b613c74cdbf1a6ebf2e19432a3773a"
+      },
+      {
+        "start": 1359872,
+        "tokens": 512,
+        "hash": "40594051adcab24ce2bc081c02c44573766b374d0d8cc176a0ad39d99fb535a6"
+      },
+      {
+        "start": 2025472,
+        "tokens": 512,
+        "hash": "f6bb0fa1c51b1a6e16ec72d80a467b185a0ac79d50036c77bc0d60da704fd8b3"
+      },
+      {
+        "start": 707584,
+        "tokens": 512,
+        "hash": "60ebd9fdc7040453887f08599c06eaa77b355b639853d9e72c6433958983d904"
+      },
+      {
+        "start": 1386496,
+        "tokens": 512,
+        "hash": "5ee7f771020f9b3aeb1ff05243d55371b86d6b8708cd89fc05c51d454bac801a"
+      },
+      {
+        "start": 2172928,
+        "tokens": 512,
+        "hash": "37514e71126f01525fc08d71a6ffaf40c87e4e6b78488de2262cca1d17fe5234"
+      },
+      {
+        "start": 2271744,
+        "tokens": 512,
+        "hash": "c67882a953554e68f66fae3ed4f1faf6a710a02ab531274f9a8e98b5e0c93dc1"
+      },
+      {
+        "start": 1408512,
+        "tokens": 512,
+        "hash": "82abb47c9054b6b73dd2823b117c7b139b2920ebb77409db56b16d3239126ba6"
+      },
+      {
+        "start": 2452480,
+        "tokens": 512,
+        "hash": "f2a8932f6fbd4313234a666764e6ab5f6b02b69e67cc992c600b1e71b3b4d65f"
+      },
+      {
+        "start": 363520,
+        "tokens": 512,
+        "hash": "473f0c89a8f117dbec81ea7d15e35e01adf9eafb33ab9292619286f63a082a0d"
+      },
+      {
+        "start": 1049600,
+        "tokens": 512,
+        "hash": "5963426f3a6801fd66e5f939b1b684bb4e8c298e13ba95ccf50e5e6251393fc0"
+      }
+    ]
+  }
+}

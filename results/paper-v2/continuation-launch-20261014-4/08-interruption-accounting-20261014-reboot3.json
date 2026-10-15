@@ -1,0 +1,32 @@
+{
+  "schema": "researchcompression-interruption-accounting-v1",
+  "runs": [
+    {
+      "run_id": "architecture-replication-20261014-082807-5c73f669",
+      "run": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669",
+      "stage": "replication",
+      "model": "Qwen/Qwen3.5-0.8B",
+      "state": "interrupted by reboot",
+      "started_epoch": 1791966485.6441517,
+      "new_boot_epoch": 1791970132.8027894,
+      "charged_seconds": 3647.1586377620697,
+      "basis": "Conservative actual Python process launch-to-next-system-boot wall interval; includes reboot gap; original status retained unchanged.",
+      "source_artifacts": {
+        "contract.json": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+        "metrics.json": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+        "readiness.json": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3",
+        "validation-teacher.json": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+        "config.json": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898",
+        "status.json": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd"
+      },
+      "records_saved": 10,
+      "independent_replication": false
+    }
+  ],
+  "prior_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-3",
+  "recovery_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-4",
+  "recovery_sources": {
+    "Qwen/Qwen3.5-0.8B": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669"
+  },
+  "note": "Preserved source rows are reused verbatim in successor metrics; never sum both copies as independent observations."
+}

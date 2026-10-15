@@ -1,0 +1,84 @@
+[
+  {
+    "pid": 10104,
+    "created": 1791970724.4772804,
+    "command": [
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "docs/continue_after_reboot3_20261014.py"
+    ]
+  },
+  {
+    "pid": 12504,
+    "created": 1791970724.4488332,
+    "command": [
+      "rtk",
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "docs/continue_after_reboot3_20261014.py"
+    ]
+  },
+  {
+    "pid": 15872,
+    "created": 1791977800.5691855,
+    "command": [
+      "rtk",
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "-m",
+      "src.paper_benchmark",
+      "run",
+      "--config",
+      "configs/paper_practical_after_panel_v3.json",
+      "--stage",
+      "local-core"
+    ]
+  },
+  {
+    "pid": 20224,
+    "created": 1791970724.4837196,
+    "command": [
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "docs/continue_after_reboot3_20261014.py"
+    ]
+  },
+  {
+    "pid": 37908,
+    "created": 1791977800.5924492,
+    "command": [
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "-m",
+      "src.paper_benchmark",
+      "run",
+      "--config",
+      "configs/paper_practical_after_panel_v3.json",
+      "--stage",
+      "local-core"
+    ]
+  },
+  {
+    "pid": 39920,
+    "created": 1791977800.6006217,
+    "command": [
+      "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+      "-u",
+      "-m",
+      "src.paper_benchmark",
+      "run",
+      "--config",
+      "configs/paper_practical_after_panel_v3.json",
+      "--stage",
+      "local-core"
+    ]
+  },
+  {
+    "pid": 4728,
+    "created": 1791970724.4531224,
+    "command": [
+      "\\??\\C:\\WINDOWS\\system32\\conhost.exe",
+      "0x4"
+    ]
+  }
+]

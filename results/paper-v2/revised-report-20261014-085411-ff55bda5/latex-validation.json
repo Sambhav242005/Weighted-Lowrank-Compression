@@ -1,0 +1,7 @@
+{
+  "kind": "success",
+  "compiler": "Codex desktop standalone LaTeX compiler",
+  "verified_utc": "2026-10-14T08:55:12.674674+00:00",
+  "source_sha256": "92424accd4e51b8582b4243bc132f3afcf5dcae92f5c32340adc7653fddd75d6",
+  "note": "Independent compiler success; existing manuscript.pdf remains separately ReportLab-rendered."
+}

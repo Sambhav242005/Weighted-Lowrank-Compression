@@ -1,0 +1,73 @@
+{
+  "state": "running practical",
+  "stages": [
+    {
+      "stage": "architecture-panel",
+      "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_architecture_recovery --config configs/paper_architecture_recovery_v4.json",
+      "started_epoch": 1791970724.5572872,
+      "launcher_pid": 22856,
+      "launcher_start_epoch": 1791970724.5594244,
+      "exit_code": 1,
+      "ended_epoch": 1791977800.5590894,
+      "outputs": [
+        "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-panel-20261014-093845-06e2d329"
+      ]
+    },
+    {
+      "stage": "practical",
+      "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_benchmark run --config configs/paper_practical_after_panel_v3.json --stage local-core",
+      "started_epoch": 1791977800.566937,
+      "launcher_pid": 15872,
+      "launcher_start_epoch": 1791977800.5691855
+    }
+  ],
+  "incomplete_cohorts": [
+    {
+      "stage": "architecture panel",
+      "evidence": {
+        "state": "incomplete",
+        "exploratory": true,
+        "budget_limited_models": [
+          "Qwen/Qwen3.5-0.8B"
+        ],
+        "advance_to_practical": false
+      }
+    }
+  ],
+  "prior_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-3",
+  "continuation_decision": "docs/CONTINUATION_20261014.md",
+  "interruption_accounting_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\interruption-accounting-20261014-reboot3.json",
+  "excluded_models": [
+    "openai-community/gpt2"
+  ],
+  "max_models": 4,
+  "omitted_optional_controls": [
+    "dense_fp8_e4m3",
+    "dense_fp8_e5m2"
+  ],
+  "preserved_precision_snapshot": {
+    "state": "cancelled",
+    "reason": "User requested finish now and review before further work",
+    "stopped_pids": [
+      19612,
+      21864,
+      29976,
+      34680
+    ],
+    "epoch": 1791958501.6406517,
+    "elapsed_seconds": 382.99257254600525,
+    "completed_variants": [
+      "teacher_bf16",
+      "copy_bf16",
+      "identity_bf16",
+      "svd_bf16",
+      "svd_fp32_compute",
+      "svd_fp8_e4m3",
+      "svd_fp8_e5m2"
+    ],
+    "incomplete_variants": [
+      "dense_fp8_e4m3",
+      "dense_fp8_e5m2"
+    ]
+  }
+}

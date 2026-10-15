@@ -1,0 +1,32 @@
+﻿[
+    {
+        "TimeCreated":  "\/Date(1791950496821)\/",
+        "Id":  41,
+        "Message":  "The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly."
+    },
+    {
+        "TimeCreated":  "\/Date(1791950518145)\/",
+        "Id":  6008,
+        "Message":  "The previous system shutdown at 8:45:04 AM on ‎10/‎14/‎2026 was unexpected."
+    },
+    {
+        "TimeCreated":  "\/Date(1791947683171)\/",
+        "Id":  41,
+        "Message":  "The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly."
+    },
+    {
+        "TimeCreated":  "\/Date(1791947704460)\/",
+        "Id":  6008,
+        "Message":  "The previous system shutdown at 2:15:30 AM on ‎10/‎14/‎2026 was unexpected."
+    },
+    {
+        "TimeCreated":  "\/Date(1791860515676)\/",
+        "Id":  1074,
+        "Message":  "The process C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe (SAMBHAV) has initiated the power off of computer SAMBHAV on behalf of user SAMBHAV\\NPC for the following reason: Other (Unplanned)\r\n Reason Code: 0x0\r\n Shut-down Type: power off\r\n Comment: "
+    },
+    {
+        "TimeCreated":  "\/Date(1791826887503)\/",
+        "Id":  1074,
+        "Message":  "The process C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe (SAMBHAV) has initiated the power off of computer SAMBHAV on behalf of user SAMBHAV\\NPC for the following reason: Other (Unplanned)\r\n Reason Code: 0x0\r\n Shut-down Type: power off\r\n Comment: "
+    }
+]

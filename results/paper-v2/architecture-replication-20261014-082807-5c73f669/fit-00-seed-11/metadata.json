@@ -1,0 +1,85 @@
+{
+  "factor_parameters": 8902656,
+  "serialized_bytes": 17809919,
+  "sha256": "29653de68c0570f7cd9542f7f989538263dbb5bbc7e92e732b761ac750b05260",
+  "factor_tensor_bytes": 17805312,
+  "fit_seconds": 0.39143330000001697,
+  "precision": "bfloat16",
+  "factor_convention": "unbalanced",
+  "targets": [
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "block_index": 3,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "block_index": 7,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "block_index": 11,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "block_index": 15,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "block_index": 19,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "block_index": 23,
+      "shape": [
+        1024,
+        2048
+      ],
+      "rank": 483,
+      "factor_parameters": 1483776,
+      "dense_parameters": 2097152,
+      "precision": "bfloat16"
+    }
+  ],
+  "peak_fitting_allocated_bytes": 1778496512,
+  "peak_fitting_reserved_bytes": 4466933760
+}

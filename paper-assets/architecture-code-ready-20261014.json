@@ -1,0 +1,9 @@
+{
+  "checks": "12 architecture CPU tests passed; 8 test plus18 validation scopes; full pinned checkpoints passed CPU asset preflight",
+  "preflight": "results/paper-v2/architecture-asset-preflight-de585fb3/preflight.json",
+  "artifacts": {
+    "src/paper_architecture_panel.py": "47d891723366eea0899c978832022b557ab4b09787fa2a363ecd8b7fc596ed14",
+    "tests/unit/test_architecture_panel.py": "17211bebcb13bc50e3cf3f68081126445fa58bfc00e4917391bcd35833e48ae8",
+    "configs/paper_architecture_panel_v3.json": "f12bc817acdfe5edcee23bc208f408dfb69511ab1a0594ddb843895cf00e57c0"
+  }
+}

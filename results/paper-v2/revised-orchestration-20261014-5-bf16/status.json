@@ -1,0 +1,45 @@
+{
+  "state": "completed with incomplete cohorts",
+  "stages": [
+    {
+      "stage": "BF16 practical",
+      "command": "rtk C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe -u -m src.paper_bf16_practical --config configs/paper_bf16_practical_two_seeds_20261014.json",
+      "started_epoch": 1791985866.4775565,
+      "launcher_pid": 40468,
+      "launcher_start_epoch": 1791985866.4801507,
+      "exit_code": 0,
+      "ended_epoch": 1791990558.6724522,
+      "outputs": [
+        "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\practical-bf16-20261014-135107-82168ad5"
+      ]
+    }
+  ],
+  "precision": "bfloat16",
+  "max_seeds": 2,
+  "seeds": [
+    11,
+    23
+  ],
+  "expected_records": 5,
+  "authorization": "Latest human instruction: do remaining tests, BF16 only, maximum two seeds",
+  "prior_orchestration": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\revised-orchestration-20261014-4",
+  "interruption_accounting_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\interruption-accounting-20261014-bf16-only.json",
+  "incomplete_cohorts": [
+    {
+      "stage": "Qwen validation frontier",
+      "saved": 10,
+      "expected": 18,
+      "reason": "original per-model allocation exhausted; no restart"
+    }
+  ],
+  "omitted_optional_controls": [
+    "dense_fp8_e4m3",
+    "dense_fp8_e5m2"
+  ],
+  "final_report": {
+    "command": "rtk C:/Python314/python.exe -u docs/report_revised_study_20261014.py --root results\\paper-v2 --orchestration results\\paper-v2\\revised-orchestration-20261014-5-bf16",
+    "started_epoch": 1791990558.6747167,
+    "exit_code": 0,
+    "ended_epoch": 1791990568.0185428
+  }
+}

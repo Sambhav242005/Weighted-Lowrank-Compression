@@ -1,0 +1,10 @@
+{
+  "pid": 20264,
+  "command": [
+    "rtk",
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\.venv-cuda\\Scripts\\python.exe",
+    "-u",
+    "-m",
+    "docs.resume_after_second_reboot_20261014"
+  ]
+}

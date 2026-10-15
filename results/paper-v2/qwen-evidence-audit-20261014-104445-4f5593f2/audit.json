@@ -1,0 +1,203 @@
+{
+  "state": "passed",
+  "source_run": "architecture-replication-20261014-082807-5c73f669",
+  "terminal_run": "architecture-replication-20261014-093845-97378b5e",
+  "source_prefix_rows": 10,
+  "terminal_records": 18,
+  "split_counts": {
+    "test": 8,
+    "validation": 10
+  },
+  "missing_scopes": [
+    [
+      "validation",
+      3,
+      "baseline",
+      37
+    ],
+    [
+      "validation",
+      3,
+      "solver",
+      37
+    ],
+    [
+      "validation",
+      4,
+      "baseline",
+      11
+    ],
+    [
+      "validation",
+      4,
+      "solver",
+      11
+    ],
+    [
+      "validation",
+      4,
+      "baseline",
+      23
+    ],
+    [
+      "validation",
+      4,
+      "solver",
+      23
+    ],
+    [
+      "validation",
+      4,
+      "baseline",
+      37
+    ],
+    [
+      "validation",
+      4,
+      "solver",
+      37
+    ]
+  ],
+  "prior_charged_seconds": 3647.1586377620697,
+  "continuation_seconds": 3553.0147549999997,
+  "cumulative_seconds": 7200.17339276207,
+  "cooperative_overshoot_seconds": 0.17339276206985232,
+  "limitations": [
+    "Qwen validation cohort incomplete; no restart or budget borrowing.",
+    "Retained old running status is immutable reboot evidence; sidecar records interruption.",
+    "Reused rows are not an independent replication.",
+    "CPU file audit does not deserialize tensors or re-evaluate predictions."
+  ],
+  "files_hashed": {
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\contract.json": {
+      "sha256": "703af918c7287806089ad2ec358b9df623af24552ce7b580e0c6fd462a680ab9",
+      "bytes": 29113
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\metrics.json": {
+      "sha256": "29422a72a2536d51795bd97abfb112e2a53d2957bed9e0b8be0bcab49aa4c621",
+      "bytes": 209673
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\readiness.json": {
+      "sha256": "067bae33ea5bd31a127520d46deadc34a79504cd987a948fd052e7aca31c50f3",
+      "bytes": 522
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\validation-teacher.json": {
+      "sha256": "057c49abf6c7728756cf3acd2af6f03163b416d9195be9df34fff95cb88aeeb8",
+      "bytes": 11944
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\config.json": {
+      "sha256": "d9a0760000b6e7222b9671a5e0561d61bb9f361355fe777766d5189dcead9898",
+      "bytes": 4085
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\status.json": {
+      "sha256": "2f66cc74973ccbf05b72874c6500e8b742ee6ad8d80770d52b2b81f10d8c32fd",
+      "bytes": 103
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_architecture_recovery.py": {
+      "sha256": "d1f429906b4f081504593a14c7698c6bf527b00d2070b67aeaf6821e967b863b",
+      "bytes": 23697
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_precision.py": {
+      "sha256": "f6eee373f1e63bfb42ac2e399656d2a1835c371c5a5451da8a6c4abe507ae9ed",
+      "bytes": 19497
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_math.py": {
+      "sha256": "462fef7da621573324844e0e848821a299d6ff1e9dc7f3558306ad040160ea29",
+      "bytes": 3244
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_comparisons.py": {
+      "sha256": "a49af5f7dbb1cb961266e2715b2d46f933577dfd0219b5e856d6bb95b4c76787",
+      "bytes": 29318
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_protocol.py": {
+      "sha256": "95cd7ef5fb0420cd5f27a9cb6fdf7fe032d51cb0eae9cc4906afb992b7c7fa27",
+      "bytes": 3045
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\src\\paper_architecture_panel.py": {
+      "sha256": "47d891723366eea0899c978832022b557ab4b09787fa2a363ecd8b7fc596ed14",
+      "bytes": 43821
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\tests\\unit\\test_architecture_panel.py": {
+      "sha256": "17211bebcb13bc50e3cf3f68081126445fa58bfc00e4917391bcd35833e48ae8",
+      "bytes": 16619
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\configs\\paper_architecture_panel_v3.json": {
+      "sha256": "f12bc817acdfe5edcee23bc208f408dfb69511ab1a0594ddb843895cf00e57c0",
+      "bytes": 3570
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-00-seed-11\\factors.pt": {
+      "sha256": "29653de68c0570f7cd9542f7f989538263dbb5bbc7e92e732b761ac750b05260",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-01-seed-11\\factors.pt": {
+      "sha256": "9345445f02200738592e33754f481777e912ca5be122a00f79c91c45fc02b49c",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-02-seed-11\\factors.pt": {
+      "sha256": "7e1ec082468626f3fdba1ed7cd5c9d11843f6e8b83c4893dc07a3c11c71bae44",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-03-seed-23\\factors.pt": {
+      "sha256": "0524a62d72806de3f575f54971b6900945081871a2edcd180933ba3cb95c773a",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-04-seed-23\\factors.pt": {
+      "sha256": "c84c22280cb456461bf48c8600dc0f0e1bd4f7c29a2c983f348e5c31cda62c8e",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-05-seed-37\\factors.pt": {
+      "sha256": "5a50805aff974ee82fb7005eeddd077c7b85e5c24c963e0ddc273823d3ac425e",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-06-seed-37\\factors.pt": {
+      "sha256": "4c70ebcfe51861e00eddf6911fd1b6425d06d1767cb833bd38211381c0c07fff",
+      "bytes": 17809919
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-07-seed-11\\factors.pt": {
+      "sha256": "b2f49bf0dba8d04450b890efc690c8a100adf4b1b20d804303f76c0df4f9b8ce",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-082807-5c73f669\\fit-08-seed-11\\factors.pt": {
+      "sha256": "061390aaf17c7c96c9343171f496ae176e8a9f598fc9d5e7298d5b73f396483a",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-09-seed-23\\factors.pt": {
+      "sha256": "9ce1b0c137d66e8d071a032098165dcf14dcdb121c445fd8b264475a8aafd609",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-10-seed-23\\factors.pt": {
+      "sha256": "97123aff0133dda89887b137f1fd4cc42af275e894786d1bcc01f9324109071c",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-11-seed-37\\factors.pt": {
+      "sha256": "2a3de2d2640dfcc6ed97d304f8fd02ac5252dcdd6834feb68f041b0bc8426766",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-12-seed-37\\factors.pt": {
+      "sha256": "55173b573c1f123cfe8c9d51b86c1015632af802c8cc0042c7aca3862470bb3d",
+      "bytes": 18878975
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-13-seed-11\\factors.pt": {
+      "sha256": "232ac23c4ffd5a2359d851a04001c3673e36590e2ed2b1917dc3a88c84f67b4d",
+      "bytes": 12575231
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-14-seed-11\\factors.pt": {
+      "sha256": "f2faa059d9431ba0cea22adff7aa456942d5e9dd5a4ef2ca82eff14af4769e30",
+      "bytes": 12575231
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-15-seed-23\\factors.pt": {
+      "sha256": "f4d0fbe72d0f9b45cc537495333f539929db74fb44dfb6c549f7634eb08a749d",
+      "bytes": 12575231
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\fit-16-seed-23\\factors.pt": {
+      "sha256": "1ea66779a91ef9a84d381305a5263d0a941d3244021bdcd387ab7b2b1b59fdc3",
+      "bytes": 12575231
+    },
+    "C:\\Users\\NPC\\Desktop\\ResearchCompression\\docs\\audit_qwen_evidence_20261014.py": {
+      "sha256": "b44f96fee886f1d85bdf5f5309af773b4a3f65cb88738a68e4eeaff16782d5af",
+      "bytes": 6008
+    }
+  },
+  "errors": [],
+  "script_sha256": "b44f96fee886f1d85bdf5f5309af773b4a3f65cb88738a68e4eeaff16782d5af"
+}

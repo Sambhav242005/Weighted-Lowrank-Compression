@@ -1,0 +1,16 @@
+{
+  "source": "Windows System event log queried read-only",
+  "events": [
+    {
+      "id": 41,
+      "time_reported": "2026-10-14 08:44:43",
+      "message": "System rebooted without cleanly shutting down first"
+    },
+    {
+      "id": 6008,
+      "time_reported": "2026-10-14 08:45:04",
+      "message": "Previous system shutdown was unexpected"
+    }
+  ],
+  "interpretation": "External system interruption; no Python traceback. Event timestamps are host-rendered and not used for runtime charges."
+}

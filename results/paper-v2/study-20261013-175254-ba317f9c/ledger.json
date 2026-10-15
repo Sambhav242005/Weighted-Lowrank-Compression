@@ -1,0 +1,28 @@
+{
+  "run_id": "study-20261013-175254-ba317f9c",
+  "declared_gpu_hours": {
+    "readiness": 1,
+    "regularization": 4,
+    "baselines": 7,
+    "composition": 4,
+    "replication": 4,
+    "practical": 4
+  },
+  "accounting": "conservative elapsed wall time, including fitting and evaluation",
+  "stages": [
+    {
+      "stage": "baselines",
+      "output": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\baselines-20261013-175255-6a00d4e8",
+      "exit_code": 0,
+      "previous_spent_seconds": 0.0,
+      "elapsed_seconds": 3736.5681675000005,
+      "remaining_seconds_at_start": 25200.0
+    }
+  ],
+  "readiness_passed": false,
+  "readiness_spent_seconds": 998.3995824,
+  "reused_regularization": {
+    "selection_path": "C:\\Users\\NPC\\Desktop\\ResearchCompression\\results\\paper-v2\\regularization-20261013-171941-804f4c2e\\selection.json",
+    "spent_seconds": 1589.1478452000001
+  }
+}
