@@ -17,6 +17,9 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
+- [Research website](https://sambhav242005.github.io/Weighted-Lowrank-Compression/)
+  and [reader guide](https://sambhav242005.github.io/Weighted-Lowrank-Compression/paper-reader.html)
+  reflect the current findings, charts, limitations and untested Future Scope.
 - [Current IEEE paper source](docs/paper-future-scope-20261015/ieee-conference.tex)
   includes vector charts for the dense result comparisons and tables for the
   simple BF16 and timing values. Its compiled editor preview has the current layout.

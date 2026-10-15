@@ -1,0 +1,214 @@
+{
+  "updated": "2026-10-15",
+  "source_paper": "docs\\paper-future-scope-20261015\\ieee-conference.tex",
+  "source_paper_sha256": "44b15754403ade9a1c9a5535caed14e4bb4669344df5ecbaf24a51b3e9409097",
+  "evidence_status": "exploratory",
+  "gemma": [
+    {
+      "name": "Plain SVD",
+      "nll": "5.088681",
+      "drift": "0.074248",
+      "seeds": 1
+    },
+    {
+      "row": "4",
+      "nll": "3.694466",
+      "nllsd": "0.002420",
+      "drift": "0.030972",
+      "driftsd": "0.000197",
+      "name": "Diagonal ASVD component",
+      "seeds": 3
+    },
+    {
+      "row": "3",
+      "nll": "3.572814",
+      "nllsd": "0.011819",
+      "drift": "0.010638",
+      "driftsd": "0.000382",
+      "name": "Covariance whitening",
+      "seeds": 3
+    },
+    {
+      "row": "2",
+      "nll": "3.565921",
+      "nllsd": "0.009576",
+      "drift": "0.010547",
+      "driftsd": "0.000492",
+      "name": "Anchor (β = 0.03)",
+      "seeds": 3
+    },
+    {
+      "row": "1",
+      "nll": "3.579034",
+      "nllsd": "0.008521",
+      "drift": "0.011836",
+      "driftsd": "0.000139",
+      "name": "Extra ridge",
+      "seeds": 3
+    }
+  ],
+  "composition": [
+    {
+      "row": "10",
+      "nll": "-0.0000484",
+      "drift": "-3.392768e-06",
+      "jointly": "2",
+      "name": "0"
+    },
+    {
+      "row": "9",
+      "nll": "-0.0003431",
+      "drift": "+1.50569e-06",
+      "jointly": "0",
+      "name": "12"
+    },
+    {
+      "row": "8",
+      "nll": "-0.0002025",
+      "drift": "+3.248449e-07",
+      "jointly": "0",
+      "name": "25"
+    },
+    {
+      "row": "7",
+      "nll": "-0.0000478",
+      "drift": "-8.883664e-05",
+      "jointly": "1",
+      "name": "0–1"
+    },
+    {
+      "row": "6",
+      "nll": "+0.0000058",
+      "drift": "+2.945603e-06",
+      "jointly": "0",
+      "name": "12–13"
+    },
+    {
+      "row": "5",
+      "nll": "-0.0001833",
+      "drift": "-2.956141e-08",
+      "jointly": "0",
+      "name": "24–25"
+    },
+    {
+      "row": "4",
+      "nll": "-0.0002942",
+      "drift": "-0.0001338675",
+      "jointly": "2",
+      "name": "0–3"
+    },
+    {
+      "row": "3",
+      "nll": "+0.0027237",
+      "drift": "+6.855561e-05",
+      "jointly": "0",
+      "name": "11–14"
+    },
+    {
+      "row": "2",
+      "nll": "-0.0009939",
+      "drift": "-1.052808e-05",
+      "jointly": "2",
+      "name": "22–25"
+    },
+    {
+      "row": "1",
+      "nll": "-0.0068927",
+      "drift": "-9.051551e-05",
+      "jointly": "1",
+      "name": "All 26"
+    }
+  ],
+  "hybrid": {
+    "Qwen": [
+      {
+        "row": "2",
+        "nll": "2.934439",
+        "drift": "0.006155"
+      },
+      {
+        "row": "1",
+        "nll": "2.943324",
+        "drift": "0.012762"
+      }
+    ],
+    "LFM": [
+      {
+        "row": "2",
+        "nll": "4.056405",
+        "drift": "0.035880"
+      },
+      {
+        "row": "1",
+        "nll": "3.835916",
+        "drift": "0.138346"
+      }
+    ]
+  },
+  "bf16_conditions": [
+    [
+      "Dense teacher",
+      "-",
+      "3.451549",
+      "3.422601",
+      "1.862537"
+    ],
+    [
+      "Whitening",
+      "11",
+      "3.556086",
+      "3.541726",
+      "1.845885"
+    ],
+    [
+      "Anchor",
+      "11",
+      "3.556826",
+      "3.542255",
+      "1.845885"
+    ],
+    [
+      "Whitening",
+      "23",
+      "3.568431",
+      "3.553267",
+      "1.845885"
+    ],
+    [
+      "Anchor",
+      "23",
+      "3.562949",
+      "3.545341",
+      "1.845885"
+    ]
+  ],
+  "latency_ratios": [
+    [
+      "Prefill 128",
+      "1.1876",
+      "0.9370"
+    ],
+    [
+      "Decode 128 after prompt 128",
+      "1.1073",
+      "0.9679"
+    ],
+    [
+      "Prefill 512",
+      "1.0108",
+      "0.9473"
+    ],
+    [
+      "Decode 128 after prompt 512",
+      "0.9876",
+      "0.9580"
+    ]
+  ],
+  "whole_checkpoint_bytes": {
+    "dense": 1999883711,
+    "compressed": 1982003507,
+    "saved": 17880204
+  },
+  "network_proposal_status": "not implemented or evaluated",
+  "research_experiments_run": false
+}

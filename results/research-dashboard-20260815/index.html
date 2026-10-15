@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Activation-Weighted Low-Rank Compression</title>
-  <meta name="description" content="Can transformer weights be compressed by preserving the directions the model actually uses?">
+  <title>Activation-Weighted Low-Rank Compression: Likelihood, Drift, and Practical Cost</title>
+  <meta name="description" content="Current exploratory results on low-rank compression: prediction quality, residual drift, storage, runtime and future research.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
@@ -89,488 +89,73 @@
       html{scroll-behavior:auto}
       .viz-step{transition:none}
     }
+    /* current-evidence */
+    a{color:var(--link,#0366d6)}
+    .skip-link{position:fixed;left:12px;top:-100px;z-index:200;background:white;padding:10px 16px}
+    .skip-link:focus{top:12px}
+    .page-nav{display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:center;margin-top:20px;font-size:16px}
+    .page-nav a{padding:4px 0;min-height:24px}
+    .status-note{border-left:3px solid #00628f;background:#f5f9fb;padding:14px 18px;margin:18px 0}
+    .chart-viewport{overflow-x:auto;margin:16px 0 8px;border:1px solid var(--rule,#e2e8f0);background:#fff}
+    .chart-viewport svg{min-width:820px;overflow:hidden}
+    .chart-viewport:focus-visible{outline:2px solid #00628f;outline-offset:3px}
+    .chart figure,figure.chart{margin:24px 0}
+    figcaption{font-size:16px;line-height:1.6;margin:12px 0}
+    caption{text-align:left;font-weight:600;padding:8px 0;caption-side:top}
+    th[scope=row]{text-transform:none;letter-spacing:normal;font:inherit;color:var(--ink);background:none}
+    summary{min-height:28px;padding:4px 0}
+    .table-wrap{max-width:100%;overflow-x:auto}
+    .table-wrap table{min-width:540px}
+    .wrap ul,.wrap ol{margin-left:0;padding-left:24px;margin-bottom:14px}
+    .small{font-size:15px;color:var(--muted)}
+    .equation{overflow-x:auto;padding:16px;background:#f5f5f5;font-size:18px}
+    .viz-controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .viz-controls[hidden],.viz-steps[hidden]{display:none}
+    button{min-height:32px;padding:6px 12px;border:1px solid #777;background:#fff;color:#1a1a1a;font:inherit;cursor:pointer}
+    .viz-step{border:0;cursor:pointer;font-family:inherit;min-height:28px}
+    .viz-fallback{padding:24px;color:white;font-size:16px;max-width:650px}
+    @media(max-width:600px){.title-block h1{font-size:29px}.wrap,.wrap-wide{width:calc(100% - 32px)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
   </style>
 </head>
 <body>
-
-<div class="title-block">
-  <div class="wrap">
-    <h1>Activation-Weighted Low-Rank Compression of Transformer Weights</h1>
-    <div class="author">Sambhav &middot; Research project, 2025</div>
-    <div class="meta">Source code: github.com/Sambhav242005/Weighted-Lowrank-Compression</div>
-    <a class="reader-link" href="paper-reader.html">Open reader view &rarr;</a>
-  </div>
-</div>
-
-<main>
-
-<section>
-  <div class="wrap">
-    <h2>Abstract</h2>
-    <p>Standard <span class="t" data-tip="Singular Value Decomposition. A method for finding the most important directions in a matrix.">SVD</span> compression of transformer weights fails at 3x ratios because it minimizes error in weight space rather than activation space. This work proposes an activation-weighted fitting method that uses <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> to identify which weight directions the model actually uses. At the same compression budget, the method reduces <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> degradation by 5&ndash;7x across three architectures (GPT-2, Gemma-3, Qwen2.5). On Gemma-3-1B, the compressed model scores below the original&rsquo;s perplexity &mdash; a denoising effect. The method requires no gradient steps and solves each matrix in closed form.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>1. Introduction</h2>
-    <p>A large language model stores knowledge in weight matrices &mdash; grids of numbers with millions of entries. Compression replaces these with simpler approximations that use less memory.</p>
-    <p>The standard approach, truncated <span class="t" data-tip="Singular Value Decomposition. A method for finding the most important directions in a matrix.">SVD</span>, asks which directions carry the most mathematical energy and keeps those. But the model does not use all directions equally. Some receive a flood of <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">activation</span> traffic every time the model runs. Others are barely touched. SVD spends its limited budget on directions that look big on paper but do not matter to the model&rsquo;s computation.</p>
-    <p>The proposed method asks which directions the model actually uses, and spends the budget on those.</p>
-    <div class="callout">
-      <p><strong>Analogy.</strong> Compressing a road network by preserving the roads with the most asphalt would keep wide abandoned highways while destroying busy city streets. Preserving the roads with the most traffic is more useful. That is what activation-weighted compression does &mdash; it preserves the computational pathways the model actually travels.</p>
-    </div>
-  </div>
-</section>
-
-<section id="why-svd">
-  <div class="wrap">
-    <h2>2. Why standard compression fails</h2>
-    <p>When a transformer&rsquo;s weight matrix is compressed using truncated <span class="t" data-tip="Singular Value Decomposition. A method for finding the most important directions in a matrix.">SVD</span>, each individual layer&rsquo;s error looks small, but the full model&rsquo;s performance collapses. On GPT-2 Small, plain SVD at 3x compression raises <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> by 21%. On Gemma-3-1B, it raises it by 72%.</p>
-    <p>Two competing explanations have been proposed:</p>
-    <h3>Hypothesis 1 &mdash; Drift accumulation</h3>
-    <p>Approximation errors compound through the residual stream. Later layers receive inputs they were never trained on, so even a good per-layer fit does not guarantee a good network.</p>
-    <h3>Hypothesis 2 &mdash; Wrong norm</h3>
-    <p>SVD minimizes error in weight space (Frobenius norm), but what matters is error under the <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">activation</span> distribution. SVD wastes <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> on directions the model never excites.</p>
-    <div class="callout">
-      <p><strong>Finding:</strong> The answer is overwhelmingly hypothesis 2. A closed-form fit that minimizes activation-space error recovers a full compression tier that plain SVD destroys. The &ldquo;drift wall&rdquo; is largely an artifact of the approximation method, not a fundamental limit.</p>
-    </div>
-  </div>
-</section>
-<section id="method">
-  <div class="wrap">
-    <h2>3. Method</h2>
-    <p>For a linear layer <span style="font-family:var(--mono)">y = Wx</span>, the approach captures calibration activations using a forward hook, then solves a simple optimization: minimize activation-space error with a weight-space anchor to prevent divergence in unobserved directions.</p>
-    <details>
-      <summary>Mathematical formulation</summary>
-      <div class="detail-body">
-        <p>The objective finds a <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span>-r approximation <span style="font-family:var(--mono)">&#x1E8C;hat;</span> minimizing:</p>
-        <p style="text-align:center;font-family:var(--mono);padding:12px 0">L(&#x1E8C;) = (1/n) &Sigma;&#x1D62; ||(W &minus; &#x1E8C;)x&#x1D62;||&sup2; + &beta; ||&#x1E8C; &minus; W||&sup2;_F</p>
-        <p>The first term is the activation-space error (what the network actually sees). The second is a weight-space anchor that prevents the fit from diverging in directions the <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> never excites.</p>
-        <p>Let <span style="font-family:var(--mono)">G = XX&#x1D40;</span> (<span class="t" data-tip="A matrix summarizing which directions appear frequently in the calibration activations. It defines the geometry in which the compression error is measured.">Gram matrix</span>) and <span style="font-family:var(--mono)">C = (Y&minus;b)X&#x1D40; + &beta;nW</span> (cross-moment). The unconstrained minimizer is:</p>
-        <p style="text-align:center;font-family:var(--mono);padding:12px 0">M* = C (G + &beta;nI)&#x207B;&sup1;</p>
-        <p>The result is truncated to <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> r in the G-weighted norm &mdash; the norm in which the original objective measures error.</p>
-      </div>
-    </details>
-    <details>
-      <summary>Algorithm</summary>
-      <div class="detail-body">
-        <p>For each target module:</p>
-        <ol style="margin-left:18px">
-          <li>Capture input activations X and outputs Y over calibration chunks (forward hooks)</li>
-          <li>Subtract bias from Y if present</li>
-          <li>Compute <span style="font-family:var(--mono)">G = XX&#x1D40; + &beta;nI</span> and <span style="font-family:var(--mono)">C = YX&#x1D40; + &beta;nW</span></li>
-          <li>Solve <span style="font-family:var(--mono)">M* = CG&#x207B;&sup1;</span> (eigenspace solve with ridge regularization)</li>
-          <li>Truncate to <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> r in the G-weighted norm</li>
-          <li>Write back the compressed factors</li>
-        </ol>
-        <p style="margin-top:12px">One hyperparameter: <span style="font-family:var(--mono)">&beta;</span> (anchor strength). Optimal in [0.1, 0.3]; all results use &beta; = 0.1.</p>
-      </div>
-    </details>
-    <details>
-      <summary>Why the anchor matters</summary>
-      <div class="detail-body">
-        <p>Without the anchor (&beta; = 0), the problem is ill-posed in directions the <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> never excites. The fit can produce arbitrarily large weights in those directions without any penalty, leading to divergence. The anchor keeps the compressed model close to the original in regions where there is no activation evidence.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="viz">
-  <div class="wrap-wide">
-    <h2>4. Visualization</h2>
-    <p>Two compression methods applied to the same weight matrix. Drag to rotate, scroll to zoom.</p>
-    <div class="viz-wrap">
-      <div class="viz-canvas-wrap">
-        <div id="concept-canvas-container" style="height:360px">
-          <div id="concept-label">Initializing...</div>
-        </div>
-      </div>
-      <div class="viz-steps">
-        <div class="viz-step active" data-step="0">1. Full matrix</div>
-        <div class="viz-step" data-step="1">2. Find busy paths</div>
-        <div class="viz-step" data-step="2">3. SVD flattens all</div>
-        <div class="viz-step" data-step="3">4. Weighted bends to fit</div>
-        <div class="viz-step" data-step="4">5. Compare results</div>
-      </div>
-    </div>
-    <p style="font-size:14px;color:var(--muted)">Hover to pause. Cycle: 6s per stage.</p>
-  </div>
-</section>
-<section id="results">
-  <div class="wrap">
-    <h2>5. Results</h2>
-    <p>Same model, same target matrices (<span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">attention</span> output projections), same <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> (one-sided 3x compression), same evaluation protocol (WikiText-2 test split). The only difference: SVD optimizes in weight space; the proposed method optimizes in activation space.</p>
-
-    <!-- CHART 1: PPL Delta Bar (handles negative values) -->
-    <div class="chart">
-      <div class="chart-title">Figure 1. Perplexity delta at 3x compression (lower is better)</div>
-      <svg viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
-        <!-- Gridlines at +80%, +60%, +40%, +20%, 0%, -10% -->
-        <line class="gridline" x1="80" y1="20" x2="520" y2="20"/>
-        <line class="gridline" x1="80" y1="60" x2="520" y2="60"/>
-        <line class="gridline" x1="80" y1="100" x2="520" y2="100"/>
-        <line class="gridline" x1="80" y1="140" x2="520" y2="140"/>
-        <line class="gridline" x1="80" y1="180" x2="520" y2="180"/>
-        <line class="gridline" x1="80" y1="220" x2="520" y2="220"/>
-        <!-- Axes -->
-        <line class="axis" x1="80" y1="180" x2="520" y2="180"/>
-        <line class="axis" x1="80" y1="20" x2="80" y2="220"/>
-        <!-- Y labels -->
-        <text class="svg-label" x="75" y="24" text-anchor="end">+80%</text>
-        <text class="svg-label" x="75" y="64" text-anchor="end">+60%</text>
-        <text class="svg-label" x="75" y="104" text-anchor="end">+40%</text>
-        <text class="svg-label" x="75" y="144" text-anchor="end">+20%</text>
-        <text class="svg-label" x="75" y="184" text-anchor="end">0%</text>
-        <text class="svg-label" x="75" y="224" text-anchor="end">&#x2212;10%</text>
-        <!-- GPT-2: +21% gray, +3.6% red -->
-        <text class="svg-label" x="155" y="234" text-anchor="middle">GPT-2</text>
-        <rect x="120" y="138" width="30" height="42" fill="#888" rx="1"/>
-        <text class="svg-value" x="135" y="133" text-anchor="middle">+21%</text>
-        <rect x="158" y="173" width="30" height="7" fill="#b33" rx="1"/>
-        <text class="svg-value" x="173" y="168" text-anchor="middle">+3.6%</text>
-        <!-- Gemma-3: +72% gray, -4.5% red (goes BELOW baseline) -->
-        <text class="svg-label" x="300" y="234" text-anchor="middle">Gemma-3</text>
-        <rect x="265" y="44" width="30" height="136" fill="#888" rx="1"/>
-        <text class="svg-value" x="280" y="39" text-anchor="middle">+72%</text>
-        <rect x="303" y="180" width="30" height="18" fill="#b33" rx="1"/>
-        <text class="svg-value" x="318" y="214" text-anchor="middle">&#x2212;4.5%</text>
-        <!-- Qwen2.5: +26% gray, +3.8% red -->
-        <text class="svg-label" x="445" y="234" text-anchor="middle">Qwen2.5</text>
-        <rect x="410" y="128" width="30" height="52" fill="#888" rx="1"/>
-        <text class="svg-value" x="425" y="123" text-anchor="middle">+26%</text>
-        <rect x="448" y="172" width="30" height="8" fill="#b33" rx="1"/>
-        <text class="svg-value" x="463" y="167" text-anchor="middle">+3.8%</text>
-        <!-- Legend -->
-        <rect x="120" y="280" width="10" height="10" fill="#888"/>
-        <text class="svg-label" x="134" y="289">Plain SVD</text>
-        <rect x="220" y="280" width="10" height="10" fill="#b33"/>
-        <text class="svg-label" x="234" y="289">Weighted fit</text>
-      </svg>
-      <div class="chart-note">Negative values indicate the compressed model outperforms the original.</div>
-    </div>
-
-    <h3>Cross-scale comparison</h3>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Model</th><th class="num">Baseline PPL</th><th class="num">SVD</th><th class="num">Weighted</th><th class="num">Factor</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>GPT-2 Small (124M)</td><td class="num">56.47</td><td class="num neg">+21.34%</td><td class="num hl">+3.58%</td><td class="num">5.9x</td></tr>
-          <tr><td>Gemma-3-1B</td><td class="num">70.40</td><td class="num neg">+71.86%</td><td class="num hl">&#x2212;4.45%</td><td class="num">16.2x</td></tr>
-          <tr><td>Qwen2.5-7B-Instruct</td><td class="num">12.29</td><td class="num neg">+26.31%</td><td class="num hl">+3.84%</td><td class="num">6.9x</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:14px;color:var(--muted)">PPL = <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> (lower is better). Negative values mean the compressed model outperforms the original.</p>
-
-    <!-- CHART 2: Ratio Frontier -->
-    <div class="chart">
-      <div class="chart-title">Figure 2. Ratio frontier &mdash; perplexity delta vs compression ratio (GPT-2 Small)</div>
-      <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
-        <line class="gridline" x1="80" y1="30" x2="520" y2="30"/>
-        <line class="gridline" x1="80" y1="80" x2="520" y2="80"/>
-        <line class="gridline" x1="80" y1="130" x2="520" y2="130"/>
-        <line class="gridline" x1="80" y1="180" x2="520" y2="180"/>
-        <line class="axis" x1="80" y1="220" x2="520" y2="220"/>
-        <line class="axis" x1="80" y1="30" x2="80" y2="220"/>
-        <text class="svg-label" x="75" y="34" text-anchor="end">+400%</text>
-        <text class="svg-label" x="75" y="84" text-anchor="end">+300%</text>
-        <text class="svg-label" x="75" y="134" text-anchor="end">+200%</text>
-        <text class="svg-label" x="75" y="184" text-anchor="end">+100%</text>
-        <text class="svg-label" x="80" y="240" text-anchor="middle">2x</text>
-        <text class="svg-label" x="190" y="240" text-anchor="middle">3x</text>
-        <text class="svg-label" x="300" y="240" text-anchor="middle">4x</text>
-        <text class="svg-label" x="410" y="240" text-anchor="middle">6x</text>
-        <text class="svg-label" x="520" y="240" text-anchor="middle">8x</text>
-        <!-- SVD line: +5.5%, +21.3%, +152%, +262%, +374% -->
-        <polyline points="80,214 190,205 300,124 410,69 520,27" fill="none" stroke="#888" stroke-width="2"/>
-        <circle cx="80" cy="214" r="4" fill="#888"/>
-        <circle cx="190" cy="205" r="4" fill="#888"/>
-        <circle cx="300" cy="124" r="4" fill="#888"/>
-        <circle cx="410" cy="69" r="4" fill="#888"/>
-        <circle cx="520" cy="27" r="4" fill="#888"/>
-        <!-- Weighted line: +0.1%, +3.6%, +18%, +53%, +94% -->
-        <polyline points="80,220 190,218 300,205 410,187 520,162" fill="none" stroke="#b33" stroke-width="2"/>
-        <circle cx="80" cy="220" r="4" fill="#b33"/>
-        <circle cx="190" cy="218" r="4" fill="#b33"/>
-        <circle cx="300" cy="205" r="4" fill="#b33"/>
-        <circle cx="410" cy="187" r="4" fill="#b33"/>
-        <circle cx="520" cy="162" r="4" fill="#b33"/>
-        <!-- Labels -->
-        <text class="svg-value" x="80" y="208" text-anchor="middle" font-size="10">+0.1%</text>
-        <text class="svg-value" x="190" y="199" text-anchor="middle" font-size="10">+3.6%</text>
-        <text class="svg-value" x="300" y="118" text-anchor="middle" font-size="10">+152%</text>
-        <text class="svg-value" x="410" y="63" text-anchor="middle" font-size="10">+262%</text>
-        <text class="svg-value" x="520" y="21" text-anchor="middle" font-size="10">+374%</text>
-        <text class="svg-value" x="190" y="212" text-anchor="middle" font-size="10">+3.6%</text>
-        <text class="svg-value" x="300" y="199" text-anchor="middle" font-size="10">+18%</text>
-        <text class="svg-value" x="410" y="181" text-anchor="middle" font-size="10">+53%</text>
-        <text class="svg-value" x="520" y="156" text-anchor="middle" font-size="10">+94%</text>
-        <!-- Legend -->
-        <line x1="80" y1="255" x2="100" y2="255" stroke="#888" stroke-width="2"/>
-        <text class="svg-label" x="105" y="259">SVD</text>
-        <line x1="180" y1="255" x2="200" y2="255" stroke="#b33" stroke-width="2"/>
-        <text class="svg-label" x="205" y="259">Weighted</text>
-      </svg>
-      <div class="chart-note">The weighted fit recovers a full compression tier: weighted 4x beats SVD 3x while storing less.</div>
-    </div>
-
-    <details>
-      <summary>Compression as denoising &mdash; can compression improve the model?</summary>
-      <div class="detail-body">
-        <p>The Gemma-3-1B result is notable: the compressed model scores <em>below</em> the teacher&rsquo;s <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> (&#x2212;4.45% on 50 texts, &#x2212;7.34% on 200 texts) with no fine-tuning. Logit-space analysis shows the student is not a copy &mdash; it has higher output entropy (2.19 to 2.47) and lower NLL, suggesting it is less overconfident and better calibrated.</p>
-        <p>Interpretation: directions of W that are never excited by natural text carry no signal but contribute weight-space capacity for spurious logits. Activation-weighted truncation removes them, flattening spurious peaks and moving mass onto correct tokens &mdash; denoising.</p>
-        <p style="color:var(--muted);font-size:14px">This claim rests on one architecture and one family. Three-seed replication and a second architecture are needed before claiming it broadly.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Factor quantization &mdash; int8 is lossless</summary>
-      <div class="detail-body">
-        <p>On Qwen2.5-7B (<span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> 1194), quantizing the compressed factors to int8 is effectively lossless (+3.80% vs +3.86% for fp16), achieving 3.0x per-matrix storage reduction. int4 quantization costs an additional +4.4pp but remains within the quality gate.</p>
-      </div>
-    </details>
-
-    <!-- CHART 3: Ratio Frontier Table as bar chart -->
-    <div class="chart">
-      <div class="chart-title">Figure 3. Per-layer sensitivity &mdash; perplexity delta by layer (GPT-2 Small, 3x)</div>
-      <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-        <line class="axis" x1="120" y1="20" x2="120" y2="290"/>
-        <line class="axis" x1="120" y1="290" x2="540" y2="290"/>
-        <!-- Layer labels -->
-        <text class="svg-label" x="115" y="38" text-anchor="end">Layer 0</text>
-        <text class="svg-label" x="115" y="60" text-anchor="end">Layer 1</text>
-        <text class="svg-label" x="115" y="82" text-anchor="end">Layer 2</text>
-        <text class="svg-label" x="115" y="104" text-anchor="end">Layer 3</text>
-        <text class="svg-label" x="115" y="126" text-anchor="end">Layer 4</text>
-        <text class="svg-label" x="115" y="148" text-anchor="end">Layer 5</text>
-        <text class="svg-label" x="115" y="170" text-anchor="end">Layer 6</text>
-        <text class="svg-label" x="115" y="192" text-anchor="end">Layer 7</text>
-        <text class="svg-label" x="115" y="214" text-anchor="end">Layer 8</text>
-        <text class="svg-label" x="115" y="236" text-anchor="end">Layer 9</text>
-        <text class="svg-label" x="115" y="258" text-anchor="end">Layer 10</text>
-        <text class="svg-label" x="115" y="280" text-anchor="end">Layer 11</text>
-        <!-- Horizontal bars (representative values) -->
-        <rect x="120" y="28" width="45" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="50" width="80" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="72" width="60" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="94" width="120" height="14" fill="#b33" rx="1"/>
-        <rect x="120" y="116" width="160" height="14" fill="#b33" rx="1"/>
-        <rect x="120" y="138" width="200" height="14" fill="#b33" rx="1"/>
-        <rect x="120" y="160" width="140" height="14" fill="#b33" rx="1"/>
-        <rect x="120" y="182" width="100" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="204" width="70" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="226" width="55" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="248" width="35" height="14" fill="#888" rx="1"/>
-        <rect x="120" y="270" width="25" height="14" fill="#888" rx="1"/>
-        <!-- X axis labels -->
-        <text class="svg-label" x="120" y="308">0%</text>
-        <text class="svg-label" x="220" y="308">+5%</text>
-        <text class="svg-label" x="320" y="308">+10%</text>
-        <text class="svg-label" x="420" y="308">+15%</text>
-        <text class="svg-label" x="520" y="308">+20%</text>
-        <!-- Legend -->
-        <rect x="120" y="315" width="10" height="8" fill="#888"/>
-        <text class="svg-label" x="134" y="322">Lower sensitivity</text>
-        <rect x="260" y="315" width="10" height="8" fill="#b33"/>
-        <text class="svg-label" x="274" y="322">Higher sensitivity</text>
-      </svg>
-      <div class="chart-note">Middle layers (3&ndash;6) are most sensitive to compression. Outer layers tolerate rank reduction better.</div>
-    </div>
-
-    <h3>Ratio frontier &mdash; detailed</h3>
-    <p>Both methods compress the same weight matrix by replacing it with a lower-<span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> approximation. SVD picks the directions with the most mathematical energy, regardless of whether the model uses them. The proposed method uses <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> to identify which directions receive actual <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">activation</span> traffic, then allocates the budget to those directions instead.</p>
-    <p>At 2x compression, both methods produce negligible quality loss. The gap opens at 3x: SVD raises <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> by 21% while the weighted fit adds only 3.6%. Beyond 3x, SVD collapses rapidly &mdash; the model becomes essentially useless at 4x (+152%). The weighted fit degrades more gracefully, remaining usable at 4x (+18%) and only becoming impractical at 6x and beyond.</p>
-    <p>The key observation: weighted 4x beats SVD 3x while storing 25% fewer parameters. The method recovers an entire compression tier that plain SVD destroys.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Ratio (rank)</th><th class="num">SVD delta</th><th class="num">Weighted delta</th></tr></thead>
-        <tbody>
-          <tr><td>2x (384)</td><td class="num neg">+5.50%</td><td class="num hl">+0.10%</td></tr>
-          <tr><td>3x (256)</td><td class="num neg">+21.34%</td><td class="num hl">+3.58%</td></tr>
-          <tr><td>4x (192)</td><td class="num neg">+152.13%</td><td class="num hl">+17.94%</td></tr>
-          <tr><td>6x (128)</td><td class="num neg">+261.86%</td><td class="num">+53.38%</td></tr>
-          <tr><td>8x (96)</td><td class="num neg">+374.49%</td><td class="num">+94.18%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-<section id="claims">
-  <div class="wrap">
-    <h2>6. Claims</h2>
-
-    <h3>Supported by current evidence</h3>
-    <ul>
-      <li>Activation-weighted fitting outperforms plain SVD at the same <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> budget on <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">attention</span> output projections across three architectures (GPT-2, Gemma-3, Qwen2.5).</li>
-      <li>The improvement factor is 5&ndash;7x in <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> delta at 3x compression.</li>
-      <li>int8 factor quantization is effectively lossless for the fitted subspace.</li>
-      <li>The &ldquo;drift wall&rdquo; at 3x compression is largely an artifact of the approximation norm, not a fundamental limit of scale.</li>
-    </ul>
-
-    <h3>Suggestive, needs additional validation</h3>
-    <ul>
-      <li>Compression can act as denoising (Gemma-3-1B beats the teacher). Requires multi-seed replication and a second architecture.</li>
-      <li>The hybrid low-rank + quantized residual design outperforms pure int4 on o_proj. Requires MLP-family evaluation where the payoff should concentrate.</li>
-    </ul>
-
-    <h3>Open &mdash; not currently claimed</h3>
-    <ul>
-      <li>Algorithmic novelty over ASVD or EoRA &mdash; head-to-head comparison not yet run.</li>
-      <li>Whole-model compression &mdash; only <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">attention</span> output projections are demonstrated at 3x.</li>
-      <li>Deployment readiness &mdash; warmed-up latency, peak memory, and fused kernel behavior are unmeasured.</li>
-      <li>Downstream task performance &mdash; only <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> has been evaluated.</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>7. What this paper does not claim</h2>
-    <ul style="margin:16px 0 0 18px;line-height:2">
-      <li>This work does not claim that low-rank compression universally beats quantization for storage. Quantization dominates pure storage; the value here is quality-at-rank and the denoising effect.</li>
-      <li>This work does not claim that every transformer matrix is equally compressible. Only <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">attention</span> output projections are viable at 3x; MLP families break even with weighted fitting.</li>
-      <li>This work does not claim that activation weighting solves all compression problems. It is one technique with specific scope and tradeoffs.</li>
-      <li>This work does not claim deployment readiness. The compressed representation changes the compute graph; latency and memory implications are uncharacterized.</li>
-      <li>This work does not claim that the denoising effect is general. It has been observed on one architecture and requires multi-seed replication.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="limitations">
-  <div class="wrap">
-    <h2>8. Limitations</h2>
-
-    <h3>Scope of compression</h3>
-    <p>Only <span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">attention</span> output projections are demonstrated at 3x. MLP matrices &mdash; which contain 80% of parameters &mdash; break even with weighted fitting at this ratio. Whole-model compression requires budget reallocation across families, which has not been shown.</p>
-
-    <h3>Statistical robustness</h3>
-    <p>Most results are single calibration/fit runs. A &plusmn;1pp robustness test on disjoint <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span> shows stability, but multi-seed statistics are not yet available.</p>
-
-    <h3>Evaluation scope</h3>
-    <p>Evaluation is limited to <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> on WikiText-2 (50&ndash;200 texts). No downstream-task evaluation, no pre-registered drift metric alongside PPL.</p>
-
-    <h3>Latency and memory</h3>
-    <p>Factored form changes the compute graph. Warmed-up latency and peak memory are unmeasured. Without a fused low-rank kernel, the storage win does not automatically become a speed win.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>9. What did not work</h2>
-
-    <h3>Direct pruning</h3>
-    <p>Deleting 50% of weights (even using activation-aware selection) raised GPT-2 <span class="t" data-tip="A language-model metric measuring how well the model predicts text. Lower is better.">perplexity</span> from 36 to 79 &mdash; still 2x worse than the original. At 90% pruning, perplexity exceeds 15,000. Pruning and low-rank compression are fundamentally different operations: pruning removes structure entirely, while low-rank compression redistributes it.</p>
-
-    <h3>Student-input refitting</h3>
-    <p>Trying to anticipate drift by fitting against the compressed model&rsquo;s own activations (rather than the original model&rsquo;s) consistently lost ~1pp across all settings. Anticipating drift is not the lever; fixing the norm is.</p>
-
-    <h3>MLP compression at 3x</h3>
-    <p>Weighted fitting on MLP matrices (c_fc, c_proj) produced 76&ndash;2149% PPL increases at 3x ratio. MLP families do not have enough redundancy at this compression level, even with activation-aware fitting.</p>
-
-    <h3>Reference neurons</h3>
-    <p>Using reference neurons to encode weight matrices was consistently less efficient than matched SVD at every <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> level tested. This confirmed SVD as the right baseline for comparisons.</p>
-  </div>
-</section>
-<section id="related">
-  <div class="wrap">
-    <h2>10. Related work</h2>
-    <details>
-      <summary>Activation-aware quantization (GPTQ, AWQ)</summary>
-      <div class="detail-body">
-        <p><strong>What they solve:</strong> Post-training quantization &mdash; reducing the bit-width of weight entries.</p>
-        <p><strong>What they optimize:</strong> Weight-space rounding error under the second-order (Hessian/<span class="t" data-tip="The signal produced inside a neural network when an input passes through a layer.">activation</span> Gram) statistic of <span class="t" data-tip="Representative inputs used to observe the model's activation patterns before compression.">calibration data</span>.</p>
-        <p><strong>How this differs:</strong> This method operates on the low-rank structure rather than quantization grids. The objective is the low-rank analogue of their principle: preserve what activations actually use.</p>
-        <p><strong>What remains uncertain:</strong> The interaction between the low-rank branch and quantization-aware baselines at matched budgets.</p>
-      </div>
-    </details>
-    <details>
-      <summary>ASVD &mdash; Activation-aware SVD (Yuan et al., 2023)</summary>
-      <div class="detail-body">
-        <p><strong>What it solves:</strong> Reparameterizes weights by activation statistics before SVD, handling outlier channels.</p>
-        <p><strong>What it optimizes:</strong> Activation-aware low-rank approximation for LLM compression.</p>
-        <p><strong>How this differs:</strong> The closed-form anchored fit with weighted truncation is an independent derivation in the same family. The beats-the-teacher denoising effect has not been reported for ASVD.</p>
-        <p><strong>What remains uncertain:</strong> Head-to-head comparison at matched budget and protocol is the sharpest novelty test and remains open.</p>
-      </div>
-    </details>
-    <details>
-      <summary>EoRA &mdash; Eigenspace Low-Rank Compensation (Liu et al., 2024)</summary>
-      <div class="detail-body">
-        <p><strong>What it solves:</strong> Adds a low-rank residual path to compensate compression error.</p>
-        <p><strong>What it optimizes:</strong> The compensation <span class="t" data-tip="The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.">rank</span> approximates compression error in the eigenspace of input activations.</p>
-        <p><strong>How this differs:</strong> EoRA adds a compensation path on top of a base compression; this method replaces the base compression itself. The two could potentially be combined.</p>
-        <p><strong>What remains uncertain:</strong> Whether this method, EoRA, or a combination performs best at matched budgets.</p>
-      </div>
-    </details>
-    <details>
-      <summary>QEP &mdash; Quantization Error Propagation (Arai &amp; Ichikawa, 2025)</summary>
-      <div class="detail-body">
-        <p><strong>What it solves:</strong> Error accumulation across layers in quantized models &mdash; directly the drift problem, for quantization.</p>
-        <p><strong>What it optimizes:</strong> Sequential layer-wise fitting against drifted inputs rather than teacher inputs.</p>
-        <p><strong>How this differs:</strong> QEP addresses cross-layer error propagation for quantization; this work addresses the per-layer approximation norm for low-rank compression. The two problems are related but distinct.</p>
-        <p><strong>What remains uncertain:</strong> Whether QEP-style cross-layer compensation would further improve low-rank compression.</p>
-      </div>
-    </details>
-    <details>
-      <summary>SVDQuant &mdash; Low-rank + quantization hybrid (Li et al., 2024)</summary>
-      <div class="detail-body">
-        <p><strong>What it solves:</strong> Absorbs outliers into a low-rank branch, allowing aggressive quantization of the residual.</p>
-        <p><strong>What it optimizes:</strong> Combined low-rank + int4 representation for diffusion models.</p>
-        <p><strong>How this differs:</strong> This work shows the low-rank branch itself survives int8 losslessly, reinforcing the hybrid design space. The weighted-fit branch outperforms an SVD branch at matched storage.</p>
-        <p><strong>What remains uncertain:</strong> Full hybrid evaluation on MLP families where the payoff should concentrate.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="glossary">
-  <div class="wrap">
-    <h2>Glossary</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th style="width:180px">Term</th><th>Definition</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Low-rank</strong></td><td>A matrix represented using fewer underlying dimensions. Instead of storing every entry, two smaller matrices whose product approximates the original.</td></tr>
-          <tr><td><strong>SVD</strong></td><td>Singular Value Decomposition. A standard method for finding the most important directions in a matrix. The default tool for low-rank approximation.</td></tr>
-          <tr><td><strong>Activation</strong></td><td>The signal produced inside a neural network when an input passes through a layer. Activations indicate which parts of the network are &ldquo;firing&rdquo; for a given input.</td></tr>
-          <tr><td><strong>Calibration data</strong></td><td>Representative inputs used to observe the model&rsquo;s activation patterns before compression.</td></tr>
-          <tr><td><strong>Rank</strong></td><td>The number of independent directions retained by the compressed representation. Higher rank = more faithful to the original but less compression.</td></tr>
-          <tr><td><strong>Perplexity (PPL)</strong></td><td>A language-model metric measuring how well the model predicts text. Lower is better. A PPL of 36 is good; 15,000 means the model is essentially random.</td></tr>
-          <tr><td><strong>Gram matrix</strong></td><td>A matrix summarizing which directions appear frequently in the calibration activations. Defines the geometry in which compression error is measured.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section id="references">
-  <div class="wrap">
-    <h2>References</h2>
-    <ol style="margin:16px 0 0 18px;font-size:16px;line-height:2">
-      <li>Frantar et al. &ldquo;GPTQ: Accurate post-training quantization for generative pre-trained transformers.&rdquo; arXiv:2210.17323, 2022.</li>
-      <li>Frantar &amp; Alistarh. &ldquo;SparseGPT: Massive language models can be accurately pruned in one-shot.&rdquo; arXiv:2301.00774, 2023.</li>
-      <li>Lin et al. &ldquo;AWQ: Activation-aware weight quantization for LLM compression and acceleration.&rdquo; arXiv:2306.00978, 2023.</li>
-      <li>Yuan et al. &ldquo;ASVD: Activation-aware singular value decomposition for large language model compression.&rdquo; arXiv:2312.05821, 2023.</li>
-      <li>Liu et al. &ldquo;EoRA: Fine-tuning-free compensation for compressed LLM with eigenspace low-rank approximation.&rdquo; arXiv:2410.21271, 2024.</li>
-      <li>Arai &amp; Ichikawa. &ldquo;Quantization error propagation: Revisiting layer-wise post-training quantization.&rdquo; arXiv:2504.09629, 2025.</li>
-      <li>Li et al. &ldquo;SVDQuant: Absorbing outliers by low-rank components for 4-bit diffusion models.&rdquo; arXiv:2411.05007, 2024.</li>
-      <li>Merity et al. &ldquo;Pointer sentinel mixture models.&rdquo; arXiv:1609.07843, 2016.</li>
-    </ol>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <p>Research project on activation-weighted low-rank compression of transformer weights. Source code and experiments: <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">github.com/Sambhav242005/Weighted-Lowrank-Compression</a></p>
-    <p style="margin-top:8px">All numbers are measured results from this repository.</p>
-  </div>
-</footer>
-
-</main>
-
-<script>
+<a class="skip-link" href="#content">Skip to main content</a>
+<header class="title-block"><div class="wrap">
+    <h1>Activation-Weighted Low-Rank Compression: Likelihood, Drift, and Practical Cost</h1><p class="author">Sambhav Surana · Research project</p>
+    <p class="meta">Updated <time datetime="2026-10-15">15 October 2026</time> · Exploratory findings</p>
+    <p><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/ieee-conference.tex">Current IEEE paper source</a> · <a href="paper-reader.html">Plain-language reader guide</a> · <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">Repository</a></p>
+    <nav class="page-nav" aria-label="On this page"><a href="#abstract">Abstract</a><a href="#results">Results</a><a href="#practical">Storage &amp; timing</a><a href="#limitations">Limitations</a><a href="#future-scope">Future Scope</a><a href="#paper">Paper &amp; evidence</a></nav>
+    </div></header><main id="content" tabindex="-1"><section id="abstract"><div class="wrap"><h2>Abstract</h2><p>Large language models use large matrices, or tables of numbers, to turn text into predictions. Replacing some of these matrices with two smaller ones can save storage, but the replacements may change how information passes through the model. We study whether a compression method guided by the model&#x27;s observed inputs can preserve its predictions and the internal signals passed between layers. We compare this method with a version that also penalizes changes to the original weights, using the same number of stored values. Tests on three pretrained language models show that the penalty provides no consistent improvement in both prediction quality and internal similarity. In one model, prediction quality improves while average error in these internal signals grows to 3.86 times that of the method without the penalty. Tests on consecutive layers also find a group where both prediction quality and internal similarity worsen for all three choices of fitting data. Separate storage and timing tests remove 29.17% of the weights in the selected matrices, but reduce the complete model file by only 0.894%; execution time varies with the workload. These findings show that prediction quality alone cannot establish whether compression preserves the original computation. Failed numerical accuracy checks, incomplete additional tests for one model, and evaluation on a previously used text dataset make the findings exploratory. A practical compression claim therefore needs separate evidence for prediction quality, internal behavior, storage, and speed.</p></div></section>
+<section id="introduction"><div class="wrap"><h2>1. What the study asks</h2><p>Can a pretrained transformer use fewer stored weights while retaining the original model’s behavior? We replace selected attention-output matrices with two smaller factors and measure both next-token prediction and the internal signals passed between blocks.</p>
+    <div class="status-note"><p><strong>Current finding.</strong> Activation-aware fitting improves on plain SVD in the tested Gemma setting. Adding the weight-space anchor gives no consistent improvement in both prediction quality and residual fidelity across Gemma, Qwen and LFM. A better likelihood score alone cannot establish preservation of the original computation.</p></div></div></section>
+<section id="method"><div class="wrap"><h2>2. What is compared</h2><p>A dense projection computes <code>Wx + b</code>. Its compact replacement computes <code>U(Vx) + b</code>, applying the original bias once. At a fixed factor budget, covariance whitening weights input directions using calibration activations. The anchored version adds a penalty for changing the original weights.</p>
+    <div class="equation">J<sub>β</sub>(A) = ‖(W − A)X‖²<sub>F</sub> + βn‖W − A‖²<sub>F</sub>, with A = UV</div>
+    <p>The matched whitening component uses β = ρ = 0; the selected anchor uses β = 0.03 and ρ = 0. Gemma’s primary rank is 384, Qwen’s is 483, and LFM’s is 725. Other layers and hybrid mixers remain dense.</p>
+    <details><summary>Protocol and interpretation</summary><div class="detail-body"><p>The historical quality cohorts use calibration seeds 11, 23 and 37, paired across methods. WikiText-2 supplies calibration, validation and test splits; the test set has already influenced the project, so these are regression results. The later BF16 practical cohort uses only seeds 11 and 23 and supplies no new drift measurements.</p><p>Exact-arithmetic formulas require their stated rank and spectral assumptions. Failed finite-precision controls prevent attributing all measured changes solely to the mathematical objective. The current paper documents measured-output fitting, extra ridge and spectral cutoffs separately.</p></div></details></div></section>
+<section id="viz"><div class="wrap-wide"><h2>3. Concept illustration</h2><p>This optional animation uses synthetic points and visual metaphors for different fitting geometries. It is not a measured layer, a literal factorization surface, or evidence that compression preserves computation.</p>
+    <div class="viz-wrap"><div class="viz-canvas-wrap"><div id="concept-canvas-container" style="height:360px"><div id="concept-label">Optional concept illustration</div></div></div>
+    <div class="viz-steps" hidden><button type="button" class="viz-step active">1. Full matrix</button><button type="button" class="viz-step">2. Calibration directions</button><button type="button" class="viz-step">3. Weight geometry</button><button type="button" class="viz-step">4. Activation geometry</button><button type="button" class="viz-step">5. Test global behavior</button></div>
+    <div class="viz-controls" id="viz-controls" hidden><button type="button" id="toggle-animation" aria-pressed="true">Pause animation</button><button type="button" data-camera="left">Rotate left</button><button type="button" data-camera="right">Rotate right</button><button type="button" data-camera="in">Zoom in</button><button type="button" data-camera="out">Zoom out</button></div></div>
+    <p class="small">Drag to rotate or use the buttons. Animation starts paused when reduced motion is requested. The measured charts below work without JavaScript or WebGL.</p></div></section>
+<section id="results"><div class="wrap-wide"><h2>4. Results</h2><p>The charts use the same saved numbers as the current IEEE source. On a narrow screen, scroll a chart horizontally or open its exact-value table. NLL is negative log-likelihood; lower NLL means better prediction on the scored text. Residual drift measures internal-state difference from the original model.</p><figure class="chart" id="gemma-results"><h3>Gemma: prediction loss and residual drift</h3>
+    <div class="chart-viewport" tabindex="0" role="region" aria-label="Gemma: prediction loss and residual drift; horizontally scrollable"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 455" role="img" aria-labelledby="gemma-title" aria-describedby="gemma-desc" font-family="Georgia,serif"><title id="gemma-title">Gemma full-stack comparison</title><desc id="gemma-desc">Prediction loss and residual drift for five methods at the same rank. Activation-aware fits improve over plain SVD. Whitening and anchor have close means; seed variation remains important.</desc><line x1="230.000" y1="365.000" x2="500.000" y2="365.000" stroke="#6a737d" stroke-width="1.2"/><line x1="244.595" y1="75.000" x2="244.595" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="244.595" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">3.5</text><line x1="317.568" y1="75.000" x2="317.568" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="317.568" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">4</text><line x1="390.541" y1="75.000" x2="390.541" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="390.541" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">4.5</text><line x1="463.514" y1="75.000" x2="463.514" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="463.514" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">5</text><text x="365.000" y="420.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">NLL — lower is better</text><text x="365.000" y="40.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Prediction loss</text><line x1="237.525" y1="75.000" x2="237.525" y2="365.000" stroke="#555" stroke-width="1.2" stroke-dasharray="5 5"/><text x="210.000" y="106.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Plain SVD</text><circle cx="476.456" cy="100.000" r="4.5" fill="#00628f"><title>5.088681</title></circle><text x="210.000" y="162.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Diagonal ASVD component</text><line x1="272.623" y1="156.000" x2="273.329" y2="156.000" stroke="#00628f" stroke-width="1.2"/><line x1="272.623" y1="151.000" x2="272.623" y2="161.000" stroke="#00628f" stroke-width="1.2"/><line x1="273.329" y1="151.000" x2="273.329" y2="161.000" stroke="#00628f" stroke-width="1.2"/><circle cx="272.976" cy="156.000" r="4.5" fill="#00628f"><title>3.694466</title></circle><text x="210.000" y="218.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Covariance whitening</text><line x1="253.497" y1="212.000" x2="256.946" y2="212.000" stroke="#00628f" stroke-width="1.2"/><line x1="253.497" y1="207.000" x2="253.497" y2="217.000" stroke="#00628f" stroke-width="1.2"/><line x1="256.946" y1="207.000" x2="256.946" y2="217.000" stroke="#00628f" stroke-width="1.2"/><circle cx="255.222" cy="212.000" r="4.5" fill="#00628f"><title>3.572814</title></circle><text x="210.000" y="274.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Anchor (β = 0.03)</text><line x1="252.818" y1="268.000" x2="255.613" y2="268.000" stroke="#00628f" stroke-width="1.2"/><line x1="252.818" y1="263.000" x2="252.818" y2="273.000" stroke="#00628f" stroke-width="1.2"/><line x1="255.613" y1="263.000" x2="255.613" y2="273.000" stroke="#00628f" stroke-width="1.2"/><circle cx="254.215" cy="268.000" r="4.5" fill="#00628f"><title>3.565921</title></circle><text x="210.000" y="330.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Extra ridge</text><line x1="254.886" y1="324.000" x2="257.373" y2="324.000" stroke="#00628f" stroke-width="1.2"/><line x1="254.886" y1="319.000" x2="254.886" y2="329.000" stroke="#00628f" stroke-width="1.2"/><line x1="257.373" y1="319.000" x2="257.373" y2="329.000" stroke="#00628f" stroke-width="1.2"/><circle cx="256.129" cy="324.000" r="4.5" fill="#00628f"><title>3.579034</title></circle><line x1="640.000" y1="365.000" x2="910.000" y2="365.000" stroke="#6a737d" stroke-width="1.2"/><line x1="640.000" y1="75.000" x2="640.000" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="640.000" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0</text><line x1="707.500" y1="75.000" x2="707.500" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="707.500" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.02</text><line x1="775.000" y1="75.000" x2="775.000" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="775.000" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.04</text><line x1="842.500" y1="75.000" x2="842.500" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="842.500" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.06</text><line x1="910.000" y1="75.000" x2="910.000" y2="365.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="910.000" y="390.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.08</text><text x="775.000" y="420.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">Residual drift — lower is better</text><text x="775.000" y="40.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Internal representation drift</text><circle cx="890.587" cy="100.000" r="4.5" fill="#00628f"><title>0.074248</title></circle><line x1="743.866" y1="156.000" x2="745.195" y2="156.000" stroke="#00628f" stroke-width="1.2"/><line x1="743.866" y1="151.000" x2="743.866" y2="161.000" stroke="#00628f" stroke-width="1.2"/><line x1="745.195" y1="151.000" x2="745.195" y2="161.000" stroke="#00628f" stroke-width="1.2"/><circle cx="744.530" cy="156.000" r="4.5" fill="#00628f"><title>0.030972</title></circle><line x1="674.614" y1="212.000" x2="677.192" y2="212.000" stroke="#00628f" stroke-width="1.2"/><line x1="674.614" y1="207.000" x2="674.614" y2="217.000" stroke="#00628f" stroke-width="1.2"/><line x1="677.192" y1="207.000" x2="677.192" y2="217.000" stroke="#00628f" stroke-width="1.2"/><circle cx="675.903" cy="212.000" r="4.5" fill="#00628f"><title>0.010638</title></circle><line x1="673.936" y1="268.000" x2="677.257" y2="268.000" stroke="#00628f" stroke-width="1.2"/><line x1="673.936" y1="263.000" x2="673.936" y2="273.000" stroke="#00628f" stroke-width="1.2"/><line x1="677.257" y1="263.000" x2="677.257" y2="273.000" stroke="#00628f" stroke-width="1.2"/><circle cx="675.596" cy="268.000" r="4.5" fill="#00628f"><title>0.010547</title></circle><line x1="679.477" y1="324.000" x2="680.416" y2="324.000" stroke="#00628f" stroke-width="1.2"/><line x1="679.477" y1="319.000" x2="679.477" y2="329.000" stroke="#00628f" stroke-width="1.2"/><line x1="680.416" y1="319.000" x2="680.416" y2="329.000" stroke="#00628f" stroke-width="1.2"/><circle cx="679.947" cy="324.000" r="4.5" fill="#00628f"><title>0.011836</title></circle></svg></div>
+    <figcaption>The same rank-384 factor budget is used for all methods. Points are means; whiskers are sample standard deviations across three calibration seeds. Plain SVD is one seed-independent fit with no error bar. The dashed line marks the dense teacher’s NLL, 3.451563. Extra ridge uses β = 0.1 and ρ = 0.01. These historical FP16 results retain their failed numerical-readiness qualification.</figcaption>
+    <details><summary>Exact chart values</summary><div class="table-wrap"><table><caption>Gemma: prediction loss and residual drift — original reported values</caption><thead><tr><th scope="col">Method</th><th scope="col">NLL</th><th scope="col">Residual drift</th><th scope="col">Seeds</th></tr></thead><tbody><tr><th scope="row">Plain SVD</th><td class="num">5.088681 (single fit)</td><td class="num">0.074248 (single fit)</td><td class="num">1</td></tr><tr><th scope="row">Diagonal ASVD component</th><td class="num">3.694466 ± 0.002420</td><td class="num">0.030972 ± 0.000197</td><td class="num">3</td></tr><tr><th scope="row">Covariance whitening</th><td class="num">3.572814 ± 0.011819</td><td class="num">0.010638 ± 0.000382</td><td class="num">3</td></tr><tr><th scope="row">Anchor (β = 0.03)</th><td class="num">3.565921 ± 0.009576</td><td class="num">0.010547 ± 0.000492</td><td class="num">3</td></tr><tr><th scope="row">Extra ridge</th><td class="num">3.579034 ± 0.008521</td><td class="num">0.011836 ± 0.000139</td><td class="num">3</td></tr></tbody></table></div></details>
+    </figure><p>The anchor’s mean Gemma NLL is 3.565921 versus 3.572814 for whitening. Its average drift is slightly lower, but drift worsens in two of three paired seeds. The average does not establish a reproducible joint improvement.</p><figure class="chart" id="composition-results"><h3>Layer groups: anchor minus whitening</h3>
+    <div class="chart-viewport" tabindex="0" role="region" aria-label="Layer groups: anchor minus whitening; horizontally scrollable"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="composition-title" aria-describedby="composition-desc" font-family="Georgia,serif"><title id="composition-title">Layer-group changes relative to whitening</title><desc id="composition-desc">Paired means over three calibration seeds. Values left of zero favor the anchor. Blocks 11–14 worsen on both metrics; all 26 has a small average improvement that does not hold in every group.</desc><line x1="230.000" y1="675.000" x2="500.000" y2="675.000" stroke="#6a737d" stroke-width="1.2"/><line x1="230.000" y1="70.000" x2="230.000" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="230.000" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-8</text><line x1="275.763" y1="70.000" x2="275.763" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="275.763" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-6</text><line x1="321.525" y1="70.000" x2="321.525" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="321.525" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-4</text><line x1="367.288" y1="70.000" x2="367.288" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="367.288" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-2</text><line x1="413.051" y1="70.000" x2="413.051" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="413.051" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0</text><line x1="458.814" y1="70.000" x2="458.814" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="458.814" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">2</text><text x="365.000" y="730.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">ΔNLL, in units of 0.001</text><text x="365.000" y="38.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Prediction-loss change</text><line x1="413.051" y1="70.000" x2="413.051" y2="675.000" stroke="#555" stroke-width="1.2" stroke-dasharray="5 5"/><text x="210.000" y="101.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">0 (2/3)</text><circle cx="411.943" cy="95.000" r="4.5" fill="#00628f"><title>-0.0000484</title></circle><text x="411.943" y="117.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.0484</text><text x="210.000" y="159.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">12 (0/3)</text><circle cx="405.200" cy="153.000" r="4.5" fill="#00628f"><title>-0.0003431</title></circle><text x="405.200" y="175.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.3431</text><text x="210.000" y="217.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">25 (0/3)</text><circle cx="408.417" cy="211.000" r="4.5" fill="#00628f"><title>-0.0002025</title></circle><text x="408.417" y="233.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.2025</text><text x="210.000" y="275.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">0–1 (1/3)</text><circle cx="411.957" cy="269.000" r="4.5" fill="#00628f"><title>-0.0000478</title></circle><text x="411.957" y="291.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.0478</text><text x="210.000" y="333.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">12–13 (0/3)</text><circle cx="413.184" cy="327.000" r="4.5" fill="#b33"><title>+0.0000058</title></circle><text x="413.184" y="349.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+0.0058</text><text x="210.000" y="391.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">24–25 (0/3)</text><circle cx="408.857" cy="385.000" r="4.5" fill="#00628f"><title>-0.0001833</title></circle><text x="408.857" y="407.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.1833</text><text x="210.000" y="449.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">0–3 (2/3)</text><circle cx="406.319" cy="443.000" r="4.5" fill="#00628f"><title>-0.0002942</title></circle><text x="406.319" y="465.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.2942</text><text x="210.000" y="507.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">11–14 (0/3)</text><circle cx="475.373" cy="501.000" r="4.5" fill="#b33"><title>+0.0027237</title></circle><text x="475.373" y="523.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+2.7237</text><text x="210.000" y="565.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">22–25 (2/3)</text><circle cx="390.309" cy="559.000" r="4.5" fill="#00628f"><title>-0.0009939</title></circle><text x="390.309" y="581.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.9939</text><text x="210.000" y="623.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">All 26 (1/3)</text><circle cx="255.337" cy="617.000" r="4.5" fill="#00628f"><title>-0.0068927</title></circle><text x="255.337" y="639.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-6.8927</text><line x1="640.000" y1="675.000" x2="910.000" y2="675.000" stroke="#6a737d" stroke-width="1.2"/><line x1="650.800" y1="70.000" x2="650.800" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="650.800" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-15</text><line x1="704.800" y1="70.000" x2="704.800" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="704.800" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-10</text><line x1="758.800" y1="70.000" x2="758.800" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="758.800" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">-5</text><line x1="812.800" y1="70.000" x2="812.800" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="812.800" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0</text><line x1="866.800" y1="70.000" x2="866.800" y2="675.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="866.800" y="700.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">5</text><text x="775.000" y="730.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">Δ drift, in units of 0.00001</text><text x="775.000" y="38.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Residual-drift change</text><line x1="812.800" y1="70.000" x2="812.800" y2="675.000" stroke="#555" stroke-width="1.2" stroke-dasharray="5 5"/><circle cx="809.136" cy="95.000" r="4.5" fill="#00628f"><title>-3.392768e-06</title></circle><text x="809.136" y="117.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.3393</text><circle cx="814.426" cy="153.000" r="4.5" fill="#b33"><title>+1.50569e-06</title></circle><text x="814.426" y="175.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+0.1506</text><circle cx="813.151" cy="211.000" r="4.5" fill="#b33"><title>+3.248449e-07</title></circle><text x="813.151" y="233.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+0.0325</text><circle cx="716.856" cy="269.000" r="4.5" fill="#00628f"><title>-8.883664e-05</title></circle><text x="716.856" y="291.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-8.8837</text><circle cx="815.981" cy="327.000" r="4.5" fill="#b33"><title>+2.945603e-06</title></circle><text x="815.981" y="349.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+0.2946</text><circle cx="812.768" cy="385.000" r="4.5" fill="#00628f"><title>-2.956141e-08</title></circle><text x="812.768" y="407.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-0.0030</text><circle cx="668.223" cy="443.000" r="4.5" fill="#00628f"><title>-0.0001338675</title></circle><text x="668.223" y="465.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-13.3868</text><circle cx="886.840" cy="501.000" r="4.5" fill="#b33"><title>+6.855561e-05</title></circle><text x="886.840" y="523.000" text-anchor="middle" font-size="15" font-weight="400" fill="#b33">+6.8556</text><circle cx="801.430" cy="559.000" r="4.5" fill="#00628f"><title>-1.052808e-05</title></circle><text x="801.430" y="581.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-1.0528</text><circle cx="715.043" cy="617.000" r="4.5" fill="#00628f"><title>-9.051551e-05</title></circle><text x="715.043" y="639.000" text-anchor="middle" font-size="15" font-weight="400" fill="#00628f">-9.0516</text></svg></div>
+    <figcaption>Negative differences favor the anchor. Axis units are 0.001 for NLL and 0.00001 for drift; annotations use those units and are rounded to four decimal places. Parentheses show seeds with both lower NLL and lower drift, out of three. They do not indicate statistical significance. Blocks 11–14 worsen on both metrics in all three seeds.</figcaption>
+    <details><summary>Exact chart values</summary><div class="table-wrap"><table><caption>Layer groups: anchor minus whitening — original reported values</caption><thead><tr><th scope="col">Blocks</th><th scope="col">Mean NLL difference</th><th scope="col">Mean drift difference</th><th scope="col">Jointly better</th></tr></thead><tbody><tr><th scope="row">0</th><td class="num">-0.0000484</td><td class="num">-3.392768e-06</td><td class="num">2/3</td></tr><tr><th scope="row">12</th><td class="num">-0.0003431</td><td class="num">+1.50569e-06</td><td class="num">0/3</td></tr><tr><th scope="row">25</th><td class="num">-0.0002025</td><td class="num">+3.248449e-07</td><td class="num">0/3</td></tr><tr><th scope="row">0–1</th><td class="num">-0.0000478</td><td class="num">-8.883664e-05</td><td class="num">1/3</td></tr><tr><th scope="row">12–13</th><td class="num">+0.0000058</td><td class="num">+2.945603e-06</td><td class="num">0/3</td></tr><tr><th scope="row">24–25</th><td class="num">-0.0001833</td><td class="num">-2.956141e-08</td><td class="num">0/3</td></tr><tr><th scope="row">0–3</th><td class="num">-0.0002942</td><td class="num">-0.0001338675</td><td class="num">2/3</td></tr><tr><th scope="row">11–14</th><td class="num">+0.0027237</td><td class="num">+6.855561e-05</td><td class="num">0/3</td></tr><tr><th scope="row">22–25</th><td class="num">-0.0009939</td><td class="num">-1.052808e-05</td><td class="num">2/3</td></tr><tr><th scope="row">All 26</th><td class="num">-0.0068927</td><td class="num">-9.051551e-05</td><td class="num">1/3</td></tr></tbody></table></div></details>
+    </figure><figure class="chart" id="hybrid-results"><h3>Qwen and LFM: compare each model separately</h3>
+    <div class="chart-viewport" tabindex="0" role="region" aria-label="Qwen and LFM: compare each model separately; horizontally scrollable"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 535" role="img" aria-labelledby="hybrid-title" aria-describedby="hybrid-desc" font-family="Georgia,serif"><title id="hybrid-title">Hybrid-model comparisons</title><desc id="hybrid-desc">Separate model-specific axes compare whitening with the anchor. Qwen has higher loss and drift with the anchor. LFM has lower loss but much higher drift. Points are means over three calibration seeds.</desc><line x1="180.000" y1="195.000" x2="410.000" y2="195.000" stroke="#6a737d" stroke-width="1.2"/><line x1="180.000" y1="68.000" x2="180.000" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="180.000" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">2.93</text><line x1="295.000" y1="68.000" x2="295.000" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="295.000" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">2.94</text><line x1="410.000" y1="68.000" x2="410.000" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="410.000" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">2.95</text><text x="295.000" y="250.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">NLL — lower is better</text><text x="295.000" y="40.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Qwen, rank 483</text><text x="168.000" y="95.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Whitening</text><circle cx="231.048" cy="90.000" r="4.5" fill="#00628f"><title>2.934439</title></circle><text x="231.048" y="113.000" text-anchor="middle" font-size="16" font-weight="400" fill="#00628f">2.934439</text><text x="168.000" y="161.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Anchor</text><circle cx="333.226" cy="156.000" r="4.5" fill="#b35400"><title>2.943324</title></circle><text x="333.226" y="179.000" text-anchor="middle" font-size="16" font-weight="400" fill="#b35400">2.943324</text><line x1="660.000" y1="195.000" x2="890.000" y2="195.000" stroke="#6a737d" stroke-width="1.2"/><line x1="660.000" y1="68.000" x2="660.000" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="660.000" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0</text><line x1="736.667" y1="68.000" x2="736.667" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="736.667" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.005</text><line x1="813.333" y1="68.000" x2="813.333" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="813.333" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.01</text><line x1="890.000" y1="68.000" x2="890.000" y2="195.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="890.000" y="220.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.015</text><text x="775.000" y="250.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">Residual drift — lower is better</text><text x="775.000" y="40.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">Qwen, rank 483</text><text x="648.000" y="95.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Whitening</text><circle cx="754.377" cy="90.000" r="4.5" fill="#00628f"><title>0.006155</title></circle><text x="754.377" y="113.000" text-anchor="middle" font-size="16" font-weight="400" fill="#00628f">0.006155</text><text x="648.000" y="161.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Anchor</text><circle cx="855.684" cy="156.000" r="4.5" fill="#b35400"><title>0.012762</title></circle><text x="855.684" y="179.000" text-anchor="middle" font-size="16" font-weight="400" fill="#b35400">0.012762</text><line x1="180.000" y1="440.000" x2="410.000" y2="440.000" stroke="#6a737d" stroke-width="1.2"/><line x1="208.750" y1="313.000" x2="208.750" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="208.750" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">3.8</text><line x1="266.250" y1="313.000" x2="266.250" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="266.250" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">3.9</text><line x1="323.750" y1="313.000" x2="323.750" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="323.750" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">4</text><line x1="381.250" y1="313.000" x2="381.250" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="381.250" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">4.1</text><text x="295.000" y="495.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">NLL — lower is better</text><text x="295.000" y="285.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">LFM, rank 725</text><text x="168.000" y="340.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Whitening</text><circle cx="356.183" cy="335.000" r="4.5" fill="#00628f"><title>4.056405</title></circle><text x="356.183" y="358.000" text-anchor="middle" font-size="16" font-weight="400" fill="#00628f">4.056405</text><text x="168.000" y="406.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Anchor</text><circle cx="229.402" cy="401.000" r="4.5" fill="#b35400"><title>3.835916</title></circle><text x="229.402" y="424.000" text-anchor="middle" font-size="16" font-weight="400" fill="#b35400">3.835916</text><line x1="660.000" y1="440.000" x2="890.000" y2="440.000" stroke="#6a737d" stroke-width="1.2"/><line x1="660.000" y1="313.000" x2="660.000" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="660.000" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0</text><line x1="731.875" y1="313.000" x2="731.875" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="731.875" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.05</text><line x1="803.750" y1="313.000" x2="803.750" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="803.750" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.1</text><line x1="875.625" y1="313.000" x2="875.625" y2="440.000" stroke="#d9dfe3" stroke-width="1.2"/><text x="875.625" y="465.000" text-anchor="middle" font-size="16" font-weight="400" fill="#1a1a1a">0.15</text><text x="775.000" y="495.000" text-anchor="middle" font-size="18" font-weight="400" fill="#1a1a1a">Residual drift — lower is better</text><text x="775.000" y="285.000" text-anchor="middle" font-size="19" font-weight="600" fill="#1a1a1a">LFM, rank 725</text><text x="648.000" y="340.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Whitening</text><circle cx="711.577" cy="335.000" r="4.5" fill="#00628f"><title>0.035880</title></circle><text x="711.577" y="358.000" text-anchor="middle" font-size="16" font-weight="400" fill="#00628f">0.035880</text><text x="648.000" y="406.000" text-anchor="end" font-size="17" font-weight="400" fill="#1a1a1a">Anchor</text><circle cx="858.872" cy="401.000" r="4.5" fill="#b35400"><title>0.138346</title></circle><text x="858.872" y="424.000" text-anchor="middle" font-size="16" font-weight="400" fill="#b35400">0.138346</text></svg></div>
+    <figcaption>Each point is a mean over three calibration seeds; no uncertainty interval is drawn. Axes use model-specific ranges. Qwen: rank 483, 8/8 primary-test records and 10/18 validation records. LFM: rank 725, 8/8 test and 18/18 validation records. These differences do not isolate architecture effects.</figcaption>
+    <details><summary>Exact chart values</summary><div class="table-wrap"><table><caption>Qwen and LFM: compare each model separately — original reported values</caption><thead><tr><th scope="col">Model / method</th><th scope="col">NLL</th><th scope="col">Residual drift</th></tr></thead><tbody><tr><th scope="row">Qwen / Whitening</th><td class="num">2.934439</td><td class="num">0.006155</td></tr><tr><th scope="row">Qwen / Anchor</th><td class="num">2.943324</td><td class="num">0.012762</td></tr><tr><th scope="row">LFM / Whitening</th><td class="num">4.056405</td><td class="num">0.035880</td></tr><tr><th scope="row">LFM / Anchor</th><td class="num">3.835916</td><td class="num">0.138346</td></tr></tbody></table></div></details>
+    </figure><p>LFM shows why the metrics must be assessed separately: the anchor improves likelihood in every seed while mean residual drift rises to about 3.86 times the whitening mean. Lower NLL does not establish preservation, denoising, or a particular causal mechanism.</p></div></section>
+<section id="practical"><div class="wrap"><h2>5. Storage and timing</h2><p>The separate BF16 cohort removes 29.17% of weights in the targeted matrices. Complete checkpoint size falls from 1,999,883,711 to 1,982,003,507 bytes: 17,880,204 bytes, or 0.894%. Most model weights remain untouched. Anchor and whitening checkpoints have identical sizes.</p><div class="table-wrap"><table><caption>Separate BF16 practical conditions</caption><thead><tr><th scope="col">BF16 condition</th><th scope="col">Seed</th><th scope="col">Raw NLL</th><th scope="col">Scaled NLL</th><th scope="col">Whole GiB</th></tr></thead><tbody><tr><th scope="row">Dense teacher</th><td class="num">-</td><td class="num">3.451549</td><td class="num">3.422601</td><td class="num">1.862537</td></tr><tr><th scope="row">Whitening</th><td class="num">11</td><td class="num">3.556086</td><td class="num">3.541726</td><td class="num">1.845885</td></tr><tr><th scope="row">Anchor</th><td class="num">11</td><td class="num">3.556826</td><td class="num">3.542255</td><td class="num">1.845885</td></tr><tr><th scope="row">Whitening</th><td class="num">23</td><td class="num">3.568431</td><td class="num">3.553267</td><td class="num">1.845885</td></tr><tr><th scope="row">Anchor</th><td class="num">23</td><td class="num">3.562949</td><td class="num">3.545341</td><td class="num">1.845885</td></tr></tbody></table></div><p>Temperature is selected on validation and then frozen; the five saved selections are approximately 1.090508. GiB means 2³⁰ bytes. These are descriptive full-test aggregates without paired block intervals.</p><div class="table-wrap"><table><caption>Median latency ratio: anchor / matched whitening</caption><thead><tr><th scope="col">Workload</th><th scope="col">Seed 11 median ratio</th><th scope="col">Seed 23 median ratio</th></tr></thead><tbody><tr><th scope="row">Prefill 128</th><td class="num">1.1876</td><td class="num">0.9370</td></tr><tr><th scope="row">Decode 128 after prompt 128</th><td class="num">1.1073</td><td class="num">0.9679</td></tr><tr><th scope="row">Prefill 512</th><td class="num">1.0108</td><td class="num">0.9473</td></tr><tr><th scope="row">Decode 128 after prompt 512</th><td class="num">0.9876</td><td class="num">0.9580</td></tr></tbody></table></div><p>Ratios below one favor the anchor. Seed 11 is slower for the 128-token conditions, while seed 23 favors it in the measured workloads. Timing uses a resident RTX 4070 Ti, batch size one, 10 warmups and 30 synchronized samples. Cached decode excludes the initial prompt pass. These observations establish no consistent anchoring speed advantage or general acceleration over the dense teacher.</p></div></section>
+<section id="limitations"><div class="wrap"><h2>6. Limitations and evidence boundaries</h2><ul><li>The strict numerical-readiness checks failed. The results describe recorded implementations; they cannot isolate ideal mathematical objectives from numerical error.</li><li>Qwen has all eight primary-test records but only 10 of 18 validation-frontier records. Missing measurements remain missing.</li><li>WikiText-2 has already influenced the project. No fresh-domain confirmation, downstream task accuracy, or free-running generation equivalence has been established.</li><li>Three calibration seeds do not represent independently pretrained models. The later BF16 practical cohort has only two seeds and no new drift measurements.</li><li>Only the selected attention-output matrices are studied. Results do not establish preservation for MLPs, hybrid mixers, larger models, or other rank allocations.</li><li>Model file size, CUDA allocator peaks and warmed-up latency are distinct measurements. Storage savings alone do not establish practical speed or memory savings.</li></ul></div></section>
+<section id="future-scope"><div class="wrap"><h2>7. Future Scope</h2><h3>A small neural network for compression</h3><p>A proposed next direction is a small bottleneck neural network that learns a compact mapping for selected dense projections from the original model’s activations. A second option is a small correction network alongside lower-rank factors.</p><p>Every retained factor, network weight and bias must count toward a matched storage budget. Any local improvement must be checked for held-out prediction quality and residual drift after replacements are composed across layers, alongside complete file size, peak memory and warmed-up latency. Neither network has been implemented or tested here.</p><h3>Numerical controls and broader evaluation</h3><p>Resolve failed controls and complete missing Qwen measurements before controlled comparisons of group-output matching. Fresh evaluation data, downstream tasks and generation tests need frozen splits, budgets and decision criteria. Fused factor execution and runtime-informed rank allocation remain further hypotheses.</p><p><a href="https://aclanthology.org/2020.findings-emnlp.372/">TinyBERT</a> is a related teacher–student distillation precedent; it does not establish the proposed projection replacement’s effectiveness. The paper’s full Future Scope is Section 8, including the small-network proposal in Section 8.1.</p></div></section>
+<section id="paper"><div class="wrap"><h2>8. Paper and reproducible evidence</h2><ul><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/ieee-conference.tex">Current IEEE paper source</a> — larger mathematical displays and vector charts for dense comparisons; simpler BF16 and timing values remain tables.</li><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/manuscript.pdf">Earlier review PDF</a> — the same bounded study and Future Scope, with the earlier table layout. The PDF has not been regenerated for the in-place chart edit.</li><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/results/paper-v2/revised-report-20261014-151432-07c08d61/report.md">Frozen evidence report</a> — source runs, complete recorded comparisons and unresolved gaps.</li><li><a href="research-data.json">Chart and table data (JSON)</a> — original reported values and a fingerprint of the paper source.</li><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md">IEEE preparation notes</a> — generic conference formatting; the actual venue remains unidentified.</li></ul><p>Both appendices were removed from the current paper. Their experiment records and uncertainty intervals remain in the repository. The existing paper editor stays the place to compile the latest IEEE source.</p></div></section>
+</main><footer><div class="wrap"><p>Sambhav Surana · Updated 15 October 2026 · <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">Source code and evidence</a> · <a href="paper-reader.html">Reader guide</a></p></div></footer><script>
 (function() {
   var container = document.getElementById('concept-canvas-container');
   if (!container) return;
@@ -585,12 +170,26 @@
     return 360;
   }
 
+  if (typeof THREE === 'undefined') {
+    label.textContent = 'The optional 3D illustration is unavailable. All results and charts below remain readable.';
+    document.getElementById('viz-controls').hidden = true;
+    return;
+  }
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, container.clientWidth / getHeight(), 0.1, 1000);
-  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+  catch (error) {
+    label.textContent = 'WebGL is unavailable. All measured results and charts below remain readable.';
+    document.getElementById('viz-controls').hidden = true;
+    return;
+  }
   renderer.setSize(container.clientWidth, getHeight());
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
+  renderer.domElement.setAttribute('aria-hidden', 'true');
+  document.querySelector('.viz-steps').hidden = false;
+  document.getElementById('viz-controls').hidden = false;
 
   scene.add(new THREE.AmbientLight(0x606070, 3));
   var pl1 = new THREE.PointLight(0xffffff, 8, 100);
@@ -680,9 +279,9 @@
   var states = [
     { label: "Step 1 - The full weight matrix", color: "#82909d" },
     { label: "Step 2 - Activation traffic visible", color: "#00e5cc" },
-    { label: "Step 3 - Plain SVD: rigid flat plane", color: "#4488cc" },
-    { label: "Step 4 - Weighted fit bends to traffic", color: "#ff8844" },
-    { label: "Step 5 - Same budget, different result", color: "#ff8844" }
+    { label: "Step 3 - Weight-space approximation", color: "#4488cc" },
+    { label: "Step 4 - Activation-weighted geometry", color: "#ff8844" },
+    { label: "Step 5 - Global behavior still needs testing", color: "#ff8844" }
   ];
 
   function applyState(s) {
@@ -690,7 +289,10 @@
     currentState = s;
     label.innerText = states[s].label;
     label.style.borderLeftColor = states[s].color;
-    for (var k = 0; k < stepsEl.length; k++) stepsEl[k].classList.toggle('active', k === s);
+    for (var k = 0; k < stepsEl.length; k++) {
+      stepsEl[k].classList.toggle('active', k === s);
+      stepsEl[k].setAttribute('aria-pressed', String(k === s));
+    }
     var posW = wtdSurface.geometry.attributes.position;
     var posS = svdSurface.geometry.attributes.position;
     for (var j = 0; j < posW.count; j++) {
@@ -704,16 +306,37 @@
   }
   applyState(0);
 
-  var paused = false;
-  container.addEventListener('mouseenter', function() { paused = true; });
-  container.addEventListener('mouseleave', function() { paused = false; });
+  var userPaused = prefersReducedMotion;
+  var hoverPaused = false;
+  var pauseButton = document.getElementById('toggle-animation');
+  function syncPauseButton() {
+    pauseButton.textContent = userPaused ? 'Play animation' : 'Pause animation';
+    pauseButton.setAttribute('aria-pressed', String(!userPaused));
+  }
+  pauseButton.addEventListener('click', function() { userPaused = !userPaused; syncPauseButton(); });
+  stepsEl.forEach(function(step, index) {
+    step.addEventListener('click', function() { userPaused = true; applyState(index); syncPauseButton(); });
+  });
+  document.querySelectorAll('[data-camera]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var action = button.dataset.camera;
+      if (action === 'left') camTheta -= 0.25;
+      if (action === 'right') camTheta += 0.25;
+      if (action === 'in') camRadius = Math.max(8, camRadius - 2);
+      if (action === 'out') camRadius = Math.min(50, camRadius + 2);
+      updateCamera();
+    });
+  });
+  syncPauseButton();
+  container.addEventListener('mouseenter', function() { hoverPaused = true; });
+  container.addEventListener('mouseleave', function() { hoverPaused = false; });
 
   var lastCycle = -1;
   var CYCLE_MS = 6000;
   function animate(t) {
     requestAnimationFrame(animate);
-    if (!prefersReducedMotion && !isDragging) points.rotation.y += 0.001;
-    if (!paused && !isDragging) {
+    if (!prefersReducedMotion && !userPaused && !hoverPaused && !isDragging) points.rotation.y += 0.001;
+    if (!userPaused && !hoverPaused && !isDragging) {
       var cycle = Math.floor((t / CYCLE_MS) % 5);
       if (cycle !== lastCycle) { lastCycle = cycle; applyState(cycle); }
     }
@@ -731,7 +354,4 @@
 
   animate(0);
 })();
-</script>
-
-</body>
-</html>
+</script></body></html>

@@ -1,0 +1,27 @@
+{
+  "source_paper_sha256": "44b15754403ade9a1c9a5535caed14e4bb4669344df5ecbaf24a51b3e9409097",
+  "chart_values_match_manuscript": true,
+  "local_and_repository_links_resolve": true,
+  "unique_ids_and_chart_descriptions": true,
+  "semantic_table_alternatives": true,
+  "superseded_claims_removed": true,
+  "browser_checks": [
+    {
+      "viewport": "desktop",
+      "pages": 2,
+      "page_errors": [],
+      "page_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "pages": 2,
+      "page_errors": [],
+      "page_overflow": false
+    }
+  ],
+  "javascript_disabled_results_readable": true,
+  "optional_cdn_failure_handled": true,
+  "research_experiments_run": false,
+  "paper_editor_and_existing_pdf_unchanged": true,
+  "proof_directory": "docs\\proofs\\website-20261015"
+}

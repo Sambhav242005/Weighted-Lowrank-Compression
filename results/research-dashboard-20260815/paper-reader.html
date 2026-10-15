@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reader Guide — Activation-Weighted Low-Rank Compression</title>
-  <meta name="description" content="A plain-English guide to understanding activation-weighted low-rank compression of transformer weights.">
+  <title>Reader guide | Activation-Weighted Low-Rank Compression: Likelihood, Drift, and Practical Cost</title>
+  <meta name="description" content="A plain-language guide to the current exploratory compression study, its mixed results, limitations and future scope.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -100,268 +100,43 @@
       section{padding:28px 0}
       .step{padding-left:60px}
     }
+    /* current-evidence */
+    a{color:var(--link,#0366d6)}
+    .skip-link{position:fixed;left:12px;top:-100px;z-index:200;background:white;padding:10px 16px}
+    .skip-link:focus{top:12px}
+    .page-nav{display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:center;margin-top:20px;font-size:16px}
+    .page-nav a{padding:4px 0;min-height:24px}
+    .status-note{border-left:3px solid #00628f;background:#f5f9fb;padding:14px 18px;margin:18px 0}
+    .chart-viewport{overflow-x:auto;margin:16px 0 8px;border:1px solid var(--rule,#e2e8f0);background:#fff}
+    .chart-viewport svg{min-width:820px;overflow:hidden}
+    .chart-viewport:focus-visible{outline:2px solid #00628f;outline-offset:3px}
+    .chart figure,figure.chart{margin:24px 0}
+    figcaption{font-size:16px;line-height:1.6;margin:12px 0}
+    caption{text-align:left;font-weight:600;padding:8px 0;caption-side:top}
+    th[scope=row]{text-transform:none;letter-spacing:normal;font:inherit;color:var(--ink);background:none}
+    summary{min-height:28px;padding:4px 0}
+    .table-wrap{max-width:100%;overflow-x:auto}
+    .table-wrap table{min-width:540px}
+    .wrap ul,.wrap ol{margin-left:0;padding-left:24px;margin-bottom:14px}
+    .small{font-size:15px;color:var(--muted)}
+    .equation{overflow-x:auto;padding:16px;background:#f5f5f5;font-size:18px}
+    .viz-controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .viz-controls[hidden],.viz-steps[hidden]{display:none}
+    button{min-height:32px;padding:6px 12px;border:1px solid #777;background:#fff;color:#1a1a1a;font:inherit;cursor:pointer}
+    .viz-step{border:0;cursor:pointer;font-family:inherit;min-height:28px}
+    .viz-fallback{padding:24px;color:white;font-size:16px;max-width:650px}
+    @media(max-width:600px){.title-block h1{font-size:29px}.wrap,.wrap-wide{width:calc(100% - 32px)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
   </style>
 </head>
 <body>
-
-<header class="page-header">
-  <div class="wrap">
-    <div class="back-link"><a href="index.html">← Back to main paper</a></div>
-    <div class="eyebrow">Reader guide</div>
-    <h1>How to understand this research</h1>
-    <p class="lead">A plain-English guide to activation-weighted low-rank compression. You don't need to be an ML researcher to follow the main idea.</p>
-  </div>
-</header>
-
-<main>
-
-<!-- ═══════════════════════════ THE ONE-SENTENCE VERSION ════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>The one-sentence version</h2>
-    <div class="callout">
-      <p><strong>When compressing a neural network, don't ask "what's mathematically biggest?" — ask "what does the model actually use?"</strong> The answer changes which parts of the network you preserve, and it makes compression 5–7× less destructive.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ THE IDEA IN 30 SECONDS ══════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>The idea in 30 seconds</h2>
-
-    <p>Neural networks store their knowledge in massive matrices — grids of numbers with millions of entries. To make the model smaller, we replace these matrices with simpler approximations that keep the most important patterns.</p>
-
-    <p>The standard approach (SVD) keeps the directions with the most <em>mathematical energy</em>. But the model doesn't use all directions equally. Some directions carry most of the computational traffic; others are barely touched.</p>
-
-    <p>Our method keeps the directions with the most <em>activation traffic</em> — the ones the model actually uses. Same compression budget, very different results.</p>
-
-    <div class="analogy">
-      <div class="analogy-label">Road map analogy</div>
-      <p>Imagine compressing a road network. Standard SVD preserves the widest roads — even if some are abandoned highways. Our method preserves the busiest roads — the ones that carry real traffic. Same map size, but the important connections survive.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ WHY THIS MATTERS ═══════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>Why this matters</h2>
-
-    <p>Previous attempts at low-rank compression of transformers hit a "drift wall" — at 3× compression, the model's performance collapses. This was thought to be a fundamental limit: compress too much, and errors compound through the network.</p>
-
-    <p>We show the wall is mostly an artifact of the wrong compression objective. When you optimize in the right geometry (activation space instead of weight space), the wall largely disappears.</p>
-
-    <div class="two-col">
-      <div class="card">
-        <h3>The problem</h3>
-        <p>Plain SVD at 3× compression raises perplexity by 21% on GPT-2 and 72% on Gemma — making models nearly unusable.</p>
-      </div>
-      <div class="card">
-        <h3>Our result</h3>
-        <p>Activation-weighted fitting at the same 3× compression raises perplexity by only 3.6% on GPT-2 and actually <em>improves</em> Gemma by 4.5%.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ THE METHOD IN THREE STEPS ═══════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>The method in three steps</h2>
-    <p class="section-lead">No equations required. Here's the intuition behind each step.</p>
-
-    <div class="steps">
-      <div class="step">
-        <h3>Observe what the model does</h3>
-        <p>Feed the model some sample text and record which directions in each weight matrix get activated. This creates an "activation profile" — a map of where the computational traffic flows.</p>
-      </div>
-      <div class="step">
-        <h3>Solve for the best compressed version</h3>
-        <p>Instead of finding the mathematically simplest approximation (SVD), find the simplest approximation that preserves the activation patterns you observed. This is a one-shot calculation — no training, no gradients.</p>
-      </div>
-      <div class="step">
-        <h3>Keep rank where it matters</h3>
-        <p>When deciding which directions to keep and which to discard, prioritize the directions that carry activation traffic. The result: the model's important computational pathways survive compression.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ HOW TO READ THE PAPER ══════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>How to read the paper</h2>
-    <p class="section-lead">The full paper is available as a <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/PAPER.md">Markdown draft</a> or <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/paper.tex">LaTeX source</a>. Here's how to approach it depending on your background.</p>
-
-    <details>
-      <summary>If you know basic machine learning</summary>
-      <div class="detail-body">
-        <p>Start with the introduction (Section 1) to understand why low-rank compression fails. Then skip to Section 5 (Results) to see the cross-scale comparison table. The key figure is the perplexity delta table — it shows our method beating SVD by 5–7× across three model sizes. Section 8 (Limitations) is essential reading to understand the scope of the claims.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>If you are an ML researcher</summary>
-      <div class="detail-body">
-        <p>Read the paper in order. Section 3 (Method) presents the closed-form solution and its derivation. Section 4 (Experimental Setup) describes the protocol — all results use identical calibration, evaluation, and control conditions. Section 5.4 (Matrix-family study) shows where the method works and where it doesn't. Section 6 (Analysis: Compression as Denoising) presents the most surprising finding. Section 7 (Storage Accounting) honestly positions the method against quantization. Check the pre-submission checklist for open gaps.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Key equations to understand</summary>
-      <div class="detail-body">
-        <p>The core optimization objective:</p>
-        <div class="eq-block">L(Ŵ) = (1/n) Σᵢ ‖(W − Ŵ)xᵢ‖² + β ‖Ŵ − W‖²_F</div>
-        <p>This says: find a compressed version Ŵ that produces small errors on the calibration activations (first term), while staying close to the original weights in directions where we have no evidence (second term, the anchor).</p>
-        <p>The closed-form solution:</p>
-        <div class="eq-block">M* = C (G + βnI)⁻¹</div>
-        <p>Where <span class="eq">G = XXᵀ</span> is the activation Gram matrix and <span class="eq">C = (Y−b)Xᵀ + βnW</span> is the cross-moment. This is computed in the eigenspace of G with ridge regularization.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ GLOSSARY ═══════════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>Glossary</h2>
-
-    <div class="glossary">
-      <div class="gloss-item">
-        <dl><dt>Low-rank</dt>
-        <dd>A matrix represented using fewer underlying dimensions. Instead of storing every entry independently, you store two smaller matrices whose product approximates the original. This is a form of compression.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>SVD (Singular Value Decomposition)</dt>
-        <dd>A standard mathematical method that breaks a matrix into its most important directions, ranked by how much "energy" each direction carries. It's the default tool for low-rank approximation.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Activation</dt>
-        <dd>The signal produced inside a neural network when an input passes through a layer. Activations tell you which parts of the network are "firing" for a given input.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Calibration data</dt>
-        <dd>Representative inputs used to observe the model's activation patterns before compression. The method needs to "see" what the model does in order to know what to preserve.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Rank</dt>
-        <dd>The number of independent directions retained by the compressed representation. Rank-256 means keeping 256 main patterns. Higher rank = more faithful to original but less compression.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Perplexity (PPL)</dt>
-        <dd>A language-model metric measuring how well the model predicts text. Lower is better. A PPL of 36 is good; a PPL of 15,000 means the model is essentially guessing randomly.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Activation-weighted</dt>
-        <dd>A compression objective influenced by the directions emphasized by actual model activations, rather than by mathematical magnitude alone.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Gram matrix</dt>
-        <dd>A matrix summarizing which directions appear frequently in the calibration activations. It defines the geometry in which the compression error is measured.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Weight-space anchor</dt>
-        <dd>A regularization term that prevents the compressed model from producing arbitrarily large weights in directions the calibration data never excites. Without it, the fit diverges.</dd></dl>
-      </div>
-      <div class="gloss-item">
-        <dl><dt>Drift</dt>
-        <dd>The phenomenon where approximation errors in early layers compound through the network, causing later layers to receive inputs they weren't trained on. This is why per-layer compression quality doesn't guarantee whole-model quality.</dd></dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ MAIN RESULTS ═══════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>Main results</h2>
-    <p class="section-lead">All results are on attention output projections at one-sided 3× compression, evaluated on WikiText-2.</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Model</th><th class="num">Baseline PPL</th><th class="num">Plain SVD</th><th class="num">Weighted fit</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>GPT-2 Small (124M)</td><td class="num">56.47</td><td class="num">+21.34%</td><td class="num highlight">+3.58%</td></tr>
-          <tr><td>Gemma-3-1B</td><td class="num">70.40</td><td class="num">+71.86%</td><td class="num highlight">−4.45%</td></tr>
-          <tr><td>Qwen2.5-7B</td><td class="num">12.29</td><td class="num">+26.31%</td><td class="num highlight">+3.84%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="small muted">Negative values mean the compressed model outperforms the original. The improvement factor over SVD is 5.9×, 16.2×, and 6.9× respectively.</p>
-
-    <details>
-      <summary>What does "PPL increase" mean?</td></summary>
-      <div class="detail-body">
-        <p>Perplexity measures how confused the model is when predicting the next word. A PPL increase of +3.58% means the model is 3.58% more confused than the original. A PPL <em>decrease</em> of −4.45% means the compressed model is actually <em>less</em> confused than the original — it's a better language model after compression.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What does "beats the teacher" mean?</summary>
-      <div class="detail-body">
-        <p>When we say the compressed Gemma-3-1B "beats the teacher," we mean the compressed model achieves lower perplexity on held-out text than the original uncompressed model — without any fine-tuning. This is unusual: compression normally makes models worse, not better. Our interpretation is that activation-weighted truncation acts as denoising, removing weight directions that never fire on natural text but contribute noise to the model's predictions.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ LIMITATIONS ═════════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>Limitations</h2>
-    <p class="section-lead">Where this result stops being supported.</p>
-
-    <ul style="margin:16px 0 0 18px;line-height:2.2">
-      <li><strong>Scope:</strong> Only attention output projections are demonstrated at 3×. MLP matrices (80% of parameters) don't have enough redundancy at this compression level.</li>
-      <li><strong>Seeds:</strong> Most results are single calibration runs. Multi-seed statistics are not yet available.</li>
-      <li><strong>Evaluation:</strong> Only perplexity on WikiText-2. No downstream tasks, no drift metrics.</li>
-      <li><strong>Latency:</strong> The compressed representation changes the compute graph. Speed and memory implications are unmeasured.</li>
-      <li><strong>Novelty:</strong> Head-to-head comparison against ASVD and EoRA (the closest related methods) has not been run.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ WHAT WE DON'T CLAIM ════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>What this paper does not claim</h2>
-    <ul style="margin:16px 0 0 18px;line-height:2.2">
-      <li>That low-rank compression universally beats quantization for storage.</li>
-      <li>That every transformer matrix is equally compressible.</li>
-      <li>That activation weighting solves all compression problems.</li>
-      <li>That the method is ready for deployment.</li>
-      <li>That the denoising effect is general (it's observed on one architecture).</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ FURTHER READING ════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <h2>Further reading</h2>
-    <div class="two-col">
-      <div class="card">
-        <h3>Full paper draft</h3>
-        <p style="font-size:14px">Available as <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/PAPER.md">Markdown</a> or <a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/paper.tex">LaTeX</a>. Contains all equations, proofs, experimental details, and appendices.</p>
-      </div>
-      <div class="card">
-        <h3>Source code & experiments</h3>
-        <p style="font-size:14px"><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">GitHub repository</a> with standalone experiment scripts, results, and run contracts.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <p><a href="index.html">← Back to main paper</a></p>
-  </div>
-</footer>
-
-</body>
-</html>
+<a class="skip-link" href="#content">Skip to main content</a>
+<header class="page-header"><div class="wrap"><p><a href="index.html">← Research overview</a></p><p class="eyebrow">Reader guide · Updated 15 October 2026</p><h1>How to understand this research</h1><p class="lead">A guide to the current study: what gets smaller, what changes inside the model, and what still needs testing.</p></div></header><main id="content" tabindex="-1"><section id="main-idea"><div class="wrap"><h2>The main idea</h2><div class="callout"><p>A compressed model can predict text better while its internal signals become less like the original model’s. We measure prediction, internal drift, storage and speed separately.</p></div><p>A language model processes text through large grids of numbers called weight matrices. Replacing selected grids with two smaller ones saves stored weights. Even if each replacement fits the original layer well on sample text, errors can change the inputs received by later layers.</p><p>Activation-aware fitting pays attention to the directions used by observed inputs. The study also tests a penalty, called an anchor, for changing the original weights. The anchor adds no extra branch during inference.</p></div></section>
+<section id="method"><div class="wrap"><h2>How the comparison works</h2><div class="steps"><div class="step"><h3>Observe the original model</h3><p>Use calibration text to record the signals entering selected attention-output layers. These observations guide which directions the compact representation should fit.</p></div><div class="step"><h3>Use the same storage budget</h3><p>Compare covariance whitening with the anchored fit using the same target shapes, ranks and factor precision. Plain SVD is a separate weight-space control.</p></div><div class="step"><h3>Evaluate the complete model</h3><p>Check predictions and the internal signals passed between blocks, then separately measure file size, memory and warmed-up runtime. A strong single-layer fit alone cannot establish global preservation.</p></div></div></div></section>
+<section id="findings"><div class="wrap"><h2>What the current results say</h2><div class="card"><h3>Gemma: a small average difference</h3><p>The anchor has slightly lower mean loss and drift than whitening, but drift worsens in two of three seeds. A full-stack average also hides layer groups where both metrics get worse.</p></div><div class="card"><h3>Qwen: both metrics worsen</h3><p>At the measured primary rank, the anchor has higher prediction loss and higher drift in every calibration seed. Eight of 18 validation-frontier measurements are still missing.</p></div><div class="card"><h3>LFM: better predictions, larger internal change</h3><p>The anchor reduces prediction loss while average residual drift rises to 3.86 times whitening’s. A better prediction score does not establish that the original computation has been preserved.</p></div><div class="card"><h3>Storage and speed: a separate question</h3><p>The selected matrices lose 29.17% of their weights, but the complete model file shrinks by 0.894%. The measured timing advantage varies by seed and workload.</p></div><p><a href="index.html#results">See the measured charts and exact values</a> or <a href="index.html#practical">read the storage and timing tables</a>.</p></div></section>
+<section id="glossary"><div class="wrap"><h2>Terms used in the paper</h2><dl class="glossary"><div class="gloss-item"><dt>Low-rank factors</dt><dd>Two smaller matrices whose product approximates a larger matrix. Their combined storage must be counted.</dd></div><div class="gloss-item"><dt>Calibration data</dt><dd>Text used to observe activations and fit the compressed factors. Validation and test splits have separate roles.</dd></div><div class="gloss-item"><dt>Negative log-likelihood (NLL)</dt><dd>Average loss on scored next-token predictions. Lower is better on the same model’s tokenizer and evaluation setup.</dd></div><div class="gloss-item"><dt>Residual drift</dt><dd>A normalized measure of difference between the original and compressed model’s block-output states on the same observed text. It is not a proof of functional equivalence.</dd></div><div class="gloss-item"><dt>Whitening and anchor</dt><dd>Whitening uses activation covariance to guide the fit. The anchor adds a weight-deviation penalty. Its value must be assessed against the matched whitening baseline.</dd></div><div class="gloss-item"><dt>Seed variation</dt><dd>Variation from different calibration draws. It does not mean the pretrained model itself was independently trained several times.</dd></div><div class="gloss-item"><dt>BF16</dt><dd>A 16-bit floating-point format used in the separate practical storage and timing cohort. That cohort is not pooled with the historical FP16 drift study.</dd></div></dl></div></section>
+<section id="limits"><div class="wrap"><h2>Why the conclusions are exploratory</h2><ul><li>Some strict numerical accuracy checks failed.</li><li>Qwen’s validation coverage is incomplete.</li><li>The text dataset has already influenced the project, so the results are regression evidence.</li><li>No downstream task or generated-text equivalence has been established.</li><li>The BF16 practical cohort has two seeds and no new drift measurements.</li></ul><p>The paper therefore does not establish a general method for preserving a whole model’s computation, a consistent speedup, or a causal denoising effect.</p></div></section>
+<section id="future-scope"><div class="wrap"><h2>Future Scope: could a small network help?</h2><p>A future experiment could train a small bottleneck network to replace a selected dense projection, or use a small network to correct a low-rank replacement’s error. These are proposals; neither was trained or evaluated in this study.</p><p>The new network’s own weights, biases, memory use and processing time must be counted. It would need to improve held-out behavior across composed layers at a matched total budget. The first priorities remain resolving numerical controls and completing missing evaluation.</p><p>Find this proposal in the paper’s <strong>Section 8.1</strong>. Section 8 also discusses broader evaluation and practical execution costs.</p></div></section>
+<section id="read-paper"><div class="wrap"><h2>How to read the current paper</h2><p><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/ieee-conference.tex">Open the current IEEE paper source</a>. Start with the abstract and introduction, then Section 5’s results. Read Section 7’s limitations before interpreting gains, and Section 8 for future research. Both appendices have been removed; the supporting records remain in the repository.</p><ul><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/manuscript.pdf">Earlier review PDF</a> — readable paper with the earlier table layout.</li><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/results/paper-v2/revised-report-20261014-151432-07c08d61/report.md">Frozen evidence report</a> — full recorded results and provenance.</li><li><a href="index.html#results">Current website charts</a> — the same saved values as the latest IEEE source.</li><li><a href="https://github.com/Sambhav242005/Weighted-Lowrank-Compression">Source repository</a> — research code, protocols and audit records.</li></ul></div></section>
+</main><footer><div class="wrap"><p><a href="index.html">← Research overview</a> · Updated 15 October 2026</p></div></footer></body></html>
