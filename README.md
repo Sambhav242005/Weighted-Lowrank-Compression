@@ -17,6 +17,9 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
+- [Single-author, two-column paper PDF](docs/paper-reference-style-20261015/manuscript.pdf)
+  and [LaTeX](docs/paper-reference-style-20261015/manuscript.tex): seven-page edition
+  matching the supplied reference's A4/Times layout, with the verified current evidence.
 - [Revised paper PDF](docs/paper-revision-20261015/manuscript.pdf),
   [Markdown](docs/paper-revision-20261015/manuscript.md) and
   [LaTeX](docs/paper-revision-20261015/manuscript.tex): 15 October editorial revision

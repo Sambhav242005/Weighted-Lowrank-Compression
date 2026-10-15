@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-10-15T08:38:25.423837+00:00",
+  "page_count": 7,
+  "layout": "A4; two columns; full-width single-author title and italic abstract; Times 10 pt",
+  "source_scientific_markdown_byte_identical": true,
+  "source_interval_records_byte_identical": true,
+  "protected_editorial_and_evidence_sources_unchanged": true,
+  "all_source_tables_preserved": 6,
+  "source_table_rows_including_headers": [
+    6,
+    11,
+    3,
+    6,
+    5,
+    6
+  ],
+  "numbered_pdf_equations": 4,
+  "citation_keys_preserved": 22,
+  "selected_paired_interval_rows": 12,
+  "author": "Sambhav Surana",
+  "author_source": "User-supplied reference PDF",
+  "off_page_text": [],
+  "all_local_document_links_resolve": true,
+  "pdf_fonts": [
+    "AAAAAA+TimesNewRomanPS-BoldItalicMT",
+    "AAAAAA+TimesNewRomanPS-BoldMT",
+    "AAAAAA+TimesNewRomanPS-ItalicMT",
+    "AAAAAA+TimesNewRomanPSMT",
+    "Courier",
+    "Helvetica"
+  ],
+  "all_seven_pages_rendered_and_visually_inspected": true,
+  "tex_compilation": {
+    "compiler": "Codex desktop standalone compiler",
+    "result": "success",
+    "sha256": "ad347a091f81a66ab7aa3ceca87ee18830b96fb359b5f2b0fd6f578c2742e3eb"
+  },
+  "pdf_rendering": "ReportLab PDF with embedded mathematical images, not compiled from TeX",
+  "pdf_sha256": "ea87ea98f84ba640ca4f50fe9894a2af41d6b41f4d2619ebc3659d26966da456",
+  "reference_sha256": "f7bab02da10e0408faf168f06ff2c43d4872d1c218da530e044185504375287b",
+  "research_experiments_run": false,
+  "venue_compliance_certified": false
+}

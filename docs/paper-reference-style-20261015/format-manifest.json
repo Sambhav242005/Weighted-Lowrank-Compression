@@ -1,0 +1,337 @@
+{
+  "generated_utc": "2026-10-15T08:36:53.473865+00:00",
+  "kind": "reference_style_formatting",
+  "reference_path": "C:\\Users\\NPC\\Documents\\weighted_lowrank_compression_solo_author.pdf",
+  "reference_sha256": "f7bab02da10e0408faf168f06ff2c43d4872d1c218da530e044185504375287b",
+  "author_and_project_links": "Copied from user-supplied reference; repository URL matches Git origin.",
+  "layout": {
+    "page": "A4",
+    "columns": 2,
+    "body_font": "Times New Roman",
+    "body_size_pt": 10,
+    "leading_pt": 12,
+    "margin_pt": 54,
+    "column_gap_pt": 18,
+    "first_page_header_pt": 320
+  },
+  "source_manuscript_sha256": "25f509e02af6eee1669ea4c55bc7b18856cc3fb00b03eb8da9935c280a56143e",
+  "scientific_text_unchanged": true,
+  "table_count_preserved": 6,
+  "citation_keys_preserved": [
+    "abbasi2026iosvd",
+    "abbasi2026zerosum",
+    "arai2025qep",
+    "biderman2024evaluation",
+    "chen2021drone",
+    "clark2018arc",
+    "frantar2022gptq",
+    "frantar2023sparsegpt",
+    "guo2017calibration",
+    "hsu2022weighted",
+    "hu2026saessvd",
+    "kornblith2019cka",
+    "li2024svdquant",
+    "lin2023awq",
+    "liu2024eora",
+    "liu2026lacesvd",
+    "merity2016wikitext",
+    "raffel2020t5",
+    "wang2024svdllm",
+    "wang2025svdllmv2",
+    "yuan2023asvd",
+    "zellers2019hellaswag"
+  ],
+  "research_experiments_run": false,
+  "protected_source_hashes": {
+    "docs\\paper-revision-20261015\\build_revision.py": "ea3a3733c63b9cf4cbe7dc70838bb6cb706fae93aff85de249e96a82e11ef9fd",
+    "docs\\paper-revision-20261015\\manuscript.md": "25f509e02af6eee1669ea4c55bc7b18856cc3fb00b03eb8da9935c280a56143e",
+    "docs\\paper-revision-20261015\\manuscript.pdf": "fb508eed7999389d28657cd04c5c6467cb4648fac1037675323485737624cdc0",
+    "docs\\paper-revision-20261015\\manuscript.source.md": "984800d650bb6f665815fee1115e2504b384f41c205e6ce8984ffc8dcbe4d648",
+    "docs\\paper-revision-20261015\\manuscript.tex": "ecadde62de64785d00dc686e14a174fb858c295ab620fa8cba4e15513c42acd8",
+    "docs\\paper-revision-20261015\\paper_protocol_v2.bib": "e29efabec9975352119f60aafa5da509eaa2060ce7ba74ff7d0f7071afc49261",
+    "docs\\paper-revision-20261015\\README.md": "80fe00e48553846e2d88a966db58d97f2c451d4aad4a70d1d0846867984ccd2d",
+    "docs\\paper-revision-20261015\\report.json": "740cc9e2f634c6ab29ad8c8c8938dad59c4934312205bc4910d12be0b1179ee6",
+    "docs\\paper-revision-20261015\\revision-manifest.json": "4fe70fca04ad22cd2a4c881d3a3d112d98d6a319c3f019551aaa684c35c76230",
+    "docs\\paper-revision-20261015\\validation.json": "590b689e8bd801db73cae580b6fba0402f97ff2841dc9545b638e9ec741bfd5d",
+    "docs\\paper-revision-20261015\\figures\\gemma-drift.png": "400c18c93a78c549df43a4d1f22a69e71353da895fc0702089433bb3a7b8fe6c",
+    "docs\\paper-revision-20261015\\figures\\provenance.json": "eb2e6c81946c22490d640049debfcc1bcd59c8795d7fe4102d7d8dad5567d733"
+  },
+  "math_assets": [
+    {
+      "expression": "W\\in\\mathbb{R}^{o\\times i}",
+      "file": "math\\68c34e33a76c8d5b.png",
+      "size": 10
+    },
+    {
+      "expression": "Wx+b",
+      "file": "math\\2cdfa4579065200b.png",
+      "size": 10
+    },
+    {
+      "expression": "U(Vx)+b",
+      "file": "math\\f3c51246da06f633.png",
+      "size": 10
+    },
+    {
+      "expression": "U\\in\\mathbb{R}^{o\\times r}",
+      "file": "math\\5ac47a9e5b558662.png",
+      "size": 10
+    },
+    {
+      "expression": "V\\in\\mathbb{R}^{r\\times i}",
+      "file": "math\\ae5635d3e0772628.png",
+      "size": 10
+    },
+    {
+      "expression": "r(o+i)",
+      "file": "math\\9618433e61ff967a.png",
+      "size": 10
+    },
+    {
+      "expression": "oi",
+      "file": "math\\b03f15b688a843f6.png",
+      "size": 10
+    },
+    {
+      "expression": "r<oi/(o+i)",
+      "file": "math\\76e106464a8b3d7a.png",
+      "size": 10
+    },
+    {
+      "expression": "r=\\lfloor(17/24)oi/(o+i)\\rfloor",
+      "file": "math\\25070f78d52a3b20.png",
+      "size": 10
+    },
+    {
+      "expression": "\\lfloor\\min(o,i)/d\\rfloor",
+      "file": "math\\3f8fd6244e3a08ad.png",
+      "size": 10
+    },
+    {
+      "expression": "d\\in\\{2,3,4\\}",
+      "file": "math\\18fc04c9b32799bb.png",
+      "size": 10
+    },
+    {
+      "expression": "X\\in\\mathbb{R}^{i\\times n}",
+      "file": "math\\9bfd1c08e74919a2.png",
+      "size": 10
+    },
+    {
+      "expression": "A=UV",
+      "file": "math\\a105f8e850068bad.png",
+      "size": 10
+    },
+    {
+      "expression": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "file": "math\\a5b0d0eabc0e4af6.png",
+      "size": 10
+    },
+    {
+      "expression": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "file": "math\\2ca9f65e1ae8fb70.png",
+      "size": 10
+    },
+    {
+      "expression": "r",
+      "file": "math\\37dfc65b2df7c319.png",
+      "size": 10
+    },
+    {
+      "expression": "H=XX^T+\\beta nI",
+      "file": "math\\97a73fa1f2000cca.png",
+      "size": 10
+    },
+    {
+      "expression": "C=WH",
+      "file": "math\\82fc9c5508ac62cd.png",
+      "size": 10
+    },
+    {
+      "expression": "Y_b=Y-b\\mathbf{1}^T",
+      "file": "math\\6b729bf0929a4b38.png",
+      "size": 10
+    },
+    {
+      "expression": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "file": "math\\1aa93b0b4a8df3df.png",
+      "size": 10
+    },
+    {
+      "expression": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "file": "math\\a291aa4b4433f65b.png",
+      "size": 10
+    },
+    {
+      "expression": "C=Y_bX^T+\\beta nW",
+      "file": "math\\6b6839eab8023332.png",
+      "size": 10
+    },
+    {
+      "expression": "Y_b=WX",
+      "file": "math\\31597407d507d887.png",
+      "size": 10
+    },
+    {
+      "expression": "G=H+\\lambda I",
+      "file": "math\\54e5975b01e62afa.png",
+      "size": 10
+    },
+    {
+      "expression": "\\lambda=\\rho\\operatorname{mean}(\\operatorname{eig}(H))",
+      "file": "math\\34b182519e444f29.png",
+      "size": 10
+    },
+    {
+      "expression": "A_{\\mathrm{full}}=CG^\\dagger",
+      "file": "math\\fa0ce1ca0ee196af.png",
+      "size": 10
+    },
+    {
+      "expression": "A_{\\mathrm{full}}G^{1/2}",
+      "file": "math\\8fc0a380c7c46142.png",
+      "size": 10
+    },
+    {
+      "expression": "G^{\\dagger/2}",
+      "file": "math\\4a5008f02d313b2c.png",
+      "size": 10
+    },
+    {
+      "expression": "H",
+      "file": "math\\37fae6366d0593fc.png",
+      "size": 10
+    },
+    {
+      "expression": "A_\\beta=[WH^{1/2}]_rH^{-1/2}",
+      "file": "math\\6ccf9da7602282d3.png",
+      "size": 10
+    },
+    {
+      "expression": "A_\\beta=[WH^{1/2}]_rH^{-1/2},",
+      "file": "math\\8b6b6746eccc5f67.png",
+      "size": 10
+    },
+    {
+      "expression": "W",
+      "file": "math\\4334c12f660be1f1.png",
+      "size": 10
+    },
+    {
+      "expression": "\\beta=\\rho=0",
+      "file": "math\\30b8099d97d6d464.png",
+      "size": 10
+    },
+    {
+      "expression": "\\beta=0.03",
+      "file": "math\\df759f27c3f43d62.png",
+      "size": 10
+    },
+    {
+      "expression": "\\rho=0",
+      "file": "math\\8e2668c67bd4420f.png",
+      "size": 10
+    },
+    {
+      "expression": "s_j=\\max(\\operatorname{mean}_t|X_{jt}|,10^{-8})^{0.5}",
+      "file": "math\\46007062d0992edc.png",
+      "size": 10
+    },
+    {
+      "expression": "W\\operatorname{diag}(s)",
+      "file": "math\\b79cd6bf3f2ed8e5.png",
+      "size": 10
+    },
+    {
+      "expression": "10^{-7}\\lambda_{\\max}(G)",
+      "file": "math\\021ef7508c05f1c4.png",
+      "size": 10
+    },
+    {
+      "expression": "h_{\\ell,t}",
+      "file": "math\\bfa8066570b8c27f.png",
+      "size": 10
+    },
+    {
+      "expression": "\\widehat h_{\\ell,t}",
+      "file": "math\\fe66fb65e46e83f5.png",
+      "size": 10
+    },
+    {
+      "expression": "t\\in\\mathcal{T}",
+      "file": "math\\63dc3712f8cd924f.png",
+      "size": 10
+    },
+    {
+      "expression": "D_\\ell=\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2/\\max(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,10^{-30})",
+      "file": "math\\c08df77236904021.png",
+      "size": 10
+    },
+    {
+      "expression": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,10^{-30})}",
+      "file": "math\\21f6997a715fe12f.png",
+      "size": 10
+    },
+    {
+      "expression": "D=L^{-1}\\sum_{\\ell=1}^{L}D_\\ell",
+      "file": "math\\4b0c095895fa041b.png",
+      "size": 10
+    },
+    {
+      "expression": "D",
+      "file": "math\\7bf429dce3d12c9e.png",
+      "size": 10
+    },
+    {
+      "expression": "\\beta\\in\\{0,0.03,0.1,0.3,1\\}",
+      "file": "math\\fec8b9a39be4438a.png",
+      "size": 10
+    },
+    {
+      "expression": "\\rho\\in\\{0,0.001,0.01\\}",
+      "file": "math\\aa474ebfadd51852.png",
+      "size": 10
+    },
+    {
+      "expression": "\\beta=0.1",
+      "file": "math\\ab946dbae363a301.png",
+      "size": 10
+    },
+    {
+      "expression": "10^{-6}",
+      "file": "math\\186beafc9c227a1d.png",
+      "size": 10
+    },
+    {
+      "expression": "2^{30}",
+      "file": "math\\1acec7392828318a.png",
+      "size": 10
+    }
+  ],
+  "numbered_pdf_equations": 4,
+  "pdf_build": "ReportLab with 360-dpi STIX math images; independent of LaTeX",
+  "tex_build": "Standalone LaTeX; native measured-coordinate plot avoids external assets",
+  "figure_difference": "PDF retains original individual-seed plot; TeX embeds saved mean curves with explicit caption qualification.",
+  "artifacts": {
+    "manuscript.md": {
+      "sha256": "25f509e02af6eee1669ea4c55bc7b18856cc3fb00b03eb8da9935c280a56143e",
+      "bytes": 29025
+    },
+    "manuscript.pdf": {
+      "sha256": "ea87ea98f84ba640ca4f50fe9894a2af41d6b41f4d2619ebc3659d26966da456",
+      "bytes": 599656
+    },
+    "manuscript.tex": {
+      "sha256": "ad347a091f81a66ab7aa3ceca87ee18830b96fb359b5f2b0fd6f578c2742e3eb",
+      "bytes": 52570
+    },
+    "paper_protocol_v2.bib": {
+      "sha256": "e29efabec9975352119f60aafa5da509eaa2060ce7ba74ff7d0f7071afc49261",
+      "bytes": 11072
+    },
+    "build_paper.py": {
+      "sha256": "0c985b00d8c5a55270954667f10daacc45a2a4683e86173bbfecac09e6c5c57e",
+      "bytes": 25923
+    }
+  }
+}

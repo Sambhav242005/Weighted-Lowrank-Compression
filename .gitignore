@@ -32,6 +32,8 @@ graphify-out/
 .remember/tmp/
 # Local document-rendering QA proofs; original experiment evidence stays eligible.
 /docs/proofs/
+# Regenerable formula images; the formatted PDF embeds them and TeX is standalone.
+/docs/paper-reference-style-20261015/math/
 
 # ---- LaTeX build products ----
 *.aux

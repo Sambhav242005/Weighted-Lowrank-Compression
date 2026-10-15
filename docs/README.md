@@ -13,6 +13,7 @@ execution. Ledger 5's five BF16 practical conditions are complete; see
 
 | Document | Purpose |
 |---|---|
+| [Reference-style single-author PDF](paper-reference-style-20261015/manuscript.pdf) / [LaTeX](paper-reference-style-20261015/manuscript.tex) | Seven-page A4 two-column edition matching the supplied example |
 | [15 October revised paper](paper-revision-20261015/manuscript.md) / [PDF](paper-revision-20261015/manuscript.pdf) | Compact scientific narrative and tables; original frozen evidence preserved |
 | [Editorial revision notes](paper-revision-20261015/README.md) | Changes, evidence checks, build instructions and export limitations |
 | [Review handoff](REVIEW_20261014.md) | Completed measurements, code changes, unfinished work |
