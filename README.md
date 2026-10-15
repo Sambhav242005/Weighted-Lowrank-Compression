@@ -17,6 +17,11 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
+- [Revised paper PDF](docs/paper-revision-20261015/manuscript.pdf),
+  [Markdown](docs/paper-revision-20261015/manuscript.md) and
+  [LaTeX](docs/paper-revision-20261015/manuscript.tex): 15 October editorial revision
+  with compact evidence tables and explicit numerical/coverage limitations.
+  See the [revision notes](docs/paper-revision-20261015/README.md).
 - [Remaining paper tasks](TASKS.md): experiment, manuscript and release checklist.
 - [Review handoff](docs/REVIEW_20261014.md): completed work and known limits.
 - [Final bounded-study evidence report](results/paper-v2/revised-report-20261014-151432-07c08d61/report.md).
@@ -43,8 +48,9 @@ Reduction: 344,064 weights per projection, or 29.2% of the target weights
 
 The low-rank representation creates the reduction. Anchoring guides the fitting
 of the factors; whitening uses the same factor budget. Whole-model savings are
-smaller, and actual checkpoint size, inference latency and peak-memory results
-remain unfinished.
+smaller: the separate BF16 practical cohort saves 0.894% of serialized whole-model
+bytes. Its latency comparisons are workload-dependent; no consistent acceleration
+or global-preservation advantage is established.
 
 ![Original and anchored low-rank architecture](docs/figures/gemma-1b-anchored-architecture-20261014.png)
 
@@ -83,7 +89,7 @@ Qwen's frozen primary comparison is now saved for all three seeds: mean native
 test perplexity is **18.811 for whitening and 18.979 for anchor**. Anchor also has
 higher residual drift in every seed. This weakens the anchor hypothesis for
 these six full-attention outputs at rank 483. Its full validation frontier remains
-incomplete; final BF16 practical-cost results remain pending. These PPL values must
+incomplete. The separate five-condition BF16 practical cohort is complete. These PPL values must
 not be used to rank Qwen against Gemma because their tokenizers differ.
 
 ## Repository map

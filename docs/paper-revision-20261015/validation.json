@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-15T08:27:40.251102+00:00",
+  "status": "editorial checks passed; scientific findings remain exploratory",
+  "research_experiments_run": false,
+  "tex": {
+    "compiler": "Codex desktop standalone LaTeX compiler",
+    "result": "success",
+    "diagnostic": "The current source compiled successfully with the desktop editor's compiler.",
+    "sha256": "ecadde62de64785d00dc686e14a174fb858c295ab620fa8cba4e15513c42acd8"
+  },
+  "pdf": {
+    "renderer": "Existing ReportLab review exporter, independent of TeX",
+    "pages": 9,
+    "sha256": "fb508eed7999389d28657cd04c5c6467cb4648fac1037675323485737624cdc0",
+    "off_page_text": [],
+    "all_pages_rendered": true,
+    "visual_review": "All nine pages inspected in three contact sheets; no clipping, overlap or missing table columns observed."
+  },
+  "tables": {
+    "count": 5,
+    "source": "Frozen recorded metrics only",
+    "deterministic_assembly_assertions_passed": true
+  },
+  "citations": {
+    "keys_resolve": 22,
+    "central_component_descriptions_rechecked": true,
+    "all_22_sources_independently_reverified_this_revision": false
+  },
+  "original_research_and_evidence_hashes_unchanged": true,
+  "local_document_links_resolve": true,
+  "verification_tests": {
+    "command": "rtk C:/Python314/python.exe -m unittest docs.test_export_paper_latex_20261014 docs.test_export_paper_pdf_20261014",
+    "passed": 9,
+    "failed": 0
+  },
+  "acronym_review": "Manual; installed academic-paper package lacks its advertised check_acronyms.py.",
+  "submission_certification": false
+}

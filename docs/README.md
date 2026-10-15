@@ -13,6 +13,8 @@ execution. Ledger 5's five BF16 practical conditions are complete; see
 
 | Document | Purpose |
 |---|---|
+| [15 October revised paper](paper-revision-20261015/manuscript.md) / [PDF](paper-revision-20261015/manuscript.pdf) | Compact scientific narrative and tables; original frozen evidence preserved |
+| [Editorial revision notes](paper-revision-20261015/README.md) | Changes, evidence checks, build instructions and export limitations |
 | [Review handoff](REVIEW_20261014.md) | Completed measurements, code changes, unfinished work |
 | [Final bounded-study evidence report](../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md) | Saved continuation results; architecture cohort still partial |
 | [Review manuscript PDF](../results/paper-v2/revised-report-20261014-151432-07c08d61/manuscript.pdf) | Artifact-generated review draft, with unavailable measurements explicit |
