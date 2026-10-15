@@ -1,0 +1,27 @@
+{
+  "pdf_pages": 7,
+  "appendices_absent_from_pdf_markdown_and_both_tex_sources": true,
+  "future_scope_section": 8,
+  "future_scope_start_pages": [
+    6
+  ],
+  "small_network_idea_explicitly_untested": true,
+  "main_table_values_unchanged": true,
+  "original_mathematical_expressions_unchanged": true,
+  "abstract_unchanged": true,
+  "all_existing_references_preserved": true,
+  "new_reference": "TinyBERT, EMNLP Findings 2020",
+  "report_and_figure_data_unchanged": true,
+  "previous_edition_unchanged": true,
+  "display_equations": 8,
+  "display_font_size_pt": 11.5,
+  "page_boundary_overflow": [],
+  "proof_directory": "docs\\proofs\\future-scope-20261015",
+  "pdf_sha256": "81fca00a9a8990bc3f443734eb48d51aab671a2f9c0021050751cea36e73664c",
+  "experiments_run": false,
+  "latex_compilation": {
+    "ieee-conference.tex": "success: desktop editor compiler",
+    "manuscript.tex": "success: desktop editor compiler"
+  },
+  "visual_review": "All seven rendered pages reviewed; Future Scope inspected at larger scale"
+}

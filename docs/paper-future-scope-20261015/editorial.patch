@@ -1,0 +1,56 @@
+--- previous/manuscript.md
++++ current/manuscript.source.md
+@@ -66,7 +66,7 @@
+ 
+ The original anchor sweep is $\beta\in\{0,0.03,0.1,0.3,1\}$. Extra-ridge fractions are $\rho\in\{0,0.001,0.01\}$ at $\beta=0.1$. Validation NLL ties within $10^{-6}$ prefer less regularization. The selected ridge-free anchor is frozen before the primary comparisons; hybrid validation frontiers are development evidence, not additional confirmation.
+ 
+-Tables report calibration-seed means and sample standard deviations, with seed-independent SVD fitted once. Seeds describe calibration variation, not independently pretrained models. Paired 95% bootstrap intervals use 2,000 resamples of contiguous 4,096-target evaluation blocks. The incomplete tail remains in full-test NLL but is excluded from fixed-block resampling. Appendix uncertainty therefore describes evaluation-block variation conditional on the fitted model; it does not replace seed uncertainty. Comparisons across many groups and ranks remain descriptive rather than multiplicity-corrected discoveries [@biderman2024evaluation].
++Tables report calibration-seed means and sample standard deviations, with seed-independent SVD fitted once. Seeds describe calibration variation, not independently pretrained models. Paired 95% bootstrap intervals use 2,000 resamples of contiguous 4,096-target evaluation blocks. The incomplete tail remains in full-test NLL but is excluded from fixed-block resampling. These intervals therefore describe evaluation-block variation conditional on the fitted model; it does not replace seed uncertainty. Comparisons across many groups and ranks remain descriptive rather than multiplicity-corrected discoveries [@biderman2024evaluation].
+ 
+ ### 4.2 Numerical controls, coverage and practical amendment
+ 
+@@ -175,24 +175,28 @@
+ 
+ The scope is attention-output replacement at recorded budgets. Multilayer perceptrons (MLPs), hybrid non-attention mixers, larger models and other rank allocations require separate conclusions. Three calibration seeds provide limited variation, and the later BF16 practical amendment has only two. Within-model matching does not make different model families or FP16/BF16 cohorts interchangeable. The Qwen frontier's eight absent validation measurements remain missing. The original strict numerical-readiness failure, incomplete coverage and unfulfilled promotion gates prevent promotion of a general preservation claim.
+ 
+-Every main table is reconstructed from the frozen evidence, with its source run identified in Appendix A and exact extraction fields retained in the revision manifest. The full historical report preserves commands, package/device versions, asset revisions, token manifests, factor recipes, source/checkpoint hashes, failed attempts and recovery accounting. Reused records are not independent replications. Recorded charged wall time includes failed/retried work and some reboot downtime; the first reboot has an unbounded unlogged tail, so no exact 24 GPU-hour compliance claim is made. This revision uses the saved measurements without changing the fitting budget, model or dataset.
+-
+-## 8. Conclusion
++Every main table is reconstructed from the frozen evidence. The [frozen evidence report](../../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md) identifies the source runs, and the revision manifest records the exact extraction fields. Selected paired intervals remain in the repository's [evidence file](report.json). The full historical report preserves commands, package/device versions, asset revisions, token manifests, factor recipes, source/checkpoint hashes, failed attempts and recovery accounting. Reused records are not independent replications. Recorded charged wall time includes failed/retried work and some reboot downtime; the first reboot has an unbounded unlogged tail, so no exact 24 GPU-hour compliance claim is made. This revision uses the saved measurements without changing the fitting budget, model or dataset.
++
++## 8. Future Scope
++
++### 8.1 Compression with a small neural network
++
++A possible extension is to replace a selected dense projection with a small bottleneck neural network. Its input would pass through a narrower hidden layer before returning to the original output dimension, allowing a compact mapping to be learned from the original model's activations. Transformer knowledge distillation provides a related precedent for training smaller students from larger teachers [@jiao2020tinybert]. The proposed projection-level replacement would still require evaluation in the models and compression setting studied here.
++
++Another option is to keep the low-rank factors and train a small network to correct their output error. The factor rank would need to leave enough room for this correction network within the matched storage budget. Both options should count all network weights and biases, together with any retained factors. A reduction in local error would need to improve held-out predictions and control residual drift when the replacements are composed across layers. Neither option has been implemented or tested in this study.
++
++### 8.2 Numerical checks and broader evaluation
++
++Further work should first resolve the failed numerical controls and complete the missing Qwen validation measurements. Controlled comparisons could then test whether matching the output of a group of layers reduces the downstream drift seen after composition. Fresh evaluation data, downstream tasks and generated-text tests would help assess whether any improvement extends beyond the text already used in this project. The model, data splits, fitting budget and decision criteria should be fixed before each comparison, with replication across calibration seeds.
++
++### 8.3 Storage and execution cost
++
++The small-network proposals also need measurements of complete checkpoint size, peak memory and warmed-up inference latency. Fused factor execution and rank allocation informed by runtime cost are further candidates for study. Each must be compared with matched low-rank baselines under the same workloads, since fewer stored weights alone do not establish a practical speed improvement.
++
++## 9. Conclusion
+ 
+ Activation-aware low-rank fitting improves on plain SVD at the tested attention-output budgets. Adding the anchor provides no consistent joint improvement in likelihood and residual fidelity over matched whitening. Gemma's small average gain does not hold across all layer groups. Qwen worsens on both metrics, while LFM improves likelihood and increases drift. The separate BF16 practical cohort saves 0.894% of the complete checkpoint size and has mixed timing results. Compression remains unproven as a way to preserve the original computation across the tested models.
+ 
+ ## Acknowledgment
+ 
+-OpenAI Codex [@openaicodex2026] assisted with drafting and editing the Abstract, Introduction, Methods, Discussion and Conclusion, and with preparing formatting, table-assembly and plotting scripts. Numerical results in this revision come from the saved experiment records; this editorial work did not run a new compression experiment.
+-
+-## Appendix A. Evidence map and completion status
+-
+-| Evidence | Source run | Saved state |
+-|---|---|---|
+-| Gemma | `baselines-20261013-175255-6a00d4e8` | completed |
+-| Composition | `composition-20261014-054423-dbd821ff` | completed |
+-| Qwen | `architecture-replication-20261014-093845-97378b5e` | incomplete |
+-| LFM | `architecture-replication-20261014-103759-8d32ab84` | completed |
+-| Practical | `practical-bf16-20261014-135107-82168ad5` | completed |
+-
+-The complete predecessor/continuation history and all unabridged tables remain in the [frozen evidence report](../../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md). The [original manuscript](../../results/paper-v2/revised-report-20261014-151432-07c08d61/manuscript.md) is unchanged. The [revision evidence file](report.json) retains selected already-recorded paired intervals for the primary comparisons and the middle-four-block counterexample, also reproduced in the PDF and LaTeX appendices. The complete comparison family remains in the frozen report. These intervals are not adjusted for the many tested groups or configurations.
++OpenAI Codex [@openaicodex2026] assisted with drafting and editing the Abstract, Introduction, Methods, Discussion, Future Scope and Conclusion, and with preparing formatting, table-assembly and plotting scripts. Numerical results in this revision come from the saved experiment records; this editorial work did not run a new compression experiment.

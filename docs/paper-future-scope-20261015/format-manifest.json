@@ -1,0 +1,549 @@
+{
+  "generated_utc": "2026-10-15T09:34:23.299617+00:00",
+  "kind": "future_scope_without_appendices",
+  "reference_path": "C:\\Users\\NPC\\Documents\\weighted_lowrank_compression_solo_author.pdf",
+  "reference_sha256": "f7bab02da10e0408faf168f06ff2c43d4872d1c218da530e044185504375287b",
+  "author_and_project_links": "Copied from user-supplied reference; repository URL matches Git origin.",
+  "layout": {
+    "page": "A4",
+    "columns": 2,
+    "body_font": "Times New Roman",
+    "body_size_pt": 10,
+    "leading_pt": 13,
+    "margin_pt": 54,
+    "column_gap_pt": 18,
+    "first_page_header_pt": 333
+  },
+  "source_manuscript_sha256": "0736b318df4cc0c10f0ac5bdddc15bdb0438d67799d1725eababb6d1fafa0a45",
+  "scientific_text_unchanged": true,
+  "table_count_preserved": 5,
+  "citation_keys_preserved": [
+    "abbasi2026iosvd",
+    "abbasi2026zerosum",
+    "arai2025qep",
+    "biderman2024evaluation",
+    "chen2021drone",
+    "clark2018arc",
+    "frantar2022gptq",
+    "frantar2023sparsegpt",
+    "guo2017calibration",
+    "hsu2022weighted",
+    "hu2026saessvd",
+    "jiao2020tinybert",
+    "kornblith2019cka",
+    "li2024svdquant",
+    "lin2023awq",
+    "liu2024eora",
+    "liu2026lacesvd",
+    "merity2016wikitext",
+    "openaicodex2026",
+    "raffel2020t5",
+    "wang2024svdllm",
+    "wang2025svdllmv2",
+    "yuan2023asvd",
+    "zellers2019hellaswag"
+  ],
+  "research_experiments_run": false,
+  "protected_source_hashes": {
+    "docs\\proofs\\future-scope-inputs-3300d188\\manuscript.md": "0736b318df4cc0c10f0ac5bdddc15bdb0438d67799d1725eababb6d1fafa0a45",
+    "docs\\proofs\\future-scope-inputs-3300d188\\paper_protocol_v2.bib": "0a53edebbca6842851ba22b52d499ce822cb6ae7088594450760f95bc0b0d312",
+    "docs\\proofs\\future-scope-inputs-3300d188\\report.json": "740cc9e2f634c6ab29ad8c8c8938dad59c4934312205bc4910d12be0b1179ee6",
+    "docs\\proofs\\future-scope-inputs-3300d188\\figures\\provenance.json": "eb2e6c81946c22490d640049debfcc1bcd59c8795d7fe4102d7d8dad5567d733"
+  },
+  "paper_appendices": false,
+  "evidence_intervals_retained_in": "report.json",
+  "math_assets": [
+    {
+      "expression": "W\\in\\mathbb{R}^{o\\times i}",
+      "presentation": "W\\in\\mathbb{R}^{o\\times i}",
+      "file": "math\\8d7414791df4ccb5.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "Wx+b",
+      "presentation": "Wx+b",
+      "file": "math\\2c2822d06f633562.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "U(Vx)+b",
+      "presentation": "U(Vx)+b",
+      "file": "math\\f6ad8640230ae9c5.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "U\\in\\mathbb{R}^{o\\times r}",
+      "presentation": "U\\in\\mathbb{R}^{o\\times r}",
+      "file": "math\\90e5a1c5cca87625.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "V\\in\\mathbb{R}^{r\\times i}",
+      "presentation": "V\\in\\mathbb{R}^{r\\times i}",
+      "file": "math\\bfda63f546808df1.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "r(o+i)",
+      "presentation": "r(o+i)",
+      "file": "math\\10a1f2640f092759.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "oi",
+      "presentation": "oi",
+      "file": "math\\9ef7839b202bd374.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "r<oi/(o+i)",
+      "presentation": "r<\\frac{oi}{o+i}",
+      "file": "math\\ee6960b5c08af8f0.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "r<\\frac{oi}{o+i}.",
+      "presentation": "r<\\frac{oi}{o+i}.",
+      "file": "math\\6e9c48c0eac69de5.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "r=\\lfloor(17/24)oi/(o+i)\\rfloor",
+      "presentation": "r=\\left\\lfloor\\frac{17}{24}\\,\\frac{oi}{o+i}\\right\\rfloor",
+      "file": "math\\1c30a0272912dc0c.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "r=\\left\\lfloor\\frac{17}{24}\\,\\frac{oi}{o+i}\\right\\rfloor,",
+      "presentation": "r=\\left\\lfloor\\frac{17}{24}\\,\\frac{oi}{o+i}\\right\\rfloor,",
+      "file": "math\\29d36627b58192f6.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "\\lfloor\\min(o,i)/d\\rfloor",
+      "presentation": "\\left\\lfloor\\frac{\\min(o,i)}{d}\\right\\rfloor",
+      "file": "math\\fd3ae52f2a7b7c0a.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "\\left\\lfloor\\frac{\\min(o,i)}{d}\\right\\rfloor,",
+      "presentation": "\\left\\lfloor\\frac{\\min(o,i)}{d}\\right\\rfloor,",
+      "file": "math\\e320d86b33dcdb13.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "d\\in\\{2,3,4\\}",
+      "presentation": "d\\in\\{2,3,4\\}",
+      "file": "math\\718f48ef09737fc7.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "X\\in\\mathbb{R}^{i\\times n}",
+      "presentation": "X\\in\\mathbb{R}^{i\\times n}",
+      "file": "math\\2db090789a68d5e8.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "A=UV",
+      "presentation": "A=UV",
+      "file": "math\\5b280f69bc1bb34b.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "presentation": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "file": "math\\27e8517ec44974c0.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "presentation": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "file": "math\\ac4c96965eaf6067.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "r",
+      "presentation": "r",
+      "file": "math\\2c09353f9ceec129.png",
+      "size": 10.5,
+      "baseline_depth_pt": 0.0
+    },
+    {
+      "expression": "H=XX^T+\\beta nI",
+      "presentation": "H=XX^T+\\beta nI",
+      "file": "math\\045f791054fd3c97.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "C=WH",
+      "presentation": "C=WH",
+      "file": "math\\da5ef2d8a4e0c60b.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "Y_b=Y-b\\mathbf{1}^T",
+      "presentation": "Y_b=Y-b\\mathbf{1}^T",
+      "file": "math\\75a356ed31d98fcb.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "presentation": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "file": "math\\48a5bf2cb533c47d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "presentation": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "file": "math\\b6203e4f2f3f2bdd.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "C=Y_bX^T+\\beta nW",
+      "presentation": "C=Y_bX^T+\\beta nW",
+      "file": "math\\20e02bc9e28c9b70.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "Y_b=WX",
+      "presentation": "Y_b=WX",
+      "file": "math\\4f52f14a1d37b701.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "G=H+\\lambda I",
+      "presentation": "G=H+\\lambda I",
+      "file": "math\\9560e22d6c902f19.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "\\lambda=\\rho\\operatorname{mean}(\\operatorname{eig}(H))",
+      "presentation": "\\lambda=\\rho\\operatorname{mean}(\\operatorname{eig}(H))",
+      "file": "math\\da70eabf8efb8d13.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "A_{\\mathrm{full}}=CG^\\dagger",
+      "presentation": "A_{\\mathrm{full}}=CG^\\dagger",
+      "file": "math\\6de9ba08602c23c6.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "A_{\\mathrm{full}}G^{1/2}",
+      "presentation": "A_{\\mathrm{full}}G^{1/2}",
+      "file": "math\\16ed0424bc501516.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "G^{\\dagger/2}",
+      "presentation": "G^{\\dagger/2}",
+      "file": "math\\79f435202817d5e9.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "H",
+      "presentation": "H",
+      "file": "math\\ca87a2033b5d51ed.png",
+      "size": 10.5,
+      "baseline_depth_pt": 0.0
+    },
+    {
+      "expression": "A_\\beta=[WH^{1/2}]_rH^{-1/2}",
+      "presentation": "A_\\beta=[WH^{1/2}]_rH^{-1/2}",
+      "file": "math\\e988d5035862686d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "A_\\beta=[WH^{1/2}]_rH^{-1/2},",
+      "presentation": "A_\\beta=[WH^{1/2}]_rH^{-1/2},",
+      "file": "math\\2180539f2332a4ad.png",
+      "size": 11.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "W",
+      "presentation": "W",
+      "file": "math\\5ec0a215666faedc.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "\\beta=\\rho=0",
+      "presentation": "\\beta=\\rho=0",
+      "file": "math\\24fb46c15bd943de.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "\\beta=0.03",
+      "presentation": "\\beta=0.03",
+      "file": "math\\f78537fbad12418c.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "\\rho=0",
+      "presentation": "\\rho=0",
+      "file": "math\\02cb1f0cf121f9ae.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "s_j=\\max(\\operatorname{mean}_t|X_{jt}|,10^{-8})^{0.5}",
+      "presentation": "s_j=\\max(\\operatorname{mean}_t|X_{jt}|,10^{-8})^{0.5}",
+      "file": "math\\3eefe9865206e209.png",
+      "size": 10.5,
+      "baseline_depth_pt": 4.0
+    },
+    {
+      "expression": "W\\operatorname{diag}(s)",
+      "presentation": "W\\operatorname{diag}(s)",
+      "file": "math\\8bbe24991783e80d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "10^{-7}\\lambda_{\\max}(G)",
+      "presentation": "10^{-7}\\lambda_{\\max}(G)",
+      "file": "math\\3e4231f2e0b1c081.png",
+      "size": 10.5,
+      "baseline_depth_pt": 2.0
+    },
+    {
+      "expression": "h_{\\ell,t}",
+      "presentation": "h_{\\ell,t}",
+      "file": "math\\3984b9cee0ea734f.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "\\widehat h_{\\ell,t}",
+      "presentation": "\\widehat h_{\\ell,t}",
+      "file": "math\\1e4a200e24423d14.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "t\\in\\mathcal{T}",
+      "presentation": "t\\in\\mathcal{T}",
+      "file": "math\\c4f1bd15c7bc0495.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "D_\\ell=\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2/\\max(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,10^{-30})",
+      "presentation": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max\\left(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,\\,10^{-30}\\right)}",
+      "file": "math\\f86ceae9e1bd1e37.png",
+      "size": 10.5,
+      "baseline_depth_pt": 13.0
+    },
+    {
+      "expression": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max\\left(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,\\,10^{-30}\\right)}",
+      "presentation": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max\\left(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,\\,10^{-30}\\right)}",
+      "file": "math\\7951c79f35503ba9.png",
+      "size": 11.5,
+      "baseline_depth_pt": 14.0
+    },
+    {
+      "expression": "D=L^{-1}\\sum_{\\ell=1}^{L}D_\\ell",
+      "presentation": "D=\\frac{1}{L}\\sum_{\\ell=1}^{L}D_\\ell",
+      "file": "math\\e3425e240607bcb0.png",
+      "size": 10.5,
+      "baseline_depth_pt": 10.0
+    },
+    {
+      "expression": "D=\\frac{1}{L}\\sum_{\\ell=1}^{L}D_\\ell",
+      "presentation": "D=\\frac{1}{L}\\sum_{\\ell=1}^{L}D_\\ell",
+      "file": "math\\02c2b628d06b1a4e.png",
+      "size": 11.5,
+      "baseline_depth_pt": 11.0
+    },
+    {
+      "expression": "D",
+      "presentation": "D",
+      "file": "math\\3437ec7525394dac.png",
+      "size": 10.5,
+      "baseline_depth_pt": 0.0
+    },
+    {
+      "expression": "\\beta\\in\\{0,0.03,0.1,0.3,1\\}",
+      "presentation": "\\beta\\in\\{0,0.03,0.1,0.3,1\\}",
+      "file": "math\\f093c23c863a1f4d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "\\rho\\in\\{0,0.001,0.01\\}",
+      "presentation": "\\rho\\in\\{0,0.001,0.01\\}",
+      "file": "math\\e57410c7fff76e6d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "\\beta=0.1",
+      "presentation": "\\beta=0.1",
+      "file": "math\\d20e8503a8f0859e.png",
+      "size": 10.5,
+      "baseline_depth_pt": 3.0
+    },
+    {
+      "expression": "10^{-6}",
+      "presentation": "10^{-6}",
+      "file": "math\\ae00a851b66f601d.png",
+      "size": 10.5,
+      "baseline_depth_pt": 1.0
+    },
+    {
+      "expression": "2^{30}",
+      "presentation": "2^{30}",
+      "file": "math\\5d522f1694ec5ca7.png",
+      "size": 10.5,
+      "baseline_depth_pt": 0.0
+    }
+  ],
+  "numbered_pdf_equations": 8,
+  "math_presentation_changes": {
+    "r<oi/(o+i)": "r<\\frac{oi}{o+i}",
+    "r=\\lfloor(17/24)oi/(o+i)\\rfloor": "r=\\left\\lfloor\\frac{17}{24}\\,\\frac{oi}{o+i}\\right\\rfloor",
+    "\\lfloor\\min(o,i)/d\\rfloor": "\\left\\lfloor\\frac{\\min(o,i)}{d}\\right\\rfloor",
+    "D_\\ell=\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2/\\max(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,10^{-30})": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max\\left(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,\\,10^{-30}\\right)}",
+    "D=L^{-1}\\sum_{\\ell=1}^{L}D_\\ell": "D=\\frac{1}{L}\\sum_{\\ell=1}^{L}D_\\ell"
+  },
+  "display_equations": [
+    {
+      "number": 1,
+      "source": "r<oi/(o+i)",
+      "presentation": "r<\\frac{oi}{o+i}.",
+      "font_size_pt": 11.5,
+      "width_pt": 39.0,
+      "height_pt": 14.0,
+      "scale": 1
+    },
+    {
+      "number": 2,
+      "source": "r=\\lfloor(17/24)oi/(o+i)\\rfloor",
+      "presentation": "r=\\left\\lfloor\\frac{17}{24}\\,\\frac{oi}{o+i}\\right\\rfloor,",
+      "font_size_pt": 11.5,
+      "width_pt": 60.0,
+      "height_pt": 14.0,
+      "scale": 1
+    },
+    {
+      "number": 3,
+      "source": "\\lfloor\\min(o,i)/d\\rfloor",
+      "presentation": "\\left\\lfloor\\frac{\\min(o,i)}{d}\\right\\rfloor,",
+      "font_size_pt": 11.5,
+      "width_pt": 45.8,
+      "height_pt": 15.0,
+      "scale": 1
+    },
+    {
+      "number": 4,
+      "source": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "presentation": "J_\\beta(A)=\\|(W-A)X\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "font_size_pt": 11.5,
+      "width_pt": 174.8,
+      "height_pt": 15.0,
+      "scale": 1
+    },
+    {
+      "number": 5,
+      "source": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2",
+      "presentation": "\\|Y_b-AX\\|_F^2+\\beta n\\|W-A\\|_F^2,",
+      "font_size_pt": 11.5,
+      "width_pt": 132.0,
+      "height_pt": 15.0,
+      "scale": 1
+    },
+    {
+      "number": 6,
+      "source": "A_\\beta=[WH^{1/2}]_rH^{-1/2}",
+      "presentation": "A_\\beta=[WH^{1/2}]_rH^{-1/2},",
+      "font_size_pt": 11.5,
+      "width_pt": 97.0,
+      "height_pt": 15.0,
+      "scale": 1
+    },
+    {
+      "number": 7,
+      "source": "D_\\ell=\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2/\\max(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,10^{-30})",
+      "presentation": "D_\\ell=\\frac{\\sum_{t\\in\\mathcal{T}}\\|\\widehat h_{\\ell,t}-h_{\\ell,t}\\|_2^2}{\\max\\left(\\sum_{t\\in\\mathcal{T}}\\|h_{\\ell,t}\\|_2^2,\\,10^{-30}\\right)}",
+      "font_size_pt": 11.5,
+      "width_pt": 110.0,
+      "height_pt": 34.0,
+      "scale": 1
+    },
+    {
+      "number": 8,
+      "source": "D=L^{-1}\\sum_{\\ell=1}^{L}D_\\ell",
+      "presentation": "D=\\frac{1}{L}\\sum_{\\ell=1}^{L}D_\\ell",
+      "font_size_pt": 11.5,
+      "width_pt": 58.0,
+      "height_pt": 28.0,
+      "scale": 1
+    }
+  ],
+  "math_typography": {
+    "inline_size_pt": 10.5,
+    "display_preferred_size_pt": 11.5,
+    "display_minimum_size_pt": 10.5,
+    "display_shrink_allowed": false,
+    "inline_alignment": "Actual math baseline depth; dynamic line height"
+  },
+  "pdf_build": "ReportLab with 360-dpi STIX math images; independent of LaTeX",
+  "tex_build": "Standalone LaTeX; native measured-coordinate plot avoids external assets",
+  "figure_difference": "PDF retains original individual-seed plot; TeX embeds saved mean curves with explicit caption qualification.",
+  "artifacts": {
+    "manuscript.md": {
+      "sha256": "0736b318df4cc0c10f0ac5bdddc15bdb0438d67799d1725eababb6d1fafa0a45",
+      "bytes": 30466
+    },
+    "manuscript.pdf": {
+      "sha256": "81fca00a9a8990bc3f443734eb48d51aab671a2f9c0021050751cea36e73664c",
+      "bytes": 618272
+    },
+    "manuscript.tex": {
+      "sha256": "c398fa1d68d3a815e74224874fa9c8e17c4cf6be1183813262664ab8f9bfae6d",
+      "bytes": 52004
+    },
+    "paper_protocol_v2.bib": {
+      "sha256": "0a53edebbca6842851ba22b52d499ce822cb6ae7088594450760f95bc0b0d312",
+      "bytes": 11827
+    },
+    "build_paper.py": {
+      "sha256": "f7c6806b1569a3354ee3d7abec41fede84213b80f93258c5d46e60fab5cb4429",
+      "bytes": 24837
+    }
+  }
+}

@@ -36,6 +36,7 @@ graphify-out/
 /docs/paper-reference-style-20261015/math/
 /docs/paper-ieee-preparation-20261015/math/
 /docs/paper-math-readable-20261015/math/
+/docs/paper-future-scope-20261015/math/
 
 # ---- LaTeX build products ----
 *.aux

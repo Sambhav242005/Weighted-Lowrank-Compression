@@ -13,7 +13,8 @@ execution. Ledger 5's five BF16 practical conditions are complete; see
 
 | Document | Purpose |
 |---|---|
-| [Paper with clearer mathematics](paper-math-readable-20261015/README.md) | Latest PDF and IEEE source, with larger displayed formulas, stacked fractions and corrected inline baselines |
+| [Paper with Future Scope](paper-future-scope-20261015/README.md) | Latest PDF and IEEE source; both appendices removed, with the small-network proposal in Section 8.1 |
+| [Paper with clearer mathematics](paper-math-readable-20261015/README.md) | Preserved edition with larger displayed formulas, stacked fractions and corrected inline baselines |
 | [Readable abstract and paper](paper-ieee-preparation-20261015/README.md) | Humanizer prose pass, plain-language abstract and provisional IEEE source |
 | [IEEE publication research](paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md) | Verified publisher guidance, venue options and unresolved teacher-reported deadline/fee |
 | [Reference-style single-author PDF](paper-reference-style-20261015/manuscript.pdf) / [LaTeX](paper-reference-style-20261015/manuscript.tex) | Seven-page A4 two-column edition matching the supplied example |

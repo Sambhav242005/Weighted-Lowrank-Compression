@@ -1,0 +1,411 @@
+{
+  "generated_utc": "2026-10-15T08:25:51.170136+00:00",
+  "promotion_disabled": true,
+  "hypothesis_status": "inconclusive",
+  "mode": "editorial revision of frozen evidence",
+  "source_report": "results\\paper-v2\\revised-report-20261014-151432-07c08d61\\report.json",
+  "source_report_sha256": "044cf77e67e4fecd85716c8c276e9dfbe9fbb608d970917da06e0953dc0bf596",
+  "runs": [
+    {
+      "run_id": "Gemma full stack",
+      "source_run_id": "baselines-20261013-175255-6a00d4e8",
+      "comparisons": [
+        {
+          "candidate": {
+            "beta": 0.03,
+            "method": "anchored",
+            "ridge_fraction": 0.0
+          },
+          "baseline": {
+            "method": "whitening",
+            "beta": 0.0,
+            "ridge_fraction": 0.0
+          },
+          "scope": {
+            "measurement": "Gemma full stack",
+            "source_run": "baselines-20261013-175255-6a00d4e8"
+          },
+          "per_seed": [
+            {
+              "seed": 11,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.003119251655783639,
+              "drift_difference": 3.022651654555064e-06,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": -0.0031192516557841613,
+                "bootstrap_subset_difference": -0.003069222128221489,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  -0.005598433325437209,
+                  -0.0005771062229211223
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 23,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.008670165636384564,
+              "drift_difference": -0.00032196173559301267,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": -0.00867016563638367,
+                "bootstrap_subset_difference": -0.008560964606249673,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  -0.01236161516313488,
+                  -0.004879390368432393
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 37,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.008888696495305215,
+              "drift_difference": 4.739254574434755e-05,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": -0.008888696495308254,
+                "bootstrap_subset_difference": -0.008889474302069626,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  -0.011564302129920533,
+                  -0.006193025270745394
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            }
+          ],
+          "paired_three_seeds": true,
+          "nll_better_all_three": true,
+          "drift_better_all_three": false,
+          "nll_and_drift_worse_all_three": false,
+          "hypothesis_status": "inconclusive",
+          "promotion_disabled": true,
+          "interpretation": "Exploratory within-model comparison; inspect readiness, provenance and hardware separately."
+        }
+      ]
+    },
+    {
+      "run_id": "Gemma blocks 11-14",
+      "source_run_id": "composition-20261014-054423-dbd821ff",
+      "comparisons": [
+        {
+          "candidate": {
+            "beta": 0.03,
+            "method": "anchored",
+            "ridge_fraction": 0.0
+          },
+          "baseline": {
+            "method": "whitening",
+            "beta": 0.0,
+            "ridge_fraction": 0.0
+          },
+          "scope": {
+            "measurement": "Gemma blocks 11-14",
+            "source_run": "composition-20261014-054423-dbd821ff"
+          },
+          "per_seed": [
+            {
+              "seed": 11,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.0038853081292944402,
+              "drift_difference": 6.899410056373714e-05,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": 0.003885308129297546,
+                "bootstrap_subset_difference": 0.0039059187090884325,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  0.0026608101493276353,
+                  0.0051295292904874204
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 23,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.003589996487397329,
+              "drift_difference": 6.648405688937923e-05,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": 0.003589996487403734,
+                "bootstrap_subset_difference": 0.003661064528190402,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  0.002338269696115027,
+                  0.004953754396441149
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 37,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.0006958575765256825,
+              "drift_difference": 7.018867993499096e-05,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 71,
+                "full_test_difference": 0.0006958575765264769,
+                "bootstrap_subset_difference": 0.000706815205475545,
+                "excluded_partial_targets": 1465,
+                "confidence_interval_95": [
+                  -0.00048574748908978936,
+                  0.0019332813322892252
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            }
+          ],
+          "paired_three_seeds": true,
+          "nll_better_all_three": false,
+          "drift_better_all_three": false,
+          "nll_and_drift_worse_all_three": true,
+          "hypothesis_status": "weakened",
+          "promotion_disabled": true,
+          "interpretation": "Exploratory within-model comparison; inspect readiness, provenance and hardware separately."
+        }
+      ]
+    },
+    {
+      "run_id": "Qwen primary test",
+      "source_run_id": "architecture-replication-20261014-093845-97378b5e",
+      "comparisons": [
+        {
+          "candidate": {
+            "beta": 0.03,
+            "method": "anchored",
+            "ridge_fraction": 0.0
+          },
+          "baseline": {
+            "method": "whitening",
+            "beta": 0.0,
+            "ridge_fraction": 0.0
+          },
+          "scope": {
+            "measurement": "Qwen primary test",
+            "source_run": "architecture-replication-20261014-093845-97378b5e"
+          },
+          "per_seed": [
+            {
+              "seed": 11,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.009941660681092479,
+              "drift_difference": 0.006728537144756948,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 72,
+                "full_test_difference": 0.009941660681098283,
+                "bootstrap_subset_difference": 0.010034525719555844,
+                "excluded_partial_targets": 2280,
+                "confidence_interval_95": [
+                  0.00827384469021905,
+                  0.01189700522595723
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 23,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.008791898301912404,
+              "drift_difference": 0.006739520914618881,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 72,
+                "full_test_difference": 0.008791898301914979,
+                "bootstrap_subset_difference": 0.008937712051082021,
+                "excluded_partial_targets": 2280,
+                "confidence_interval_95": [
+                  0.0072091521283551875,
+                  0.010677830953140406
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 37,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": 0.007921984778743951,
+              "drift_difference": 0.006353439105893053,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 72,
+                "full_test_difference": 0.007921984778739719,
+                "bootstrap_subset_difference": 0.007972056491898503,
+                "excluded_partial_targets": 2280,
+                "confidence_interval_95": [
+                  0.006199138578762092,
+                  0.009875832550118127
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": false,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            }
+          ],
+          "paired_three_seeds": true,
+          "nll_better_all_three": false,
+          "drift_better_all_three": false,
+          "nll_and_drift_worse_all_three": true,
+          "hypothesis_status": "weakened",
+          "promotion_disabled": true,
+          "interpretation": "Exploratory within-model comparison; inspect readiness, provenance and hardware separately."
+        }
+      ]
+    },
+    {
+      "run_id": "LFM primary test",
+      "source_run_id": "architecture-replication-20261014-103759-8d32ab84",
+      "comparisons": [
+        {
+          "candidate": {
+            "beta": 0.03,
+            "method": "anchored",
+            "ridge_fraction": 0.0
+          },
+          "baseline": {
+            "method": "whitening",
+            "beta": 0.0,
+            "ridge_fraction": 0.0
+          },
+          "scope": {
+            "measurement": "LFM primary test",
+            "source_run": "architecture-replication-20261014-103759-8d32ab84"
+          },
+          "per_seed": [
+            {
+              "seed": 11,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.23260833182808582,
+              "drift_difference": 0.10182894878108957,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 73,
+                "full_test_difference": -0.23260833182808122,
+                "bootstrap_subset_difference": -0.23258001440330633,
+                "excluded_partial_targets": 24,
+                "confidence_interval_95": [
+                  -0.24672731477834628,
+                  -0.21835409049405202
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 23,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.20752383848706524,
+              "drift_difference": 0.10341469286547458,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 73,
+                "full_test_difference": -0.20752383848706338,
+                "bootstrap_subset_difference": -0.20750846944987744,
+                "excluded_partial_targets": 24,
+                "confidence_interval_95": [
+                  -0.2240134011794247,
+                  -0.19023832839560784
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            },
+            {
+              "seed": 37,
+              "targets_match": true,
+              "actual_factor_parameters_match": true,
+              "nll_difference": -0.22133336282726335,
+              "drift_difference": 0.10215290603537766,
+              "uncertainty": {
+                "available": true,
+                "resamples": 2000,
+                "block_targets": 4096,
+                "blocks": 73,
+                "full_test_difference": -0.22133336282727098,
+                "bootstrap_subset_difference": -0.2213271375686348,
+                "excluded_partial_targets": 24,
+                "confidence_interval_95": [
+                  -0.23908087845965328,
+                  -0.2034092545763355
+                ],
+                "direction": "candidate_minus_baseline",
+                "nll_advantage_under_block_uncertainty": true,
+                "limitation": "evaluation-block variation, not training-seed uncertainty"
+              }
+            }
+          ],
+          "paired_three_seeds": true,
+          "nll_better_all_three": true,
+          "drift_better_all_three": false,
+          "nll_and_drift_worse_all_three": false,
+          "hypothesis_status": "inconclusive",
+          "promotion_disabled": true,
+          "interpretation": "Exploratory within-model comparison; inspect readiness, provenance and hardware separately."
+        }
+      ]
+    }
+  ],
+  "note": "Selected existing intervals only. Complete comparisons, failures and provenance remain in source_report."
+}
