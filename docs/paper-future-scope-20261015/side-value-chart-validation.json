@@ -1,0 +1,34 @@
+{
+  "exported_at_utc": "2026-10-15T14:46:11.179703+00:00",
+  "source": "ieee-conference.tex",
+  "pdf": "ieee-conference-side-values.pdf",
+  "source_sha256": "6f5c98348ac06bf9084910006cda3ed4dc8c8ad9b3f593ee59577eefb35cae52",
+  "pdf_sha256": "9050f914c4ea36505ce213a714a62ceecbc55ec105389319741af374a12a15c8",
+  "page_count": 8,
+  "future_scope_page": 7,
+  "compiler": "Tectonic 0.17.0; official verified Windows binary from previous export",
+  "desktop_editor_compile": "success",
+  "pdf_export_compile_exit_code": 0,
+  "all_fonts_embedded": true,
+  "no_text_outside_page_bounds": true,
+  "original_raw_plot_values_unchanged": true,
+  "abstract_equations_tables_bibliography_future_scope_unchanged": true,
+  "pages_other_than_composition_page_text_unchanged": true,
+  "side_value_columns": {
+    "count": 2,
+    "values_per_column": 10,
+    "right_edges_aligned_within_points": 1,
+    "row_heights_match_within_points": 1,
+    "precision_decimal_places": 4,
+    "explicit_signs": true,
+    "values_verified_against_original_scaled_data": true
+  },
+  "previous_ieee_pdf_preserved": {
+    "path": "ieee-conference.pdf",
+    "sha256": "08e7f568299923b562eb8ead05d5613f0a1732e0d493395ee831b3f49cb709b2"
+  },
+  "research_experiments_run": false,
+  "visual_check": "Composition chart inspected at full-page resolution; labels clear of dots, zero lines and axes.",
+  "compiler_warnings": "Six underfull hbox warnings per pass in unchanged text; no overfull boxes or compiler errors.",
+  "format_status": "Provisional IEEE conference format; venue remains unidentified."
+}

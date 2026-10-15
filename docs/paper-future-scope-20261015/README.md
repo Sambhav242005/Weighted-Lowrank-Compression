@@ -1,13 +1,19 @@
 # Paper with Future Scope and no appendices
 
-[Latest IEEE PDF](ieee-conference.pdf) · [IEEE conference source](ieee-conference.tex) ·
+[Latest IEEE PDF](ieee-conference-side-values.pdf) · [IEEE conference source](ieee-conference.tex) ·
 [Reference-style LaTeX](manuscript.tex) · [Authored text](manuscript.source.md)
 
 The eight-page IEEE PDF is exported directly from the current open source,
-including the horizontal charts and orange Ours labels. Future Scope is on
+including the horizontal charts and orange Ours labels. The layer-group chart
+now puts signed numbers in an aligned column beside each plot, on the same
+row as their dots, with four decimal places in the existing scaled units.
+Its original measurements and all other pages' text are unchanged. Future Scope is on
 page 7. All eight pages were visually checked, all fonts are embedded, and
 no text extends outside the page. Source and PDF hashes, compiler details
-and export checks are recorded in [pdf-export.json](pdf-export.json).
+and export checks are recorded in
+[side-value-chart-validation.json](side-value-chart-validation.json).
+The [previous IEEE PDF](ieee-conference.pdf) and its
+[export record](pdf-export.json) are preserved.
 The [earlier review PDF](manuscript.pdf) remains available with its earlier
 table layout. The IEEE conference format remains provisional until a venue
 is identified.

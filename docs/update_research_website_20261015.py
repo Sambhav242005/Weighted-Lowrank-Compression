@@ -11,6 +11,7 @@ PAPER=ROOT/'docs/paper-future-scope-20261015'
 SITE=ROOT/'results/research-dashboard-20260815'
 REPO='https://github.com/Sambhav242005/Weighted-Lowrank-Compression'
 PAPER_URL=REPO+'/blob/main/docs/paper-future-scope-20261015/ieee-conference.tex'
+PDF_URL=REPO+'/blob/main/docs/paper-future-scope-20261015/ieee-conference-side-values.pdf'
 REVIEW_URL=REPO+'/blob/main/docs/paper-future-scope-20261015/manuscript.pdf'
 EVIDENCE_URL=REPO+'/blob/main/results/paper-v2/revised-report-20261014-151432-07c08d61/report.md'
 PUBLICATION_URL=REPO+'/blob/main/docs/paper-ieee-preparation-20261015/IEEE_PUBLICATION_RESEARCH.md'
@@ -26,6 +27,7 @@ EXTRA_CSS='''
     .status-note{border-left:3px solid #00628f;background:#f5f9fb;padding:14px 18px;margin:18px 0}
     .chart-viewport{overflow-x:auto;margin:16px 0 8px;border:1px solid var(--rule,#e2e8f0);background:#fff}
     .chart-viewport svg{min-width:820px;overflow:hidden}
+    .composition-value{font-variant-numeric:tabular-nums}
     .chart-viewport:focus-visible{outline:2px solid #00628f;outline-offset:3px}
     .chart figure,figure.chart{margin:24px 0}
     figcaption{font-size:16px;line-height:1.6;margin:12px 0}
@@ -66,8 +68,9 @@ def html_table(headers,rows,caption):
     return '<div class="table-wrap"><table><caption>'+escape(caption)+'</caption><thead><tr>'+head+'</tr></thead><tbody>'+body+'</tbody></table></div>'
 
 
-def svg_text(x,y,text,anchor='start',size=17,color='#1a1a1a',weight='400'):
-    return f'<text x="{x:.3f}" y="{y:.3f}" text-anchor="{anchor}" font-size="{size}" font-weight="{weight}" fill="{color}">{escape(str(text))}</text>'
+def svg_text(x,y,text,anchor='start',size=17,color='#1a1a1a',weight='400',class_name=None):
+    extra=f' class="{escape(class_name,quote=True)}"' if class_name else ''
+    return f'<text{extra} x="{x:.3f}" y="{y:.3f}" text-anchor="{anchor}" font-size="{size}" font-weight="{weight}" fill="{color}">{escape(str(text))}</text>'
 
 
 def line(x1,y1,x2,y2,color='#d9dfe3',dash=False):
@@ -124,20 +127,22 @@ def gemma_svg(rows):
 
 def composition_svg(rows):
     result=svg_start('composition','Layer-group changes relative to whitening',
-        'Ours (anchored) minus whitening, paired means over three calibration seeds. Values left of zero favor ours. Blocks 11–14 worsen on both metrics; all 26 has a small average improvement that does not hold in every group.',760)
-    for metric,x,lo,hi,ticks,mult,title,label in [
-        ('nll',230,-8,3.8,[-8,-6,-4,-2,0,2],1000,'Prediction-loss change','ΔNLL, in units of 0.001'),
-        ('drift',640,-16,9,[-15,-10,-5,0,5],100000,'Residual-drift change','Δ drift, in units of 0.00001')]:
-        grid,scale=axis(x,675,270,lo,hi,ticks,70,label)
-        result+=grid+svg_text(x+135,38,title,'middle',19,weight='600')
+        'Ours (anchored) minus whitening, paired means over three calibration seeds. A signed value column beside each plot aligns with the dots. Values left of zero favor ours. Blocks 11–14 worsen on both metrics; all 26 has a small average improvement that does not hold in every group.',760)
+    for metric,x,value_x,lo,hi,ticks,mult,title,label in [
+        ('nll',175,505,-8,3.8,[-8,-6,-4,-2,0,2],1000,'Prediction-loss change','ΔNLL, in units of 0.001'),
+        ('drift',570,930,-16,9,[-15,-10,-5,0,5],100000,'Residual-drift change','Δ drift, in units of 0.00001')]:
+        grid,scale=axis(x,675,230,lo,hi,ticks,70,label)
+        result+=grid+svg_text(x+115,38,title,'middle',19,weight='600')
+        result+=svg_text(value_x,38,'Value','end',17,weight='600')
+        result+=line(x+245,70,x+245,675,'#d9dfe3')
         result+=line(scale(0),70,scale(0),675,'#555',True)
         for index,row in enumerate(rows):
             y=95+index*58
             value=Decimal(row[metric])*mult
-            if metric=='nll':result+=svg_text(210,y+6,row['name']+' ('+row['jointly']+'/3)','end',17)
+            if metric=='nll':result+=svg_text(155,y+6,row['name']+' ('+row['jointly']+'/3)','end',17)
             color='#b33' if value>0 else '#00628f'
             result+=point(scale(value),y,row[metric],color=color)
-            result+=svg_text(scale(value),y+22,f'{value:+.4f}','middle',15,color)
+            result+=svg_text(value_x,y+6,f'{value:+.4f}','end',18,class_name='composition-value')
     return result+'</svg>'
 
 
@@ -175,7 +180,7 @@ def section(id,title,content,wide=False):
 
 
 def main():
-    protected={str(p.relative_to(ROOT)):sha(p) for p in [PAPER/'ieee-conference.tex',PAPER/'manuscript.md',PAPER/'manuscript.pdf',PAPER/'report.json',PAPER/'figures/provenance.json']}
+    protected={str(p.relative_to(ROOT)):sha(p) for p in [PAPER/'ieee-conference.tex',PAPER/'ieee-conference.pdf',PAPER/'ieee-conference-side-values.pdf',PAPER/'manuscript.md',PAPER/'manuscript.pdf',PAPER/'report.json',PAPER/'figures/provenance.json']}
     tex=(PAPER/'ieee-conference.tex').read_text(encoding='utf-8')
     abstract=(PAPER/'abstract.md').read_text(encoding='utf-8').strip()
     repeated=block_table(tex,'GemmaRepeatedResults')
@@ -199,6 +204,8 @@ def main():
             for row in body.splitlines() if '&' in row])
     data={'updated':'2026-10-15','source_paper':str((PAPER/'ieee-conference.tex').relative_to(ROOT)),
         'source_paper_sha256':sha(PAPER/'ieee-conference.tex'),'evidence_status':'exploratory',
+        'current_pdf':PDF_URL,'current_pdf_sha256':sha(PAPER/'ieee-conference-side-values.pdf'),
+        'composition_number_layout':'Signed, right-aligned side columns in the existing scaled units',
         'gemma':gemma,'composition':composition,'hybrid':hybrid,'hybrid_controls':hybrid_controls,
         'measured_method_label':'Ours (anchored)',
         'chart_orientation':'Horizontal bars for Gemma and hybrid model comparisons',
@@ -218,7 +225,7 @@ def main():
         'Horizontal bars start at zero. Orange identifies Ours (anchored), the measured β = 0.03 fit already reported in the paper. The same rank-384 factor budget is used for all compressed methods. Whiskers are sample standard deviations across three calibration seeds; the single SVD fit has no error bar. The dashed line marks the dense teacher’s NLL, 3.451563. Extra ridge uses β = 0.1 and ρ = 0.01. The historical FP16 numerical-readiness qualification still applies.',
         ['Method','NLL','Residual drift','Seeds'],gemma_rows)
     composition_chart=figure('composition-results','Layer groups: Ours (anchored) minus whitening',composition_svg(composition),
-        'Negative differences favor the anchor. Axis units are 0.001 for NLL and 0.00001 for drift; annotations use those units and are rounded to four decimal places. Parentheses show seeds with both lower NLL and lower drift, out of three. They do not indicate statistical significance. Blocks 11–14 worsen on both metrics in all three seeds.',
+        'Negative differences favor the anchor. Signed values are aligned in a column beside each plot, on the same row as their dots. They use the axis units (0.001 for NLL and 0.00001 for drift), rounded to four decimal places. Parentheses show seeds with both lower NLL and lower drift, out of three. They do not indicate statistical significance. Blocks 11–14 worsen on both metrics in all three seeds.',
         ['Blocks','Mean NLL difference','Mean drift difference','Jointly better'],composition_rows)
     hybrid_chart=figure('hybrid-results','Other models: Qwen3.5-0.8B and LFM2.5-1.2B',hybrid_svg(hybrid,hybrid_controls),
         'Horizontal bars start at zero; orange identifies Ours (anchored). Whitening and Ours show three-seed means with sample standard-deviation whiskers. Dense reference and plain SVD are single recorded controls with no error bars. The dense model is an uncompressed reference. The controls and uncertainty values come from the same saved test records, not new experiments. Qwen: rank 483, 8/8 primary-test records and 10/18 validation records. LFM: rank 725, 8/8 test and 18/18 validation records. These differences do not isolate architecture effects.',
@@ -313,7 +320,7 @@ def main():
     index+=section('practical','5. Storage and timing','''<p>The separate BF16 cohort removes 29.17% of weights in the targeted matrices. Complete checkpoint size falls from 1,999,883,711 to 1,982,003,507 bytes: 17,880,204 bytes, or 0.894%. Most model weights remain untouched. Anchor and whitening checkpoints have identical sizes.</p>'''+html_table(['BF16 condition','Seed','Raw NLL','Scaled NLL','Whole GiB'],normal[0],'Separate BF16 practical conditions')+'''<p>Temperature is selected on validation and then frozen; the five saved selections are approximately 1.090508. GiB means 2³⁰ bytes. These are descriptive full-test aggregates without paired block intervals.</p>'''+html_table(['Workload','Seed 11 median ratio','Seed 23 median ratio'],normal[1],'Median latency ratio: anchor / matched whitening')+'''<p>Ratios below one favor the anchor. Seed 11 is slower for the 128-token conditions, while seed 23 favors it in the measured workloads. Timing uses a resident RTX 4070 Ti, batch size one, 10 warmups and 30 synchronized samples. Cached decode excludes the initial prompt pass. These observations establish no consistent anchoring speed advantage or general acceleration over the dense teacher.</p>''')
     index+=section('limitations','6. Limitations and evidence boundaries','''<ul><li>The strict numerical-readiness checks failed. The results describe recorded implementations; they cannot isolate ideal mathematical objectives from numerical error.</li><li>Qwen has all eight primary-test records but only 10 of 18 validation-frontier records. Missing measurements remain missing.</li><li>WikiText-2 has already influenced the project. No fresh-domain confirmation, downstream task accuracy, or free-running generation equivalence has been established.</li><li>Three calibration seeds do not represent independently pretrained models. The later BF16 practical cohort has only two seeds and no new drift measurements.</li><li>Only the selected attention-output matrices are studied. Results do not establish preservation for MLPs, hybrid mixers, larger models, or other rank allocations.</li><li>Model file size, CUDA allocator peaks and warmed-up latency are distinct measurements. Storage savings alone do not establish practical speed or memory savings.</li></ul>''')
     index+=section('future-scope','7. Future Scope','''<h3>A small neural network for compression</h3><p>A proposed next direction is a small bottleneck neural network that learns a compact mapping for selected dense projections from the original model’s activations. A second option is a small correction network alongside lower-rank factors.</p><p>Every retained factor, network weight and bias must count toward a matched storage budget. Any local improvement must be checked for held-out prediction quality and residual drift after replacements are composed across layers, alongside complete file size, peak memory and warmed-up latency. Neither network has been implemented or tested here.</p><h3>Numerical controls and broader evaluation</h3><p>Resolve failed controls and complete missing Qwen measurements before controlled comparisons of group-output matching. Fresh evaluation data, downstream tasks and generation tests need frozen splits, budgets and decision criteria. Fused factor execution and runtime-informed rank allocation remain further hypotheses.</p><p><a href="https://aclanthology.org/2020.findings-emnlp.372/">TinyBERT</a> is a related teacher–student distillation precedent; it does not establish the proposed projection replacement’s effectiveness. The paper’s full Future Scope is Section 8, including the small-network proposal in Section 8.1.</p>''')
-    index+=section('paper','8. Paper and reproducible evidence',f'''<ul><li><a href="{PAPER_URL}">Current IEEE paper source</a> — larger mathematical displays and vector charts for dense comparisons; simpler BF16 and timing values remain tables.</li><li><a href="{REVIEW_URL}">Earlier review PDF</a> — the same bounded study and Future Scope, with the earlier table layout. The PDF has not been regenerated for the in-place chart edit.</li><li><a href="{EVIDENCE_URL}">Frozen evidence report</a> — source runs, complete recorded comparisons and unresolved gaps.</li><li><a href="research-data.json">Chart and table data (JSON)</a> — original reported values and a fingerprint of the paper source.</li><li><a href="{PUBLICATION_URL}">IEEE preparation notes</a> — generic conference formatting; the actual venue remains unidentified.</li></ul><p>Both appendices were removed from the current paper. Their experiment records and uncertainty intervals remain in the repository. The existing paper editor stays the place to compile the latest IEEE source.</p>''')
+    index+=section('paper','8. Paper and reproducible evidence',f'''<ul><li><a href="{PDF_URL}">Current IEEE paper PDF</a> — eight pages with horizontal comparison charts and aligned side values for layer-group differences; Future Scope is on page 7.</li><li><a href="{PAPER_URL}">Current IEEE paper source</a> — larger mathematical displays and vector charts for dense comparisons; simpler BF16 and timing values remain tables.</li><li><a href="{REVIEW_URL}">Earlier review PDF</a> — the same bounded study and Future Scope, with the earlier table layout.</li><li><a href="{EVIDENCE_URL}">Frozen evidence report</a> — source runs, complete recorded comparisons and unresolved gaps.</li><li><a href="research-data.json">Chart and table data (JSON)</a> — original reported values and fingerprints of the current paper source and PDF.</li><li><a href="{PUBLICATION_URL}">IEEE preparation notes</a> — generic conference formatting; the actual venue remains unidentified.</li></ul><p>Both appendices were removed from the current paper. Their experiment records and uncertainty intervals remain in the repository. The existing paper editor stays the place to compile the latest IEEE source.</p>''')
     index+=f'</main><footer><div class="wrap"><p>Sambhav Surana · Updated 15 October 2026 · <a href="{REPO}">Source code and evidence</a> · <a href="paper-reader.html">Reader guide</a></p></div></footer><script>{script}</script></body></html>\n'
     index='\n'.join(line.rstrip() for line in index.splitlines())+'\n'
     (SITE/'index.html').write_text(index,encoding='utf-8',newline='\n')
@@ -325,7 +332,7 @@ def main():
     guide+=section('glossary','Terms used in the paper','''<dl class="glossary"><div class="gloss-item"><dt>Low-rank factors</dt><dd>Two smaller matrices whose product approximates a larger matrix. Their combined storage must be counted.</dd></div><div class="gloss-item"><dt>Calibration data</dt><dd>Text used to observe activations and fit the compressed factors. Validation and test splits have separate roles.</dd></div><div class="gloss-item"><dt>Negative log-likelihood (NLL)</dt><dd>Average loss on scored next-token predictions. Lower is better on the same model’s tokenizer and evaluation setup.</dd></div><div class="gloss-item"><dt>Residual drift</dt><dd>A normalized measure of difference between the original and compressed model’s block-output states on the same observed text. It is not a proof of functional equivalence.</dd></div><div class="gloss-item"><dt>Whitening and anchor</dt><dd>Whitening uses activation covariance to guide the fit. The anchor adds a weight-deviation penalty. Its value must be assessed against the matched whitening baseline.</dd></div><div class="gloss-item"><dt>Seed variation</dt><dd>Variation from different calibration draws. It does not mean the pretrained model itself was independently trained several times.</dd></div><div class="gloss-item"><dt>BF16</dt><dd>A 16-bit floating-point format used in the separate practical storage and timing cohort. That cohort is not pooled with the historical FP16 drift study.</dd></div></dl>''')
     guide+=section('limits','Why the conclusions are exploratory','''<ul><li>Some strict numerical accuracy checks failed.</li><li>Qwen’s validation coverage is incomplete.</li><li>The text dataset has already influenced the project, so the results are regression evidence.</li><li>No downstream task or generated-text equivalence has been established.</li><li>The BF16 practical cohort has two seeds and no new drift measurements.</li></ul><p>The paper therefore does not establish a general method for preserving a whole model’s computation, a consistent speedup, or a causal denoising effect.</p>''')
     guide+=section('future-scope','Future Scope: could a small network help?','''<p>A future experiment could train a small bottleneck network to replace a selected dense projection, or use a small network to correct a low-rank replacement’s error. These are proposals; neither was trained or evaluated in this study.</p><p>The new network’s own weights, biases, memory use and processing time must be counted. It would need to improve held-out behavior across composed layers at a matched total budget. The first priorities remain resolving numerical controls and completing missing evaluation.</p><p>Find this proposal in the paper’s <strong>Section 8.1</strong>. Section 8 also discusses broader evaluation and practical execution costs.</p>''')
-    guide+=section('read-paper','How to read the current paper',f'''<p><a href="{PAPER_URL}">Open the current IEEE paper source</a>. Start with the abstract and introduction, then Section 5’s results. Read Section 7’s limitations before interpreting gains, and Section 8 for future research. Both appendices have been removed; the supporting records remain in the repository.</p><ul><li><a href="{REVIEW_URL}">Earlier review PDF</a> — readable paper with the earlier table layout.</li><li><a href="{EVIDENCE_URL}">Frozen evidence report</a> — full recorded results and provenance.</li><li><a href="index.html#results">Current website charts</a> — the same saved values as the latest IEEE source.</li><li><a href="{REPO}">Source repository</a> — research code, protocols and audit records.</li></ul>''')
+    guide+=section('read-paper','How to read the current paper',f'''<p><a href="{PDF_URL}">Read the current IEEE paper PDF</a> or <a href="{PAPER_URL}">open its source</a>. Start with the abstract and introduction, then Section 5’s results. Read Section 7’s limitations before interpreting gains, and Section 8 for future research. Both appendices have been removed; the supporting records remain in the repository.</p><ul><li><a href="{REVIEW_URL}">Earlier review PDF</a> — readable paper with the earlier table layout.</li><li><a href="{EVIDENCE_URL}">Frozen evidence report</a> — full recorded results and provenance.</li><li><a href="index.html#results">Current website charts</a> — the same saved values as the latest IEEE source.</li><li><a href="{REPO}">Source repository</a> — research code, protocols and audit records.</li></ul>''')
     guide+='</main><footer><div class="wrap"><p><a href="index.html">← Research overview</a> · Updated 15 October 2026</p></div></footer></body></html>\n'
     (SITE/'paper-reader.html').write_text(guide,encoding='utf-8',newline='\n')
     assert all(sha(ROOT/name)==digest for name,digest in protected.items())

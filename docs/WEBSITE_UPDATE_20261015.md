@@ -11,6 +11,8 @@ small-network proposal in Future Scope. Obsolete denoising, universal drift-wall
 and compression-success statements have been removed. Links now point to the
 current IEEE source and frozen evidence report. The earlier review PDF is
 explicitly identified as retaining its earlier table layout.
+Both pages also link to the current eight-page IEEE PDF, exported from the
+open source with the revised charts; Future Scope is on page 7.
 
 The three dense comparisons use inline vector charts. The five original Gemma
 methods include the reported sample seed standard deviations, with no error bar
@@ -28,6 +30,13 @@ LFM2.5-1.2B. Repeated fits have sample seed standard-deviation whiskers, compute
 from their existing test rows; the single recorded controls have no error bars.
 The source paper's model-chart data file retains original values and hashes.
 The small-network idea remains unmeasured Future Scope.
+
+The layer-group chart now separates the numbers from the plotting area.
+Each panel has a right-aligned Value column, with a signed four-decimal
+number on the same row as its dot. The existing scaled units, zero lines,
+raw data and exact-value table remain unchanged. The website uses tabular
+numerals for scanning the columns. PDF checks verified all 20 displayed
+numbers against the saved data, matching row heights and aligned right edges.
 
 The existing 3D illustration is retained as an explicitly synthetic concept
 visualization. Native controls support pausing, selecting a stage, rotation and
