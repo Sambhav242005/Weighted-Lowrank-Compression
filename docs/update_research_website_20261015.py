@@ -84,6 +84,11 @@ def point(x,y,raw,error=None,error_scale=1,color='#00628f'):
     return result+f'<circle cx="{x:.3f}" cy="{y:.3f}" r="4.5" fill="{color}"><title>{escape(str(raw))}</title></circle>'
 
 
+def horizontal_bar(x0,x,y,raw,error=None,error_scale=1,color='#00628f'):
+    rect=f'<rect x="{x0:.3f}" y="{y-9:.3f}" width="{max(0,x-x0):.3f}" height="18" fill="{color}" fill-opacity="0.75"><title>{escape(str(raw))}</title></rect>'
+    return rect+point(x,y,raw,error,error_scale,color='#1a1a1a')
+
+
 def svg_start(key,title,description,height):
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 {height}" role="img" aria-labelledby="{key}-title" aria-describedby="{key}-desc" font-family="Georgia,serif"><title id="{key}-title">{escape(title)}</title><desc id="{key}-desc">{escape(description)}</desc>'
 
@@ -99,25 +104,27 @@ def axis(x,y,width,minimum,maximum,ticks,top,label):
 
 
 def gemma_svg(rows):
-    description='Prediction loss and residual drift for five methods at the same rank. Activation-aware fits improve over plain SVD. Whitening and anchor have close means; seed variation remains important.'
-    result=svg_start('gemma','Gemma full-stack comparison',description,455)
+    description='Horizontal bars compare five recorded Gemma 3-1B methods. Ours (anchored) is orange. All bars start at zero. Whitening and ours have close means; seed variation remains important.'
+    result=svg_start('gemma','Gemma 3-1B horizontal comparison',description,455)
     for metric,sd,x,lo,hi,ticks,title,label in [
-        ('nll','nllsd',230,3.4,5.25,[3.5,4,4.5,5],'Prediction loss','NLL — lower is better'),
-        ('drift','driftsd',640,0,.08,[0,.02,.04,.06,.08],'Internal representation drift','Residual drift — lower is better')]:
+        ('nll','nllsd',230,0,6.5,[0,2,4,6],'Prediction loss','NLL — lower is better'),
+        ('drift','driftsd',640,0,.1,[0,.025,.05,.075,.1],'Internal representation drift','Residual drift — lower is better')]:
         grid,scale=axis(x,365,270,lo,hi,ticks,75,label)
         result+=grid+svg_text(x+135,40,title,'middle',19,weight='600')
-        if metric=='nll':
-            result+=line(scale(3.451563),75,scale(3.451563),365,'#555',True)
         for index,row in enumerate(rows):
             y=100+index*56
-            if metric=='nll':result+=svg_text(210,y+6,row['name'],'end',17)
-            result+=point(scale(row[metric]),y,row[metric],row.get(sd),270/(hi-lo))
+            if metric=='nll':result+=svg_text(210,y+6,row['name'].replace('Diagonal ASVD component','Diagonal ASVD'),'end',17)
+            color='#b35400' if row.get('ours') else ('#888' if row['seeds']==1 else '#00628f')
+            result+=horizontal_bar(scale(0),scale(row[metric]),y,row[metric],row.get(sd),270/(hi-lo),color)
+            result+=svg_text(scale(row[metric])+9,y+5,row[metric],size=15)
+        if metric=='nll':
+            result+=line(scale(3.451563),75,scale(3.451563),365,'#333',True)
     return result+'</svg>'
 
 
 def composition_svg(rows):
     result=svg_start('composition','Layer-group changes relative to whitening',
-        'Paired means over three calibration seeds. Values left of zero favor the anchor. Blocks 11–14 worsen on both metrics; all 26 has a small average improvement that does not hold in every group.',760)
+        'Ours (anchored) minus whitening, paired means over three calibration seeds. Values left of zero favor ours. Blocks 11–14 worsen on both metrics; all 26 has a small average improvement that does not hold in every group.',760)
     for metric,x,lo,hi,ticks,mult,title,label in [
         ('nll',230,-8,3.8,[-8,-6,-4,-2,0,2],1000,'Prediction-loss change','ΔNLL, in units of 0.001'),
         ('drift',640,-16,9,[-15,-10,-5,0,5],100000,'Residual-drift change','Δ drift, in units of 0.00001')]:
@@ -134,22 +141,24 @@ def composition_svg(rows):
     return result+'</svg>'
 
 
-def hybrid_svg(models):
+def hybrid_svg(models,controls):
     result=svg_start('hybrid','Hybrid-model comparisons',
-        'Separate model-specific axes compare whitening with the anchor. Qwen has higher loss and drift with the anchor. LFM has lower loss but much higher drift. Points are means over three calibration seeds.',535)
-    specifications=[('Qwen',483,2.93,2.95,[2.93,2.94,2.95],0,.015,[0,.005,.01,.015]),
-        ('LFM',725,3.75,4.15,[3.8,3.9,4,4.1],0,.16,[0,.05,.1,.15])]
-    for row_index,(name,rank,nlo,nhi,nticks,dlo,dhi,dticks) in enumerate(specifications):
-        top=40+row_index*245
+        'Horizontal bars show dense reference, plain SVD, whitening and orange Ours (anchored) for each tested model. Repeated fits include sample seed standard deviations. Dense and SVD controls are recorded once.',750)
+    specifications=[('Qwen','Qwen3.5-0.8B',483,0,4.3,[0,1,2,3,4],0,.09,[0,.03,.06,.09]),
+        ('LFM','LFM2.5-1.2B',725,0,5.5,[0,1,2,3,4,5],0,.32,[0,.1,.2,.3])]
+    for row_index,(name,display,rank,nlo,nhi,nticks,dlo,dhi,dticks) in enumerate(specifications):
+        top=40+row_index*350
         for metric,x,lo,hi,ticks,title in [('nll',180,nlo,nhi,nticks,'NLL'),('drift',660,dlo,dhi,dticks,'Residual drift')]:
-            grid,scale=axis(x,top+155,230,lo,hi,ticks,top+28,title+' — lower is better')
-            result+=grid+svg_text(x+115,top,name+', rank '+str(rank),'middle',19,weight='600')
-            for index,data in enumerate(models[name]):
-                y=top+50+index*66
-                result+=svg_text(x-12,y+5,'Whitening' if index==0 else 'Anchor','end',17)
-                color='#00628f' if index==0 else '#b35400'
-                result+=point(scale(data[metric]),y,data[metric],color=color)
-                result+=svg_text(scale(data[metric]),y+23,data[metric],'middle',16,color)
+            grid,scale=axis(x,top+265,230,lo,hi,ticks,top+28,title+' — lower is better')
+            result+=grid+svg_text(x+115,top,display+', rank '+str(rank),'middle',19,weight='600')
+            for index,data in enumerate(controls[name]+models[name]):
+                y=top+40+index*55
+                method=['Dense reference','Plain SVD','Whitening','Ours (anchored)'][index]
+                result+=svg_text(x-12,y+5,method,'end',17)
+                color='#b35400' if index==3 else ('#888' if index<2 else '#00628f')
+                sd=data.get('nllsd' if metric=='nll' else 'driftsd')
+                result+=horizontal_bar(scale(0),scale(data[metric]),y,data[metric],sd,230/(hi-lo),color)
+                result+=svg_text(scale(data[metric])+8,y+5,f'{float(data[metric]):.6f}',size=15)
     return result+'</svg>'
 
 
@@ -170,13 +179,16 @@ def main():
     tex=(PAPER/'ieee-conference.tex').read_text(encoding='utf-8')
     abstract=(PAPER/'abstract.md').read_text(encoding='utf-8').strip()
     repeated=block_table(tex,'GemmaRepeatedResults')
-    names=['Diagonal ASVD component','Covariance whitening','Anchor (β = 0.03)','Extra ridge']
+    names=['Diagonal ASVD component','Covariance whitening','Ours (anchored)','Extra ridge']
     gemma=[{'name':'Plain SVD','nll':re.search(r'\((5\.\d+),5\)',tex)[1],
         'drift':re.search(r'\((0\.074\d+),5\)',tex)[1],'seeds':1}]
     gemma+=[dict(row,name=name,seeds=3) for row,name in zip(repeated,names)]
+    for row in gemma:row['ours']=row['name']=='Ours (anchored)'
     groups=['0','12','25','0–1','12–13','24–25','0–3','11–14','22–25','All 26']
     composition=[dict(row,name=name) for row,name in zip(block_table(tex,'CompositionResults'),groups)]
     hybrid={'Qwen':block_table(tex,'QwenMeans'),'LFM':block_table(tex,'LfmMeans')}
+    hybrid_controls={'Qwen':block_table(tex,'QwenControls'),'LFM':block_table(tex,'LfmControls')}
+    model_provenance=json.loads((PAPER/'model-chart-data.json').read_text(encoding='utf-8'))
     assert len(gemma)==5 and len(composition)==10 and all(len(rows)==2 for rows in hybrid.values())
     tables=re.findall(r'\\begin\{tabular\}.*?\\end\{tabular\}',tex,re.S)
     assert len(tables)==2
@@ -187,7 +199,10 @@ def main():
             for row in body.splitlines() if '&' in row])
     data={'updated':'2026-10-15','source_paper':str((PAPER/'ieee-conference.tex').relative_to(ROOT)),
         'source_paper_sha256':sha(PAPER/'ieee-conference.tex'),'evidence_status':'exploratory',
-        'gemma':gemma,'composition':composition,'hybrid':hybrid,
+        'gemma':gemma,'composition':composition,'hybrid':hybrid,'hybrid_controls':hybrid_controls,
+        'measured_method_label':'Ours (anchored)',
+        'chart_orientation':'Horizontal bars for Gemma and hybrid model comparisons',
+        'hybrid_model_provenance':model_provenance['models'],
         'bf16_conditions':normal[0],'latency_ratios':normal[1],
         'whole_checkpoint_bytes':{'dense':1999883711,'compressed':1982003507,'saved':17880204},
         'network_proposal_status':'not implemented or evaluated','research_experiments_run':False}
@@ -195,17 +210,19 @@ def main():
     gemma_rows=[[r['name'],r['nll']+(' ± '+r['nllsd'] if 'nllsd' in r else ' (single fit)'),
         r['drift']+(' ± '+r['driftsd'] if 'driftsd' in r else ' (single fit)'),r['seeds']] for r in gemma]
     composition_rows=[[r['name'],r['nll'],r['drift'],r['jointly']+'/3'] for r in composition]
-    hybrid_rows=[[name+' / '+method,row['nll'],row['drift']] for name,values in hybrid.items()
-        for method,row in zip(['Whitening','Anchor'],values)]
-    gemma_chart=figure('gemma-results','Gemma: prediction loss and residual drift',gemma_svg(gemma),
-        'The same rank-384 factor budget is used for all methods. Points are means; whiskers are sample standard deviations across three calibration seeds. Plain SVD is one seed-independent fit with no error bar. The dashed line marks the dense teacher’s NLL, 3.451563. Extra ridge uses β = 0.1 and ρ = 0.01. These historical FP16 results retain their failed numerical-readiness qualification.',
+    hybrid_rows=[[name+' / '+method,row['nll']+(' ± '+row['nllsd'] if 'nllsd' in row else ' (single control)'),
+        row['drift']+(' ± '+row['driftsd'] if 'driftsd' in row else ' (single control)'),
+        '3' if 'nllsd' in row else '1'] for name in hybrid
+        for method,row in zip(['Dense reference','Plain SVD','Whitening','Ours (anchored)'],hybrid_controls[name]+hybrid[name])]
+    gemma_chart=figure('gemma-results','Gemma 3-1B: horizontal prediction-loss and drift bars',gemma_svg(gemma),
+        'Horizontal bars start at zero. Orange identifies Ours (anchored), the measured β = 0.03 fit already reported in the paper. The same rank-384 factor budget is used for all compressed methods. Whiskers are sample standard deviations across three calibration seeds; the single SVD fit has no error bar. The dashed line marks the dense teacher’s NLL, 3.451563. Extra ridge uses β = 0.1 and ρ = 0.01. The historical FP16 numerical-readiness qualification still applies.',
         ['Method','NLL','Residual drift','Seeds'],gemma_rows)
-    composition_chart=figure('composition-results','Layer groups: anchor minus whitening',composition_svg(composition),
+    composition_chart=figure('composition-results','Layer groups: Ours (anchored) minus whitening',composition_svg(composition),
         'Negative differences favor the anchor. Axis units are 0.001 for NLL and 0.00001 for drift; annotations use those units and are rounded to four decimal places. Parentheses show seeds with both lower NLL and lower drift, out of three. They do not indicate statistical significance. Blocks 11–14 worsen on both metrics in all three seeds.',
         ['Blocks','Mean NLL difference','Mean drift difference','Jointly better'],composition_rows)
-    hybrid_chart=figure('hybrid-results','Qwen and LFM: compare each model separately',hybrid_svg(hybrid),
-        'Each point is a mean over three calibration seeds; no uncertainty interval is drawn. Axes use model-specific ranges. Qwen: rank 483, 8/8 primary-test records and 10/18 validation records. LFM: rank 725, 8/8 test and 18/18 validation records. These differences do not isolate architecture effects.',
-        ['Model / method','NLL','Residual drift'],hybrid_rows)
+    hybrid_chart=figure('hybrid-results','Other models: Qwen3.5-0.8B and LFM2.5-1.2B',hybrid_svg(hybrid,hybrid_controls),
+        'Horizontal bars start at zero; orange identifies Ours (anchored). Whitening and Ours show three-seed means with sample standard-deviation whiskers. Dense reference and plain SVD are single recorded controls with no error bars. The dense model is an uncompressed reference. The controls and uncertainty values come from the same saved test records, not new experiments. Qwen: rank 483, 8/8 primary-test records and 10/18 validation records. LFM: rank 725, 8/8 test and 18/18 validation records. These differences do not isolate architecture effects.',
+        ['Model / method','NLL','Residual drift','Seeds'],hybrid_rows)
     old=(SITE/'index.html').read_text(encoding='utf-8')
     reader=(SITE/'paper-reader.html').read_text(encoding='utf-8')
     def head(document,title,description):
@@ -285,7 +302,7 @@ def main():
     <div class="status-note"><p><strong>Current finding.</strong> Activation-aware fitting improves on plain SVD in the tested Gemma setting. Adding the weight-space anchor gives no consistent improvement in both prediction quality and residual fidelity across Gemma, Qwen and LFM. A better likelihood score alone cannot establish preservation of the original computation.</p></div>''')
     index+=section('method','2. What is compared','''<p>A dense projection computes <code>Wx + b</code>. Its compact replacement computes <code>U(Vx) + b</code>, applying the original bias once. At a fixed factor budget, covariance whitening weights input directions using calibration activations. The anchored version adds a penalty for changing the original weights.</p>
     <div class="equation">J<sub>β</sub>(A) = ‖(W − A)X‖²<sub>F</sub> + βn‖W − A‖²<sub>F</sub>, with A = UV</div>
-    <p>The matched whitening component uses β = ρ = 0; the selected anchor uses β = 0.03 and ρ = 0. Gemma’s primary rank is 384, Qwen’s is 483, and LFM’s is 725. Other layers and hybrid mixers remain dense.</p>
+    <p>The matched whitening component uses β = ρ = 0; the selected anchor uses β = 0.03 and ρ = 0. The charts label that measured anchored fit <strong>Ours (anchored)</strong> in orange. Gemma’s primary rank is 384, Qwen’s is 483, and LFM’s is 725. Other layers and hybrid mixers remain dense.</p>
     <details><summary>Protocol and interpretation</summary><div class="detail-body"><p>The historical quality cohorts use calibration seeds 11, 23 and 37, paired across methods. WikiText-2 supplies calibration, validation and test splits; the test set has already influenced the project, so these are regression results. The later BF16 practical cohort uses only seeds 11 and 23 and supplies no new drift measurements.</p><p>Exact-arithmetic formulas require their stated rank and spectral assumptions. Failed finite-precision controls prevent attributing all measured changes solely to the mathematical objective. The current paper documents measured-output fitting, extra ridge and spectral cutoffs separately.</p></div></details>''')
     index+=section('viz','3. Concept illustration','''<p>This optional animation uses synthetic points and visual metaphors for different fitting geometries. It is not a measured layer, a literal factorization surface, or evidence that compression preserves computation.</p>
     <div class="viz-wrap"><div class="viz-canvas-wrap"><div id="concept-canvas-container" style="height:360px"><div id="concept-label">Optional concept illustration</div></div></div>

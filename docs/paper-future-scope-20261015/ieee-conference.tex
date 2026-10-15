@@ -5,6 +5,7 @@
 \usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=1.18}
 \definecolor{paperblue}{RGB}{0,98,143}
+\definecolor{paperours}{RGB}{179,84,0}
 \pgfplotsset{
   paperaxis/.style={scale only axis,axis lines*=left,
     font=\footnotesize,tick label style={font=\footnotesize},
@@ -13,6 +14,11 @@
     scaled ticks=false,xticklabel style={/pgf/number format/fixed}},
   paperpoint/.style={only marks,mark=*,mark size=2pt,
     color=paperblue,line width=0.8pt},
+  paperbar/.style={xbar,bar width=7pt,bar shift=0pt,
+    draw=paperblue,fill=paperblue!65,line width=0.7pt},
+  paperbarlabel/.style={point meta=x,
+    nodes near coords={\pgfmathprintnumber[fixed,precision=6]{\pgfplotspointmeta}},
+    every node near coord/.append style={font=\scriptsize,anchor=west,xshift=2pt,text=black}},
   papermeanlabel/.style={nodes near coords,point meta=x,
     nodes near coords style={font=\scriptsize,anchor=north,yshift=-3pt},
     every node near coord/.append style={/pgf/number format/fixed,
@@ -33,7 +39,7 @@
 \begin{IEEEkeywords}low-rank compression; activation weighting; representation drift; transformer evaluation; inference cost.\end{IEEEkeywords}
 \section{Introduction}
 Language models use weight matrices to transform text into predictions. Low-rank compression replaces a large matrix with two smaller factors. The replacement saves weights, but its effect depends on the rest of the model. A factorized layer may closely match the original on calibration inputs and still receive different inputs after earlier layers have been compressed. A compressed model may also predict text more accurately while its internal representations move farther from those of the original model, which we call the teacher. We measure these outcomes separately.\par\smallskip
-We test whether a weight-space anchor improves prediction quality and internal similarity when the number of stored factor weights is fixed. Activation weighting gives more importance to input directions observed during calibration. The anchor adds a penalty for changing the original weights. It changes how the factors are fitted but adds no branch at inference. We compare it with covariance weighting without the anchor, using the same factor budget, and measure storage and execution cost.\par\smallskip
+We test whether a weight-space anchor improves prediction quality and internal similarity when the number of stored factor weights is fixed. Activation weighting gives more importance to input directions observed during calibration. The anchor adds a penalty for changing the original weights. It changes how the factors are fitted but adds no branch at inference. We compare it with covariance weighting without the anchor, using the same factor budget, and measure storage and execution cost. In the charts, ``Ours (anchored)'' identifies this tested anchored configuration.\par\smallskip
 The study separates the effects of activation weighting, anchoring and extra ridge shrinkage. We test attention-output replacements across the full stack and in consecutive groups, measuring prediction quality alongside the changes that propagate through the residual stream. We also measure complete checkpoint size and runtime. The results show where an average joint improvement fails to hold across calibration seeds or layer groups, and where better prediction quality accompanies greater internal drift.\par\smallskip
 The results remain exploratory. Some strict numerical accuracy checks failed, and Qwen's primary comparison is available without a complete validation rank frontier. The later practical cohort uses bfloat16 (BF16), has only two calibration seeds, and adds no BF16 drift measurements. We do not claim a new whitening algorithm or reliable preservation of the complete model's computation.\par\smallskip
 \section{Related work and comparison scope}
@@ -98,23 +104,30 @@ row nll nllsd drift driftsd
   group style={group size=2 by 1,horizontal sep=0.55in},
   width=0.33\textwidth,height=1.65in,ymin=0.5,ymax=5.5,
   ytick={5,4,3,2,1},
-  yticklabels={Plain SVD,Diagonal ASVD,Whitening,Anchor,Extra ridge}]
-\nextgroupplot[title={Prediction loss},xlabel={NLL (lower is better)},
-  xmin=3.4,xmax=5.25,xtick={3.5,4,4.5,5}]
-\draw[densely dashed,gray] (axis cs:3.451563,0.5)--(axis cs:3.451563,5.5);
-\addplot[paperpoint,mark=square*,color=black] coordinates {(5.088681,5)};
-\addplot[paperpoint,error bars/.cd,x dir=both,x explicit]
+  yticklabels={Plain SVD,Diagonal ASVD,Whitening,Ours (anchored),Extra ridge}]
+\nextgroupplot[title={Gemma 3-1B: prediction loss},xlabel={NLL (lower is better)},
+  xmin=0,xmax=6.5,xtick={0,2,4,6}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] coordinates {(5.088681,5)};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
   table[x=nll,y=row,x error=nllsd]{\GemmaRepeatedResults};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(3.565921,2) +- (0.009576,0)};
+\draw[densely dashed,black] (axis cs:3.451563,0.5)--(axis cs:3.451563,5.5);
 \nextgroupplot[title={Internal representation drift},
   xlabel={Residual drift $D$ (lower is better)},
-  xmin=0,xmax=0.08,xtick={0,0.02,0.04,0.06,0.08},yticklabels={}]
-\addplot[paperpoint,mark=square*,color=black] coordinates {(0.074248,5)};
-\addplot[paperpoint,error bars/.cd,x dir=both,x explicit]
+  xmin=0,xmax=0.1,xtick={0,0.025,0.05,0.075,0.1},yticklabels={}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] coordinates {(0.074248,5)};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
   table[x=drift,y=row,x error=driftsd]{\GemmaRepeatedResults};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(0.010547,2) +- (0.000492,0)};
 \end{groupplot}
 \end{tikzpicture}
 \caption{Gemma full-stack native-test comparison at the same factor budget.
-Points show means and whiskers show sample standard deviation across three
+Horizontal bars start at zero; orange identifies Ours (anchored).
+Bars show means and whiskers show sample standard deviation across three
 calibration seeds. Plain SVD is one seed-independent fit with no error bar.
 The dashed line is the dense teacher's NLL. Diagonal ASVD denotes the tested
 component; the anchor uses $\beta=0.03$, and extra ridge uses $\beta=0.1$,
@@ -284,6 +297,7 @@ Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift al
 \put(313.400,33.396){\circle*{2}}
 \put(325.000,37.439){\circle*{2}}
 \put(328.000,40.439){\makebox(0,0)[l]{\tiny 3}}
+{\color{paperours}
 \qbezier(35.000,25.000)(40.800,25.140)(46.600,25.280)
 \qbezier(46.600,25.280)(52.400,25.423)(58.200,25.566)
 \qbezier(58.200,25.566)(64.000,25.487)(69.800,25.409)
@@ -336,6 +350,7 @@ Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift al
 \put(313.400,33.406){\circle*{2}}
 \put(325.000,37.481){\circle*{2}}
 \put(328.000,40.481){\makebox(0,0)[l]{\tiny 4}}
+}
 \qbezier(35.000,25.121)(40.800,25.270)(46.600,25.419)
 \qbezier(46.600,25.419)(52.400,25.600)(58.200,25.782)
 \qbezier(58.200,25.782)(64.000,25.682)(69.800,25.582)
@@ -398,7 +413,7 @@ Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift al
 \noindent\footnotesize Series 1: SVD; 26 measured points.\par
 \noindent\footnotesize Series 2: ASVD component; 26 measured points.\par
 \noindent\footnotesize Series 3: Whitening; 26 measured points.\par
-\noindent\footnotesize Series 4: Anchor; 26 measured points.\par
+\noindent\footnotesize Series 4: {\color{paperours}Ours (anchored)}; 26 measured points.\par
 \noindent\footnotesize Series 5: Extra ridge; 26 measured points.\par
 \end{minipage}}\caption{Gemma residual drift from the same saved coordinates. Individual-seed variation is retained in the companion PDF figure and original evidence.}\end{figure}
 \subsection{A full-stack average does not predict every consecutive group}
@@ -439,7 +454,7 @@ row nll drift jointly
 \addplot[paperpoint,paperdeltalabel] table[x expr=\thisrow{drift}*100000,y=row]{\CompositionResults};
 \end{groupplot}
 \end{tikzpicture}
-\caption{Composition differences across three calibration seeds, with zero-based
+\caption{Composition differences, Ours (anchored) minus whitening, across three calibration seeds, with zero-based
 block indices. Negative values favor the anchor over whitening; dashed lines
 mark no change. Axis units are $10^{-3}$ for NLL and $10^{-5}$ for drift, so the
 tick labels avoid long decimals; point annotations use these scaled units and
@@ -453,41 +468,75 @@ For middle blocks 11-14, anchor NLL is 3.475825 versus 3.473102 for whitening, a
 Fig.~\ref{fig:hybrid-comparison} shows primary-test means for the two hybrid models. Each method targets six full-attention output projections, with matching ranks within model. Qwen's rank is 483 and LFM's is 725. Their other mixer families remain dense. Three calibration seeds are present for each activation-aware method; the dense teacher and plain-SVD controls are recorded once.\par\smallskip
 \begin{figure*}[t]
 \centering
-% Exact within-model means from the former hybrid comparison table.
+% Existing means and added controls/SDs from the same saved test records.
+% Full-precision source values and hashes: model-chart-data.json.
 \pgfplotstableread{
 row nll drift
-2 2.934439 0.006155
-1 2.943324 0.012762
+4 2.917220 0.000000000
+3 3.180993 0.061662985
+}\QwenControls
+\pgfplotstableread{
+row nll drift nllsd driftsd
+2 2.934439 0.006154788 0.001455 0.000090682
+1 2.943324 0.012761953 0.002272 0.000160026
 }\QwenMeans
 \pgfplotstableread{
 row nll drift
-2 4.056405 0.035880
-1 3.835916 0.138346
+4 3.998736 0.000000000
+3 3.852432 0.237778731
+}\LfmControls
+\pgfplotstableread{
+row nll drift nllsd driftsd
+2 4.056405 0.035880394 0.022886 0.000777616
+1 3.835916 0.138345910 0.010335 0.000864377
 }\LfmMeans
 \begin{tikzpicture}
 \begin{groupplot}[paperaxis,
   group style={group size=2 by 2,horizontal sep=0.65in,vertical sep=0.7in},
-  width=0.33\textwidth,height=0.85in,ymin=0.5,ymax=2.5,
-  ytick={2,1},yticklabels={Whitening,Anchor}]
-\nextgroupplot[title={Qwen, rank 483: prediction loss},
-  xlabel={NLL (lower is better)},xmin=2.93,xmax=2.95,xtick={2.93,2.94,2.95}]
-\addplot[paperpoint,papermeanlabel] table[x=nll,y=row]{\QwenMeans};
-\nextgroupplot[title={Qwen, rank 483: drift},
-  xlabel={$D$ (lower is better)},xmin=0,xmax=0.015,
-  xtick={0,0.005,0.01,0.015},yticklabels={}]
-\addplot[paperpoint,papermeanlabel] table[x=drift,y=row]{\QwenMeans};
-\nextgroupplot[title={LFM, rank 725: prediction loss},
-  xlabel={NLL (lower is better)},xmin=3.75,xmax=4.15,xtick={3.8,3.9,4,4.1}]
-\addplot[paperpoint,papermeanlabel] table[x=nll,y=row]{\LfmMeans};
-\nextgroupplot[title={LFM, rank 725: drift},
-  xlabel={$D$ (lower is better)},xmin=0,xmax=0.16,
-  xtick={0,0.05,0.1,0.15},yticklabels={}]
-\addplot[paperpoint,papermeanlabel] table[x=drift,y=row]{\LfmMeans};
+  width=0.33\textwidth,height=1.35in,ymin=0.5,ymax=4.5,
+  ytick={4,3,2,1},yticklabels={Dense reference,Plain SVD,Whitening,Ours (anchored)}]
+\nextgroupplot[title={Qwen3.5-0.8B: prediction loss},
+  xlabel={NLL (lower is better)},xmin=0,xmax=4.3,xtick={0,1,2,3,4}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] table[x=nll,y=row]{\QwenControls};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  table[x=nll,y=row,x error=nllsd]{\QwenMeans};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(2.943324,1) +- (0.002272,0)};
+\nextgroupplot[title={Qwen3.5-0.8B: drift},
+  xlabel={$D$ (lower is better)},xmin=0,xmax=0.09,
+  xtick={0,0.03,0.06,0.09},yticklabels={}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] table[x=drift,y=row]{\QwenControls};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  table[x=drift,y=row,x error=driftsd]{\QwenMeans};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(0.012761953,1) +- (0.000160026,0)};
+\nextgroupplot[title={LFM2.5-1.2B: prediction loss},
+  xlabel={NLL (lower is better)},xmin=0,xmax=5.5,xtick={0,1,2,3,4,5}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] table[x=nll,y=row]{\LfmControls};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  table[x=nll,y=row,x error=nllsd]{\LfmMeans};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(3.835916,1) +- (0.010335,0)};
+\nextgroupplot[title={LFM2.5-1.2B: drift},
+  xlabel={$D$ (lower is better)},xmin=0,xmax=0.32,
+  xtick={0,0.1,0.2,0.3},yticklabels={}]
+\addplot[paperbar,paperbarlabel,draw=gray,fill=gray!50] table[x=drift,y=row]{\LfmControls};
+\addplot[paperbar,paperbarlabel,error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  table[x=drift,y=row,x error=driftsd]{\LfmMeans};
+\addplot[paperbar,paperbarlabel,draw=paperours,fill=paperours!75,
+  error bars/.cd,x dir=both,x explicit,error bar style={black}]
+  coordinates {(0.138345910,1) +- (0.000864377,0)};
 \end{groupplot}
 \end{tikzpicture}
-\caption{Within-model hybrid primary-test means over three calibration seeds.
-Panels show prediction loss and drift separately, with model-specific axis
-ranges; no uncertainty interval is plotted. Qwen coverage is 8/8 test; 10/18 validation.
+\caption{Within-model hybrid primary-test comparisons. Horizontal bars start at
+zero; orange identifies Ours (anchored). Whitening and Ours show three-seed means
+and sample seed standard deviations. Dense reference and plain SVD are single
+recorded controls with no error bars; the dense model is an uncompressed reference.
+Factor ranks are 483 for Qwen and 725 for LFM. Model-specific axes show prediction
+loss and drift separately. Qwen coverage is 8/8 test; 10/18 validation.
 LFM coverage is 8/8 test; 18/18 validation. Cross-model differences do not isolate
 architecture effects. The anchor worsens both Qwen metrics, while LFM's lower
 NLL accompanies higher residual drift.}

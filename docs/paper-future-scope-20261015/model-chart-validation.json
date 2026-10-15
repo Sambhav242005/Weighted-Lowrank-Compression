@@ -1,0 +1,23 @@
+{
+  "document": "ieee-conference.tex",
+  "edited_in_place": true,
+  "source_sha256": "966736d8a900b75d2052f44eb115c4cf067a2656efa51dfdd63b5fb18df43877",
+  "ours_label": "Measured anchored fit, beta=0.03, rho=0; no new method series",
+  "ours_color": "Orange; method name also supplies a non-color identifier",
+  "horizontal_bars_start_at_zero": true,
+  "models": [
+    "google/gemma-3-1b-it",
+    "Qwen/Qwen3.5-0.8B",
+    "LiquidAI/LFM2.5-1.2B-Instruct"
+  ],
+  "hybrid_dense_and_svd_controls_added_from_saved_rows": true,
+  "hybrid_three_seed_sample_standard_deviations_verified": true,
+  "single_control_uncertainty_not_invented": true,
+  "existing_gemma_and_composition_values_unchanged": true,
+  "existing_hybrid_means_unchanged_at_original_precision": true,
+  "abstract_equations_tables_bibliography_future_scope_and_drift_coordinates_unchanged": true,
+  "small_network_experimental_results_added": false,
+  "research_experiments_run": false,
+  "existing_review_pdf_unchanged": true,
+  "latex_compilation": "success: desktop editor compiler"
+}

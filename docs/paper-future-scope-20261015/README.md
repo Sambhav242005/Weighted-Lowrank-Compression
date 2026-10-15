@@ -3,7 +3,17 @@
 [Updated PDF](manuscript.pdf) · [IEEE conference source](ieee-conference.tex) ·
 [Reference-style LaTeX](manuscript.tex) · [Authored text](manuscript.source.md)
 
-The open **IEEE source** has since been edited in place to replace three dense
+The open **IEEE source** now clearly labels the measured anchored configuration
+as **Ours (anchored)** in orange. Gemma 3-1B, Qwen3.5-0.8B and LFM2.5-1.2B use
+horizontal bars starting at zero for prediction loss and residual drift. Qwen
+and LFM also include their saved dense-reference and plain-SVD controls; their
+three-seed sample standard deviations are derived from the same saved test rows.
+No new model, experiment or small-network result was added. The existing
+per-block drift curve for the anchored method is also identified in orange.
+See [model-chart-data.json](model-chart-data.json) for exact source values and
+hashes, and [model-chart-validation.json](model-chart-validation.json) for checks.
+
+The open IEEE source was previously edited in place to replace three dense
 results tables with self-contained vector charts. Gemma uses paired metric
 panels with sample seed standard-deviation whiskers. Composition uses signed
 differences around zero, with explicit scaled units and joint-improvement

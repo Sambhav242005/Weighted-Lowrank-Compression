@@ -1,14 +1,15 @@
 {
   "updated": "2026-10-15",
   "source_paper": "docs\\paper-future-scope-20261015\\ieee-conference.tex",
-  "source_paper_sha256": "44b15754403ade9a1c9a5535caed14e4bb4669344df5ecbaf24a51b3e9409097",
+  "source_paper_sha256": "966736d8a900b75d2052f44eb115c4cf067a2656efa51dfdd63b5fb18df43877",
   "evidence_status": "exploratory",
   "gemma": [
     {
       "name": "Plain SVD",
       "nll": "5.088681",
       "drift": "0.074248",
-      "seeds": 1
+      "seeds": 1,
+      "ours": false
     },
     {
       "row": "4",
@@ -17,7 +18,8 @@
       "drift": "0.030972",
       "driftsd": "0.000197",
       "name": "Diagonal ASVD component",
-      "seeds": 3
+      "seeds": 3,
+      "ours": false
     },
     {
       "row": "3",
@@ -26,7 +28,8 @@
       "drift": "0.010638",
       "driftsd": "0.000382",
       "name": "Covariance whitening",
-      "seeds": 3
+      "seeds": 3,
+      "ours": false
     },
     {
       "row": "2",
@@ -34,8 +37,9 @@
       "nllsd": "0.009576",
       "drift": "0.010547",
       "driftsd": "0.000492",
-      "name": "Anchor (β = 0.03)",
-      "seeds": 3
+      "name": "Ours (anchored)",
+      "seeds": 3,
+      "ours": true
     },
     {
       "row": "1",
@@ -44,7 +48,8 @@
       "drift": "0.011836",
       "driftsd": "0.000139",
       "name": "Extra ridge",
-      "seeds": 3
+      "seeds": 3,
+      "ours": false
     }
   ],
   "composition": [
@@ -124,26 +129,306 @@
       {
         "row": "2",
         "nll": "2.934439",
-        "drift": "0.006155"
+        "drift": "0.006154788",
+        "nllsd": "0.001455",
+        "driftsd": "0.000090682"
       },
       {
         "row": "1",
         "nll": "2.943324",
-        "drift": "0.012762"
+        "drift": "0.012761953",
+        "nllsd": "0.002272",
+        "driftsd": "0.000160026"
       }
     ],
     "LFM": [
       {
         "row": "2",
         "nll": "4.056405",
-        "drift": "0.035880"
+        "drift": "0.035880394",
+        "nllsd": "0.022886",
+        "driftsd": "0.000777616"
       },
       {
         "row": "1",
         "nll": "3.835916",
-        "drift": "0.138346"
+        "drift": "0.138345910",
+        "nllsd": "0.010335",
+        "driftsd": "0.000864377"
       }
     ]
+  },
+  "hybrid_controls": {
+    "Qwen": [
+      {
+        "row": "4",
+        "nll": "2.917220",
+        "drift": "0.000000000"
+      },
+      {
+        "row": "3",
+        "nll": "3.180993",
+        "drift": "0.061662985"
+      }
+    ],
+    "LFM": [
+      {
+        "row": "4",
+        "nll": "3.998736",
+        "drift": "0.000000000"
+      },
+      {
+        "row": "3",
+        "nll": "3.852432",
+        "drift": "0.237778731"
+      }
+    ]
+  },
+  "measured_method_label": "Ours (anchored)",
+  "chart_orientation": "Horizontal bars for Gemma and hybrid model comparisons",
+  "hybrid_model_provenance": {
+    "Qwen": {
+      "name": "Qwen3.5-0.8B",
+      "rank": 483,
+      "source_run": "architecture-replication-20261014-093845-97378b5e",
+      "source_metrics": "results\\paper-v2\\architecture-replication-20261014-093845-97378b5e\\metrics.json",
+      "source_sha256": "4f9abd4faba80fad601ccc1901c83f57dede6e4b5ffea5285106158668d9d61c",
+      "rows": [
+        {
+          "source_label": "teacher",
+          "label": "Dense reference",
+          "seeds": [
+            11
+          ],
+          "seed_count": 1,
+          "rank": null,
+          "source_values": [
+            {
+              "nll": 2.9172204263445436,
+              "primary_drift": 0.0
+            }
+          ],
+          "nll_mean": 2.9172204263445436,
+          "nll_display": "2.917220",
+          "nll_sd": null,
+          "nll_sd_display": null,
+          "drift_mean": 0.0,
+          "drift_display": "0.000000000",
+          "drift_sd": null,
+          "drift_sd_display": null
+        },
+        {
+          "source_label": "svd",
+          "label": "Plain SVD",
+          "seeds": [
+            11
+          ],
+          "seed_count": 1,
+          "rank": 483,
+          "source_values": [
+            {
+              "nll": 3.180992892463157,
+              "primary_drift": 0.061662984691350814
+            }
+          ],
+          "nll_mean": 3.180992892463157,
+          "nll_display": "3.180993",
+          "nll_sd": null,
+          "nll_sd_display": null,
+          "drift_mean": 0.061662984691350814,
+          "drift_display": "0.061662985",
+          "drift_sd": null,
+          "drift_sd_display": null
+        },
+        {
+          "source_label": "baseline",
+          "label": "Whitening",
+          "seeds": [
+            11,
+            23,
+            37
+          ],
+          "seed_count": 3,
+          "rank": 483,
+          "source_values": [
+            {
+              "nll": 2.9349500003274223,
+              "primary_drift": 0.006057917188947374
+            },
+            {
+              "nll": 2.9355694602465974,
+              "primary_drift": 0.006168794605896772
+            },
+            {
+              "nll": 2.9327965702892866,
+              "primary_drift": 0.006237650938074812
+            }
+          ],
+          "nll_mean": 2.9344386769544353,
+          "nll_display": "2.934439",
+          "nll_sd": 0.0014554443900955654,
+          "nll_sd_display": "0.001455",
+          "drift_mean": 0.006154787577639652,
+          "drift_display": "0.006154788",
+          "drift_sd": 9.068187676872406e-05,
+          "drift_sd_display": "0.000090682"
+        },
+        {
+          "source_label": "solver",
+          "label": "Ours (anchored)",
+          "seeds": [
+            11,
+            23,
+            37
+          ],
+          "seed_count": 3,
+          "rank": 483,
+          "source_values": [
+            {
+              "nll": 2.9448916610085147,
+              "primary_drift": 0.012786454333704322
+            },
+            {
+              "nll": 2.9443613585485098,
+              "primary_drift": 0.012908315520515653
+            },
+            {
+              "nll": 2.9407185550680306,
+              "primary_drift": 0.012591090043967865
+            }
+          ],
+          "nll_mean": 2.943323858208352,
+          "nll_display": "2.943324",
+          "nll_sd": 0.002271785314350171,
+          "nll_sd_display": "0.002272",
+          "drift_mean": 0.012761953299395947,
+          "drift_display": "0.012761953",
+          "drift_sd": 0.00016002570498009988,
+          "drift_sd_display": "0.000160026"
+        }
+      ]
+    },
+    "LFM": {
+      "name": "LFM2.5-1.2B-Instruct",
+      "rank": 725,
+      "source_run": "architecture-replication-20261014-103759-8d32ab84",
+      "source_metrics": "results\\paper-v2\\architecture-replication-20261014-103759-8d32ab84\\metrics.json",
+      "source_sha256": "c0c47cbbe026ed5920b03c72daa93a3b4e9af002e6447325335c09cdf1be818c",
+      "rows": [
+        {
+          "source_label": "teacher",
+          "label": "Dense reference",
+          "seeds": [
+            11
+          ],
+          "seed_count": 1,
+          "rank": null,
+          "source_values": [
+            {
+              "nll": 3.998735560792637,
+              "primary_drift": 0.0
+            }
+          ],
+          "nll_mean": 3.998735560792637,
+          "nll_display": "3.998736",
+          "nll_sd": null,
+          "nll_sd_display": null,
+          "drift_mean": 0.0,
+          "drift_display": "0.000000000",
+          "drift_sd": null,
+          "drift_sd_display": null
+        },
+        {
+          "source_label": "svd",
+          "label": "Plain SVD",
+          "seeds": [
+            11
+          ],
+          "seed_count": 1,
+          "rank": 725,
+          "source_values": [
+            {
+              "nll": 3.8524319793110346,
+              "primary_drift": 0.23777873099222016
+            }
+          ],
+          "nll_mean": 3.8524319793110346,
+          "nll_display": "3.852432",
+          "nll_sd": null,
+          "nll_sd_display": null,
+          "drift_mean": 0.23777873099222016,
+          "drift_display": "0.237778731",
+          "drift_sd": null,
+          "drift_sd_display": null
+        },
+        {
+          "source_label": "baseline",
+          "label": "Whitening",
+          "seeds": [
+            11,
+            23,
+            37
+          ],
+          "seed_count": 3,
+          "rank": 725,
+          "source_values": [
+            {
+              "nll": 4.078895427247521,
+              "primary_drift": 0.0367447258862791
+            },
+            {
+              "nll": 4.033142050563351,
+              "primary_drift": 0.03565890471968553
+            },
+            {
+              "nll": 4.057176406738657,
+              "primary_drift": 0.03523755188973881
+            }
+          ],
+          "nll_mean": 4.056404628183176,
+          "nll_display": "4.056405",
+          "nll_sd": 0.02288645016390535,
+          "nll_sd_display": "0.022886",
+          "drift_mean": 0.03588039416523448,
+          "drift_display": "0.035880394",
+          "drift_sd": 0.00077761593658373,
+          "drift_sd_display": "0.000777616"
+        },
+        {
+          "source_label": "solver",
+          "label": "Ours (anchored)",
+          "seeds": [
+            11,
+            23,
+            37
+          ],
+          "seed_count": 3,
+          "rank": 725,
+          "source_values": [
+            {
+              "nll": 3.8462870954194353,
+              "primary_drift": 0.13857367466736867
+            },
+            {
+              "nll": 3.8256182120762854,
+              "primary_drift": 0.1390735975851601
+            },
+            {
+              "nll": 3.8358430439113937,
+              "primary_drift": 0.13739045792511648
+            }
+          ],
+          "nll_mean": 3.835916117135705,
+          "nll_display": "3.835916",
+          "nll_sd": 0.0103346354282707,
+          "nll_sd_display": "0.010335",
+          "drift_mean": 0.1383459100592151,
+          "drift_display": "0.138345910",
+          "drift_sd": 0.0008643768370036671,
+          "drift_sd_display": "0.000864377"
+        }
+      ]
+    }
   },
   "bf16_conditions": [
     [

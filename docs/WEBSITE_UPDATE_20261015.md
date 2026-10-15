@@ -21,6 +21,14 @@ values remain tables. Each chart has a description and an expandable semantic
 table of the exact values. The same public values are available in
 `research-data.json`, including the source paper's SHA-256.
 
+The latest chart revision labels the tested anchored fit **Ours (anchored)** in
+orange and uses horizontal, zero-based bars for Gemma, Qwen and LFM. Saved dense
+references and plain-SVD controls are now included for Qwen3.5-0.8B and
+LFM2.5-1.2B. Repeated fits have sample seed standard-deviation whiskers, computed
+from their existing test rows; the single recorded controls have no error bars.
+The source paper's model-chart data file retains original values and hashes.
+The small-network idea remains unmeasured Future Scope.
+
 The existing 3D illustration is retained as an explicitly synthetic concept
 visualization. Native controls support pausing, selecting a stage, rotation and
 zoom. Reduced-motion preference starts it paused. The chart content remains
