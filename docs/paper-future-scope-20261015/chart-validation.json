@@ -1,0 +1,32 @@
+{
+  "document": "ieee-conference.tex",
+  "edited_in_place": true,
+  "before_sha256": "f6850d0407bfb24062a1f981bbe4f79d355f88fa590f96a0abfdde29d34c4226",
+  "after_sha256": "44b15754403ade9a1c9a5535caed14e4bb4669344df5ecbaf24a51b3e9409097",
+  "replaced_tables": [
+    "Gemma full-stack comparison",
+    "Composition differences",
+    "Hybrid model comparisons"
+  ],
+  "kept_tables": [
+    "BF16 practical cohort",
+    "Latency ratios"
+  ],
+  "remaining_table_cells_unchanged": true,
+  "all_plotted_values_verified_against_original_tables": true,
+  "gemma_uncertainty": "Sample calibration-seed standard deviation; three seeds; SVD has no error bar",
+  "composition_units": {
+    "nll_plot_multiplier": 1000,
+    "drift_plot_multiplier": 100000
+  },
+  "hybrid_record_coverage_preserved": true,
+  "equations_abstract_bibliography_future_scope_unchanged": true,
+  "labels_and_references_resolve_in_source": true,
+  "review_pdf_unchanged": true,
+  "experiments_run": false,
+  "latex_compilation": "success: desktop editor compiler; saved ieee-conference.tex",
+  "original_table_source_revision": "2f7e1e9",
+  "figure_format": "Self-contained vector PGFPlots in the existing IEEE source",
+  "separate_paper_pdf_generated": false,
+  "other_document_tabs_opened": false
+}

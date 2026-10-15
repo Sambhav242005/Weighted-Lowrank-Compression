@@ -1,6 +1,26 @@
 \documentclass[conference]{IEEEtran}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,array,booktabs,graphicx}
+\usepackage{pgfplots,pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\definecolor{paperblue}{RGB}{0,98,143}
+\pgfplotsset{
+  paperaxis/.style={scale only axis,axis lines*=left,
+    font=\footnotesize,tick label style={font=\footnotesize},
+    label style={font=\footnotesize},title style={font=\footnotesize},
+    xmajorgrids=true,grid style={gray!20},tick align=outside,
+    scaled ticks=false,xticklabel style={/pgf/number format/fixed}},
+  paperpoint/.style={only marks,mark=*,mark size=2pt,
+    color=paperblue,line width=0.8pt},
+  papermeanlabel/.style={nodes near coords,point meta=x,
+    nodes near coords style={font=\scriptsize,anchor=north,yshift=-3pt},
+    every node near coord/.append style={/pgf/number format/fixed,
+      /pgf/number format/precision=6,/pgf/number format/zerofill}},
+  paperdeltalabel/.style={point meta=x,
+    nodes near coords={\pgfmathprintnumber[fixed,precision=4]{\pgfplotspointmeta}},
+    every node near coord/.append style={font=\scriptsize,anchor=north,yshift=-3pt}}
+}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \setlength{\emergencystretch}{2em}
 \sloppy
@@ -61,18 +81,47 @@ The Qwen continuation contains all eight primary-test records but only 10 of 18 
 A later practical amendment evaluates only BF16 Gemma: one dense teacher and whitening/anchor factors for seeds 11 and 23, five conditions in total. It is separate from the stopped FP16/INT8 practical cohort and does not supply new drift evidence. Its two seeds cannot satisfy the original three-seed promotion gate. No missing frontier point, seed, corpus or task is inferred from execution completion.\par\smallskip
 \section{Results}
 \subsection{Activation-aware fitting improves on plain SVD, but anchoring has a small mixed Gemma effect}
-Table 1 compares all 26 Gemma attention-output projections at rank 384 using the historical FP16 cohort. The dense reference NLL is 3.451563. Activation-aware components have substantially lower NLL and drift than plain SVD at the same factor budget. The anchor's mean NLL is slightly lower than whitening's, but both remain worse than the dense reference on this corpus.\par\smallskip
-Table 1. Gemma full-stack native-test comparison. Values are mean \(\pm\) sample seed standard deviation; a dash indicates a single seed-independent fit. Drift is the dimensionless primary residual error $D$.\par\smallskip
-{\scriptsize\setlength{\tabcolsep}{2pt}
-\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
-Method & NLL & Residual drift & Seeds \\
-\midrule
-Plain SVD & 5.088681 (-) & 0.074248 (-) & 1 \\
-Diagonal ASVD component & 3.694466 \(\pm\) 0.002420 & 0.030972 \(\pm\) 0.000197 & 3 \\
-Covariance whitening & 3.572814 \(\pm\) 0.011819 & 0.010638 \(\pm\) 0.000382 & 3 \\
-Anchor (beta=0.03) & 3.565921 \(\pm\) 0.009576 & 0.010547 \(\pm\) 0.000492 & 3 \\
-Extra ridge (beta=0.1, rho=0.01) & 3.579034 \(\pm\) 0.008521 & 0.011836 \(\pm\) 0.000139 & 3 \\
-\bottomrule\end{tabular}}\par\medskip
+Fig.~\ref{fig:gemma-summary} compares all 26 Gemma attention-output projections at rank 384 using the historical FP16 cohort. The dense reference NLL is 3.451563. Activation-aware components have substantially lower NLL and drift than plain SVD at the same factor budget. The anchor's mean NLL is slightly lower than whitening's, but both remain worse than the dense reference on this corpus.\par\smallskip
+\begin{figure*}[t]
+\centering
+% Exact means and sample seed SDs from the former Gemma comparison table.
+% Row 5 is a single seed-independent SVD fit and has no uncertainty bar.
+\pgfplotstableread{
+row nll nllsd drift driftsd
+4 3.694466 0.002420 0.030972 0.000197
+3 3.572814 0.011819 0.010638 0.000382
+2 3.565921 0.009576 0.010547 0.000492
+1 3.579034 0.008521 0.011836 0.000139
+}\GemmaRepeatedResults
+\begin{tikzpicture}
+\begin{groupplot}[paperaxis,
+  group style={group size=2 by 1,horizontal sep=0.55in},
+  width=0.33\textwidth,height=1.65in,ymin=0.5,ymax=5.5,
+  ytick={5,4,3,2,1},
+  yticklabels={Plain SVD,Diagonal ASVD,Whitening,Anchor,Extra ridge}]
+\nextgroupplot[title={Prediction loss},xlabel={NLL (lower is better)},
+  xmin=3.4,xmax=5.25,xtick={3.5,4,4.5,5}]
+\draw[densely dashed,gray] (axis cs:3.451563,0.5)--(axis cs:3.451563,5.5);
+\addplot[paperpoint,mark=square*,color=black] coordinates {(5.088681,5)};
+\addplot[paperpoint,error bars/.cd,x dir=both,x explicit]
+  table[x=nll,y=row,x error=nllsd]{\GemmaRepeatedResults};
+\nextgroupplot[title={Internal representation drift},
+  xlabel={Residual drift $D$ (lower is better)},
+  xmin=0,xmax=0.08,xtick={0,0.02,0.04,0.06,0.08},yticklabels={}]
+\addplot[paperpoint,mark=square*,color=black] coordinates {(0.074248,5)};
+\addplot[paperpoint,error bars/.cd,x dir=both,x explicit]
+  table[x=drift,y=row,x error=driftsd]{\GemmaRepeatedResults};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Gemma full-stack native-test comparison at the same factor budget.
+Points show means and whiskers show sample standard deviation across three
+calibration seeds. Plain SVD is one seed-independent fit with no error bar.
+The dashed line is the dense teacher's NLL. Diagonal ASVD denotes the tested
+component; the anchor uses $\beta=0.03$, and extra ridge uses $\beta=0.1$,
+$\rho=0.01$. Error bars are descriptive seed variation, not confidence intervals.
+The strict historical FP16 readiness failure still applies.}
+\label{fig:gemma-summary}
+\end{figure*}
 Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift also decreases slightly, from 0.010638 to 0.010547, but drift worsens in two of the three paired seeds. Therefore the aggregate does not establish a reproducible joint improvement. The historical extra-ridge setting is worse than whitening on both metrics in every paired seed. The validation full-rank ridge control further demonstrates why shrinkage must be distinguished from rank reduction; an unrestricted-rank control is not a matched compressed baseline.\par\smallskip
 \begin{figure}[t]\centering\resizebox{\columnwidth}{!}{\begin{minipage}{350pt}
 \begin{center}\setlength{\unitlength}{1pt}
@@ -353,39 +402,109 @@ Anchoring changes mean NLL by -0.006893 relative to whitening. The mean drift al
 \noindent\footnotesize Series 5: Extra ridge; 26 measured points.\par
 \end{minipage}}\caption{Gemma residual drift from the same saved coordinates. Individual-seed variation is retained in the companion PDF figure and original evidence.}\end{figure}
 \subsection{A full-stack average does not predict every consecutive group}
-The completed composition cohort evaluates single projections, groups of two, groups of four and all 26 projections. Smaller groups occur at early, middle and late positions, with fixed per-target rank. Table 2 reports paired mean differences, anchor minus whitening; negative values favor the anchor. It uses only the unique completed cohort. Interrupted predecessors remain in the evidence ledger and are not counted as new observations.\par\smallskip
-Table 2. Composition heterogeneity across three calibration seeds. Block indices are zero-based. Jointly better counts seeds with strictly lower NLL and strictly lower $D$; it does not assert statistical significance.\par\smallskip
-{\scriptsize\setlength{\tabcolsep}{2pt}
-\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
-Blocks & Mean NLL difference & Mean drift difference & Jointly better \\
-\midrule
-0 & -0.0000484 & -3.392768e-06 & 2/3 \\
-12 & -0.0003431 & +1.50569e-06 & 0/3 \\
-25 & -0.0002025 & +3.248449e-07 & 0/3 \\
-0-1 & -0.0000478 & -8.883664e-05 & 1/3 \\
-12-13 & +0.0000058 & +2.945603e-06 & 0/3 \\
-24-25 & -0.0001833 & -2.956141e-08 & 0/3 \\
-0-3 & -0.0002942 & -0.0001338675 & 2/3 \\
-11-14 & +0.0027237 & +6.855561e-05 & 0/3 \\
-22-25 & -0.0009939 & -1.052808e-05 & 2/3 \\
-All 26 & -0.0068927 & -9.051551e-05 & 1/3 \\
-\bottomrule\end{tabular}}\par\medskip
+The completed composition cohort evaluates single projections, groups of two, groups of four and all 26 projections. Smaller groups occur at early, middle and late positions, with fixed per-target rank. Fig.~\ref{fig:composition-differences} reports paired mean differences, anchor minus whitening; negative values favor the anchor. It uses only the unique completed cohort. Interrupted predecessors remain in the evidence ledger and are not counted as new observations.\par\smallskip
+\begin{figure*}[t]
+\centering
+% Original differences are retained here without rounding or resampling.
+% Plot multipliers produce readable tick values while preserving linear scales.
+\pgfplotstableread{
+row nll drift jointly
+10 -0.0000484 -3.392768e-06 2
+9 -0.0003431 +1.50569e-06 0
+8 -0.0002025 +3.248449e-07 0
+7 -0.0000478 -8.883664e-05 1
+6 +0.0000058 +2.945603e-06 0
+5 -0.0001833 -2.956141e-08 0
+4 -0.0002942 -0.0001338675 2
+3 +0.0027237 +6.855561e-05 0
+2 -0.0009939 -1.052808e-05 2
+1 -0.0068927 -9.051551e-05 1
+}\CompositionResults
+\begin{tikzpicture}
+\begin{groupplot}[paperaxis,
+  group style={group size=2 by 1,horizontal sep=0.55in},
+  width=0.33\textwidth,height=2.75in,ymin=0.5,ymax=10.5,
+  ytick={10,9,8,7,6,5,4,3,2,1},
+  yticklabels={0 (2/3),12 (0/3),25 (0/3),0--1 (1/3),12--13 (0/3),
+    24--25 (0/3),0--3 (2/3),11--14 (0/3),22--25 (2/3),All 26 (1/3)}]
+\nextgroupplot[title={Prediction-loss change},
+  xlabel={$\Delta$NLL ($\times10^{-3}$)},
+  xmin=-8,xmax=3.8,xtick={-8,-6,-4,-2,0,2}]
+\draw[densely dashed,black] (axis cs:0,0.5)--(axis cs:0,10.5);
+\addplot[paperpoint,paperdeltalabel] table[x expr=\thisrow{nll}*1000,y=row]{\CompositionResults};
+\nextgroupplot[title={Residual-drift change},
+  xlabel={$\Delta D$ ($\times10^{-5}$)},
+  xmin=-16,xmax=9,xtick={-15,-10,-5,0,5},yticklabels={}]
+\draw[densely dashed,black] (axis cs:0,0.5)--(axis cs:0,10.5);
+\addplot[paperpoint,paperdeltalabel] table[x expr=\thisrow{drift}*100000,y=row]{\CompositionResults};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Composition differences across three calibration seeds, with zero-based
+block indices. Negative values favor the anchor over whitening; dashed lines
+mark no change. Axis units are $10^{-3}$ for NLL and $10^{-5}$ for drift, so the
+tick labels avoid long decimals; point annotations use these scaled units and
+are rounded to four decimal places. Parentheses give the number of seeds, out of
+three, with strictly lower NLL and strictly lower $D$ together. These are paired
+mean differences and descriptive counts, not significance tests.}
+\label{fig:composition-differences}
+\end{figure*}
 For middle blocks 11-14, anchor NLL is 3.475825 versus 3.473102 for whitening, and drift is 0.00044914 versus 0.00038059. Both metrics worsen in all three seeds. Other groups have mixed signs or much smaller differences. The full-stack average gain therefore does not hold for every group. Drift also need not grow monotonically with group size: layer position, downstream sensitivity and the unchanged blocks included in the average all affect the result.\par\smallskip
 \subsection{Hybrid-model results separate likelihood from teacher-state fidelity}
-Table 3 shows primary-test means for the two hybrid models. Each method targets six full-attention output projections, with matching ranks within model. Qwen's rank is 483 and LFM's is 725. Their other mixer families remain dense. Three calibration seeds are present for each activation-aware method; the dense teacher and plain-SVD controls are recorded once.\par\smallskip
-Table 3. Within-model hybrid primary-test results. NLL and drift entries show whitening → anchor. Cross-model differences are not architecture-only causal effects.\par\smallskip
-{\scriptsize\setlength{\tabcolsep}{2pt}
-\noindent\begin{tabular}{@{}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}p{0.2250\columnwidth}@{}}\toprule
-Model / primary rank & NLL: whitening → anchor & Drift: whitening → anchor & Record coverage \\
-\midrule
-Qwen, rank 483 & 2.934439 → 2.943324 & 0.006155 → 0.012762 & 8/8 test; 10/18 validation \\
-LFM, rank 725 & 4.056405 → 3.835916 & 0.035880 → 0.138346 & 8/8 test; 18/18 validation \\
-\bottomrule\end{tabular}}\par\medskip
+Fig.~\ref{fig:hybrid-comparison} shows primary-test means for the two hybrid models. Each method targets six full-attention output projections, with matching ranks within model. Qwen's rank is 483 and LFM's is 725. Their other mixer families remain dense. Three calibration seeds are present for each activation-aware method; the dense teacher and plain-SVD controls are recorded once.\par\smallskip
+\begin{figure*}[t]
+\centering
+% Exact within-model means from the former hybrid comparison table.
+\pgfplotstableread{
+row nll drift
+2 2.934439 0.006155
+1 2.943324 0.012762
+}\QwenMeans
+\pgfplotstableread{
+row nll drift
+2 4.056405 0.035880
+1 3.835916 0.138346
+}\LfmMeans
+\begin{tikzpicture}
+\begin{groupplot}[paperaxis,
+  group style={group size=2 by 2,horizontal sep=0.65in,vertical sep=0.7in},
+  width=0.33\textwidth,height=0.85in,ymin=0.5,ymax=2.5,
+  ytick={2,1},yticklabels={Whitening,Anchor}]
+\nextgroupplot[title={Qwen, rank 483: prediction loss},
+  xlabel={NLL (lower is better)},xmin=2.93,xmax=2.95,xtick={2.93,2.94,2.95}]
+\addplot[paperpoint,papermeanlabel] table[x=nll,y=row]{\QwenMeans};
+\nextgroupplot[title={Qwen, rank 483: drift},
+  xlabel={$D$ (lower is better)},xmin=0,xmax=0.015,
+  xtick={0,0.005,0.01,0.015},yticklabels={}]
+\addplot[paperpoint,papermeanlabel] table[x=drift,y=row]{\QwenMeans};
+\nextgroupplot[title={LFM, rank 725: prediction loss},
+  xlabel={NLL (lower is better)},xmin=3.75,xmax=4.15,xtick={3.8,3.9,4,4.1}]
+\addplot[paperpoint,papermeanlabel] table[x=nll,y=row]{\LfmMeans};
+\nextgroupplot[title={LFM, rank 725: drift},
+  xlabel={$D$ (lower is better)},xmin=0,xmax=0.16,
+  xtick={0,0.05,0.1,0.15},yticklabels={}]
+\addplot[paperpoint,papermeanlabel] table[x=drift,y=row]{\LfmMeans};
+\end{groupplot}
+\end{tikzpicture}
+\caption{Within-model hybrid primary-test means over three calibration seeds.
+Panels show prediction loss and drift separately, with model-specific axis
+ranges; no uncertainty interval is plotted. Qwen coverage is 8/8 test; 10/18 validation.
+LFM coverage is 8/8 test; 18/18 validation. Cross-model differences do not isolate
+architecture effects. The anchor worsens both Qwen metrics, while LFM's lower
+NLL accompanies higher residual drift.}
+\label{fig:hybrid-comparison}
+\end{figure*}
 Qwen's anchor has higher NLL and higher drift than whitening in every seed. This weakens the anchor hypothesis at its measured primary rank, even though its incomplete validation frontier prevents a complete frontier claim.\par\smallskip
 LFM shows the clearest disagreement between the metrics: anchor NLL is lower in every seed, while drift increases in every seed and is approximately 3.86 times the whitening mean. Its anchor NLL is also below the dense teacher's 3.998736, whereas its drift remains nonzero and much larger than whitening's. Better observed next-token likelihood therefore does not certify reproduction of the teacher's hidden-state computation. The result alone also cannot identify denoising, beneficial regularization or a particular causal mechanism. The three fully measured LFM validation ranks show the same qualitative likelihood/drift tradeoff, but remain development observations.\par\smallskip
 \subsection{Targeted compression yields modest whole-model storage savings and mixed timing}
 The BF16 practical cohort's dense checkpoint contains 1,999,883,711 bytes; each factorized checkpoint contains 1,982,003,507 bytes, including archive overhead. The reduction is 17,880,204 bytes, or 0.894\%. Identical anchor and whitening factor budgets yield identical checkpoint sizes. The 29.17\% reduction in targeted weights therefore translates to less than 1\% of this whole-model serialization, because most weights remain untouched.\par\smallskip
-Table 4. Separate BF16 practical cohort. Temperature is selected on validation from a bounded grid, then frozen; all five saved selections are approximately 1.090508. GiB uses $2^{30}$ bytes. These are descriptive full-test aggregates without paired block intervals.\par\smallskip
+Table~\ref{tab:bf16-practical} retains the individual BF16 conditions.\par\smallskip
+\begin{table}[t]
+\centering
+\caption{Separate BF16 practical cohort. Temperature is selected on validation
+from a bounded grid, then frozen; all five saved selections are approximately
+1.090508. GiB uses $2^{30}$ bytes. These are descriptive full-test aggregates
+without paired block intervals.}
+\label{tab:bf16-practical}
 {\scriptsize\setlength{\tabcolsep}{2pt}
 \noindent\begin{tabular}{@{}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}p{0.1800\columnwidth}@{}}\toprule
 BF16 condition & Seed & Raw NLL & Scaled NLL & Whole GiB \\
@@ -396,8 +515,14 @@ Anchor & 11 & 3.556826 & 3.542255 & 1.845885 \\
 Whitening & 23 & 3.568431 & 3.553267 & 1.845885 \\
 Anchor & 23 & 3.562949 & 3.545341 & 1.845885 \\
 \bottomrule\end{tabular}}\par\medskip
+\end{table}
 Temperature scaling reduces NLL for both the teacher and compressed conditions, without closing the teacher-relative NLL gap. This supports treating calibration as a control rather than interpreting raw likelihood differences as denoising. The practical BF16 rows are not pooled with historical FP16 quality or drift measurements.\par\smallskip
-Timing uses a resident NVIDIA GeForce RTX 4070 Ti, batch size one, 10 warmups and 30 synchronized samples. Prefill is measured at 128 and 512 tokens. Cached 128-token decode is timed separately and excludes the initial prompt pass. Table 5 compares anchor with same-seed BF16 whitening under identical workloads. Ratios below one indicate lower median latency; they are descriptive workload comparisons, not a new acceptance gate.\par\smallskip
+Timing uses a resident NVIDIA GeForce RTX 4070 Ti, batch size one, 10 warmups and 30 synchronized samples. Prefill is measured at 128 and 512 tokens. Cached 128-token decode is timed separately and excludes the initial prompt pass. Table~\ref{tab:latency-ratios} compares anchor with same-seed BF16 whitening under identical workloads. Ratios below one indicate lower median latency; they are descriptive workload comparisons, not a new acceptance gate.\par\smallskip
+\begin{table}[t]
+\centering
+\caption{Median latency ratios, anchor divided by matched whitening, for the
+BF16 practical cohort. Ratios below one favor the anchor.}
+\label{tab:latency-ratios}
 {\scriptsize\setlength{\tabcolsep}{2pt}
 \noindent\begin{tabular}{@{}p{0.3000\columnwidth}p{0.3000\columnwidth}p{0.3000\columnwidth}@{}}\toprule
 Workload & Seed 11 median ratio & Seed 23 median ratio \\
@@ -407,6 +532,7 @@ Decode 128 after prompt 128 & 1.1073 & 0.9679 \\
 Prefill 512 & 1.0108 & 0.9473 \\
 Decode 128 after prompt 512 & 0.9876 & 0.9580 \\
 \bottomrule\end{tabular}}\par\medskip
+\end{table}
 Median ratios vary by seed and workload: the anchor is slower for seed 11 at the 128-token conditions, while the observed seed-23 ratios favor it. Peak allocated/reserved memory and serialized bytes match between the paired factorized methods. These observations establish neither a consistent anchoring speed advantage nor general acceleration over the dense teacher. CUDA allocator peaks are not total device memory or system RAM. Whole-model reload probes cover a 128-token prompt and one cached next-token forward, not arbitrary generation or the entire test corpus.\par\smallskip
 \section{Discussion}
 LFM predicts text better under the anchored fit while its residual representations differ more from the teacher's. This result limits what likelihood alone can tell us about preservation. Residual similarity also has limits: $D$ compares states in fixed coordinates, and different states can implement similar functions. A stronger preservation claim needs agreement across final logits, task performance, drift measurements and generation tests. Smaller storage or a better score on one measure does not supply that evidence.\par\smallskip
@@ -416,7 +542,7 @@ Model-level storage and speed depend on which layers are compressed and how the 
 \section{Limitations and reproducibility}
 WikiText-2 has already influenced this project; native-test results are regression evidence, not a fresh-domain confirmation. No downstream task or free-running generation equivalence is established. A locked sample from C4, whose provenance is described in the T5 study, could provide fresh confirmation \cite{raffel2020t5}; HellaSwag and ARC-Challenge could evaluate additional capabilities \cite{zellers2019hellaswag} \cite{clark2018arc}. None was executed here.\par\smallskip
 The scope is attention-output replacement at recorded budgets. Multilayer perceptrons (MLPs), hybrid non-attention mixers, larger models and other rank allocations require separate conclusions. Three calibration seeds provide limited variation, and the later BF16 practical amendment has only two. Within-model matching does not make different model families or FP16/BF16 cohorts interchangeable. The Qwen frontier's eight absent validation measurements remain missing. The original strict numerical-readiness failure, incomplete coverage and unfulfilled promotion gates prevent promotion of a general preservation claim.\par\smallskip
-Every main table is reconstructed from the frozen evidence. The frozen evidence report (../../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md) identifies the source runs, and the revision manifest records the exact extraction fields. Selected paired intervals remain in the repository's evidence file (report.json). The full historical report preserves commands, package/device versions, asset revisions, token manifests, factor recipes, source/checkpoint hashes, failed attempts and recovery accounting. Reused records are not independent replications. Recorded charged wall time includes failed/retried work and some reboot downtime; the first reboot has an unbounded unlogged tail, so no exact 24 GPU-hour compliance claim is made. This revision uses the saved measurements without changing the fitting budget, model or dataset.\par\smallskip
+The tables and figures are reconstructed from the frozen evidence. The frozen evidence report (../../results/paper-v2/revised-report-20261014-151432-07c08d61/report.md) identifies the source runs, and the revision manifest records the exact extraction fields. Selected paired intervals remain in the repository's evidence file (report.json). The full historical report preserves commands, package/device versions, asset revisions, token manifests, factor recipes, source/checkpoint hashes, failed attempts and recovery accounting. Reused records are not independent replications. Recorded charged wall time includes failed/retried work and some reboot downtime; the first reboot has an unbounded unlogged tail, so no exact 24 GPU-hour compliance claim is made. This revision uses the saved measurements without changing the fitting budget, model or dataset.\par\smallskip
 \section{Future Scope}
 \subsection{Compression with a small neural network}
 A possible extension is to replace a selected dense projection with a small bottleneck neural network. Its input would pass through a narrower hidden layer before returning to the original output dimension, allowing a compact mapping to be learned from the original model's activations. Transformer knowledge distillation provides a related precedent for training smaller students from larger teachers \cite{jiao2020tinybert}. The proposed projection-level replacement would still require evaluation in the models and compression setting studied here.\par\smallskip

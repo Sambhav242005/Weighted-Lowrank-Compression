@@ -86,5 +86,12 @@
   "network_implemented": false,
   "research_experiments_run": false,
   "review_pdf": "Independent ReportLab review rendering; not exported from IEEE source",
-  "ieee_conference_source_sha256": "f6850d0407bfb24062a1f981bbe4f79d355f88fa590f96a0abfdde29d34c4226"
+  "initial_ieee_conference_source_sha256": "f6850d0407bfb24062a1f981bbe4f79d355f88fa590f96a0abfdde29d34c4226",
+  "ieee_conference_source_sha256": "44b15754403ade9a1c9a5535caed14e4bb4669344df5ecbaf24a51b3e9409097",
+  "in_place_chart_revision": {
+    "validation": "chart-validation.json",
+    "three_dense_tables_replaced_with_vector_figures": true,
+    "two_simple_tables_preserved": true,
+    "review_pdf_unchanged": true
+  }
 }

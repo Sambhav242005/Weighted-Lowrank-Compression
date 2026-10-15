@@ -17,7 +17,10 @@ and the [active execution ledger](results/paper-v2/revised-orchestration-2026101
 
 ## Start here
 
-- [Readable paper PDF](docs/paper-future-scope-20261015/manuscript.pdf),
+- [Current IEEE paper source](docs/paper-future-scope-20261015/ieee-conference.tex)
+  includes vector charts for the dense result comparisons and tables for the
+  simple BF16 and timing values. Its compiled editor preview has the current layout.
+- [Earlier review PDF](docs/paper-future-scope-20261015/manuscript.pdf),
   [plain-language abstract](docs/paper-future-scope-20261015/abstract.md), and
   [provisional IEEE conference source](docs/paper-future-scope-20261015/ieee-conference.tex).
   The latest edition removes both appendices and adds Future Scope, including a

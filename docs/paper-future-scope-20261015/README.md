@@ -3,6 +3,22 @@
 [Updated PDF](manuscript.pdf) · [IEEE conference source](ieee-conference.tex) ·
 [Reference-style LaTeX](manuscript.tex) · [Authored text](manuscript.source.md)
 
+The open **IEEE source** has since been edited in place to replace three dense
+results tables with self-contained vector charts. Gemma uses paired metric
+panels with sample seed standard-deviation whiskers. Composition uses signed
+differences around zero, with explicit scaled units and joint-improvement
+counts. Hybrid results use separate within-model panels and retain record
+coverage. The BF16 practical results and latency ratios remain numerical tables.
+All plotted values match the original tables; see
+[chart-validation.json](chart-validation.json). The eight equations, abstract,
+bibliography and Future Scope remain unchanged by this chart edit.
+
+Compile `ieee-conference.tex` in the current editor to see these charts. The
+review PDF, Markdown and reference-style LaTeX retain the earlier table layout.
+The original export scripts describe that earlier layout; preserve the edited
+IEEE source when making later builds. No separate paper PDF was generated for
+the in-place chart edit.
+
 Appendices A and B have been removed from this edition's paper, including their
 cross-references. The five main results tables, original equations, abstract,
 drift figure and numerical conclusions are preserved. The source experiment
