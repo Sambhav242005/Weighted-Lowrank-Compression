@@ -1,0 +1,8 @@
+{
+  "state": "passed",
+  "source_hashes_match": true,
+  "timing_counts": "20 samples per workload/method",
+  "within_original_900_second_cap": true,
+  "elapsed_including_prior_charge_seconds": 249.96800000000076,
+  "model_parity": "8 validation windows plus16 generated positions; no full-test PPL rerun"
+}

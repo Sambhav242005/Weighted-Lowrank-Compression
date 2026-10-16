@@ -1,0 +1,236 @@
+{
+  "kind": "GPU-only unchanged-factor execution ablation; no training",
+  "compute_cap_seconds": 600,
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "capability": [
+    6,
+    1
+  ],
+  "dtype": "float32",
+  "model": "google/gemma-3-270m",
+  "model_revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "source_factor_seed": 11,
+  "factor_rank": 275,
+  "source_run": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\results\\gemma270m-relu\\20261016-mvanbe94",
+  "targets": [
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    }
+  ],
+  "validation_split": {
+    "tokens": 257290,
+    "sha256": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc",
+    "positions": [
+      0,
+      256,
+      512,
+      768,
+      1024,
+      1280,
+      1536,
+      1792
+    ]
+  },
+  "baseline": "same two PyTorch linear operations on the same saved factors",
+  "changed_variable": "decode execution strategy; GPU cuBLAS prefill fixed for every method",
+  "methods": [
+    "pytorch",
+    "v1_fused_decode",
+    "staged",
+    "graph_staged",
+    "graph_cublas"
+  ],
+  "graph_output_semantics": "input copy, replay, output clone; independent returned tensors; buffers per stream",
+  "warmups": 5,
+  "samples_per_condition": 20,
+  "micro_calls_per_sample": 10,
+  "measurement_order": "rotate method order each round",
+  "micro_shapes": [
+    1,
+    128,
+    256
+  ],
+  "model_workloads": [
+    "prefill128",
+    "prefill256",
+    "prompt128_decode32"
+  ],
+  "parity": "eight 256-token validation windows plus16 generated positions; not full-test PPL",
+  "source_hashes": {
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\docs\\benchmark_gpu_lowrank_v2_20261016.py": "20b9c58e1b2b6678400d6b5cfb545d8a69b652ebe065cb6a694988fb9fd25dcb",
+    "src\\gpu_lowrank_v2.py": "d8c29831ffbe277c126e5ad4faf51a37780bab9f37b19bd979db4d92ac91039c",
+    "src\\gpu_lowrank.py": "42ea0fcf02619c69605a118297485e3c1c61aaa967f457e18b335e8119ee25d6",
+    "docs\\benchmark_gpu_lowrank_20261016.py": "d203eb983a39939f8e432e0d71ca8b8105a4d4292d7c3a2e6bb3e12d4d51e0a6"
+  },
+  "packages": {
+    "torch": "2.7.1+cu118",
+    "transformers": "4.55.4",
+    "datasets": "3.6.0",
+    "huggingface_hub": "0.34.4",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2"
+  },
+  "git_revision": "ec01723a372be9acfedd0aed5a0f71a1fae11e28",
+  "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe docs/benchmark_gpu_lowrank_v2_20261016.py --output results/gpu-lowrank-v2/20261016-mvb5e5qd",
+  "memory_scope": "retained methods/graphs; not isolated deployment memory"
+}

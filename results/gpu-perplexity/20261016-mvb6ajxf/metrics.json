@@ -1,0 +1,72 @@
+{
+  "decode_subset": {
+    "dense": {
+      "targets": 128,
+      "nll_sum": 481.12305021687644,
+      "nll": 3.758773829819347,
+      "perplexity": 42.895796172665364,
+      "scope": "test positions128..255 only"
+    },
+    "pytorch_lowrank": {
+      "targets": 128,
+      "nll_sum": 521.7548198218283,
+      "nll": 4.076209529858033,
+      "perplexity": 58.921705067162264,
+      "scope": "test positions128..255 only"
+    },
+    "staged": {
+      "targets": 128,
+      "nll_sum": 521.754814503045,
+      "nll": 4.0762094883050395,
+      "perplexity": 58.92170261878906,
+      "scope": "test positions128..255 only"
+    },
+    "graph_staged": {
+      "targets": 128,
+      "nll_sum": 521.754814503045,
+      "nll": 4.0762094883050395,
+      "perplexity": 58.92170261878906,
+      "scope": "test positions128..255 only"
+    },
+    "graph_cublas": {
+      "targets": 128,
+      "nll_sum": 521.7548198218283,
+      "nll": 4.076209529858033,
+      "perplexity": 58.921705067162264,
+      "scope": "test positions128..255 only"
+    }
+  },
+  "full_test": {
+    "dense": {
+      "nll_sum": 1126709.1461575925,
+      "targets": 292281,
+      "nll": 3.8548833011984787,
+      "perplexity": 47.22310573986172
+    },
+    "pytorch_lowrank": {
+      "nll_sum": 1188327.6130751371,
+      "targets": 292281,
+      "nll": 4.0657025707286385,
+      "perplexity": 58.30585812509836
+    },
+    "staged": {
+      "nll_sum": 1188327.6130751371,
+      "targets": 292281,
+      "nll": 4.0657025707286385,
+      "perplexity": 58.30585812509836
+    },
+    "graph_staged": {
+      "nll_sum": 1188327.6130751371,
+      "targets": 292281,
+      "nll": 4.0657025707286385,
+      "perplexity": 58.30585812509836
+    },
+    "graph_cublas": {
+      "nll_sum": 1188327.6130751371,
+      "targets": 292281,
+      "nll": 4.0657025707286385,
+      "perplexity": 58.30585812509836
+    }
+  },
+  "elapsed_seconds": 1851.7649999999999
+}

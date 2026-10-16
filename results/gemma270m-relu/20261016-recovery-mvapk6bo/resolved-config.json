@@ -1,0 +1,284 @@
+{
+  "model": "google/gemma-3-270m",
+  "model_revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "seeds": [
+    11,
+    23
+  ],
+  "dtype": "float32",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "gpu_capability": [
+    6,
+    1
+  ],
+  "cuda_arch_list": [
+    "sm_37",
+    "sm_50",
+    "sm_60",
+    "sm_61",
+    "sm_70",
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_90",
+    "compute_37"
+  ],
+  "cuda_runtime": "11.8",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.7.1+cu118",
+    "transformers": "4.55.4",
+    "datasets": "3.6.0",
+    "huggingface_hub": "0.34.4",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2"
+  },
+  "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe src/gemma270m_relu_study.py run --assets paper-assets/gemma270m-study-assets-20261016.json --output results/gemma270m-relu/20261016-mvanbe94",
+  "source_hashes": {
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\src\\gemma270m_relu_study.py": "79f623541a188f5be67dc1ccacf3749e07b31a526425b2ca6260c9f9e0fe7296",
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\src\\paper_math.py": "dc26d33d42e5136680e7a666c25b2436f7b27f2bc2b1695197a796cf7c40b4d6"
+  },
+  "cpu_threads": 4,
+  "compute_cap_seconds": 7200,
+  "context": 256,
+  "stride": 128,
+  "fit_updates": 200,
+  "fit_batch": 256,
+  "learning_rate": 0.001,
+  "parameter_ceiling_fraction": 0.7,
+  "warmups": 5,
+  "measurements": 20,
+  "status": "exploratory",
+  "quality_device": "cuda",
+  "cpu_quality": "fixed-window parity only",
+  "seed_definition": "ReLU initialization/minibatch seeds; calibration positions shared across seeds",
+  "baseline_reuse": "Whitening is deterministic with shared calibration; two seed labels are not independent repeats",
+  "budget_match": "Common 70 percent ceiling; exact counts reported, bias overhead makes ReLU slightly larger",
+  "residual_drift_definition": "relative RMSE at each hidden-state boundary; final boundary is final-normalized",
+  "git_revision": "ec01723a372be9acfedd0aed5a0f71a1fae11e28",
+  "dirty_diff": "diff --git a/.gitignore b/.gitignore\nindex 02fd10f..9b77cc4 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -26,6 +26,7 @@ calibration/\n .cache/\n models--*/\n paper-assets/wikitext-*/\n+paper-assets/gemma270m-*/\n \n # ---- Tooling output ----\n graphify-out/",
+  "splits": {
+    "train": {
+      "tokens": 2459302,
+      "sha256": "950ace441dd12b00ed9aec525a4d07d6a8f70ba2cf6cf9cc7cc39bc379accbca",
+      "positions": [
+        191744,
+        433152,
+        489984,
+        631040,
+        847360,
+        1014016,
+        1222400,
+        1352192,
+        1367296,
+        1378048,
+        1537024,
+        1763328,
+        1775872,
+        1881088,
+        2303488,
+        2329088
+      ]
+    },
+    "validation": {
+      "tokens": 257290,
+      "sha256": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc",
+      "positions": [
+        0,
+        256,
+        512,
+        768,
+        1024,
+        1280,
+        1536,
+        1792
+      ]
+    },
+    "test": {
+      "tokens": 292282,
+      "sha256": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc",
+      "positions": []
+    }
+  },
+  "targets": [
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    }
+  ],
+  "recovery": {
+    "source_run": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\results\\gemma270m-relu\\20261016-mvanbe94",
+    "prefix_windows": 1881,
+    "charged_original_seconds": 3593,
+    "remaining_seconds_at_resume": 3607,
+    "accounting": "Original directory creation through first observed interruption, rounded up; includes uncertain tail",
+    "started_utc": "2026-10-16T08:31:19.877307+00:00",
+    "source_progress_sha256": "d3729c3f6ca543a3ae4511dda71a31ff6a6efabc5c2f8b872a2d632e8760a28e",
+    "source_metrics_sha256": "57053864c34d1c7b997849dbfa15fcd6197c37c240758c96dc071f06b75815a0",
+    "source_config_sha256": "0e1f8455f156c9d5558c61c12becd48543dd6921a62e917fe3a18b49f5f08a81",
+    "recovery_source_sha256": "b9949fd4973efd591937da7ffac7c692f3f2951dc00009b787ca970af6e843e1",
+    "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe src/gemma270m_resume.py --source results/gemma270m-relu/20261016-mvanbe94 --output results/gemma270m-relu/20261016-recovery-mvapk6bo",
+    "reused": "Training, timings, storage, parity and quality prefix; no new independent repeats",
+    "discarded_tail": "Any raw windows beyond the last complete drift checkpoint are not counted"
+  }
+}

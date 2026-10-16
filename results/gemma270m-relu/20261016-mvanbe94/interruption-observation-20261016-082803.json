@@ -1,0 +1,13 @@
+{
+  "observed_at_utc": "2026-10-16T08:28:03.311277+00:00",
+  "state": "interrupted",
+  "original_status_is_stale": true,
+  "completed_checkpoint_windows": 1881,
+  "expected_windows": 2283,
+  "python_process_observed": false,
+  "gpu_memory_mib": 0,
+  "stderr_bytes": 0,
+  "cause": "unknown; no Python process or live tool session remains",
+  "run_directory_created_utc": "2026-10-16T07:28:10.525627+00:00",
+  "last_checkpoint_utc": "2026-10-16T08:26:17.476284+00:00"
+}

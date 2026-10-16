@@ -1,0 +1,18 @@
+{
+  "launcher_pid": 17316,
+  "children": [
+    {
+      "pid": 14948,
+      "name": "conhost.exe"
+    },
+    {
+      "pid": 5340,
+      "name": "python.exe"
+    },
+    {
+      "pid": 16768,
+      "name": "python.exe"
+    }
+  ],
+  "launch_mode": "Start-Process hidden, detached from tool execution session"
+}

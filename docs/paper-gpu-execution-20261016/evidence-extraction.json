@@ -1,0 +1,72 @@
+{
+  "before_sha256": "cb69de25d19cdfd4236a33d2d63a7930841ed23f6186e2a476b991bdde368f12",
+  "after_sha256": "09d66acc8d63da2b2ae71d01a1ab91c8d7bec82a3a65f631a1abad54d9be69c1",
+  "frozen_inputs": {
+    "timing": {
+      "path": "results\\gpu-lowrank-v2\\20261016-mvb5e5qd\\metrics.json",
+      "sha256": "1aeacae2c5efddfa5b7a2355b2f7a0623f53f5996545202331a316ee0a10f88d"
+    },
+    "quality": {
+      "path": "results\\gpu-perplexity\\20261016-mvb6ajxf\\metrics.json",
+      "sha256": "26a0b2a20429dff92e946164f5f021646437bdb18cb521385af6d242c637c7bd"
+    },
+    "timing_audit": {
+      "path": "results\\gpu-lowrank-v2\\20261016-mvb5e5qd\\audit.json",
+      "sha256": "de3be7a80492f1d83e70ad63fb1c597988ab9c6cc36875275e483177c1c4fe44"
+    },
+    "quality_audit": {
+      "path": "results\\gpu-perplexity\\20261016-mvb6ajxf\\audit.json",
+      "sha256": "e99c461d0709b48852a861c1189090ff86e0e67d23f16b9f5ec6974121aefc1a"
+    },
+    "storage": {
+      "path": "results\\gemma270m-relu\\20261016-mvanbe94\\metrics.json",
+      "sha256": "57053864c34d1c7b997849dbfa15fcd6197c37c240758c96dc071f06b75815a0"
+    }
+  },
+  "table_values": [
+    {
+      "method": "pytorch",
+      "quality_method": "pytorch_lowrank",
+      "ppl": 58.30585812509836,
+      "latency_ms": [
+        46.27250000004324,
+        66.1835500000052,
+        1866.6404000000512
+      ]
+    },
+    {
+      "method": "staged",
+      "quality_method": "staged",
+      "ppl": 58.30585812509836,
+      "latency_ms": [
+        46.99415000004592,
+        65.90560000000778,
+        1921.131849999938
+      ]
+    },
+    {
+      "method": "graph_staged",
+      "quality_method": "graph_staged",
+      "ppl": 58.30585812509836,
+      "latency_ms": [
+        47.285600000009254,
+        65.81265000005487,
+        1940.790199999924
+      ]
+    },
+    {
+      "method": "graph_cublas",
+      "quality_method": "graph_cublas",
+      "ppl": 58.30585812509836,
+      "latency_ms": [
+        46.944449999955395,
+        66.09930000001896,
+        1939.4128000000137
+      ]
+    }
+  ],
+  "dense_ppl": 47.22310573986172,
+  "new_experiments_run_during_edit": false,
+  "historical_equations_and_figures_preserved": true,
+  "note": "Primary IEEE source updated; reference-style manuscript/Markdown remain prior historical versions."
+}

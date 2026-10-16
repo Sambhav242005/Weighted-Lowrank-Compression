@@ -1,0 +1,47 @@
+{
+  "state": "passed",
+  "teacher_tensors_matching_upstream": 236,
+  "checkpoint_checks": {
+    "dense": {
+      "checkpoint_hash_matches": true,
+      "unchanged_non_target_tensors": 219,
+      "reload_matches_saved_replacements": true,
+      "tied_embedding_preserved": true
+    },
+    "whitening_seed11": {
+      "checkpoint_hash_matches": true,
+      "unchanged_non_target_tensors": 219,
+      "reload_matches_saved_replacements": true,
+      "tied_embedding_preserved": true
+    },
+    "relu_seed11": {
+      "checkpoint_hash_matches": true,
+      "unchanged_non_target_tensors": 219,
+      "reload_matches_saved_replacements": true,
+      "tied_embedding_preserved": true
+    },
+    "whitening_seed23": {
+      "checkpoint_hash_matches": true,
+      "unchanged_non_target_tensors": 219,
+      "reload_matches_saved_replacements": true,
+      "tied_embedding_preserved": true
+    },
+    "relu_seed23": {
+      "checkpoint_hash_matches": true,
+      "unchanged_non_target_tensors": 219,
+      "reload_matches_saved_replacements": true,
+      "tied_embedding_preserved": true
+    }
+  },
+  "test_targets_per_method": 292281,
+  "source_hashes_match": true,
+  "whitening_reuse_verified": true,
+  "limitations": [
+    "One architecture; two optimization seeds and shared calibration windows",
+    "Common ceiling, not exact parameter equality (ReLU biases)",
+    "CPU likelihood is not evaluated over the full test; parity uses one window",
+    "Fixed benchmark order and observed repeated-baseline timing variability",
+    "Process RSS is cumulative; reserved GPU memory includes allocator history",
+    "Standard PyTorch kernels, no custom fused CUDA implementation"
+  ]
+}

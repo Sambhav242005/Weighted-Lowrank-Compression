@@ -1,0 +1,9 @@
+{
+  "state": "passed",
+  "windows_per_method": 2283,
+  "targets_per_method": 292281,
+  "source_hashes_match": true,
+  "unique_window_method_rows": 11415,
+  "nll_recomputed_from_rows": true,
+  "elapsed_within_cap": true
+}

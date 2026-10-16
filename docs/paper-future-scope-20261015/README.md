@@ -1,5 +1,16 @@
 # Paper with Future Scope and no appendices
 
+## GPU execution addition — 16 October 2026
+
+[Latest IEEE PDF — nine pages](ieee-conference-gpu-execution-20261016.pdf).
+
+The primary IEEE source now includes the separate Gemma 3 270M FP32 GPU study,
+with full-test PPL, a decode diagnostic and a matched execution-latency table.
+It reports likelihood agreement with the compressed reference and no established
+acceleration. The earlier quality cohorts remain separate. See the
+[revision evidence](../paper-gpu-execution-20261016/README.md). The reference-style
+manuscript and Markdown below remain historical versions.
+
 ## Numerical-control wording update — 16 October 2026
 
 The current LaTeX, Markdown and abstract sources clarify that the recorded

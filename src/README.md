@@ -26,3 +26,8 @@ contracts and source hashes depend on stable locations.
 Other modules preserve earlier experiments. They are not additional steps in
 the active study and should not be run merely because they appear here. Keep
 active study code and configurations frozen while GPU work is running.
+
+The separately authorized Gemma 3 270M study uses `gemma270m_relu_study.py` and
+the additive `gemma270m_resume.py` recovery wrapper. Its completed FP32 CPU/GPU
+results and limits are in [the dated report](../docs/GEMMA270M_RESULTS_20261016.md).
+These entry points do not extend or restart the earlier paper cohorts.

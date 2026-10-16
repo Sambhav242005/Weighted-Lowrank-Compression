@@ -1,0 +1,75 @@
+{
+  "purpose": "forward-only diagnosis, no fitting, no test-split probing",
+  "cap_seconds": 600,
+  "model": "google/gemma-3-270m",
+  "model_revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dtype": "float32",
+  "splits": {
+    "train": {
+      "tokens": 2459302,
+      "sha256": "950ace441dd12b00ed9aec525a4d07d6a8f70ba2cf6cf9cc7cc39bc379accbca",
+      "positions": [
+        191744,
+        433152,
+        489984,
+        631040,
+        847360,
+        1014016,
+        1222400,
+        1352192,
+        1367296,
+        1378048,
+        1537024,
+        1763328,
+        1775872,
+        1881088,
+        2303488,
+        2329088
+      ]
+    },
+    "validation": {
+      "tokens": 257290,
+      "sha256": "ca4e30b6140f4ef936abae3189768fdfab337cd40cd7d5543d2a4c461e4f1ccc",
+      "positions": [
+        0,
+        256,
+        512,
+        768,
+        1024,
+        1280,
+        1536,
+        1792
+      ]
+    },
+    "test": {
+      "tokens": 292282,
+      "sha256": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc",
+      "positions": []
+    }
+  },
+  "seeds": [
+    11,
+    23
+  ],
+  "target_family": "all18 attention o_proj",
+  "baseline": "immutable saved whitening at rank275",
+  "controls": "factor-copy, clipping, sign identity, train-derived shift, prefix-input drift, dense CPU hooks",
+  "source_sha256": "b397e2e4e52c0cdbee755cd21ec4d05cf19fffd156a8775557fde8b5bb3d8b8e",
+  "original_source_sha256": {
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\src\\gemma270m_relu_study.py": "79f623541a188f5be67dc1ccacf3749e07b31a526425b2ca6260c9f9e0fe7296",
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\src\\paper_math.py": "dc26d33d42e5136680e7a666c25b2436f7b27f2bc2b1695197a796cf7c40b4d6"
+  },
+  "packages": {
+    "torch": "2.7.1+cu118",
+    "transformers": "4.55.4",
+    "datasets": "3.6.0",
+    "huggingface_hub": "0.34.4",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2"
+  },
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "cpu_threads": 4,
+  "git_revision": "ec01723a372be9acfedd0aed5a0f71a1fae11e28",
+  "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe docs/diagnose_gemma270m_20261016.py --output results/gemma270m-diagnosis/20261016-mvaq5xb4"
+}

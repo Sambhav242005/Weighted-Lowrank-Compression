@@ -1,0 +1,69 @@
+{
+  "purpose": "GPU-only test perplexity of existing inference paths; no fitting or selection",
+  "compute_cap_seconds": 3600,
+  "model": "google/gemma-3-270m",
+  "model_revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dtype": "float32",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "methods": [
+    "dense",
+    "pytorch_lowrank",
+    "staged",
+    "graph_staged",
+    "graph_cublas"
+  ],
+  "representation": "unchanged whitening factors, all18 attention outputs, rank275",
+  "factor_seed": 11,
+  "new_training_seeds": [],
+  "source_run": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\results\\gemma270m-relu\\20261016-mvanbe94",
+  "baseline": "dense and existing GPU PyTorch low-rank, evaluated over identical targets",
+  "context": 256,
+  "stride": 128,
+  "logit_chunk": 16,
+  "test_manifest": {
+    "tokens": 292282,
+    "sha256": "5a4bcb9f9cff5ca58f896f3cf809b277588f7cab30ebbae01ba47dd1feb486dc",
+    "positions": []
+  },
+  "standard_ppl_path": "multi-token prefill uses existing GPU cuBLAS for new execution modules",
+  "decode_diagnostic": {
+    "split": "test",
+    "prefix_tokens": 128,
+    "scored_positions": [
+      128,
+      256
+    ],
+    "teacher_forced": true,
+    "targets": 128,
+    "not_full_test": true
+  },
+  "packages": {
+    "torch": "2.7.1+cu118",
+    "transformers": "4.55.4",
+    "datasets": "3.6.0",
+    "huggingface_hub": "0.34.4",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2"
+  },
+  "source_hashes": {
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\docs\\evaluate_gpu_perplexity_20261016.py": "31f22151eb760513c89568ac92e0ab0c21ce582c4e32ad4b5499b6dbe89d7ff0",
+    "src\\gpu_lowrank_v2.py": "d8c29831ffbe277c126e5ad4faf51a37780bab9f37b19bd979db4d92ac91039c",
+    "src\\gpu_lowrank.py": "42ea0fcf02619c69605a118297485e3c1c61aaa967f457e18b335e8119ee25d6",
+    "src\\gemma270m_relu_study.py": "79f623541a188f5be67dc1ccacf3749e07b31a526425b2ca6260c9f9e0fe7296"
+  },
+  "git_revision": "ec01723a372be9acfedd0aed5a0f71a1fae11e28",
+  "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe docs/evaluate_gpu_perplexity_20261016.py --output results/gpu-perplexity/20261016-mvb6ajxf",
+  "expected_artifacts": [
+    "resolved-config.json",
+    "stdout.log",
+    "stderr.log",
+    "metrics.json",
+    "window-metrics.jsonl",
+    "checkpoint-*.json",
+    "report.md",
+    "audit.json"
+  ],
+  "limits": "one model/checkpoint and previously seen test set; execution comparison, not fresh generalization"
+}

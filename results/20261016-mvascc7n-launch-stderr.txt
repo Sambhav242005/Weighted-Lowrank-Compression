@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\docs\benchmark_gpu_lowrank_20261016.py", line 243, in <module>
+    main()
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\docs\benchmark_gpu_lowrank_20261016.py", line 233, in main
+    run(args.output)
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\docs\benchmark_gpu_lowrank_20261016.py", line 63, in run
+    rt = runtime(torch.device("cuda", torch.cuda.current_device()))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\src\gpu_lowrank.py", line 130, in runtime
+    _runtimes[index] = Runtime(torch.device("cuda", index))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\src\gpu_lowrank.py", line 97, in __init__
+    self._check(self.driver.cuModuleLoadDataEx(C.byref(self.module), ptx, 0, None, None))
+  File "C:\Users\sambh\Desktop\Weighted-Lowrank-Compression\src\gpu_lowrank.py", line 109, in _check
+    raise RuntimeError(f"CUDA driver error {code}: {name.value}")
+RuntimeError: CUDA driver error 201: b'CUDA_ERROR_INVALID_CONTEXT'

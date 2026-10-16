@@ -1,5 +1,29 @@
 # ResearchCompression
 
+The primary IEEE paper now includes the separate Gemma 3 270M GPU execution
+results and full-test perplexity comparison. See the
+[manuscript revision and evidence](docs/paper-gpu-execution-20261016/README.md).
+
+**GPU-only execution follow-up:** a custom CUDA kernel now runs the unchanged
+`U(Vx)` factors with no ReLU. Numerical checks pass on the tested validation and
+decode inputs, but this GTX 1050 implementation establishes no speed advantage;
+using it for all prefill rows is substantially slower. See the
+[GPU execution results](docs/GPU_LOWRANK_RESULTS_20261016.md).
+
+A second [GPU reuse/CUDA Graph comparison](docs/GPU_LOWRANK_V2_RESULTS_20261016.md)
+also completed: numerical checks pass, but it establishes no acceleration over
+the existing GPU PyTorch factors.
+
+**16 October 2026 — separate Gemma 3 270M study completed:** FP32 CPU/GPU
+comparison of dense, whitening and small ReLU attention-output replacements.
+ReLU loses substantially more held-out quality, saves about 1.32% of the complete
+checkpoint, and establishes no consistent speed advantage. See the
+[results and limitations](docs/GEMMA270M_RESULTS_20261016.md). This study is separate
+from the earlier paper cohorts below.
+
+The [follow-up diagnosis](docs/GEMMA270M_DIAGNOSIS_20261016.md) measures why the
+ReLU setup fails and records proposed alternatives without changing the frozen run.
+
 **Authorized bounded work is complete: five BF16 practical conditions, two
 seeds (11 and 23).** No research GPU worker remains; follow-up automation is paused.
 The old FP16/INT8 run remains stopped. See the

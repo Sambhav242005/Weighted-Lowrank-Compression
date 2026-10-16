@@ -26,6 +26,7 @@ calibration/
 .cache/
 models--*/
 paper-assets/wikitext-*/
+paper-assets/gemma270m-*/
 
 # ---- Tooling output ----
 graphify-out/

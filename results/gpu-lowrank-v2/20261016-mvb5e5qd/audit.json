@@ -1,0 +1,8 @@
+{
+  "state": "passed",
+  "source_hashes_match": true,
+  "samples_per_condition": 20,
+  "compute_budget_passed": true,
+  "elapsed_seconds": 290.98400000000004,
+  "numerical_checks": "8 validation windows and16 greedy positions per new method; no full test rerun"
+}

@@ -1,0 +1,22 @@
+{
+  "source": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\docs\\paper-future-scope-20261015\\ieee-conference.tex",
+  "source_sha256": "5856cb715d841bac6f3f4a3407274457384a9bce8622386b01952aea735edc25",
+  "pdf": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\docs\\paper-future-scope-20261015\\ieee-conference-gpu-execution-20261016.pdf",
+  "pdf_sha256": "034e5ddab4994bb91adc65b4228235338aa67f15c7e2e147ae8fe25b9a65c4e1",
+  "page_count": 9,
+  "compiler": "Tectonic 0.17.0 x86_64-pc-windows-msvc",
+  "frozen_evidence_hashes_match": true,
+  "pre_edit_source_preserved": true,
+  "all_table_values_found": true,
+  "text_outside_page_bounds": [],
+  "gpu_table_pages": [
+    5
+  ],
+  "new_experiments": false,
+  "visual_review": "All nine pages inspected as rendered contact sheet; pages 5 and 7 additionally inspected at reading size. No clipping, overlap or broken table observed.",
+  "all_fonts_embedded": true,
+  "embedded_font_count": 19,
+  "compiler_archive_sha256": "f61ce51f0b0ade1015b7de7ef368541c5424e9756ecbd0d7af97d6d48030845f",
+  "compiler_warnings": "Underfull horizontal/vertical boxes; no overfull boxes or compile errors.",
+  "compile_command": "rtk .cache/tectonic-0.17.0/tectonic.exe --untrusted --keep-logs --outdir docs/proofs/gpu-execution-20261016 docs/paper-future-scope-20261015/ieee-conference.tex"
+}

@@ -1,0 +1,26 @@
+{
+  "completed_windows": 2041,
+  "expected_windows": 2283,
+  "aggregates": {
+    "dense": {
+      "nll_sum": 1006452.4211867452,
+      "targets": 261375
+    },
+    "pytorch_lowrank": {
+      "nll_sum": 1062255.3331530094,
+      "targets": 261375
+    },
+    "staged": {
+      "nll_sum": 1062255.3331530094,
+      "targets": 261375
+    },
+    "graph_staged": {
+      "nll_sum": 1062255.3331530094,
+      "targets": 261375
+    },
+    "graph_cublas": {
+      "nll_sum": 1062255.3331530094,
+      "targets": 261375
+    }
+  }
+}

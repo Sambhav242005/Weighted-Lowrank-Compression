@@ -1,0 +1,9 @@
+{
+  "model": "google/gemma-3-270m",
+  "revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "snapshot": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\paper-assets\\gemma270m-9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset_path": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\paper-assets\\wikitext-b08601e04326c79dfdd32d625aee71d232d685c3",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "model_sha256": "abb58eb73aece5163624090d5383c59cbcdb9e9539ec84cb864f74386c4b21d5",
+  "preflight": "13 offline tests passed; CUDA GEMM finite on sm61"
+}

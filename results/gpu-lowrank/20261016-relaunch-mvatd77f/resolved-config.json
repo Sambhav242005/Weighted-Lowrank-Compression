@@ -1,0 +1,245 @@
+{
+  "kind": "GPU-only execution optimization; no refitting or activation changes",
+  "model": "google/gemma-3-270m",
+  "model_revision": "9b0cfec892e2bc2afd938c98eabe4e4a7b1e0ca1",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "source_run": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\results\\gemma270m-relu\\20261016-mvanbe94",
+  "factor_seed": 11,
+  "factor_rank": 275,
+  "targets": [
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        640,
+        1024
+      ],
+      "linear_rank": 275,
+      "relu_width": 275
+    }
+  ],
+  "dtype": "float32",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "capability": [
+    6,
+    1
+  ],
+  "packages": {
+    "torch": "2.7.1+cu118",
+    "transformers": "4.55.4",
+    "datasets": "3.6.0",
+    "huggingface_hub": "0.34.4",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2"
+  },
+  "source_hashes": {
+    "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\docs\\benchmark_gpu_lowrank_20261016.py": "d203eb983a39939f8e432e0d71ca8b8105a4d4292d7c3a2e6bb3e12d4d51e0a6",
+    "src/gpu_lowrank.py": "42ea0fcf02619c69605a118297485e3c1c61aaa967f457e18b335e8119ee25d6"
+  },
+  "kernel_sha256": "fc05470d22e2e640ee41a485dfb35e419720e4ff7976a92a6215e3746abaef07",
+  "nvrtc_options": [
+    "--gpu-architecture=compute_61",
+    "--std=c++11"
+  ],
+  "compute_cap_seconds": 900,
+  "git_revision": "ec01723a372be9acfedd0aed5a0f71a1fae11e28",
+  "prior_attempt": "C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\results\\gpu-lowrank\\20261016-mvascc7n",
+  "prior_attempt_charge_seconds": 27,
+  "remaining_seconds_at_start": 873,
+  "changed_condition": "Explicit PyTorch CUDA primary-context creation before driver module loading",
+  "command": "rtk C:\\Users\\sambh\\Desktop\\Weighted-Lowrank-Compression\\.venv-gemma270m\\Scripts\\python.exe docs/benchmark_gpu_lowrank_20261016.py --output results/gpu-lowrank/20261016-relaunch-mvatd77f --prior-attempt results/gpu-lowrank/20261016-mvascc7n",
+  "micro_grid": {
+    "rows": [
+      1,
+      4,
+      16,
+      128,
+      256
+    ],
+    "tiles": [
+      64,
+      128,
+      640
+    ],
+    "warmups": 10,
+    "samples": 20,
+    "calls_per_sample": 10
+  },
+  "model_timing": {
+    "warmups": 5,
+    "samples": 20,
+    "order": "rotated by sample",
+    "prefill": [
+      128,
+      256
+    ],
+    "decode": "128-token prompt plus 32 cached steps, no EOS stopping"
+  },
+  "quality": "Eight original validation windows; last-position logits and full hidden-state numerical parity; no full-test PPL rerun",
+  "memory_scope": "Retained reference and candidate modules; not isolated deployment memory",
+  "expected_artifacts": [
+    "stdout.log",
+    "stderr.log",
+    "resolved-config.json",
+    "metrics.json",
+    "report.md",
+    "kernel.cu",
+    "kernel.ptx"
+  ],
+  "tile_selection": {
+    "tile": 64,
+    "rule": "lowest median 1-row host-wall latency on fixed synthetic micro grid"
+  }
+}
