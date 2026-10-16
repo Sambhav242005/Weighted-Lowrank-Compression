@@ -1,6 +1,27 @@
 # Paper with Future Scope and no appendices
 
-[Latest IEEE PDF](ieee-conference-side-values.pdf) · [IEEE conference source](ieee-conference.tex) ·
+## Numerical-control wording update — 16 October 2026
+
+The current LaTeX, Markdown and abstract sources clarify that the recorded
+numerical failures concern full-rank SVD controls. They do not demonstrate
+failure of whitening or anchoring; method-specific full-rank numerical
+equivalence remains unestablished by those controls. The dashboard and reader
+guide use the same qualification. No measurements or experiment settings changed.
+
+Both updated sources were successfully compiled with the existing Tectonic
+0.17.0 compiler after the desktop preview compiler encountered an environment
+error. The new [IEEE PDF](ieee-conference-controls-20261016.pdf) and
+[reference PDF](manuscript-controls-20261016.pdf) contain the clarified wording.
+The dashboard and reader guide now link these exports. The reference source
+also uses TeX arrows to avoid missing glyphs in its result table.
+Source/PDF hashes and export checks are recorded in
+[the new validation record](controls-pdf-validation-20261016.json).
+All earlier PDFs and validation records are preserved. The historical export
+descriptions below refer to those earlier PDFs.
+
+## Previous exports — 15 October 2026
+
+[Previous IEEE PDF](ieee-conference-side-values.pdf) · [IEEE conference source](ieee-conference.tex) ·
 [Reference-style LaTeX](manuscript.tex) · [Authored text](manuscript.source.md)
 
 The eight-page IEEE PDF is exported directly from the current open source,

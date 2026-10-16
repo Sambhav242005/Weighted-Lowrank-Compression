@@ -1,0 +1,35 @@
+{
+  "exported_at_utc": "2026-10-16T03:22:57.195815+00:00",
+  "compiler": "Tectonic 0.17.0; existing locally verified compiler",
+  "artifacts": [
+    {
+      "source": "ieee-conference.tex",
+      "source_sha256": "cb69de25d19cdfd4236a33d2d63a7930841ed23f6186e2a476b991bdde368f12",
+      "pdf": "ieee-conference-controls-20261016.pdf",
+      "pdf_sha256": "3499e59602b0f591d602d565b41591273e95b4f149e8de39df7c36afc639b354",
+      "pages": 8,
+      "all_fonts_embedded": true,
+      "text_outside_page_bounds": false,
+      "updated_control_wording_present": true,
+      "future_scope_page": 7,
+      "bytes": 223951
+    },
+    {
+      "source": "manuscript.tex",
+      "source_sha256": "6a4b288020ba962f408f334ad3176ef2ad8eab6a382c7cafe801cfacaf98e16c",
+      "pdf": "manuscript-controls-20261016.pdf",
+      "pdf_sha256": "5c18243d0c26b3616dfef7a1b2a4379bfb29801964bbddd7489473cc8c371973",
+      "pages": 7,
+      "all_fonts_embedded": true,
+      "text_outside_page_bounds": false,
+      "updated_control_wording_present": true,
+      "future_scope_page": 5,
+      "bytes": 205344
+    }
+  ],
+  "earlier_pdf_exports_preserved": true,
+  "research_measurements_changed": false,
+  "research_experiments_run": false,
+  "compiler_warnings": "Underfull boxes and Fontconfig configuration warning; no overfull boxes or missing glyph warnings in final builds.",
+  "visual_inspection": "All pages reviewed in contact sheets; IEEE control and Future Scope pages additionally inspected at reading resolution."
+}

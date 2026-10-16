@@ -1,10 +1,10 @@
 {
   "updated": "2026-10-15",
   "source_paper": "docs\\paper-future-scope-20261015\\ieee-conference.tex",
-  "source_paper_sha256": "6f5c98348ac06bf9084910006cda3ed4dc8c8ad9b3f593ee59577eefb35cae52",
+  "source_paper_sha256": "cb69de25d19cdfd4236a33d2d63a7930841ed23f6186e2a476b991bdde368f12",
   "evidence_status": "exploratory",
-  "current_pdf": "https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/ieee-conference-side-values.pdf",
-  "current_pdf_sha256": "9050f914c4ea36505ce213a714a62ceecbc55ec105389319741af374a12a15c8",
+  "current_pdf": "https://github.com/Sambhav242005/Weighted-Lowrank-Compression/blob/main/docs/paper-future-scope-20261015/ieee-conference-controls-20261016.pdf",
+  "current_pdf_sha256": "3499e59602b0f591d602d565b41591273e95b4f149e8de39df7c36afc639b354",
   "composition_number_layout": "Signed, right-aligned side columns in the existing scaled units",
   "gemma": [
     {
